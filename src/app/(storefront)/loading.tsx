@@ -5,8 +5,8 @@ export default function GlobalStorefrontLoading() {
     <ProductGridSkeleton
       count={8}
       columns={4}
-      title="PLT Creation"
-      subtitle="Loading Ethnic Couture Collection..."
+      title="AMAL PERFUME"
+      subtitle="Distilling Rare Extraits..."
     />
   );
 }

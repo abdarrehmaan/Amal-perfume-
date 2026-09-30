@@ -5,52 +5,53 @@ export default function PremiumTrust() {
   const trustFeatures = [
     {
       icon: Sparkles,
-      title: "Master Craftsmanship",
-      desc: "Authentic, handcrafted detailing by expert artisans.",
+      title: "Master Formulations",
+      desc: "Compounded by master perfumers and aged for 6 months.",
     },
     {
       icon: Leaf,
-      title: "Premium Fabrics",
-      desc: "Ethically sourced, breathable, and luxurious materials.",
+      title: "Rare Pure Botanicals",
+      desc: "Ethically harvested Cambodian oud, Grasse roses, and raw extracts.",
     },
     {
       icon: ShieldCheck,
       title: "Secure Checkout",
-      desc: "100% encrypted and safe global transactions.",
+      desc: "100% encrypted, tamper-proof global transactions.",
     },
     {
       icon: RefreshCcw,
-      title: "Quality Assurance",
-      desc: "100% Quality Inspected before dispatch.",
+      title: "Tamper-Evident Flacons",
+      desc: "Sealed flacons inspected for chemical purity before dispatch.",
     },
     {
       icon: PackageCheck,
-      title: "Fast Delivery",
-      desc: "Complimentary express shipping on orders over ₹1499.",
+      title: "Climate-Safe Delivery",
+      desc: "Complimentary temperature-controlled express shipping over ₹1,499.",
     },
     {
       icon: HeartHandshake,
-      title: "Satisfaction Guarantee",
-      desc: "We aren't happy until you are absolutely thrilled.",
+      title: "Eternal Sillage",
+      desc: "Formulated with up to 35% pure oil for unforgettable 20+ hour projection.",
     },
   ];
 
   return (
-    <section className="py-20 bg-white border-y border-gray-100">
+    <section className="py-20 bg-[#08080a] border-y border-gold-500/10">
       <div className="container-plt">
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-gray-900 mb-4">The PLT Creation Promise</h2>
-          <p className="text-gray-500 font-light text-lg">Experience luxury without compromise. We stand by the quality of our craftsmanship and your shopping experience.</p>
+          <p className="text-xs uppercase tracking-[0.3em] text-gold-400 font-bold mb-3">Pure Artisanal Excellence</p>
+          <h2 className="font-display text-3xl md:text-4xl font-bold text-white mb-4">The AMAL PERFUME Promise</h2>
+          <p className="text-stone-400 font-light text-base">More Than A Fragrance — It's An Emotion. Experience pristine olfactory elegance and eternal longevity.</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
           {trustFeatures.map(({ icon: Icon, title, desc }, idx) => (
-            <div key={idx} className="flex flex-col items-center text-center group">
-              <div className="w-16 h-16 rounded-2xl bg-ivory-50 border border-ivory-200 flex items-center justify-center mb-6 group-hover:bg-brand-50 transition-colors duration-500">
-                <Icon size={28} className="text-brand-600 stroke-[1.5]" />
+            <div key={idx} className="flex flex-col items-center text-center group p-6 rounded-2xl bg-white/[0.02] border border-gold-500/10 hover:border-gold-500/30 transition-all duration-300">
+              <div className="w-16 h-16 rounded-2xl bg-gold-500/10 border border-gold-500/30 flex items-center justify-center mb-6 group-hover:bg-gold-500/20 group-hover:scale-110 transition-all duration-500">
+                <Icon size={28} className="text-gold-400 stroke-[1.5]" />
               </div>
-              <h3 className="text-lg font-bold text-gray-900 mb-2 uppercase tracking-wide">{title}</h3>
-              <p className="text-gray-500 font-light leading-relaxed max-w-xs">{desc}</p>
+              <h3 className="text-base font-bold text-white mb-2 uppercase tracking-wider">{title}</h3>
+              <p className="text-stone-400 font-light text-sm leading-relaxed max-w-xs">{desc}</p>
             </div>
           ))}
         </div>

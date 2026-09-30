@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import HeroBanner from '@/components/storefront/HeroBanner';
+import PerfumeScrollExperience from '@/components/storefront/PerfumeScrollExperience';
 import FeaturedCategories from '@/components/storefront/FeaturedCategories';
 import ProductGrid from '@/components/storefront/ProductGrid';
 
@@ -13,9 +14,9 @@ import CollectionsBanner from '@/components/storefront/CollectionsBanner';
 import { prisma } from '@/lib/prisma';
 
 export const metadata: Metadata = {
-  title: 'PLT Creation — Premium Women\'s Ethnic Wear | Chikankari, Kurtis & More',
+  title: "AMAL PERFUME — More Than A Fragrance, It's An Emotion",
   description:
-    'Discover PLT Creation\'s exquisite collection of Chikankari, Kurtis, Co-ord Sets, Stitched & Unstitched Suits. Free shipping above ₹1499. No exchange & no return policy.',
+    "Discover AMAL PERFUME's artisanal collection of pure extraits, royal Cambodian ouds, and signature fragrances. More than a fragrance — it's an emotion.",
 };
 
 export default async function HomePage() {
@@ -53,7 +54,7 @@ export default async function HomePage() {
         colorHex: v.colorHex || undefined,
         stock: v.stock,
       })),
-      avgRating: 4.8,
+      avgRating: 4.9,
     }));
   } catch (error) {
     console.warn('HomePage products query warning:', error);
@@ -70,7 +71,7 @@ export default async function HomePage() {
       name: c.name,
       slug: c.slug,
       description: c.description || '',
-      bannerImage: c.bannerImage || 'https://picsum.photos/seed/collection/1200/800',
+      bannerImage: c.bannerImage || 'https://images.unsplash.com/photo-1594035910387-fea47794261f?w=1200&auto=format&fit=crop&q=80',
     }));
   } catch (error) {
     console.warn('HomePage collections query warning:', error);
@@ -88,19 +89,19 @@ export default async function HomePage() {
     });
 
     const localCategoryImages: Record<string, string> = {
-      chikankari: '/banner-chikankari.jpg',
-      'coord-sets': '/banner-coord.png',
-      dresses: '/banner-dresses.jpg',
-      kurtis: '/banner-kurti.jpg',
-      'stitched-suits': '/banner-stitched.jpg',
-      'unstitched-suits': '/banner-unstitched.jpg',
+      'extrait-de-parfum': 'https://images.unsplash.com/photo-1594035910387-fea47794261f?w=800&auto=format&fit=crop&q=80',
+      'eau-de-parfum': 'https://images.unsplash.com/photo-1547887537-6158d64c35b3?w=800&auto=format&fit=crop&q=80',
+      'oud-oriental': 'https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=800&auto=format&fit=crop&q=80',
+      'floral-gourmand': 'https://images.unsplash.com/photo-1588405748880-12d1d2a59f75?w=800&auto=format&fit=crop&q=80',
+      'fresh-citrus': 'https://images.unsplash.com/photo-1523293182086-7651a899d37f?w=800&auto=format&fit=crop&q=80',
+      'discovery-coffrets': 'https://images.unsplash.com/photo-1615634260167-c8cdede054de?w=800&auto=format&fit=crop&q=80',
     };
 
     categories = categoriesDb.map((c) => ({
       name: c.name,
       slug: c.slug,
-      image: c.image || localCategoryImages[c.slug] || '/banner-dresses.jpg',
-      count: `${c._count.products} Styles`,
+      image: c.image || localCategoryImages[c.slug] || 'https://images.unsplash.com/photo-1594035910387-fea47794261f?w=800&auto=format&fit=crop&q=80',
+      count: `${c._count.products} Fragrances`,
     }));
   } catch (error) {
     console.warn('HomePage categories query warning:', error);
@@ -116,13 +117,16 @@ export default async function HomePage() {
       {/* Hero */}
       <HeroBanner />
 
+      {/* 360 Interactive Scroll Scrubbing Experience */}
+      <PerfumeScrollExperience />
+
       {/* All Products Section (Featured Preview) */}
       <section id="all-products" className="py-12 md:py-20 bg-transparent relative border-b border-white/10">
         <div className="container-plt">
           <SectionHeader
             tag="Featured Showcase"
-            title="All Products"
-            subtitle="Explore a selection of our handcrafted luxury ethnic wear."
+            title="Signature Fragrances"
+            subtitle="Explore our artisanal collection of pure extraits and fine perfumes."
             viewAllHref="/all-products"
             viewAllLabel="View Entire Catalog"
           />
@@ -133,7 +137,7 @@ export default async function HomePage() {
               href="/all-products"
               className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-white text-gray-900 font-semibold text-sm shadow-md hover:bg-gray-100 hover:scale-105 transition-all duration-300"
             >
-              Explore All Products ({formattedProducts.length}) →
+              Explore All Fragrances ({formattedProducts.length}) →
             </a>
           </div>
         </div>
@@ -146,9 +150,9 @@ export default async function HomePage() {
       <section id="new-arrivals" className="py-12 md:py-24 bg-transparent relative">
         <div className="container-plt">
           <SectionHeader
-            tag="Latest Drop"
-            title="New Arrivals"
-            subtitle="The newest silhouettes crafted for the modern muse."
+            tag="Latest Releases"
+            title="New Fragrances"
+            subtitle="The newest olfactory creations formulated by our master noses."
             viewAllHref="/new-arrivals"
             viewAllLabel="Shop New Arrivals"
           />
@@ -167,17 +171,17 @@ export default async function HomePage() {
         <div className="container-plt">
           <SectionHeader
             tag="Curated For You"
-            title="Trending Now"
-            subtitle="Pieces our community is loving right now."
-            viewAllHref="/products?sort=trending"
+            title="Trending Blends"
+            subtitle="Intoxicating scents our connoisseurs are wearing right now."
+            viewAllHref="/all-products"
           />
           <ProductGrid products={trending} columns={4} />
           
           <div className="mt-24">
             <SectionHeader
-              tag="The Classics"
+              tag="The Masterpieces"
               title="Best Sellers"
-              subtitle="Timeless designs that deserve a spot in your wardrobe."
+              subtitle="Timeless extraits and parfums that define the maison."
               viewAllHref="/best-sellers"
             />
             <ProductGrid products={bestSellers} columns={4} />
@@ -189,9 +193,9 @@ export default async function HomePage() {
       <section id="reviews" className="py-12 md:py-24 bg-transparent">
         <div className="container-plt">
           <SectionHeader
-            tag="Social Proof"
-            title="PLT Creation Muses"
-            subtitle="Real stories from our beloved community."
+            tag="Connoisseur Impressions"
+            title="AMAL PERFUME Connoisseurs"
+            subtitle="Real experiences from our fragrance collectors worldwide."
           />
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {mockReviews.map((review) => (
@@ -202,10 +206,10 @@ export default async function HomePage() {
           {/* Stats */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16 pt-12 border-t border-gray-100">
             {[
-              { value: '600+', label: 'Happy Customers' },
-              { value: '4.8/5', label: 'Average Rating' },
-              { value: '20+', label: 'Master Artisans' },
-              { value: '100%', label: 'Ethical Sourcing' },
+              { value: '2,500+', label: 'Connoisseurs Worldwide' },
+              { value: '4.9/5', label: 'Average Review Score' },
+              { value: '30%+', label: 'Pure Oil Concentration' },
+              { value: '100%', label: 'Cruelty-Free & IFRA Safe' },
             ].map(({ value, label }) => (
               <div key={label} className="text-center group">
                 <p className="font-display text-4xl md:text-5xl font-bold text-white mb-2 group-hover:scale-110 transition-transform duration-500 ease-apple">{value}</p>

@@ -10,31 +10,31 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Brand palette: Deep Crimson
+        // Brand palette: AMAL PERFUME Royal Gold & Obsidian Black
         brand: {
-          50:  '#fff0f2',
-          100: '#ffd6db',
-          200: '#ffadb8',
-          300: '#ff7a8a',
-          400: '#ff3d52',
-          500: '#e0001b',
-          600: '#b80016', // mid crimson
-          700: '#8f0011',
-          800: '#66000c',
-          900: '#590016', // PRIMARY — deep crimson
-          950: '#3a000e',
+          50:  '#fffdf5',
+          100: '#fef9e2',
+          200: '#fcf1bd',
+          300: '#fae48f',
+          400: '#f5d360',
+          500: '#d4af37', // Primary Royal Gold
+          600: '#b8892a',
+          700: '#946c1c',
+          800: '#262218',
+          900: '#141414', // Deep Obsidian Black
+          950: '#080808', // Jet Obsidian
         },
         gold: {
-          50:  '#fefaeb',
-          100: '#fdf0c7',
-          200: '#fce08e',
-          300: '#fac94e',
-          400: '#f8b324',
-          500: '#c9a84c', // primary gold
+          50:  '#fffdf5',
+          100: '#fef9e2',
+          200: '#fcf1bd',
+          300: '#fae48f',
+          400: '#f5d360',
+          500: '#d4af37', // 24K Royal Gold
           600: '#b8892a',
           700: '#9a6a1d',
           800: '#7d521c',
-          900: '#68441c',
+          900: '#4a3610',
         },
         ivory: {
           50:  '#fdfcf9',
@@ -48,11 +48,12 @@ const config: Config = {
           800: '#77634c',
           900: '#625141',
         },
-        crimson: {
-          deep: '#590016',
-          medium: '#b80016',
-          light: '#ff7a8a',
-          pale: '#fff0f2',
+        noir: {
+          DEFAULT: '#0a0a0a',
+          pure: '#000000',
+          rich: '#080808',
+          surface: '#141414',
+          border: '#2a220a',
         },
       },
       fontFamily: {
@@ -61,10 +62,11 @@ const config: Config = {
         display: ['var(--font-playfair)', 'Playfair Display', 'serif'],
       },
       backgroundImage: {
-        'gradient-brand': 'linear-gradient(135deg, #590016 0%, #b80016 50%, #c9a84c 100%)',
-        'gradient-hero': 'linear-gradient(to right, rgba(89,0,22,0.92) 0%, rgba(89,0,22,0.5) 60%, transparent 100%)',
-        'gradient-card': 'linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 60%)',
-        'gradient-gold': 'linear-gradient(135deg, #c9a84c 0%, #f8b324 50%, #c9a84c 100%)',
+        'gradient-brand': 'linear-gradient(135deg, #141414 0%, #2a220a 50%, #d4af37 100%)',
+        'gradient-hero': 'linear-gradient(to right, rgba(8,8,8,0.95) 0%, rgba(8,8,8,0.6) 60%, transparent 100%)',
+        'gradient-card': 'linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 60%)',
+        'gradient-gold': 'linear-gradient(135deg, #FFF0B8 0%, #D4AF37 50%, #AA7C11 100%)',
+        'gradient-gold-subtle': 'linear-gradient(135deg, rgba(212,175,55,0.15) 0%, rgba(212,175,55,0.02) 100%)',
       },
       animation: {
         'fade-in': 'fadeIn 0.6s ease-out forwards',

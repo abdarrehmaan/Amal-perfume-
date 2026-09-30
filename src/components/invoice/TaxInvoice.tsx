@@ -140,9 +140,9 @@ export default function TaxInvoice({
         <div className="col-span-3 flex items-center justify-center border-r-2 border-black pr-2">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/logo.png"
-            alt="PLT Creation Official Logo"
-            className="w-32 h-32 object-contain rounded-full border-2 border-amber-600/50 p-1 bg-amber-50/30 shadow-sm"
+            src="/amal-logo.jpg"
+            alt="AMAL PERFUME Official Logo"
+            className="w-32 h-32 object-contain rounded-2xl border-2 border-amber-600/50 p-1 bg-black shadow-sm"
           />
         </div>
 
@@ -150,7 +150,7 @@ export default function TaxInvoice({
         <div className="col-span-5 px-3 flex flex-col justify-between border-r-2 border-black">
           <div>
             <h1 className="font-serif text-2xl font-black tracking-wider text-black uppercase mb-1.5">
-              PLT CREATION
+              AMAL PERFUME
             </h1>
             <div className="space-y-1 text-[11px]">
               <div className="flex items-center gap-2">
@@ -613,7 +613,7 @@ export default function TaxInvoice({
 
         {/* SIGNATURE RIGHT */}
         <div className="col-span-5 text-right flex flex-col items-end">
-          <span className="font-bold text-xs tracking-wider uppercase mb-1 text-black">For PLT CREATION</span>
+          <span className="font-bold text-xs tracking-wider uppercase mb-1 text-black">For AMAL PERFUME</span>
 
           {/* AUTHENTIC HANDWRITTEN SIGNATURE MATCHING BILL BOOK */}
           <div className="w-48 h-16 flex items-center justify-center my-0.5 select-none overflow-hidden">

@@ -106,7 +106,7 @@ export default function AdminHeader({ setMobileOpen }: AdminHeaderProps) {
         </button>
         <div>
           <h1 className="font-semibold text-gray-900 text-sm md:text-base">{title}</h1>
-          <p className="text-[10px] md:text-xs text-gray-400">PLT Creation Admin Dashboard</p>
+          <p className="text-[10px] md:text-xs text-gold-600 font-medium">AMAL PERFUME Admin Dashboard</p>
         </div>
       </div>
 

@@ -20,17 +20,17 @@ const playfair = Playfair_Display({
 export const metadata: Metadata = {
   metadataBase: new URL('https://pltcreation.com'),
   title: {
-    default: 'PLT Creation — Premium Women\'s Ethnic Wear',
-    template: '%s | PLT Creation',
+    default: 'AMAL PERFUME — More Than A Fragrance, It\'s An Emotion',
+    template: '%s | AMAL PERFUME',
   },
   description:
-    'Discover PLT Creation\'s exquisite collection of Chikankari, Kurtis, Co-ord Sets, Stitched & Unstitched Suits. Premium ethnic fashion for the modern woman.',
+    'Experience AMAL PERFUME. More than a fragrance — it\'s an emotion. Discover our regal collection of pure extraits de parfum, royal Cambodian ouds, and bespoke discovery coffrets.',
   keywords: [
-    'ethnic wear', 'women fashion', 'chikankari', 'kurtis', 'co-ord sets',
-    'stitched suits', 'unstitched suits', 'hifza', 'indian ethnic wear',
+    'amal perfume', 'amal', 'luxury perfume', 'extrait de parfum', 'oud perfume',
+    'royal oud', 'niche fragrance', 'more than a fragrance its an emotion',
   ],
-  authors: [{ name: 'PLT Creation' }],
-  creator: 'PLT Creation',
+  authors: [{ name: 'AMAL PERFUME' }],
+  creator: 'AMAL PERFUME',
   icons: {
     icon: [
       { url: '/favicon.ico', sizes: '32x32 48x48' },
@@ -44,14 +44,14 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_IN',
-    siteName: 'PLT Creation',
-    title: 'PLT Creation — Premium Women\'s Ethnic Wear',
-    description: 'Exquisite ethnic fashion — Chikankari, Kurtis, Co-ord Sets & More.',
+    siteName: 'AMAL PERFUME',
+    title: 'AMAL PERFUME — More Than A Fragrance, It\'s An Emotion',
+    description: 'More than a fragrance — it\'s an emotion. Artisanal pure extraits, royal ouds & discovery coffrets.',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'PLT Creation — Premium Women\'s Ethnic Wear',
-    description: 'Exquisite ethnic fashion — Chikankari, Kurtis, Co-ord Sets & More.',
+    title: 'AMAL PERFUME — More Than A Fragrance, It\'s An Emotion',
+    description: 'More than a fragrance — it\'s an emotion. Artisanal pure extraits, royal ouds & discovery coffrets.',
   },
   robots: { index: true, follow: true },
 };

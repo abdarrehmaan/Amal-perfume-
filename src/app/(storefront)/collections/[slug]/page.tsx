@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     if (!collection) return {};
     return {
       title: `${collection.name} Collection`,
-      description: collection.description || 'Premium ethnic fashion collection',
+      description: collection.description || 'Artisanal luxury fragrance collection',
     };
   } catch (error) {
     return {};
@@ -119,7 +119,7 @@ export default async function CollectionPage({ params }: { params: Promise<{ slu
 
       <div className="container-plt py-12">
         <div className="flex items-center justify-between mb-8">
-          <p className="text-sm text-gray-500">{formattedProducts.length} products found</p>
+          <p className="text-sm text-gray-500">{formattedProducts.length} fragrances in this collection</p>
         </div>
         <ProductGrid products={formattedProducts} columns={4} />
       </div>

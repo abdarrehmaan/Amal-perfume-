@@ -7,14 +7,14 @@
    CSS CUSTOM PROPERTIES — PLT CREATION DESIGN SYSTEM
    ============================================================ */
 :root {
-  /* Brand Colors */
-  --brand-primary: #b80016;       /* mid crimson */
-  --brand-dark: #590016;          /* deep crimson — primary */
-  --brand-light: #ff7a8a;         /* light crimson */
-  --gold: #C9A84C;
-  --gold-light: #F8B324;
-  --ivory: #F5F0E8;
-  --ivory-dark: #EDE3D2;
+  /* Brand Colors — AMAL PERFUME ROYAL GOLD & OBSIDIAN BLACK */
+  --brand-primary: #d4af37;       /* Royal 24K Gold */
+  --brand-dark: #080808;          /* Deep Obsidian Black */
+  --brand-light: #f5d360;         /* Luminous Warm Gold */
+  --gold: #D4AF37;
+  --gold-light: #F5D360;
+  --ivory: #FAF8F5;
+  --ivory-dark: #ECE7DE;
 
   /* Typography */
   --font-sans: 'Inter', system-ui, sans-serif;
@@ -30,10 +30,10 @@
   --transition-spring: 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
 
   /* Shadows */
-  --shadow-card: 0 2px 20px rgba(0, 0, 0, 0.08);
-  --shadow-card-hover: 0 12px 48px rgba(0, 0, 0, 0.15);
-  --shadow-brand: 0 8px 32px rgba(89, 0, 22, 0.45);
-  --shadow-gold: 0 4px 20px rgba(201, 168, 76, 0.3);
+  --shadow-card: 0 4px 25px rgba(0, 0, 0, 0.5);
+  --shadow-card-hover: 0 16px 50px rgba(0, 0, 0, 0.8);
+  --shadow-brand: 0 8px 32px rgba(212, 175, 55, 0.35);
+  --shadow-gold: 0 4px 25px rgba(212, 175, 55, 0.4);
 
   /* Border Radius */
   --radius-sm: 0.5rem;
@@ -59,12 +59,13 @@ html {
 
 body {
   font-family: var(--font-sans);
-  background-color: #2d000b; /* Deep luxury crimson */
+  background-color: #080808; /* Obsidian Black */
   background-image: 
-    radial-gradient(circle at 50% 0%, rgba(89, 0, 22, 0.6) 0%, transparent 60%),
-    linear-gradient(rgba(201, 168, 76, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(201, 168, 76, 0.05) 1px, transparent 1px);
-  background-size: 100% 100%, 40px 40px, 40px 40px;
+    radial-gradient(circle at 50% 0%, rgba(212, 175, 55, 0.15) 0%, transparent 60%),
+    radial-gradient(circle at 100% 100%, rgba(212, 175, 55, 0.05) 0%, transparent 40%),
+    linear-gradient(rgba(212, 175, 55, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(212, 175, 55, 0.035) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 48px 48px, 48px 48px;
   background-attachment: fixed;
   color: var(--ivory);
   line-height: 1.6;
@@ -75,7 +76,7 @@ body {
 /* Selection */
 ::selection {
   background-color: var(--brand-light);
-  color: var(--brand-dark);
+  color: #000000;
 }
 
 /* Scrollbar */
@@ -84,14 +85,14 @@ body {
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: #111111;
 }
 ::-webkit-scrollbar-thumb {
   background: var(--brand-primary);
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--brand-dark);
+  background: #b8892a;
 }
 
 /* Focus */
@@ -152,9 +153,9 @@ h1, h2, h3, .heading-serif {
 
 /* Buttons */
 .btn-primary {
-  @apply inline-flex items-center justify-center gap-2 px-8 py-3 rounded-full font-semibold text-sm text-white transition-all duration-500 ease-[cubic-bezier(0.25,0.1,0.25,1)] relative overflow-hidden;
-  background: linear-gradient(135deg, #590016 0%, #b80016 100%);
-  box-shadow: 0 8px 32px rgba(89, 0, 22, 0.45);
+  @apply inline-flex items-center justify-center gap-2 px-8 py-3 rounded-full font-bold text-sm text-black transition-all duration-500 ease-[cubic-bezier(0.25,0.1,0.25,1)] relative overflow-hidden;
+  background: linear-gradient(135deg, #FFF0B8 0%, #D4AF37 50%, #B8892A 100%);
+  box-shadow: 0 8px 32px rgba(212, 175, 55, 0.4);
 }
 
 .btn-primary::after {
@@ -164,7 +165,7 @@ h1, h2, h3, .heading-serif {
   left: -100%;
   width: 50%;
   height: 100%;
-  background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.3), transparent);
+  background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.5), transparent);
   transform: skewX(-20deg);
   transition: all 0.7s ease;
 }
@@ -175,7 +176,7 @@ h1, h2, h3, .heading-serif {
 
 .btn-primary:hover {
   @apply transform -translate-y-1 scale-[1.02];
-  box-shadow: 0 12px 40px rgba(89, 0, 22, 0.65);
+  box-shadow: 0 12px 40px rgba(212, 175, 55, 0.65);
 }
 
 .btn-primary:active {
@@ -184,21 +185,21 @@ h1, h2, h3, .heading-serif {
 
 .btn-secondary {
   @apply inline-flex items-center justify-center gap-2 px-8 py-3 rounded-full font-semibold text-sm border-2 transition-all duration-300;
-  border-color: var(--gold);
-  color: var(--gold);
+  border-color: #D4AF37;
+  color: #D4AF37;
 }
 
 .btn-secondary:hover {
-  background: var(--gold);
-  color: #1a0007;
+  background: #D4AF37;
+  color: #000000;
   @apply transform -translate-y-0.5;
-  box-shadow: 0 4px 20px rgba(201, 168, 76, 0.35);
+  box-shadow: 0 4px 20px rgba(212, 175, 55, 0.4);
 }
 
 .btn-gold {
-  @apply inline-flex items-center justify-center gap-2 px-8 py-3 rounded-full font-semibold text-sm text-white transition-all duration-500 ease-[cubic-bezier(0.25,0.1,0.25,1)] relative overflow-hidden;
-  background: linear-gradient(135deg, #C9A84C 0%, #F8B324 100%);
-  box-shadow: 0 8px 32px rgba(201, 168, 76, 0.4);
+  @apply inline-flex items-center justify-center gap-2 px-8 py-3 rounded-full font-bold text-sm text-black transition-all duration-500 ease-[cubic-bezier(0.25,0.1,0.25,1)] relative overflow-hidden;
+  background: linear-gradient(135deg, #FFF1B0 0%, #D4AF37 50%, #A37C1C 100%);
+  box-shadow: 0 8px 32px rgba(212, 175, 55, 0.4);
 }
 
 .btn-gold::after {
@@ -208,7 +209,7 @@ h1, h2, h3, .heading-serif {
   left: -100%;
   width: 50%;
   height: 100%;
-  background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.4), transparent);
+  background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.5), transparent);
   transform: skewX(-20deg);
   transition: all 0.7s ease;
 }
@@ -219,7 +220,13 @@ h1, h2, h3, .heading-serif {
 
 .btn-gold:hover {
   @apply transform -translate-y-1 scale-[1.02];
-  box-shadow: 0 12px 40px rgba(201, 168, 76, 0.6);
+  box-shadow: 0 12px 40px rgba(212, 175, 55, 0.6);
+}
+
+.text-gradient-gold {
+  background: linear-gradient(135deg, #FFF5CC 0%, #D4AF37 40%, #F5D360 70%, #9A6A1D 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .btn-ghost {

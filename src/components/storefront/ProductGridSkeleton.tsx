@@ -12,8 +12,8 @@ interface ProductGridSkeletonProps {
 export default function ProductGridSkeleton({
   count = 8,
   columns = 4,
-  title = 'PLT Creation',
-  subtitle = 'Loading Ethnic Couture...',
+  title = 'AMAL PERFUME',
+  subtitle = 'Distilling Rare Extraits...',
 }: ProductGridSkeletonProps) {
   const colClass =
     columns === 4
@@ -23,26 +23,23 @@ export default function ProductGridSkeleton({
       : 'grid-cols-2';
 
   return (
-    <div className="bg-white min-h-screen">
-      {/* PLT Creation Logo Animated Header */}
+    <div className="bg-[#08080a] min-h-screen">
+      {/* AMAL PERFUME Animated Header */}
       <div
-        className="py-14 text-center relative overflow-hidden flex flex-col items-center justify-center"
-        style={{
-          background: 'linear-gradient(135deg, #4A1D36 0%, #6B2D4F 50%, #C4748A 80%, #c9a84c 100%)',
-        }}
+        className="py-14 text-center relative overflow-hidden flex flex-col items-center justify-center bg-gradient-to-b from-black via-stone-950 to-[#08080a] border-b border-gold-500/20"
       >
         {/* Glowing Logo Container with Spinning Ring */}
         <div className="relative mb-4 group">
           {/* Spinning Gold Accent Ring */}
-          <div className="absolute -inset-2 rounded-full border-2 border-dashed border-amber-300/60 animate-spin" style={{ animationDuration: '8s' }} />
+          <div className="absolute -inset-2 rounded-full border-2 border-dashed border-gold-400/60 animate-spin" style={{ animationDuration: '8s' }} />
           
           {/* Logo Circle */}
-          <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-white/10 backdrop-blur-md border-2 border-white/30 p-2 flex items-center justify-center shadow-2xl animate-pulse">
+          <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-black/80 backdrop-blur-md border-2 border-gold-500/40 p-2 flex items-center justify-center shadow-2xl animate-pulse">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/logo.png"
-              alt="PLT Creation Logo"
-              className="w-full h-full object-contain drop-shadow-md"
+              src="/amal-logo.jpg"
+              alt="AMAL PERFUME Logo"
+              className="w-full h-full object-contain rounded-full drop-shadow-md"
               onError={(e) => {
                 // Fallback text logo if image fails
                 (e.target as HTMLElement).style.display = 'none';
@@ -52,15 +49,15 @@ export default function ProductGridSkeleton({
         </div>
 
         {/* Brand Text Header */}
-        <h2 className="font-serif text-2xl sm:text-3xl font-black text-white tracking-widest uppercase mb-1 drop-shadow-sm">
-          PLT CREATION
+        <h2 className="font-serif text-2xl sm:text-3xl font-black text-gradient-gold tracking-widest uppercase mb-1 drop-shadow-sm">
+          AMAL PERFUME
         </h2>
-        <p className="text-amber-200 text-xs uppercase tracking-[0.3em] font-semibold mb-2">
-          Women's Ethnic Apparel
+        <p className="text-gold-300 text-xs uppercase tracking-[0.35em] font-semibold mb-2">
+          Haute Parfumerie Maison
         </p>
 
-        <div className="flex items-center gap-2 text-white/80 text-xs font-medium bg-white/10 px-4 py-1.5 rounded-full border border-white/15">
-          <span className="w-2 h-2 rounded-full bg-amber-400 animate-ping" />
+        <div className="flex items-center gap-2 text-stone-300 text-xs font-medium bg-white/5 px-4 py-1.5 rounded-full border border-gold-500/20">
+          <span className="w-2 h-2 rounded-full bg-gold-400 animate-ping" />
           <span>{subtitle}</span>
         </div>
       </div>

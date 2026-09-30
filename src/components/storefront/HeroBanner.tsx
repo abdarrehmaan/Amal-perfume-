@@ -3,49 +3,48 @@
 import React, { useCallback, useEffect, useState, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ChevronLeft, ChevronRight, ArrowRight, Sparkles, Star } from 'lucide-react';
+import { ChevronLeft, ChevronRight, ChevronDown, ArrowRight, Sparkles, Star } from 'lucide-react';
 import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from 'framer-motion';
 
 const slides = [
   {
     id: 1,
-    image: '/rakshabandhan-banner.png',
-    tag: 'Rakshabandhan Special',
-    title: 'Celebrate Traditions in Style',
-    subtitle: 'Beautiful Suits for Every Sister — Crafted with love, timeless traditions, and elegant fabrics.',
-    cta: 'Explore Rakhi Collection',
-    ctaHref: '/collections/rakshabandhan-collection-outfits',
-    align: 'left',
-    isGraphic: true,
+    image: '/amal-banner.jpg',
+    tag: 'Haute Parfumerie Reserve',
+    title: 'An Olfactory Emotion',
+    subtitle: "More than a fragrance — it's an emotion. Hand-compounded with rare aged agarwoods and French floral extraits.",
+    cta: 'Discover Fragrances',
+    ctaHref: '/all-products',
+    align: 'right',
   },
   {
     id: 2,
-    image: '/banner1.jpg',
-    tag: 'New Season Collection',
-    title: 'Elegance Redefined',
-    subtitle: 'Discover PLT Creation\'s signature collection — where timeless craftsmanship meets modern grace.',
-    cta: 'Shop New Arrivals',
-    ctaHref: '/new-arrivals',
+    image: 'https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=1600&auto=format&fit=crop&q=80',
+    tag: 'Signature Oud Extrait',
+    title: 'Oud Impérial',
+    subtitle: 'Intoxicating agarwood, fiery royal saffron, and smoky ambergris. Formulated for intense 24-hour sillage.',
+    cta: 'Shop Oud Impérial',
+    ctaHref: '/products/oud-imperial-extrait-de-parfum',
     align: 'left',
   },
   {
     id: 3,
-    image: '/banner2.png',
-    tag: 'Festive Collection',
-    title: 'Stunning Co-ord Sets For Every Occasion',
-    subtitle: 'Modern ethnic fusion — effortlessly chic co-ord sets that turn every moment into a celebration.',
-    cta: 'Explore Collections',
-    ctaHref: '/collections',
+    image: 'https://images.unsplash.com/photo-1547887537-6158d64c35b3?w=1600&auto=format&fit=crop&q=80',
+    tag: '30% Pure Concentration',
+    title: 'Baccarat Noir Extrait',
+    subtitle: 'Luminous ambergris, bitter almond, and spun sugar crystals woven into an irresistible halo of warmth.',
+    cta: 'Explore The Extrait',
+    ctaHref: '/products/baccarat-noir-extrait-de-parfum',
     align: 'right',
   },
   {
     id: 4,
-    image: '/banner3.png',
-    tag: 'Everyday Luxury',
-    title: 'Premium Kurtis & Suits',
-    subtitle: 'From casual days to festive nights — discover the perfect ethnic piece for every you.',
-    cta: 'Shop Now',
-    ctaHref: '/products',
+    image: 'https://images.unsplash.com/photo-1615634260167-c8cdede054de?w=1600&auto=format&fit=crop&q=80',
+    tag: 'Discovery Coffret',
+    title: 'Experience The Symphony',
+    subtitle: 'Five 10ml travel spray flacons in a velvet-lined gold case. Includes a ₹1,000 voucher towards your full bottle.',
+    cta: 'Order Discovery Set',
+    ctaHref: '/products/master-perfumers-discovery-coffret',
     align: 'right',
   },
 ];
@@ -249,6 +248,15 @@ export default function HeroBanner() {
           </button>
         </div>
       </div>
+
+      {/* 360 Experience Link Anchor */}
+      <a
+        href="#scroll-experience"
+        className="hidden md:flex absolute bottom-7 left-1/2 -translate-x-1/2 z-30 items-center gap-2 text-[11px] uppercase tracking-[0.25em] text-white/70 hover:text-amber-300 transition-colors bg-black/40 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/10"
+      >
+        <span>Experience 360° Studio</span>
+        <ChevronDown size={14} className="animate-bounce text-amber-400" />
+      </a>
     </section>
   );
 }

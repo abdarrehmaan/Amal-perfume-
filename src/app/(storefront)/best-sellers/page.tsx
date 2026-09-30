@@ -5,8 +5,8 @@ import { prisma } from '@/lib/prisma';
 export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
-  title: 'Best Sellers',
-  description: 'Shop PLT Creation\'s best-selling ethnic wear. Most loved products by our customers.',
+  title: 'Best Sellers — AMAL PERFUME',
+  description: "Shop AMAL PERFUME's most celebrated artisanal extraits and signature fragrances.",
 };
 
 export default async function BestSellersPage() {
@@ -45,19 +45,19 @@ export default async function BestSellersPage() {
       colorHex: v.colorHex || undefined,
       stock: v.stock,
     })),
-    avgRating: 4.8,
+    avgRating: 4.9,
   }));
 
   return (
     <div className="bg-white min-h-screen">
-      <div className="py-14 text-center" style={{ background: 'linear-gradient(135deg, #C9A84C 0%, #F8B324 100%)' }}>
-        <p className="text-white/80 text-xs font-bold uppercase tracking-widest mb-2">⭐ Fan Favourites</p>
+      <div className="py-14 text-center" style={{ background: 'linear-gradient(135deg, #2d000b 0%, #590016 60%, #c9a84c 100%)' }}>
+        <p className="text-white/80 text-xs font-bold uppercase tracking-widest mb-2">⭐ Connoisseur Favorites</p>
         <h1 className="font-display text-4xl font-bold text-white mb-2">Best Sellers</h1>
-        <p className="text-white/80">Our most loved ethnic pieces by 10,000+ customers</p>
+        <p className="text-white/80">Our most celebrated perfumes and extraits loved by fragrance collectors</p>
       </div>
       <div className="container-plt py-12">
         <div className="flex items-center justify-between mb-8">
-          <p className="text-sm text-gray-500">{products.length} best selling products</p>
+          <p className="text-sm text-gray-500">{products.length} best selling fragrances</p>
           <select className="px-4 py-2 rounded-xl border border-gray-200 text-sm bg-white focus:outline-none">
             <option>Most Popular</option>
             <option>Price: Low to High</option>
@@ -70,4 +70,3 @@ export default async function BestSellersPage() {
     </div>
   );
 }
-

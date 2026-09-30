@@ -6,49 +6,53 @@ import { HelpCircle, ChevronDown, MessageCircle, Phone, Mail, ArrowRight } from 
 
 const faqCategories = [
   {
-    category: 'Orders & Shipping',
+    category: 'Orders & Climate-Controlled Shipping',
     items: [
       {
         q: 'How long does shipping take?',
-        a: 'We process orders within 24-48 hours. Standard domestic delivery takes 3–5 business days across India. Express shipping is also available at checkout.',
+        a: 'Orders are prepared within 24 hours in our climate-controlled vault. Standard domestic delivery takes 2–4 business days across India via insured courier. Express shipping is also available at checkout.',
       },
       {
         q: 'Is shipping free?',
-        a: 'Yes, we offer FREE nationwide shipping on all orders above ₹1,499. For orders below ₹1,499, a flat shipping charge of ₹99 applies.',
+        a: 'Yes, we offer complimentary insured nationwide shipping on all orders above ₹1,499. For orders below ₹1,499, a flat shipping charge of ₹99 applies.',
       },
       {
         q: 'Do you offer Cash on Delivery (COD)?',
-        a: 'Yes, Cash on Delivery is available across most pincodes in India. Select COD at checkout.',
+        a: 'Yes, Cash on Delivery is available across most serviceable pincodes in India for orders up to ₹10,000.',
       },
     ],
   },
   {
-    category: 'Store Policy & Support',
+    category: 'Fragrance Concentrations & Longevity',
     items: [
       {
-        q: 'What is your Return and Refund policy?',
-        a: 'We strictly maintain a No Returns, No Refunds, and No Exchanges policy on all orders as every product undergoes rigorous multi-step quality control prior to dispatch.',
+        q: 'What is the difference between Extrait de Parfum and Eau de Parfum?',
+        a: 'Extrait de Parfum is the highest concentration of fragrance available, containing 25% to 35% pure fragrance oil. It offers intense intimacy, rich depth, and 18–24 hours of longevity. Eau de Parfum contains 15% to 20% oil concentration, offering radiant projection and 10–14 hours of wear.',
       },
       {
-        q: 'How do I contact customer support if I face an issue?',
-        a: 'For any kind of issue, please call us or send a message on WhatsApp at +91 63920 06081. Our team will contact you within 24 hours.',
+        q: 'How long do AMAL PERFUME fragrances last on skin and clothing?',
+        a: 'Due to our high oil concentrations and natural botanical fixatives, our extraits project prominently for 8–12 hours and remain as an intimate skin scent for up to 24 hours. On fabric and outerwear, the scent can easily persist for several days.',
       },
       {
-        q: 'Is an unboxing video required for product issues?',
-        a: 'Yes. For any product-related issue, a 360-degree unboxing video is mandatory for verification.',
+        q: 'Are your fragrances safe for sensitive skin?',
+        a: 'Yes. All our creations comply strictly with the International Fragrance Association (IFRA) standards. We formulate without parabens, phthalates, or harsh fixatives, using pharmaceutical-grade organic cane alcohol and skin-nourishing essential oils.',
       },
     ],
   },
   {
-    category: 'Craftsmanship & Fabric Care',
+    category: 'Sample-First Policy & Flacon Care',
     items: [
       {
-        q: 'Are all Chikankari embroidery items handmade?',
-        a: 'Yes! Every Chikankari outfit is hand-embroidered by artisan women using traditional needlework techniques passed down through generations.',
+        q: 'Can I test the fragrance before opening the full-size bottle?',
+        a: 'Yes! Every 50ml or 100ml flacon includes a complimentary matching 2ml tester vial. We encourage you to test the 2ml vial first. If you decide the fragrance is not for you, you can return the full-size bottle as long as its cellophane seal remains completely intact.',
       },
       {
-        q: 'How should I care for my PLT Creation outfits?',
-        a: 'We recommend gentle hand wash in cold water or dry cleaning for hand-embroidered and silk pieces to maintain their luster and delicate threadwork.',
+        q: 'How should I properly store my luxury perfume flacon?',
+        a: 'Keep your flacon away from direct sunlight, extreme heat, and bathroom humidity. Storing your perfume in its presentation box at room temperature preserves the delicate top notes and enables optimal maturation for years to come.',
+      },
+      {
+        q: 'What is the best way to apply perfume for maximum sillage?',
+        a: 'Spray onto warm pulse points: the sides of your neck, inner wrists, and collarbones. Avoid rubbing your wrists together, as friction crushes the delicate top note molecules and alters the fragrance development.',
       },
     ],
   },

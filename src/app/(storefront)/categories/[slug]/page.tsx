@@ -4,40 +4,35 @@ import { prisma } from '@/lib/prisma';
 import { notFound } from 'next/navigation';
 
 const defaultMeta: Record<string, { name: string; description: string; image: string }> = {
-  chikankari: {
-    name: 'Chikankari',
-    description: 'Handcrafted with love — exquisite Chikankari embroidery that celebrates the artistry of Lucknow.',
-    image: '/banner-chikankari.jpg',
+  'extrait-de-parfum': {
+    name: 'Extrait de Parfum',
+    description: 'Ultra-concentrated pure parfums (30%+ oil) for exceptional 24-hour intimacy and sillage.',
+    image: 'https://images.unsplash.com/photo-1594035910387-fea47794261f?w=1600&auto=format&fit=crop&q=80',
   },
-  'coord-sets': {
-    name: 'Co-ord Sets',
-    description: 'Modern ethnic fusion — effortlessly chic co-ord sets for every occasion.',
-    image: '/banner-coord.png',
+  'eau-de-parfum': {
+    name: 'Eau de Parfum',
+    description: 'Signature artisanal scents crafted for daily luxury and prestigious evening allure.',
+    image: 'https://images.unsplash.com/photo-1547887537-6158d64c35b3?w=1600&auto=format&fit=crop&q=80',
   },
-  dresses: {
-    name: 'Dresses',
-    description: 'Elegant ethnic and fusion dresses designed for modern sophistication.',
-    image: '/banner-dresses.jpg',
+  'oud-oriental': {
+    name: 'Oud & Oriental',
+    description: 'Smoked Cambodian agarwood, royal ambergris, Taif rose, and precious saffron.',
+    image: 'https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=1600&auto=format&fit=crop&q=80',
   },
-  kurtis: {
-    name: 'Kurtis',
-    description: 'From casual days to festive nights — the perfect kurti for every moment.',
-    image: '/banner-kurti.jpg',
+  'floral-gourmand': {
+    name: 'Floral & Gourmand',
+    description: 'Velvet Damask roses, Madagascan bourbon vanilla, praline, and night-blooming jasmine.',
+    image: 'https://images.unsplash.com/photo-1588405748880-12d1d2a59f75?w=1600&auto=format&fit=crop&q=80',
   },
-  'stitched-suits': {
-    name: 'Stitched Suits',
-    description: 'Ready-to-wear premium suits crafted for the modern Indian woman.',
-    image: '/banner-stitched.jpg',
+  'fresh-citrus': {
+    name: 'Fresh & Citrus',
+    description: 'Calabrian bergamot, Mediterranean sea salt, sparkling neroli, and coastal driftwoods.',
+    image: 'https://images.unsplash.com/photo-1523293182086-7651a899d37f?w=1600&auto=format&fit=crop&q=80',
   },
-  'unstitched-suits': {
-    name: 'Unstitched Suits',
-    description: 'Premium fabrics and materials — stitch them exactly to your measurements.',
-    image: '/banner-unstitched.jpg',
-  },
-  sale: {
-    name: 'Sale Collection',
-    description: 'Incredible deals on premium ethnic wear — up to 50% off!',
-    image: '/banner4.png',
+  'discovery-coffrets': {
+    name: 'Discovery Sets & Coffrets',
+    description: 'Curated miniature discovery sets and collector coffrets in bespoke presentation cases.',
+    image: 'https://images.unsplash.com/photo-1615634260167-c8cdede054de?w=1600&auto=format&fit=crop&q=80',
   },
 };
 

@@ -8,8 +8,8 @@ import Link from 'next/link';
 export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
-  title: 'All Products',
-  description: 'Browse our complete collection of premium women\'s ethnic wear — Chikankari, Kurtis, Co-ord Sets, Suits and more.',
+  title: 'All Fragrances — AMAL PERFUME',
+  description: 'Browse our complete collection of artisanal extraits de parfum, royal Cambodian ouds, and signature fragrances.',
 };
 
 const sortOptions = [
@@ -119,12 +119,12 @@ export default async function ProductsPage({
       <div
         className="py-12 text-center"
         style={{
-          background: 'linear-gradient(135deg, #6B2D4F 0%, #C4748A 60%, #c9a84c 100%)',
+          background: 'linear-gradient(135deg, #2d000b 0%, #590016 60%, #c9a84c 100%)',
         }}
       >
-        <h1 className="font-display text-3xl md:text-4xl font-bold text-white mb-2">All Products</h1>
+        <h1 className="font-display text-3xl md:text-4xl font-bold text-white mb-2">All Fragrances</h1>
         <p className="text-white/80 text-sm">
-          {totalProducts} exquisite ethnic pieces
+          {totalProducts} artisanal olfactory creations
         </p>
       </div>
 
@@ -136,7 +136,7 @@ export default async function ProductsPage({
             <input
               type="text"
               name="search"
-              placeholder="Search products..."
+              placeholder="Search fragrances, notes..."
               defaultValue={search || ''}
               className="input-base pl-9 py-2 text-sm"
             />

@@ -315,7 +315,7 @@ export default function ProductDetailClient({
             {colors.length > 0 && (
               <div className="mb-5">
                 <div className="flex items-center gap-2 mb-2">
-                  <p className="text-sm font-semibold text-gray-900">Color:</p>
+                  <p className="text-sm font-semibold text-gray-900">Edition / Flacon Finish:</p>
                   {selectedColor && <p className="text-sm text-gray-500">{selectedColor}</p>}
                 </div>
                 <div className="flex gap-2 flex-wrap">
@@ -331,7 +331,7 @@ export default function ProductDetailClient({
                         )}
                         style={{ backgroundColor: variant?.colorHex || '#ccc' }}
                         title={color}
-                        aria-label={`Select color ${color}`}
+                        aria-label={`Select edition ${color}`}
                       />
                     );
                   })}
@@ -343,8 +343,8 @@ export default function ProductDetailClient({
             {sizes.length > 0 && (
               <div className="mb-5">
                 <div className="flex items-center justify-between mb-2">
-                  <p className="text-sm font-semibold text-gray-900">Size:</p>
-                  <button className="text-xs text-brand-600 hover:underline">Size Guide</button>
+                  <p className="text-sm font-semibold text-gray-900">Bottle Volume:</p>
+                  <Link href="/size-guide" className="text-xs text-brand-600 hover:underline">Volume & Sillage Guide</Link>
                 </div>
                 <div className="flex gap-2 flex-wrap">
                   {sizes.map((size) => {
@@ -506,7 +506,7 @@ export default function ProductDetailClient({
                     : 'border-transparent text-gray-500 hover:text-gray-700'
                 )}
               >
-                {tab === 'description' ? 'Description' : tab === 'fabric' ? 'Fabric & Care' : 'Reviews'}
+                {tab === 'description' ? 'Fragrance Story' : tab === 'fabric' ? 'Olfactory Pyramid & Sillage' : 'Connoisseur Reviews'}
               </button>
             ))}
           </div>
@@ -517,13 +517,13 @@ export default function ProductDetailClient({
                 <p>{product.description}</p>
               ) : (
                 <>
-                  <p>This exquisite piece from PLT Creation's premium collection showcases the finest craftsmanship and attention to detail. Made with carefully selected fabrics and embellishments, it's designed to make you feel confident and beautiful for every occasion.</p>
+                  <p>An exquisite creation from AMAL PERFUME's Private Reserve collection. Compounded with rare botanical extraits, aged resins, and precious floral distillates, this fragrance is designed to unveil an unforgettable signature sillage.</p>
                   <ul className="mt-4 space-y-2">
-                    <li>✓ Premium quality fabric with excellent finish</li>
-                    <li>✓ Carefully crafted embroidery/detailing</li>
-                    <li>✓ Comfortable fit for all-day wear</li>
-                    <li>✓ Suitable for festive, casual, and party occasions</li>
-                    <li>✓ Includes matching dupatta/accessories as shown</li>
+                    <li>✓ Formulated with high-concentration pure perfume oils</li>
+                    <li>✓ Handcrafted in small macerated batches</li>
+                    <li>✓ Exceptional 18+ hours longevity on skin and fabric</li>
+                    <li>✓ Delivered with a complimentary 2ml matching sample vial to test before opening</li>
+                    <li>✓ Heat-sealed in a velvet-lined gold embossed presentation flacon</li>
                   </ul>
                 </>
               )}
@@ -533,34 +533,33 @@ export default function ProductDetailClient({
           {activeTab === 'fabric' && (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
               <div>
-                <h3 className="font-semibold text-gray-900 mb-3">Fabric Details</h3>
+                <h3 className="font-semibold text-gray-900 mb-3">Olfactory Architecture</h3>
                 <div className="space-y-2 text-gray-600">
                   <div className="flex justify-between py-2 border-b border-gray-100">
-                    <span>Material</span>
-                    <span className="font-medium text-gray-900">Premium Cotton / Georgette</span>
+                    <span>Concentration</span>
+                    <span className="font-medium text-gray-900">Extrait de Parfum / EDP (25%–35% Oil)</span>
                   </div>
                   <div className="flex justify-between py-2 border-b border-gray-100">
-                    <span>Weight</span>
-                    <span className="font-medium text-gray-900">Medium Weight</span>
+                    <span>Sillage</span>
+                    <span className="font-medium text-gray-900">Regal & Enveloping</span>
                   </div>
                   <div className="flex justify-between py-2 border-b border-gray-100">
-                    <span>Transparency</span>
-                    <span className="font-medium text-gray-900">Non-transparent</span>
+                    <span>Longevity</span>
+                    <span className="font-medium text-gray-900">18–24 Hours</span>
                   </div>
                   <div className="flex justify-between py-2">
-                    <span>Stretch</span>
-                    <span className="font-medium text-gray-900">Slight stretch</span>
+                    <span>Maceration</span>
+                    <span className="font-medium text-gray-900">6 Months Minimum Aged</span>
                   </div>
                 </div>
               </div>
               <div>
-                <h3 className="font-semibold text-gray-900 mb-3">Care Instructions</h3>
+                <h3 className="font-semibold text-gray-900 mb-3">Application & Care Guidelines</h3>
                 <ul className="space-y-2 text-gray-600">
-                  <li className="flex items-start gap-2"><span>🧺</span> Hand wash or gentle machine wash in cold water</li>
-                  <li className="flex items-start gap-2"><span>🚫</span> Do not bleach or use harsh detergents</li>
-                  <li className="flex items-start gap-2"><span>🌡️</span> Iron on medium heat, inside out</li>
-                  <li className="flex items-start gap-2"><span>🪣</span> Do not tumble dry; lay flat to dry</li>
-                  <li className="flex items-start gap-2"><span>🏪</span> Dry clean recommended for embroidered pieces</li>
+                  <li className="flex items-start gap-2"><span>✨</span> Mist onto pulse points: wrists, sides of the neck, and collarbones</li>
+                  <li className="flex items-start gap-2"><span>🚫</span> Do not rub wrists together — allow natural drydown for pure note evolution</li>
+                  <li className="flex items-start gap-2"><span>🌡️</span> Store flacon in a cool, dry sanctuary away from direct heat and sunlight</li>
+                  <li className="flex items-start gap-2"><span>📦</span> Test the included 2ml tester vial first before breaking the flacon's cellophane seal</li>
                 </ul>
               </div>
             </div>

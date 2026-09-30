@@ -25,10 +25,10 @@ export default function LuxuryEffects() {
 
   return (
     <div className="fixed inset-0 z-[-1] overflow-hidden pointer-events-none bg-transparent">
-      {/* Aurora Gradients */}
-      <div className="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] rounded-full mix-blend-multiply filter blur-[100px] opacity-30 animate-aurora" style={{ background: 'radial-gradient(circle, rgba(196,116,138,0.4) 0%, transparent 70%)' }}></div>
-      <div className="absolute top-[20%] right-[-10%] w-[40vw] h-[40vw] rounded-full mix-blend-multiply filter blur-[120px] opacity-30 animate-aurora" style={{ background: 'radial-gradient(circle, rgba(201,168,76,0.4) 0%, transparent 70%)', animationDelay: '-5s' }}></div>
-      <div className="absolute bottom-[-20%] left-[20%] w-[60vw] h-[60vw] rounded-full mix-blend-multiply filter blur-[150px] opacity-20 animate-aurora" style={{ background: 'radial-gradient(circle, rgba(242,168,190,0.4) 0%, transparent 70%)', animationDelay: '-10s' }}></div>
+      {/* Aurora Gradients - AMAL Gold & Amber Ambience */}
+      <div className="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] rounded-full filter blur-[120px] opacity-25 animate-aurora" style={{ background: 'radial-gradient(circle, rgba(212,175,55,0.3) 0%, transparent 70%)' }}></div>
+      <div className="absolute top-[25%] right-[-10%] w-[45vw] h-[45vw] rounded-full filter blur-[140px] opacity-20 animate-aurora" style={{ background: 'radial-gradient(circle, rgba(184,137,42,0.25) 0%, transparent 70%)', animationDelay: '-6s' }}></div>
+      <div className="absolute bottom-[-15%] left-[20%] w-[55vw] h-[55vw] rounded-full filter blur-[150px] opacity-20 animate-aurora" style={{ background: 'radial-gradient(circle, rgba(244,208,111,0.2) 0%, transparent 70%)', animationDelay: '-12s' }}></div>
 
       {/* Floating Particles */}
       <div className="absolute inset-0">

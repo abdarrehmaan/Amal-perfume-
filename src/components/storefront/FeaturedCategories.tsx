@@ -43,10 +43,10 @@ export default function FeaturedCategories({ categories }: { categories: Feature
           transition={{ duration: 0.5 }}
           className="section-header"
         >
-          <div className="section-tag">Shop by Category</div>
-          <h2 className="section-title">Curated Collections</h2>
+          <div className="section-tag">Olfactory Families</div>
+          <h2 className="section-title">Fragrance Categories</h2>
           <p className="section-subtitle">
-            From handcrafted Chikankari to modern Co-ord Sets — find your perfect ethnic style.
+            From smoky Cambodian ouds to sparkling Mediterranean neroli — discover your signature aura.
           </p>
         </motion.div>
 

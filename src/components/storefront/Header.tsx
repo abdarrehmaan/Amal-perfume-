@@ -13,21 +13,22 @@ import { useAuthStore } from '@/features/auth/store';
 import { cn, formatPrice } from '@/lib/utils';
 
 const defaultCategories = [
-  { name: 'Chikankari', slug: 'chikankari', description: 'Handcrafted elegance' },
-  { name: 'Co-ord Sets', slug: 'coord-sets', description: 'Modern ethnic fusion' },
-  { name: 'Kurtis', slug: 'kurtis', description: 'Everyday chic' },
-  { name: 'Stitched Suits', slug: 'stitched-suits', description: 'Ready to wear' },
-  { name: 'Unstitched Suits', slug: 'unstitched-suits', description: 'Custom tailoring' },
-  { name: 'Sale Collection', slug: 'sale', description: 'Up to 50% off' },
+  { name: 'Extrait de Parfum', slug: 'extrait-de-parfum', description: '30%+ Pure oil concentration' },
+  { name: 'Eau de Parfum', slug: 'eau-de-parfum', description: 'Signature daily luxury' },
+  { name: 'Oud & Oriental', slug: 'oud-oriental', description: 'Rare agarwood & royal amber' },
+  { name: 'Floral & Gourmand', slug: 'floral-gourmand', description: 'Velvet rose & Bourbon vanilla' },
+  { name: 'Fresh & Citrus', slug: 'fresh-citrus', description: 'Calabrian bergamot & sea spray' },
+  { name: 'Discovery Sets', slug: 'discovery-coffrets', description: 'Curated miniature flacons' },
 ];
 
 const navLinks = [
   { label: 'Home', href: '/' },
-  { label: 'Categories', href: '/categories', hasDropdown: true },
+  { label: '360° Studio', href: '/scroll' },
+  { label: 'Fragrances', href: '/categories', hasDropdown: true },
   { label: 'Collections', href: '/collections' },
-  { label: 'New Arrivals', href: '/new-arrivals' },
+  { label: 'New Releases', href: '/new-arrivals' },
   { label: 'Best Sellers', href: '/best-sellers' },
-  { label: 'About Us', href: '/about' },
+  { label: 'The Maison', href: '/about' },
 ];
 
 export default function Header({ featuredProducts = [] }: { featuredProducts?: any[] }) {
@@ -130,16 +131,17 @@ export default function Header({ featuredProducts = [] }: { featuredProducts?: a
 
   return (
     <>
-      <div className="bg-brand-900 text-white/95 py-2.5 px-4 border-b border-gold-500/10 text-center text-[10px] md:text-xs font-semibold tracking-widest uppercase shadow-sm">
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-8">
+      <div className="bg-black text-white/95 py-2.5 px-4 border-b border-gold-500/20 text-center text-[10px] md:text-xs font-semibold tracking-widest uppercase shadow-sm">
+        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-6">
           <span className="flex items-center gap-2">
             <Sparkles className="w-3.5 h-3.5 text-gold-400 animate-pulse-slow" />
-            <span>Free Delivery on orders above <span className="text-gold-300 font-bold">₹1499</span></span>
+            <span className="text-gold-300 font-bold tracking-wider">AMAL PERFUME</span>
+            <span className="hidden md:inline text-white/60">— MORE THAN A FRAGRANCE, IT'S AN EMOTION</span>
           </span>
-          <span className="hidden sm:inline text-gold-500/20">|</span>
+          <span className="hidden sm:inline text-gold-500/30">|</span>
           <span className="flex items-center gap-2">
             <Package className="w-3.5 h-3.5 text-gold-400" />
-            <span>Secure Global Delivery</span>
+            <span>Complimentary Delivery On Orders Above <span className="text-gold-300 font-bold">₹1,499</span></span>
           </span>
         </div>
       </div>
@@ -149,8 +151,8 @@ export default function Header({ featuredProducts = [] }: { featuredProducts?: a
         className={cn(
           'sticky top-0 z-50 w-full transition-all duration-500 ease-[cubic-bezier(0.25,0.1,0.25,1)]',
           isScrolled
-            ? 'bg-black/80 backdrop-blur-xl shadow-glass border-b border-white/10 py-1'
-            : 'bg-gradient-to-b from-black/80 via-black/30 to-transparent py-3 border-b border-transparent'
+            ? 'bg-black/90 backdrop-blur-xl shadow-glass border-b border-gold-500/20 py-1'
+            : 'bg-gradient-to-b from-black/90 via-black/40 to-transparent py-3 border-b border-transparent'
         )}
       >
         <div className="container-plt">
@@ -168,11 +170,12 @@ export default function Header({ featuredProducts = [] }: { featuredProducts?: a
                 {mobileOpen ? <X size={22} /> : <Menu size={22} />}
               </button>
 
-              <Link href="/" className="flex items-center gap-3 group">
-                <img src="/logo.png" alt="PLT Creation" className="h-16 md:h-22 w-auto object-contain drop-shadow-lg brightness-110 hover:brightness-125 hover:scale-105 transition-all duration-300" style={{ maxHeight: '88px' }} />
+              <Link href="/" className="flex items-center gap-3.5 group">
+                <img src="/amal-logo.jpg" alt="AMAL PERFUME" className="h-14 sm:h-16 md:h-20 w-auto object-contain rounded-xl drop-shadow-2xl border border-gold-500/40 brightness-110 hover:scale-105 transition-all duration-300" style={{ maxHeight: '82px' }} />
                 <div className="hidden md:flex flex-col">
-                  <span className="font-display text-2xl font-bold text-gradient-gold tracking-wide leading-none">PLT Creation</span>
-                  <span className="text-[10px] tracking-[0.35em] uppercase text-brand-300 font-semibold mt-0.5">Women's Apparel</span>
+                  <span className="font-display text-2xl lg:text-3xl font-bold text-gradient-gold tracking-widest leading-none">AMAL</span>
+                  <span className="text-[10px] tracking-[0.45em] uppercase text-gold-300 font-bold mt-1">PERFUME</span>
+                  <span className="text-[9px] tracking-[0.15em] uppercase text-white/50 font-medium mt-0.5">More Than A Fragrance · It's An Emotion</span>
                 </div>
               </Link>
             </div>
@@ -204,7 +207,7 @@ export default function Header({ featuredProducts = [] }: { featuredProducts?: a
                         onMouseEnter={() => setCatOpen(true)}
                       >
                         <div className="col-span-2 pb-3 border-b border-gray-100 mb-2">
-                          <p className="text-xs text-gray-400 uppercase tracking-[0.2em] font-bold">Discover Categories</p>
+                          <p className="text-xs text-gray-400 uppercase tracking-[0.2em] font-bold">Discover Olfactory Families</p>
                         </div>
                         {categories.map((cat) => (
                           <Link
@@ -224,7 +227,7 @@ export default function Header({ featuredProducts = [] }: { featuredProducts?: a
                             className="flex items-center justify-center gap-2 px-4 py-4 rounded-xl text-xs uppercase tracking-widest font-bold text-white bg-gradient-brand hover:shadow-brand-lg transition-all duration-300 hover:-translate-y-0.5"
                           >
                             <Sparkles size={14} />
-                            View The Complete Lookbook
+                            Explore The Fragrance Lookbook
                           </Link>
                         </div>
                       </div>
@@ -468,7 +471,7 @@ export default function Header({ featuredProducts = [] }: { featuredProducts?: a
                         <TrendingUp size={14} className="text-brand-600" /> Trending Searches
                       </h3>
                       <div className="flex flex-wrap gap-2">
-                        {['White Chikankari', 'Party Wear Sets', 'Summer Collection', 'Anarkali Suits', 'Floral Kurtis'].map(term => (
+                        {['Oud Impérial', 'Baccarat Noir', 'Extrait de Parfum', 'Bourbon Vanilla', 'Discovery Coffret', 'Neroli'].map(term => (
                           <button
                             key={term}
                             onClick={() => setSearchQuery(term)}
@@ -509,11 +512,17 @@ export default function Header({ featuredProducts = [] }: { featuredProducts?: a
             className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 md:hidden"
             onClick={() => setMobileOpen(false)}
           />
-          <div className="fixed top-0 left-0 h-full w-[85vw] max-w-[320px] bg-white z-50 md:hidden flex flex-col shadow-2xl animate-slide-in-left">
-            <div className="flex items-center justify-between p-6 border-b border-gray-100">
-              <img src="/logo.png" alt="PLT Creation" className="h-10 w-auto object-contain" />
+          <div className="fixed top-0 left-0 h-full w-[85vw] max-w-[320px] bg-[#0d0d11] text-stone-200 border-r border-gold-500/20 z-50 md:hidden flex flex-col shadow-2xl animate-slide-in-left">
+            <div className="flex items-center justify-between p-5 border-b border-gold-500/20 bg-black/40">
+              <Link href="/" onClick={() => setMobileOpen(false)} className="flex items-center gap-3">
+                <img src="/amal-logo.jpg" alt="AMAL PERFUME" className="h-12 w-auto object-contain rounded-lg border border-gold-500/30" />
+                <div className="flex flex-col">
+                  <span className="font-display text-lg font-bold text-gradient-gold tracking-widest leading-none">AMAL</span>
+                  <span className="text-[8px] tracking-[0.3em] uppercase text-gold-300 font-semibold mt-0.5">PERFUME</span>
+                </div>
+              </Link>
               <button
-                className="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 text-gray-600"
+                className="w-8 h-8 flex items-center justify-center rounded-full bg-white/5 text-stone-300 hover:text-white hover:bg-white/10"
                 onClick={() => setMobileOpen(false)}
               >
                 <X size={18} />
@@ -526,7 +535,7 @@ export default function Header({ featuredProducts = [] }: { featuredProducts?: a
                   link.hasDropdown ? (
                     <div key={link.label}>
                       <button
-                        className="w-full flex items-center justify-between px-4 py-3.5 rounded-xl text-sm font-bold uppercase tracking-wide text-gray-900 hover:bg-brand-50"
+                        className="w-full flex items-center justify-between px-4 py-3.5 rounded-xl text-sm font-bold uppercase tracking-wider text-stone-200 hover:bg-gold-500/10 hover:text-gold-300 transition-colors"
                         onClick={() => setCatOpen(!catOpen)}
                       >
                         {link.label}
@@ -536,12 +545,13 @@ export default function Header({ featuredProducts = [] }: { featuredProducts?: a
                         />
                       </button>
                       {catOpen && (
-                        <div className="mt-1 ml-4 space-y-1 border-l-2 border-brand-100 pl-3 py-2">
+                        <div className="mt-1 ml-4 space-y-1 border-l-2 border-gold-500/30 pl-3 py-2">
                           {categories.map((cat) => (
                             <Link
                               key={cat.slug}
                               href={`/categories/${cat.slug}`}
-                              className="block px-3 py-2.5 text-sm font-medium text-gray-600 hover:text-brand-700 rounded-lg hover:bg-brand-50"
+                              onClick={() => setMobileOpen(false)}
+                              className="block px-3 py-2.5 text-sm font-medium text-stone-400 hover:text-gold-300 rounded-lg hover:bg-gold-500/5 transition-colors"
                             >
                               {cat.name}
                             </Link>
@@ -553,11 +563,12 @@ export default function Header({ featuredProducts = [] }: { featuredProducts?: a
                     <Link
                       key={link.label}
                       href={link.href}
+                      onClick={() => setMobileOpen(false)}
                       className={cn(
-                        'block px-4 py-3.5 rounded-xl text-sm font-bold uppercase tracking-wide transition-colors',
+                        'block px-4 py-3.5 rounded-xl text-sm font-bold uppercase tracking-wider transition-colors',
                         isActive(link.href)
-                          ? 'bg-brand-50 text-brand-700'
-                          : 'text-gray-900 hover:bg-gray-50'
+                          ? 'bg-gold-500/15 text-gold-300 border border-gold-500/20'
+                          : 'text-stone-300 hover:bg-white/5 hover:text-white'
                       )}
                     >
                       {link.label}
@@ -567,37 +578,39 @@ export default function Header({ featuredProducts = [] }: { featuredProducts?: a
               </div>
             </nav>
 
-            <div className="p-6 bg-gray-50 border-t border-gray-100 space-y-4">
+            <div className="p-6 bg-black/50 border-t border-gold-500/20 space-y-4">
               {mounted && user ? (
                 <div className="flex flex-col gap-3">
                   <div className="flex items-center gap-3 px-4 py-2">
-                    <div className="w-10 h-10 rounded-full bg-brand-600 flex items-center justify-center text-white font-bold text-sm shrink-0">
+                    <div className="w-10 h-10 rounded-full bg-gold-500/20 border border-gold-500/40 flex items-center justify-center text-gold-300 font-bold text-sm shrink-0">
                       {user.name ? user.name.split(' ').map((n: string) => n[0]).join('').toUpperCase().substring(0, 2) : 'U'}
                     </div>
                     <div className="min-w-0">
-                      <p className="text-sm font-bold text-gray-900 truncate">{user.name}</p>
-                      <p className="text-xs text-gray-500 truncate">{user.email}</p>
+                      <p className="text-sm font-bold text-white truncate">{user.name}</p>
+                      <p className="text-xs text-stone-400 truncate">{user.email}</p>
                     </div>
                   </div>
                   <Link
                     href="/account"
-                    className="flex items-center justify-center gap-2 px-4 py-3.5 rounded-xl text-sm font-bold bg-white shadow-sm text-gray-900 hover:shadow-md transition-shadow border border-gray-100"
+                    onClick={() => setMobileOpen(false)}
+                    className="flex items-center justify-center gap-2 px-4 py-3.5 rounded-xl text-sm font-bold bg-gold-500 text-stone-950 hover:bg-gold-400 transition-colors shadow-lg"
                   >
-                    Go to Dashboard
+                    Go to Concierge
                   </Link>
                 </div>
               ) : (
                 <Link
                   href="/account"
-                  className="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-bold bg-white shadow-sm text-gray-900 hover:shadow-md transition-shadow"
+                  onClick={() => setMobileOpen(false)}
+                  className="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-bold bg-gold-500/10 border border-gold-500/30 text-gold-300 hover:bg-gold-500/20 transition-all"
                 >
-                  <User size={18} className="text-brand-600" />
+                  <User size={18} className="text-gold-400" />
                   Sign In / Register
                 </Link>
               )}
-              <div className="text-xs text-gray-500 font-medium pt-2">
-                <p className="flex items-center gap-2 mb-2"><Phone size={14} className="text-brand-500" /> +91 98765 43210</p>
-                <p className="flex items-center gap-2"><Mail size={14} className="text-brand-500" /> pltcreation.in@gmail.com</p>
+              <div className="text-xs text-stone-400 font-medium pt-2">
+                <p className="flex items-center gap-2 mb-2"><Phone size={14} className="text-gold-400" /> +91 98765 43210</p>
+                <p className="flex items-center gap-2"><Mail size={14} className="text-gold-400" /> concierge@amalperfume.com</p>
               </div>
             </div>
           </div>

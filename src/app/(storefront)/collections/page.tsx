@@ -5,8 +5,8 @@ import { prisma } from '@/lib/prisma';
 export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
-  title: 'Collections',
-  description: 'Explore PLT Creation\'s curated seasonal collections — Eid, Wedding Season, Monsoon and more.',
+  title: 'Private Collections — AMAL PERFUME',
+  description: 'Explore our curated fragrance series — Royal Oud, Private Reserve Elixirs, and Midnight Noir.',
 };
 
 export default async function CollectionsPage() {
@@ -30,14 +30,14 @@ export default async function CollectionsPage() {
     name: c.name,
     slug: c.slug,
     description: c.description || '',
-    bannerImage: c.bannerImage || 'https://picsum.photos/seed/collection/1200/800',
+    bannerImage: c.bannerImage || 'https://images.unsplash.com/photo-1594035910387-fea47794261f?w=1200&auto=format&fit=crop&q=80',
   }));
 
   return (
     <div className="bg-white min-h-screen">
-      <div className="py-14 text-center" style={{ background: 'linear-gradient(135deg, #6B2D4F 0%, #C4748A 100%)' }}>
-        <h1 className="font-display text-4xl font-bold text-white mb-2">Collections</h1>
-        <p className="text-white/70">Thoughtfully curated themes for every season and celebration</p>
+      <div className="py-14 text-center" style={{ background: 'linear-gradient(135deg, #2d000b 0%, #590016 100%)' }}>
+        <h1 className="font-display text-4xl font-bold text-white mb-2">Private Collections</h1>
+        <p className="text-white/70">Artisanal fragrance series distilled for every moment and mood</p>
       </div>
       <div className="py-12">
         <CollectionsBanner collections={collections} />
@@ -45,4 +45,3 @@ export default async function CollectionsPage() {
     </div>
   );
 }
-

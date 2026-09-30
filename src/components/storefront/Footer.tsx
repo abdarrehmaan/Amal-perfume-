@@ -8,21 +8,26 @@ export default function Footer() {
   return (
     <footer className="bg-[#0f1115] text-gray-400 font-sans mt-20">
       {/* Brand & Security Banner */}
-      <div className="border-b border-white/5 bg-black/20">
+      <div className="border-b border-gold-500/10 bg-black/40">
         <div className="container-plt py-6 flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="flex items-center gap-8">
-            <Link href="/" className="group">
-              <img src="/logo.png" alt="PLT Creation" className="h-16 w-auto object-contain drop-shadow-lg brightness-110" />
+          <div className="flex items-center gap-4">
+            <Link href="/" className="group flex items-center gap-3">
+              <img src="/amal-logo.jpg" alt="AMAL PERFUME" className="h-14 w-auto object-contain drop-shadow-xl rounded-lg border border-gold-500/30" />
+              <div className="flex flex-col">
+                <span className="font-display text-xl font-bold text-gradient-gold tracking-widest leading-none">AMAL</span>
+                <span className="text-[9px] tracking-[0.35em] uppercase text-gold-300 font-semibold mt-0.5">PERFUME</span>
+                <span className="text-[8px] tracking-[0.1em] text-stone-400 font-light mt-0.5">More Than A Fragrance — It's An Emotion</span>
+              </div>
             </Link>
           </div>
           <div className="flex items-center gap-6 md:gap-12 text-sm font-medium">
-            <div className="flex items-center gap-2">
-              <ShieldCheck size={20} className="text-emerald-500" />
-              <span>100% Secure Checkout</span>
+            <div className="flex items-center gap-2 text-stone-300">
+              <ShieldCheck size={20} className="text-gold-400" />
+              <span>100% Authentic Extrait Guarantee</span>
             </div>
-            <div className="flex items-center gap-2">
-              <CreditCard size={20} className="text-brand-500" />
-              <span>Global Payment Options</span>
+            <div className="flex items-center gap-2 text-stone-300">
+              <CreditCard size={20} className="text-gold-400" />
+              <span>Global Concierge & Insured Delivery</span>
             </div>
           </div>
         </div>
@@ -33,9 +38,12 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
           {/* Brand Story */}
           <div className="lg:col-span-2">
-            <h3 className="text-white font-semibold mb-6 text-sm uppercase tracking-[0.2em]">The Heritage</h3>
-            <p className="text-sm leading-relaxed mb-8 max-w-sm text-gray-400">
-              PLT Creation brings the royal heritage of Indian craftsmanship to the modern woman. Every piece in our collection is a testament to the meticulous art of Chikankari and traditional needlework, designed to make you feel extraordinary.
+            <h3 className="text-gold-300 font-semibold mb-6 text-sm uppercase tracking-[0.25em]">The Maison</h3>
+            <p className="text-sm leading-relaxed mb-4 max-w-sm text-stone-300">
+              <strong className="text-gold-200">AMAL PERFUME</strong> is an independent haute parfumerie maison dedicated to the art of rare extraits and oriental ouds.
+            </p>
+            <p className="text-xs italic text-gold-400/90 mb-8 tracking-wide font-serif">
+              "More Than A Fragrance — It's An Emotion"
             </p>
             <div className="flex gap-4">
               {[
@@ -48,7 +56,7 @@ export default function Footer() {
                   key={label}
                   href={href}
                   aria-label={label}
-                  className="w-10 h-10 flex items-center justify-center rounded-full bg-white/5 text-gray-400 hover:bg-brand-600 hover:text-white hover:scale-110 transition-all duration-300"
+                  className="w-10 h-10 flex items-center justify-center rounded-full bg-white/5 border border-gold-500/20 text-stone-400 hover:bg-gold-500 hover:text-stone-950 hover:scale-110 transition-all duration-300"
                 >
                   <Icon size={18} />
                 </a>
@@ -58,18 +66,18 @@ export default function Footer() {
 
           {/* Shop */}
           <div>
-            <h3 className="text-white font-semibold mb-6 text-sm uppercase tracking-[0.2em]">Collections</h3>
+            <h3 className="text-gold-300 font-semibold mb-6 text-sm uppercase tracking-[0.25em]">Fragrance Houses</h3>
             <ul className="space-y-4">
               {[
-                { label: 'Chikankari', href: '/categories/chikankari' },
-                { label: 'Co-ord Sets', href: '/categories/coord-sets' },
-                { label: 'Designer Suits', href: '/categories/stitched-suits' },
-                { label: 'Unstitched', href: '/categories/unstitched-suits' },
-                { label: 'New Arrivals', href: '/new-arrivals' },
-                { label: 'Limited Edition', href: '/collections/limited' },
+                { label: 'Extrait de Parfum', href: '/categories/extrait-de-parfum' },
+                { label: 'Eau de Parfum', href: '/categories/eau-de-parfum' },
+                { label: 'Royal Oud Series', href: '/collections/royal-oud-collection' },
+                { label: 'Private Reserve', href: '/collections/private-reserve' },
+                { label: 'Midnight Noir', href: '/collections/midnight-noir' },
+                { label: 'Discovery Sets', href: '/categories/discovery-coffrets' },
               ].map(({ label, href }) => (
                 <li key={label}>
-                  <Link href={href} className="text-sm hover:text-brand-400 transition-colors hover:translate-x-1 inline-block duration-300">
+                  <Link href={href} className="text-sm text-stone-400 hover:text-gold-300 transition-colors hover:translate-x-1 inline-block duration-300">
                     {label}
                   </Link>
                 </li>
@@ -79,17 +87,17 @@ export default function Footer() {
 
           {/* Help */}
           <div>
-            <h3 className="text-white font-semibold mb-6 text-sm uppercase tracking-[0.2em]">Client Care</h3>
+            <h3 className="text-gold-300 font-semibold mb-6 text-sm uppercase tracking-[0.25em]">Client Concierge</h3>
             <ul className="space-y-4">
               {[
-                { label: 'Contact Concierge', href: '/contact' },
+                { label: 'Scent Consultation', href: '/contact' },
                 { label: 'Shipping & Delivery', href: '/shipping-policy' },
-                { label: 'Return & Refund Policy', href: '/return-policy' },
-                { label: 'Size Guide', href: '/size-guide' },
-                { label: 'FAQ', href: '/faq' },
+                { label: 'Sealed Flacon Policy', href: '/return-policy' },
+                { label: 'Flacon & Sillage Guide', href: '/size-guide' },
+                { label: 'Fragrance FAQ', href: '/faq' },
               ].map(({ label, href }) => (
                 <li key={label}>
-                  <Link href={href} className="text-sm hover:text-brand-400 transition-colors hover:translate-x-1 inline-block duration-300">
+                  <Link href={href} className="text-sm text-stone-400 hover:text-gold-300 transition-colors hover:translate-x-1 inline-block duration-300">
                     {label}
                   </Link>
                 </li>
@@ -99,26 +107,26 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h3 className="text-white font-semibold mb-6 text-sm uppercase tracking-[0.2em]">Boutique</h3>
+            <h3 className="text-gold-300 font-semibold mb-6 text-sm uppercase tracking-[0.25em]">Boutique</h3>
             <div className="space-y-5">
               <div className="flex gap-4">
-                <Phone size={18} className="text-brand-500 mt-1 flex-shrink-0" />
+                <Phone size={18} className="text-gold-400 mt-1 flex-shrink-0" />
                 <div>
                   <p className="text-sm text-white font-medium mb-1">+91 63920 06081</p>
-                  <p className="text-xs text-gray-500 uppercase tracking-wider">Mon–Sat, 10am–7pm IST</p>
+                  <p className="text-xs text-stone-400 uppercase tracking-wider">Mon–Sat, 10am–7pm IST</p>
                 </div>
               </div>
               <div className="flex gap-4">
-                <Mail size={18} className="text-brand-500 mt-1 flex-shrink-0" />
+                <Mail size={18} className="text-gold-400 mt-1 flex-shrink-0" />
                 <div>
-                  <p className="text-sm text-white font-medium mb-1">pltcreation.in@gmail.com</p>
-                  <p className="text-xs text-gray-500 uppercase tracking-wider">24/7 Support</p>
+                  <p className="text-sm text-white font-medium mb-1">concierge@amalperfume.com</p>
+                  <p className="text-xs text-stone-400 uppercase tracking-wider">24/7 Fragrance Concierge</p>
                 </div>
               </div>
               <div className="flex gap-4">
-                <MapPin size={18} className="text-brand-500 mt-1 flex-shrink-0" />
-                <p className="text-sm leading-relaxed">
-                  PLT Creation Flagship Store,<br />
+                <MapPin size={18} className="text-gold-400 mt-1 flex-shrink-0" />
+                <p className="text-sm leading-relaxed text-stone-400">
+                  AMAL PERFUME Flagship Maison,<br />
                   Civil Lines, Prayagraj,<br />
                   Uttar Pradesh 211001, India
                 </p>
@@ -129,10 +137,10 @@ export default function Footer() {
       </div>
 
       {/* Bottom bar */}
-      <div className="border-t border-white/5 bg-black">
+      <div className="border-t border-gold-500/15 bg-black">
         <div className="container-plt py-6 flex flex-col md:flex-row items-center justify-between gap-4 text-xs">
-          <p className="text-gray-500 text-center md:text-left">
-            © {new Date().getFullYear()} PLT CREATION. ALL RIGHTS RESERVED.
+          <p className="text-stone-400 text-center md:text-left">
+            © {new Date().getFullYear()} AMAL PERFUME. ALL RIGHTS RESERVED.
           </p>
           <p className="text-gray-500 text-center">
             Built by{" "}

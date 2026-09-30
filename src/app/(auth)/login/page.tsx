@@ -57,13 +57,19 @@ export default function LoginPage() {
   return (
     <div className="min-h-screen flex">
       {/* Left: Form */}
-      <div className="flex-1 flex flex-col justify-center px-8 py-12 bg-white">
+      <div className="flex-1 flex flex-col justify-center px-8 py-12 bg-[#0d0d11] text-stone-200">
         <div className="max-w-md w-full mx-auto">
-          <Link href="/" className="font-display text-3xl font-bold text-gradient-brand block mb-2">PLT Creation</Link>
-          <p className="text-xs tracking-[0.3em] uppercase text-gray-400 mb-10">Ethnic Couture</p>
+          <Link href="/" className="flex items-center gap-3.5 mb-6 group">
+            <img src="/amal-logo.jpg" alt="AMAL PERFUME" className="h-14 w-auto object-contain rounded-xl border border-gold-500/40" />
+            <div className="flex flex-col">
+              <span className="font-display text-2xl font-bold text-gradient-gold tracking-widest leading-none">AMAL</span>
+              <span className="text-[9px] tracking-[0.4em] uppercase text-gold-300 font-bold mt-1">PERFUME</span>
+            </div>
+          </Link>
+          <p className="text-[10px] tracking-[0.25em] uppercase text-gold-400 font-medium mb-8">More Than A Fragrance — It's An Emotion</p>
 
-          <h1 className="font-display text-2xl font-bold text-gray-900 mb-1">Login to Continue</h1>
-          <p className="text-gray-500 text-sm mb-8">Use Your Registered Mobile Number or Email</p>
+          <h1 className="font-display text-2xl font-bold text-white mb-1">Maison Concierge Sign-In</h1>
+          <p className="text-stone-400 text-sm mb-8">Access your private reserve and orders</p>
 
           {unconfirmedEmail && (
             <div className="mb-6 p-4 bg-amber-50 border border-amber-200 rounded-2xl text-amber-800 text-xs leading-relaxed space-y-2">
@@ -122,19 +128,19 @@ export default function LoginPage() {
               id="login-submit"
               type="submit"
               disabled={isButtonDisabled}
-              className={`w-full py-3.5 flex items-center justify-center text-white font-bold rounded-full transition-all duration-200 focus:outline-none ${
+              className={`w-full py-3.5 flex items-center justify-center font-bold uppercase tracking-widest text-xs rounded-full transition-all duration-300 focus:outline-none ${
                 isButtonDisabled
-                  ? 'bg-[#8c9ab0] cursor-not-allowed'
-                  : 'bg-[#143596] hover:bg-[#0e2a7b] active:bg-[#0b205d] shadow-md cursor-pointer'
+                  ? 'bg-stone-800 text-stone-500 cursor-not-allowed border border-white/5'
+                  : 'bg-gradient-to-r from-gold-400 via-gold-300 to-gold-500 text-stone-950 hover:brightness-110 shadow-gold cursor-pointer'
               }`}
             >
-              {loading ? 'Logging in...' : 'Login'}
+              {loading ? 'Entering Maison...' : 'Sign In'}
             </button>
           </form>
 
-          <p className="text-sm text-center text-gray-500 mt-6">
-            New User?{' '}
-            <Link href="/register" className="text-brand-600 font-semibold hover:underline">Create Account</Link>
+          <p className="text-sm text-center text-stone-400 mt-6">
+            New to the Maison?{' '}
+            <Link href="/register" className="text-gold-400 font-semibold hover:underline">Create an Account</Link>
           </p>
         </div>
       </div>
@@ -142,22 +148,23 @@ export default function LoginPage() {
 
       {/* Right: Brand visual */}
       <div
-        className="hidden lg:flex flex-1 items-center justify-center p-12 relative"
-        style={{ background: 'linear-gradient(135deg, #6B2D4F 0%, #C4748A 60%, #c9a84c 100%)' }}
+        className="hidden lg:flex flex-1 items-center justify-center p-12 relative border-l border-gold-500/20"
+        style={{ background: 'radial-gradient(ellipse at center, #1b160c 0%, #0c0b08 60%, #050505 100%)' }}
       >
-        <div className="text-center text-white">
-          <div className="font-display text-5xl font-bold mb-4">PLT Creation</div>
-          <p className="text-xl font-light tracking-wide mb-8">Premium Ethnic Couture</p>
+        <div className="text-center text-white max-w-md">
+          <img src="/amal-logo.jpg" alt="AMAL PERFUME" className="h-28 w-auto mx-auto mb-6 rounded-2xl border border-gold-500/30 shadow-gold-lg" />
+          <div className="font-display text-4xl font-bold text-gradient-gold mb-2 tracking-widest">AMAL PERFUME</div>
+          <p className="text-sm font-serif italic text-gold-300/90 tracking-wider mb-8">"More Than A Fragrance — It's An Emotion"</p>
           <div className="grid grid-cols-2 gap-4 text-sm">
             {[
-              ['10,000+', 'Happy Customers'],
-              ['500+', 'Products'],
-              ['4.8★', 'Average Rating'],
-              ['100%', 'Authentic Quality'],
+              ['35% Extrait', 'Pure Oil Concentration'],
+              ['6 Months', 'Barrel-Aged Maceration'],
+              ['20+ Hours', 'Eternal Sillage'],
+              ['100% Rare', 'Artisanal Botanicals'],
             ].map(([v, l]) => (
-              <div key={l} className="bg-white/15 rounded-2xl p-4 backdrop-blur-sm">
-                <p className="font-bold text-2xl">{v}</p>
-                <p className="text-white/70 text-xs">{l}</p>
+              <div key={l} className="bg-white/[0.03] border border-gold-500/20 rounded-2xl p-4 backdrop-blur-sm">
+                <p className="font-bold text-lg text-gold-300">{v}</p>
+                <p className="text-stone-400 text-xs mt-1">{l}</p>
               </div>
             ))}
           </div>

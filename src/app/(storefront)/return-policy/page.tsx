@@ -2,20 +2,20 @@ import type { Metadata } from 'next';
 import { Ban, ShieldAlert, Phone, Video, CheckCircle2, MessageSquare } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Return, Refund & Exchange Policy — PLT Creation',
-  description: 'Official PLT Creation policy: No Returns, No Refunds, and No Exchanges on all orders.',
+  title: 'Sealed Flacon & Return Policy — AMAL PERFUME',
+  description: 'Official AMAL PERFUME policy: Sealed Flacon hygiene guarantee and complimentary 2ml test vial exchange policy.',
 };
 
 export default function ReturnPolicyPage() {
   return (
     <div className="bg-white min-h-screen">
       {/* Page Header */}
-      <div className="py-16 text-center" style={{ background: 'linear-gradient(135deg, #6B2D4F 0%, #C4748A 100%)' }}>
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md text-white text-xs font-semibold uppercase tracking-widest mb-4">
-          <ShieldAlert size={14} /> Official Store Policy
+      <div className="py-16 text-center" style={{ background: 'linear-gradient(135deg, #09090b 0%, #171510 50%, #282010 100%)' }}>
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md text-gold-300 border border-gold-500/30 text-xs font-semibold uppercase tracking-widest mb-4">
+          <ShieldAlert size={14} /> Official Maison Policy
         </div>
-        <h1 className="font-display text-3xl md:text-5xl font-bold text-white mb-3">Return, Refund & Exchange Policy</h1>
-        <p className="text-white/80">Please read our store policy before placing an order.</p>
+        <h1 className="font-display text-3xl md:text-5xl font-bold text-white mb-3">Sealed Flacon & Return Policy</h1>
+        <p className="text-stone-300">Hygiene, authenticity, and our Sample-First guarantee.</p>
       </div>
 
       <div className="container-plt py-12 max-w-4xl">
@@ -23,28 +23,28 @@ export default function ReturnPolicyPage() {
         <div className="bg-red-50/80 border-2 border-red-200 rounded-3xl p-8 mb-12 shadow-sm">
           <div className="flex items-center gap-3 text-red-700 font-bold text-xl mb-6">
             <Ban size={28} className="flex-shrink-0" />
-            <span>Strict Policy Notice</span>
+            <span>Sealed Flacon Hygiene & Purity Standards</span>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
             <div className="bg-white p-5 rounded-2xl border border-red-100 text-center shadow-xs">
-              <span className="block font-display font-extrabold text-2xl text-red-600 mb-1">NO RETURNS</span>
-              <p className="text-xs text-gray-500 font-medium">All sales are final upon delivery.</p>
+              <span className="block font-display font-extrabold text-2xl text-red-600 mb-1">SAMPLE FIRST</span>
+              <p className="text-xs text-gray-500 font-medium">Test the complimentary 2ml sample vial first.</p>
             </div>
 
             <div className="bg-white p-5 rounded-2xl border border-red-100 text-center shadow-xs">
-              <span className="block font-display font-extrabold text-2xl text-red-600 mb-1">NO REFUNDS</span>
-              <p className="text-xs text-gray-500 font-medium">Monetary refunds are not issued.</p>
+              <span className="block font-display font-extrabold text-2xl text-red-600 mb-1">INTACT SEAL</span>
+              <p className="text-xs text-gray-500 font-medium">Full flacon must remain unopened & sealed in cellophane.</p>
             </div>
 
             <div className="bg-white p-5 rounded-2xl border border-red-100 text-center shadow-xs">
-              <span className="block font-display font-extrabold text-2xl text-red-600 mb-1">NO EXCHANGES</span>
-              <p className="text-xs text-gray-500 font-medium">Size or color exchanges are not supported.</p>
+              <span className="block font-display font-extrabold text-2xl text-red-600 mb-1">NO OPENED RETURNS</span>
+              <p className="text-xs text-gray-500 font-medium">Cosmetic hygiene prohibits returning unsealed bottles.</p>
             </div>
           </div>
 
           <p className="text-sm text-red-950 font-medium leading-relaxed">
-            At PLT Creation, every single garment undergoes rigorous multi-step quality control checks prior to dispatch to ensure pristine condition, accurate sizing, and fine craftsmanship. Therefore, we maintain a strict **No Return, No Refund, and No Exchange** policy on all orders.
+            At AMAL PERFUME, each fragrance flacon is compounding in sterile cleanrooms and sealed with tamper-evident security wrapping. Due to cosmetic hygiene, formulation purity, and safety regulations, bottles whose cellophane seal has been broken or unsealed cannot be returned or refunded.
           </p>
         </div>
 

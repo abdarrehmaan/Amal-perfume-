@@ -87,12 +87,17 @@ export default function AdminSidebar({ mobileOpen, setMobileOpen }: AdminSidebar
         {/* Logo */}
         <div className={cn('flex items-center h-16 px-4 border-b border-white/10', collapsed ? 'md:justify-center' : 'justify-between')}>
           {!collapsed && (
-            <div>
-              <span className="font-display font-bold text-xl text-white">PLT Creation</span>
-              <span className="text-[10px] tracking-widest uppercase text-gray-400 block -mt-0.5">Admin</span>
+            <div className="flex items-center gap-2.5">
+              <img src="/amal-logo.jpg" alt="AMAL PERFUME" className="h-9 w-9 object-contain rounded-lg border border-gold-500/40 shadow-sm flex-shrink-0" />
+              <div>
+                <span className="font-display font-bold text-base text-gradient-gold tracking-wider block">AMAL PERFUME</span>
+                <span className="text-[9px] tracking-[0.25em] uppercase text-gold-400 block -mt-0.5">Admin Concierge</span>
+              </div>
             </div>
           )}
-          {collapsed && <Sparkles size={20} className="text-brand-400 hidden md:block" />}
+          {collapsed && (
+            <img src="/amal-logo.jpg" alt="AMAL PERFUME" className="h-8 w-8 object-contain rounded-lg border border-gold-500/40 hidden md:block" />
+          )}
           
           <div className="flex items-center gap-2">
             <button
