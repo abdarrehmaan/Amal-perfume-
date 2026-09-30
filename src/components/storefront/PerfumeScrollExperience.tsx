@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef, useState, useCallback } from 'react';
 import Link from 'next/link';
-import { ArrowRight, Sparkles, ChevronDown, Compass, ShieldCheck, Droplets } from 'lucide-react';
+import { ArrowRight, Sparkles, ChevronDown, ChevronUp, ChevronLeft, ChevronRight, Compass, ShieldCheck, Droplets } from 'lucide-react';
 import { SCROLL_FRAMES } from '@/lib/scroll-frames';
 
 const STORY_STAGES = [
@@ -308,6 +308,56 @@ export default function PerfumeScrollExperience() {
     touchStartXRef.current = null;
   };
 
+  // Scroll down one step smoothly through the 3D experience
+  const handleScrollDown = () => {
+    if (!containerRef.current) {
+      window.scrollBy({ top: window.innerHeight * 0.85, behavior: 'smooth' });
+      return;
+    }
+    const rect = containerRef.current.getBoundingClientRect();
+    const totalScrollable = rect.height - window.innerHeight;
+    const currentScroll = -rect.top;
+
+    if (currentScroll + window.innerHeight * 0.75 >= totalScrollable) {
+      const nextEl = document.getElementById('all-products');
+      if (nextEl) {
+        nextEl.scrollIntoView({ behavior: 'smooth' });
+      } else {
+        const targetY = window.scrollY + rect.bottom;
+        window.scrollTo({ top: targetY, behavior: 'smooth' });
+      }
+    } else {
+      window.scrollBy({ top: window.innerHeight * 0.85, behavior: 'smooth' });
+    }
+  };
+
+  // Scroll up one step smoothly
+  const handleScrollUp = () => {
+    window.scrollBy({ top: -window.innerHeight * 0.85, behavior: 'smooth' });
+  };
+
+  // Step rotate the bottle left or right and sync scroll position
+  const handleRotateStep = (direction: 'left' | 'right') => {
+    const step = Math.round(SCROLL_FRAMES.length / 8); // 45° step
+    let nextFrame = currentFrameRef.current + (direction === 'right' ? step : -step);
+    if (nextFrame < 0) nextFrame += SCROLL_FRAMES.length;
+    nextFrame = nextFrame % SCROLL_FRAMES.length;
+
+    targetFrameRef.current = nextFrame;
+    const newProgress = nextFrame / (SCROLL_FRAMES.length - 1);
+    setScrollProgress(newProgress);
+
+    // Sync window scroll with bottle rotation
+    if (containerRef.current) {
+      const rect = containerRef.current.getBoundingClientRect();
+      const totalScrollable = rect.height - window.innerHeight;
+      if (totalScrollable > 0) {
+        const targetScrollY = window.scrollY + rect.top + newProgress * totalScrollable;
+        window.scrollTo({ top: targetScrollY, behavior: 'smooth' });
+      }
+    }
+  };
+
   // Determine active storytelling stage
   const activeStage = STORY_STAGES.find(
     (s) => scrollProgress >= s.range[0] && scrollProgress <= s.range[1]
@@ -356,9 +406,26 @@ export default function PerfumeScrollExperience() {
             style={{ opacity: isInitialReady ? 1 : 0 }}
           />
 
-          {/* Direct Mobile Drag Gesture Cue */}
-          <div className="absolute inset-0 z-10 md:hidden flex items-center justify-between px-3 pointer-events-none opacity-40">
-            <span className="text-[10px] font-mono text-white/50 bg-black/40 px-2 py-1 rounded">‹ SWIPE ›</span>
+          {/* Direct Mobile 360 Spin Arrow Buttons */}
+          <div className="absolute inset-x-3 top-[36%] -translate-y-1/2 z-20 md:hidden flex items-center justify-between pointer-events-none">
+            <button
+              type="button"
+              onClick={() => handleRotateStep('left')}
+              aria-label="Rotate 3D bottle left"
+              className="pointer-events-auto flex items-center gap-1 bg-black/80 backdrop-blur-md border border-amber-400/40 text-amber-300 hover:text-amber-200 active:scale-90 transition-all px-2.5 py-1.5 rounded-full text-[10px] font-mono shadow-xl"
+            >
+              <ChevronLeft size={16} className="text-amber-400" />
+              <span className="tracking-wider">SPIN</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => handleRotateStep('right')}
+              aria-label="Rotate 3D bottle right"
+              className="pointer-events-auto flex items-center gap-1 bg-black/80 backdrop-blur-md border border-amber-400/40 text-amber-300 hover:text-amber-200 active:scale-90 transition-all px-2.5 py-1.5 rounded-full text-[10px] font-mono shadow-xl"
+            >
+              <span className="tracking-wider">SPIN</span>
+              <ChevronRight size={16} className="text-amber-400" />
+            </button>
           </div>
 
           {/* Initial Loading Screen */}
@@ -421,18 +488,45 @@ export default function PerfumeScrollExperience() {
           </div>
         </div>
 
+        {/* Floating Mobile Scroll Arrow Controls */}
+        <div className="absolute right-3 top-[54%] -translate-y-1/2 z-30 md:hidden flex flex-col items-center gap-2 pointer-events-auto">
+          {scrollProgress > 0.08 && (
+            <button
+              type="button"
+              onClick={handleScrollUp}
+              aria-label="Scroll 3D Bottle Up"
+              className="w-10 h-10 rounded-full bg-black/85 backdrop-blur-xl border border-white/20 text-amber-300 flex items-center justify-center shadow-2xl active:scale-90 transition-transform"
+            >
+              <ChevronUp size={20} className="text-amber-400" />
+            </button>
+          )}
+
+          <button
+            type="button"
+            onClick={handleScrollDown}
+            aria-label="Scroll 3D Bottle Down"
+            className="group flex flex-col items-center justify-center w-12 h-14 rounded-full bg-gradient-to-b from-amber-500/25 via-black/85 to-black/95 backdrop-blur-xl border border-amber-400/60 text-amber-300 shadow-[0_0_22px_rgba(245,158,11,0.35)] active:scale-90 transition-transform"
+          >
+            <span className="text-[8px] font-mono font-bold tracking-tight text-amber-200">
+              {scrollProgress >= 0.88 ? 'NEXT' : 'SCROLL'}
+            </span>
+            <ChevronDown size={18} className="animate-bounce text-amber-400 -mt-0.5" />
+          </button>
+        </div>
+
         {/* Bottom Interactive Progress & Guidance */}
         <div className="absolute bottom-3 md:bottom-6 left-4 right-4 md:left-12 md:right-12 z-20 flex flex-row items-center justify-between gap-3 pointer-events-none">
-          {/* Scroll Prompt / Mobile Swipe Indicator */}
-          <div
-            className={`flex items-center gap-1.5 text-[10px] md:text-[11px] font-medium tracking-[0.15em] uppercase text-white/50 transition-opacity duration-500 ${
-              scrollProgress < 0.12 ? 'opacity-100' : 'opacity-0'
-            }`}
+          {/* Scroll Prompt Button (Clickable on Mobile & Desktop) */}
+          <button
+            type="button"
+            onClick={handleScrollDown}
+            aria-label="Scroll 3D Experience"
+            className="pointer-events-auto flex items-center gap-1.5 text-[10px] md:text-[11px] font-medium tracking-[0.15em] uppercase text-amber-300/90 hover:text-amber-200 active:scale-95 transition-all bg-black/75 px-3 py-1.5 rounded-full border border-amber-400/40 backdrop-blur-md shadow-lg"
           >
             <ChevronDown size={14} className="animate-bounce text-amber-400 shrink-0" />
-            <span className="hidden sm:inline">Scroll or swipe to rotate</span>
-            <span className="sm:hidden">Scroll to spin</span>
-          </div>
+            <span className="hidden sm:inline">Scroll to explore</span>
+            <span className="sm:hidden">Scroll 3D</span>
+          </button>
 
           {/* Interactive Scrub Tracker Bar */}
           <div className="flex-1 sm:flex-initial sm:w-72 md:w-80 flex items-center gap-2.5 bg-black/70 backdrop-blur-md px-3.5 py-1.5 md:px-4 md:py-2 rounded-full border border-white/10 pointer-events-auto">
