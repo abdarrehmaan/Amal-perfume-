@@ -6,16 +6,29 @@ import Link from 'next/link';
 import { ChevronLeft, ChevronRight, ChevronDown, ArrowRight, Sparkles, Star } from 'lucide-react';
 import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from 'framer-motion';
 
-const slides = [
+interface Slide {
+  id: number;
+  image: string;
+  tag: string;
+  title: string;
+  subtitle: string;
+  cta: string;
+  ctaHref: string;
+  align: 'left' | 'right';
+  isGraphic?: boolean;
+}
+
+const slides: Slide[] = [
   {
     id: 1,
-    image: '/amal-banner.jpg',
+    image: '/amal-logo.jpg',
     tag: 'Haute Parfumerie Reserve',
     title: 'An Olfactory Emotion',
     subtitle: "More than a fragrance — it's an emotion. Hand-compounded with rare aged agarwoods and French floral extraits.",
     cta: 'Discover Fragrances',
     ctaHref: '/all-products',
     align: 'right',
+    isGraphic: true,
   },
   {
     id: 2,
@@ -113,7 +126,7 @@ export default function HeroBanner() {
               src={slide.image}
               alt={slide.title}
               fill
-              className={slide.isGraphic ? 'object-contain md:object-cover object-center' : 'object-cover object-center'}
+              className={slide.isGraphic ? 'object-contain object-center md:object-left p-4 md:p-10 md:pl-20' : 'object-cover object-center'}
               priority
               sizes="100vw"
               unoptimized={slide.image.startsWith('/')}
