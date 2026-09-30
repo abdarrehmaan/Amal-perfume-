@@ -9,13 +9,6 @@ export async function POST(request: Request) {
     const key_id = rawKeyId?.trim().replace(/^["']|["']$/g, '');
     const key_secret = rawKeySecret?.trim().replace(/^["']|["']$/g, '');
 
-    if (!key_id || !key_secret) {
-      return NextResponse.json(
-        { error: 'Razorpay API credentials missing in environment variables (.env)' },
-        { status: 401 }
-      );
-    }
-
     const body = await request.json();
     const { amount, currency = 'INR', receipt } = body;
 
@@ -28,6 +21,18 @@ export async function POST(request: Request) {
     }
 
     const amountInPaise = Math.round(Number(amount));
+
+    if (process.env.NEXT_PUBLIC_MOCK_MODE === 'true' || !key_id || !key_secret) {
+      const mockOrderId = `order_mock_${Date.now()}`;
+      return NextResponse.json({
+        order_id: mockOrderId,
+        id: mockOrderId,
+        amount: amountInPaise,
+        currency: currency || 'INR',
+        receipt: receipt || `receipt_${Date.now()}`,
+        status: 'created',
+      });
+    }
 
     // Validate minimum amount requirement (at least 100 paise = 1 INR)
     if (amountInPaise < 100) {

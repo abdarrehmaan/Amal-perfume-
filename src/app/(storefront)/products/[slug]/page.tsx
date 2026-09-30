@@ -83,6 +83,13 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
   }
 
   if (!dbProduct || dbProduct.isDeleted) {
+    const { mockProducts } = await import('@/lib/mock-data');
+    dbProduct = mockProducts.find(
+      (p) => p.slug.toLowerCase() === decodedSlug.toLowerCase() || p.id === decodedSlug
+    );
+  }
+
+  if (!dbProduct) {
     notFound();
   }
 

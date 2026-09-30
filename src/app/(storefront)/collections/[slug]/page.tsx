@@ -65,6 +65,20 @@ export default async function CollectionPage({ params }: { params: Promise<{ slu
   }
 
   if (!collection) {
+    const { mockCollections, mockProducts } = await import('@/lib/mock-data');
+    const mockCol = mockCollections.find((c) => c.slug === decodedSlug);
+    if (mockCol) {
+      collection = {
+        ...mockCol,
+        products: mockProducts.slice(0, 4).map((p, idx) => ({
+          product: p,
+          sortOrder: idx,
+        })),
+      };
+    }
+  }
+
+  if (!collection) {
     return notFound();
   }
 

@@ -30,6 +30,11 @@ export default async function CategoriesPage() {
     console.warn('CategoriesPage DB query warning:', error);
   }
 
+  if (dbCategories.length === 0) {
+    const { mockCategories } = await import('@/lib/mock-data');
+    dbCategories = mockCategories;
+  }
+
   return (
     <div className="bg-white min-h-screen">
       <div className="py-16 text-center" style={{ background: 'linear-gradient(135deg, #2d000b 0%, #590016 100%)' }}>

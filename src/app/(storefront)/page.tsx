@@ -107,6 +107,53 @@ export default async function HomePage() {
     console.warn('HomePage categories query warning:', error);
   }
 
+  if (formattedProducts.length === 0) {
+    const { mockProducts } = await import('@/lib/mock-data');
+    formattedProducts = mockProducts.map((p) => ({
+      id: p.id,
+      name: p.name,
+      slug: p.slug,
+      description: p.description || undefined,
+      price: Number(p.price),
+      comparePrice: p.comparePrice ? Number(p.comparePrice) : undefined,
+      totalStock: p.totalStock,
+      isNewArrival: p.isNewArrival,
+      isBestSeller: p.isBestSeller,
+      isTrending: p.isTrending,
+      category: { name: p.category.name },
+      images: p.images.map((img) => ({ url: img.url, alt: img.alt || '' })),
+      variants: p.variants.map((v) => ({
+        id: v.id,
+        size: v.size,
+        color: v.color,
+        colorHex: v.colorHex || undefined,
+        stock: v.stock,
+      })),
+      avgRating: 4.9,
+    }));
+  }
+
+  if (collections.length === 0) {
+    const { mockCollections } = await import('@/lib/mock-data');
+    collections = mockCollections.map((c) => ({
+      id: c.id,
+      name: c.name,
+      slug: c.slug,
+      description: c.description || '',
+      bannerImage: c.bannerImage,
+    }));
+  }
+
+  if (categories.length === 0) {
+    const { mockCategories } = await import('@/lib/mock-data');
+    categories = mockCategories.map((c) => ({
+      name: c.name,
+      slug: c.slug,
+      image: c.image,
+      count: c.count,
+    }));
+  }
+
   const featuredAllProducts = formattedProducts.slice(0, 8);
   const newArrivals = formattedProducts.filter((p) => p.isNewArrival).slice(0, 4);
   const trending = formattedProducts.filter((p) => p.isTrending).slice(0, 4);

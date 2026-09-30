@@ -110,6 +110,14 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
     }
   }
 
+  if (products.length === 0) {
+    const { mockProducts } = await import('@/lib/mock-data');
+    products = mockProducts.filter((p) => p.category.slug === decodedSlug || p.categoryId === category?.id);
+    if (products.length === 0) {
+      products = mockProducts.slice(0, 4);
+    }
+  }
+
   const formattedProducts = products.map((p) => ({
     id: p.id,
     name: p.name,

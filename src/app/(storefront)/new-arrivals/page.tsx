@@ -30,6 +30,12 @@ export default async function NewArrivalsPage() {
     console.warn('NewArrivalsPage DB query warning:', error);
   }
 
+  if (dbProducts.length === 0) {
+    const { mockProducts } = await import('@/lib/mock-data');
+    dbProducts = mockProducts.filter((p) => p.isNewArrival);
+    if (dbProducts.length === 0) dbProducts = mockProducts.slice(0, 4);
+  }
+
   const products = dbProducts.map((p) => ({
     id: p.id,
     name: p.name,

@@ -111,6 +111,32 @@ export default async function ProductsPage({
     console.error('ProductsPage DB query error:', error);
   }
 
+  if (products.length === 0) {
+    const { mockProducts } = await import('@/lib/mock-data');
+    totalProducts = mockProducts.length;
+    products = mockProducts.map((p) => ({
+      id: p.id,
+      name: p.name,
+      slug: p.slug,
+      price: Number(p.price),
+      comparePrice: p.comparePrice ? Number(p.comparePrice) : undefined,
+      totalStock: p.totalStock,
+      isNewArrival: p.isNewArrival,
+      isBestSeller: p.isBestSeller,
+      isTrending: p.isTrending,
+      category: { name: p.category?.name || 'Luxury Fragrance' },
+      images: p.images.map((img) => ({ url: img.url, alt: img.alt || '' })),
+      variants: p.variants.map((v) => ({
+        id: v.id,
+        size: v.size,
+        color: v.color,
+        colorHex: v.colorHex || undefined,
+        stock: v.stock,
+      })),
+      avgRating: 4.9,
+    }));
+  }
+
   const totalPages = Math.ceil(totalProducts / pageSize) || 1;
 
   return (

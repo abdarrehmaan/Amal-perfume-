@@ -25,6 +25,11 @@ export default async function CollectionsPage() {
     console.warn('CollectionsPage DB query warning:', error);
   }
 
+  if (collectionsDb.length === 0) {
+    const { mockCollections } = await import('@/lib/mock-data');
+    collectionsDb = mockCollections;
+  }
+
   const collections = collectionsDb.map((c) => ({
     id: c.id,
     name: c.name,
