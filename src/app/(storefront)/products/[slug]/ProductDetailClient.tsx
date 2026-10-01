@@ -38,7 +38,7 @@ interface Product {
   _count?: { reviews: number };
 }
 
-const DEFAULT_FALLBACK_IMAGE = '/banner-kurti.jpg';
+const DEFAULT_FALLBACK_IMAGE = '/products/default-product.jpg';
 
 export default function ProductDetailClient({
   product,
@@ -168,7 +168,7 @@ export default function ProductDetailClient({
         slug: product.slug,
         price: product.price,
         comparePrice: product.comparePrice,
-        image: images[0]?.url || product.images?.[0]?.url || `https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=600&auto=format&fit=crop&q=80`,
+        image: images[0]?.url || product.images?.[0]?.url || '/products/default-product.jpg',
       },
       selectedVariant ? {
         id: selectedVariant.id,

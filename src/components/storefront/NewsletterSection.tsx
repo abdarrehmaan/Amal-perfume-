@@ -22,7 +22,7 @@ export default function NewsletterSection() {
     <section className="relative py-24 overflow-hidden">
       {/* Background Image & Overlay */}
       <div 
-        className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1594223274512-ad4803739b7c?w=1600&q=85')] bg-cover bg-center bg-no-repeat bg-fixed -z-20"
+        className="absolute inset-0 bg-[url('/products/amal-collection.jpg')] bg-cover bg-center bg-no-repeat bg-fixed -z-20"
       />
       <div className="absolute inset-0 bg-gray-950/80 backdrop-blur-sm -z-10" />
 

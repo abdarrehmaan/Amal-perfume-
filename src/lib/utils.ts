@@ -68,10 +68,10 @@ export function calculateShipping(subtotal: number, freeThreshold = 1499, standa
 
 export function sanitizeImageUrl(url?: string | null): string {
   if (!url || typeof url !== 'string' || url.trim() === '') {
-    return '/banner-kurti.jpg';
+    return '/products/default-product.jpg';
   }
   if (url.includes('kffnpufldxxlrilyequy.supabase.co')) {
-    return '/banner-kurti.jpg';
+    return '/products/default-product.jpg';
   }
   if (url.includes(' ')) {
     return encodeURI(url);

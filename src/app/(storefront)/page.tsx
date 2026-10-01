@@ -70,7 +70,7 @@ export default async function HomePage() {
       name: c.name,
       slug: c.slug,
       description: c.description || '',
-      bannerImage: c.bannerImage || 'https://images.unsplash.com/photo-1594035910387-fea47794261f?w=1200&auto=format&fit=crop&q=80',
+      bannerImage: c.bannerImage || '/products/amal-collection.jpg',
     }));
   } catch (error) {
     console.warn('HomePage collections query warning:', error);
@@ -88,18 +88,18 @@ export default async function HomePage() {
     });
 
     const localCategoryImages: Record<string, string> = {
-      'extrait-de-parfum': 'https://images.unsplash.com/photo-1594035910387-fea47794261f?w=800&auto=format&fit=crop&q=80',
-      'eau-de-parfum': 'https://images.unsplash.com/photo-1547887537-6158d64c35b3?w=800&auto=format&fit=crop&q=80',
-      'oud-oriental': 'https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=800&auto=format&fit=crop&q=80',
-      'floral-gourmand': 'https://images.unsplash.com/photo-1588405748880-12d1d2a59f75?w=800&auto=format&fit=crop&q=80',
-      'fresh-citrus': 'https://images.unsplash.com/photo-1523293182086-7651a899d37f?w=800&auto=format&fit=crop&q=80',
-      'discovery-coffrets': 'https://images.unsplash.com/photo-1615634260167-c8cdede054de?w=800&auto=format&fit=crop&q=80',
+      'extrait-de-parfum': '/products/saddle-leather.jpg',
+      'eau-de-parfum': '/products/enigma.jpg',
+      'oud-oriental': '/products/saddle-leather.jpg',
+      'floral-gourmand': '/products/enigma.jpg',
+      'fresh-citrus': '/products/enigma.jpg',
+      'discovery-coffrets': '/products/amal-collection.jpg',
     };
 
     categories = categoriesDb.map((c) => ({
       name: c.name,
       slug: c.slug,
-      image: c.image || localCategoryImages[c.slug] || 'https://images.unsplash.com/photo-1594035910387-fea47794261f?w=800&auto=format&fit=crop&q=80',
+      image: c.image || localCategoryImages[c.slug] || '/products/saddle-leather.jpg',
       count: `${c._count.products} Fragrances`,
     }));
   } catch (error) {

@@ -134,7 +134,7 @@ export default async function OrderDetailsPage({ params }: { params: Promise<{ i
                   <div className="relative w-16 h-16 rounded-xl border border-gray-200 overflow-hidden bg-gray-100 flex-shrink-0 shadow-xs">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
-                      src={item.image || '/banner-kurti.jpg'}
+                      src={item.image || '/products/default-product.jpg'}
                       alt={item.name}
                       className="w-full h-full object-cover"
                     />

@@ -109,8 +109,8 @@ export default async function CollectionPage({ params }: { params: Promise<{ slu
       };
     });
 
-  const bannerImage = collection.bannerImage || 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=1600&q=80';
-  const description = collection.description || 'Premium collection of women ethnic wear.';
+  const bannerImage = collection.bannerImage || '/products/amal-collection.jpg';
+  const description = collection.description || 'Artisanal collection of luxury fragrances.';
 
   return (
     <div className="bg-white min-h-screen">

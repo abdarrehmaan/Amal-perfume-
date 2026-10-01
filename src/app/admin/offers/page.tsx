@@ -125,7 +125,7 @@ function AdminOffersContent() {
       } else {
         payload.title = formData.title;
         payload.description = formData.description;
-        payload.imageUrl = formData.imageUrl || `https://images.unsplash.com/photo-1596783074918-c84cb06531ca?w=1200&auto=format&fit=crop&q=80`;
+        payload.imageUrl = formData.imageUrl || '/products/amal-collection.jpg';
         payload.linkUrl = formData.linkUrl;
         payload.type = formData.offerType;
       }
@@ -431,7 +431,7 @@ function AdminOffersContent() {
                       value={formData.imageUrl}
                       onChange={handleInputChange}
                       className="input-base"
-                      placeholder="https://images.unsplash.com/..."
+                      placeholder="/products/saddle-leather.jpg"
                     />
                   </div>
                 </>

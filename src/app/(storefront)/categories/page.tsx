@@ -9,12 +9,12 @@ export const metadata: Metadata = {
 };
 
 const defaultImages: Record<string, string> = {
-  'extrait-de-parfum': 'https://images.unsplash.com/photo-1594035910387-fea47794261f?w=800&auto=format&fit=crop&q=80',
-  'eau-de-parfum': 'https://images.unsplash.com/photo-1547887537-6158d64c35b3?w=800&auto=format&fit=crop&q=80',
-  'oud-oriental': 'https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=800&auto=format&fit=crop&q=80',
-  'floral-gourmand': 'https://images.unsplash.com/photo-1588405748880-12d1d2a59f75?w=800&auto=format&fit=crop&q=80',
-  'fresh-citrus': 'https://images.unsplash.com/photo-1523293182086-7651a899d37f?w=800&auto=format&fit=crop&q=80',
-  'discovery-coffrets': 'https://images.unsplash.com/photo-1615634260167-c8cdede054de?w=800&auto=format&fit=crop&q=80',
+  'extrait-de-parfum': '/products/saddle-leather.jpg',
+  'eau-de-parfum': '/products/enigma.jpg',
+  'oud-oriental': '/products/saddle-leather.jpg',
+  'floral-gourmand': '/products/enigma.jpg',
+  'fresh-citrus': '/products/enigma.jpg',
+  'discovery-coffrets': '/products/amal-collection.jpg',
 };
 
 export const dynamic = 'force-dynamic';
@@ -56,7 +56,7 @@ export default async function CategoriesPage() {
               className="group relative aspect-[3/4] rounded-2xl overflow-hidden block shadow-md hover:shadow-2xl transition-all duration-500"
             >
               <img
-                src={cat.image || defaultImages[cat.slug] || 'https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&q=80&w=800'}
+                src={cat.image || defaultImages[cat.slug] || '/products/saddle-leather.jpg'}
                 alt={cat.name}
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
               />

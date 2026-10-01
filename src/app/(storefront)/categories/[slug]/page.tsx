@@ -7,32 +7,32 @@ const defaultMeta: Record<string, { name: string; description: string; image: st
   'extrait-de-parfum': {
     name: 'Extrait de Parfum',
     description: 'Ultra-concentrated pure parfums (30%+ oil) for exceptional 24-hour intimacy and sillage.',
-    image: 'https://images.unsplash.com/photo-1594035910387-fea47794261f?w=1600&auto=format&fit=crop&q=80',
+    image: '/products/saddle-leather.jpg',
   },
   'eau-de-parfum': {
     name: 'Eau de Parfum',
     description: 'Signature artisanal scents crafted for daily luxury and prestigious evening allure.',
-    image: 'https://images.unsplash.com/photo-1547887537-6158d64c35b3?w=1600&auto=format&fit=crop&q=80',
+    image: '/products/enigma.jpg',
   },
   'oud-oriental': {
     name: 'Oud & Oriental',
     description: 'Smoked Cambodian agarwood, royal ambergris, Taif rose, and precious saffron.',
-    image: 'https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=1600&auto=format&fit=crop&q=80',
+    image: '/products/saddle-leather.jpg',
   },
   'floral-gourmand': {
     name: 'Floral & Gourmand',
     description: 'Velvet Damask roses, Madagascan bourbon vanilla, praline, and night-blooming jasmine.',
-    image: 'https://images.unsplash.com/photo-1588405748880-12d1d2a59f75?w=1600&auto=format&fit=crop&q=80',
+    image: '/products/enigma.jpg',
   },
   'fresh-citrus': {
     name: 'Fresh & Citrus',
     description: 'Calabrian bergamot, Mediterranean sea salt, sparkling neroli, and coastal driftwoods.',
-    image: 'https://images.unsplash.com/photo-1523293182086-7651a899d37f?w=1600&auto=format&fit=crop&q=80',
+    image: '/products/enigma.jpg',
   },
   'discovery-coffrets': {
     name: 'Discovery Sets & Coffrets',
     description: 'Curated miniature discovery sets and collector coffrets in bespoke presentation cases.',
-    image: 'https://images.unsplash.com/photo-1615634260167-c8cdede054de?w=1600&auto=format&fit=crop&q=80',
+    image: '/products/amal-collection.jpg',
   },
 };
 
@@ -139,8 +139,8 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
     })),
   }));
 
-  const bannerImage = category.image || defaultMeta[slug]?.image || 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=1600&q=80';
-  const description = category.description || defaultMeta[slug]?.description || 'Premium collection of women ethnic wear.';
+  const bannerImage = category.image || defaultMeta[slug]?.image || '/products/saddle-leather.jpg';
+  const description = category.description || defaultMeta[slug]?.description || 'Artisanal collection of luxury pure extraits.';
 
   return (
     <div className="bg-white min-h-screen">

@@ -42,7 +42,7 @@ export default function ProductCard({ product, priority = false }: ProductCardPr
   const { toggleItem, isInWishlist } = useWishlistStore();
   const wishlisted = isInWishlist(product.id);
 
-  const defaultFallback = '/banner-kurti.jpg';
+  const defaultFallback = '/products/default-product.jpg';
   const images = product.images || [];
   const rawImage = imageError || (!images[imageIdx]?.url) ? defaultFallback : images[imageIdx].url;
   const mainImage = sanitizeImageUrl(rawImage);

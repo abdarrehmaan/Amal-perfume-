@@ -13,8 +13,8 @@ export default function BrandStory() {
             {/* Main Image */}
             <div className="relative aspect-[4/5] w-[80%] rounded-[2rem] overflow-hidden shadow-2xl border border-gold-500/20">
               <Image 
-                src="https://images.unsplash.com/photo-1594035910387-fea47794261f?w=800&auto=format&fit=crop&q=80" 
-                alt="Artisan Perfume Formulation"
+                src="/products/saddle-leather.jpg" 
+                alt="AMAL Saddle Leather Extrait Flacon"
                 fill
                 className="object-cover object-center"
                 sizes="(max-width: 1024px) 80vw, 40vw"
@@ -24,8 +24,8 @@ export default function BrandStory() {
             {/* Overlapping Secondary Image */}
             <div className="absolute bottom-0 right-0 w-[52%] aspect-[4/5] rounded-[2rem] overflow-hidden shadow-2xl border-4 md:border-8 border-[#08080a] z-10">
               <Image 
-                src="https://images.unsplash.com/photo-1588405748880-12d1d2a59f75?w=800&auto=format&fit=crop&q=80" 
-                alt="Hand-poured floral essences"
+                src="/products/enigma.jpg" 
+                alt="AMAL Enigma Extrait Flacon"
                 fill
                 className="object-cover object-center"
                 sizes="(max-width: 1024px) 50vw, 25vw"

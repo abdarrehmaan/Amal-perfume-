@@ -35,7 +35,7 @@ export default async function CollectionsPage() {
     name: c.name,
     slug: c.slug,
     description: c.description || '',
-    bannerImage: c.bannerImage || 'https://images.unsplash.com/photo-1594035910387-fea47794261f?w=1200&auto=format&fit=crop&q=80',
+    bannerImage: c.bannerImage || '/products/amal-collection.jpg',
   }));
 
   return (
