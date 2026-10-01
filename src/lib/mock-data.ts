@@ -168,7 +168,7 @@ export const mockProducts: MockProduct[] = [
     images: [
       { id: 'img-sdl-1', url: '/products/saddle-leather.jpg', alt: 'AMAL Saddle Leather Extrait de Parfum Flacon', sortOrder: 1 },
       { id: 'img-sdl-2', url: '/products/amal-collection.jpg', alt: 'AMAL Flacon Collection', sortOrder: 2 },
-      { id: 'img-sdl-3', url: '/amal-logo.jpg', alt: 'Amal Perfume Crest', sortOrder: 3 },
+      { id: 'img-sdl-3', url: '/products/enigma.jpg', alt: 'AMAL Enigma Extrait Perspective', sortOrder: 3 },
     ],
     variants: [
       { id: 'var-sdl-50', size: '50ml', color: 'Architectural Flacon', colorHex: '#D4AF37', stock: 25, price: 3499 },
@@ -197,7 +197,7 @@ export const mockProducts: MockProduct[] = [
     images: [
       { id: 'img-enm-1', url: '/products/enigma.jpg', alt: 'AMAL Enigma Extrait Flacon', sortOrder: 1 },
       { id: 'img-enm-2', url: '/products/amal-collection.jpg', alt: 'AMAL Flacon Collection', sortOrder: 2 },
-      { id: 'img-enm-3', url: '/amal-logo.jpg', alt: 'Amal Perfume Crest', sortOrder: 3 },
+      { id: 'img-enm-3', url: '/products/saddle-leather.jpg', alt: 'AMAL Saddle Leather Perspective', sortOrder: 3 },
     ],
     variants: [
       { id: 'var-enm-50', size: '50ml', color: 'Noir Crystal Flacon', colorHex: '#257774', stock: 30, price: 3299 },
