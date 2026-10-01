@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import {
   ShoppingBag, Heart, Search, Menu, X, User, ChevronDown,
-  Phone, Mail, Package, Sparkles, TrendingUp
+  Phone, Mail, Sparkles, TrendingUp
 } from 'lucide-react';
 import { useCartStore } from '@/features/cart/store';
 import { useWishlistStore } from '@/features/wishlist/store';
@@ -130,21 +130,6 @@ export default function Header({ featuredProducts = [] }: { featuredProducts?: a
 
   return (
     <>
-      <div className="bg-[#F6F3EC] text-[#2C2416] py-2.5 px-4 border-b border-[#E7E0D2] text-center text-[10px] md:text-xs font-semibold tracking-widest uppercase shadow-xs">
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-6">
-          <span className="flex items-center gap-2">
-            <Sparkles className="w-3.5 h-3.5 text-amber-600 animate-pulse-slow" />
-            <span className="text-amber-800 font-bold tracking-wider">AMAL PERFUME</span>
-            <span className="hidden md:inline text-stone-600">— MORE THAN A FRAGRANCE, IT'S AN EMOTION</span>
-          </span>
-          <span className="hidden sm:inline text-amber-700/30">|</span>
-          <span className="flex items-center gap-2">
-            <Package className="w-3.5 h-3.5 text-amber-600" />
-            <span>Complimentary Delivery On Orders Above <span className="text-amber-800 font-bold">₹1,499</span></span>
-          </span>
-        </div>
-      </div>
-
       {/* Main header */}
       <header
         className={cn(
