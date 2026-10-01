@@ -81,21 +81,21 @@ export default function ReturnPolicyPage() {
 
         {/* Detailed Guidelines */}
         <div className="space-y-6">
-          <div className="border border-gray-100 rounded-2xl p-6 bg-white">
-            <h2 className="font-bold text-gray-900 text-lg mb-2 flex items-center gap-2">
-              <CheckCircle2 size={18} className="text-brand-600" /> Quality Assurance Guarantee
+          <div className="border border-stone-200/80 rounded-xl p-6 bg-white">
+            <h2 className="font-bold text-stone-900 text-lg mb-2 flex items-center gap-2">
+              <CheckCircle2 size={18} className="text-amber-700" /> Flacon Quality Assurance Guarantee
             </h2>
-            <p className="text-gray-600 text-sm leading-relaxed">
-              Prior to packing, our expert team inspects stitching, threadwork, fabric integrity, and measurements to verify compliance with designer standards.
+            <p className="text-stone-600 text-sm leading-relaxed">
+              Prior to packing, our laboratory team verifies atomizer crimp hermetic sealing, flacon glass clarity, serial batch numbers, and tamper-evident security wrapping to guarantee pristine chemical purity.
             </p>
           </div>
 
-          <div className="border border-gray-100 rounded-2xl p-6 bg-white">
-            <h2 className="font-bold text-gray-900 text-lg mb-2 flex items-center gap-2">
-              <CheckCircle2 size={18} className="text-brand-600" /> Color & Stitching Disclaimers
+          <div className="border border-stone-200/80 rounded-xl p-6 bg-white">
+            <h2 className="font-bold text-stone-900 text-lg mb-2 flex items-center gap-2">
+              <CheckCircle2 size={18} className="text-amber-700" /> Natural Botanical Distillation Nuances
             </h2>
-            <p className="text-gray-600 text-sm leading-relaxed">
-              Slight color variations may occur due to studio lighting or monitor settings. As Chikankari and handcrafted embroidery are authentic artisan crafts, slight irregularities in thread patterns are natural indicators of genuine handcrafting.
+            <p className="text-stone-600 text-sm leading-relaxed">
+              Due to natural aging and pure botanical extractions (such as aged agarwood, raw resins, and hand-harvested floral absolutes), subtle color shades and top-note nuances between harvest distillations are natural indicators of authentic haute parfumerie.
             </p>
           </div>
         </div>
