@@ -142,17 +142,6 @@ export default function Footer() {
           <p className="text-stone-600 text-center md:text-left">
             © {new Date().getFullYear()} AMAL PERFUME. ALL RIGHTS RESERVED.
           </p>
-          <p className="text-stone-500 text-center">
-            Built by{" "}
-            <a
-              href="https://abdurrahmanmaqsood.in"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-stone-900 underline transition-colors"
-            >
-              abdarrehmaan
-            </a>
-          </p>
           <div className="flex gap-6 font-medium uppercase tracking-widest text-stone-600">
             <Link href="/privacy-policy" className="hover:text-stone-900 transition-colors">Privacy Policy</Link>
             <Link href="/terms" className="hover:text-stone-900 transition-colors">Terms of Service</Link>
