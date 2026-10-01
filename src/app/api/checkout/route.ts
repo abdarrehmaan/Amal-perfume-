@@ -28,11 +28,33 @@ export async function POST(request: Request) {
       codAdvanceAmount,
     } = await request.json();
 
-    if (!userId || !items || items.length === 0) {
+    if (!items || items.length === 0) {
       return NextResponse.json(
-        { error: 'User ID and items are required' },
+        { error: 'Cart items are required' },
         { status: 400 }
       );
+    }
+
+    let actualUserId = userId;
+    if (!actualUserId || actualUserId === 'guest') {
+      try {
+        const existing = await prisma.user.findFirst({ where: { email } });
+        if (existing) {
+          actualUserId = existing.id;
+        } else {
+          const guest = await prisma.user.create({
+            data: {
+              name: fullName || 'Guest Customer',
+              email: email || `guest-${Date.now()}@amalperfume.com`,
+              phone: phone || '',
+              role: 'CUSTOMER',
+            },
+          });
+          actualUserId = guest.id;
+        }
+      } catch {
+        actualUserId = `guest-${Date.now()}`;
+      }
     }
 
     // Map frontend payment method string to Prisma enum PaymentMethod
@@ -54,7 +76,7 @@ export async function POST(request: Request) {
       const newOrder = await tx.order.create({
         data: {
           orderNumber,
-          userId,
+          userId: actualUserId,
           paymentMethod: mappedPaymentMethod,
           paymentStatus: razorpayPaymentId ? 'PAID' : 'PENDING',
           razorpayOrderId: razorpayOrderId || null,

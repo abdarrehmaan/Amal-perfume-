@@ -52,8 +52,8 @@ export default function AccountPage() {
 
   return (
     <div className="bg-ivory-100 min-h-screen">
-      <div className="py-12 text-center relative" style={{ background: 'linear-gradient(135deg, #6B2D4F 0%, #C4748A 100%)' }}>
-        <Link href="/" className="absolute top-4 left-6 text-white/80 hover:text-white text-xs font-semibold uppercase tracking-wider transition-colors">
+      <div className="py-12 text-center relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #12100E 0%, #1A1713 50%, #2A241C 100%)' }}>
+        <Link href="/" className="absolute top-4 left-6 text-stone-300 hover:text-white text-xs font-semibold uppercase tracking-wider transition-colors">
           ← Back to Store
         </Link>
         <div className="w-20 h-20 rounded-full bg-white/20 flex items-center justify-center mx-auto mb-3 border border-white/10 font-bold text-2xl text-white">

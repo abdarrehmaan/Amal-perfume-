@@ -37,7 +37,7 @@ export default async function CategoriesPage() {
 
   return (
     <div className="bg-white min-h-screen">
-      <div className="py-16 text-center" style={{ background: 'linear-gradient(135deg, #2d000b 0%, #590016 100%)' }}>
+      <div className="py-16 text-center relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #12100E 0%, #1A1713 50%, #2A241C 100%)' }}>
         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md text-white text-xs font-semibold uppercase tracking-widest mb-4">
           <Sparkles size={14} /> Haute Parfumerie
         </div>

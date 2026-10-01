@@ -15,9 +15,10 @@ export default function ShippingPolicyPage() {
 
   return (
     <div className="bg-white min-h-screen">
-      <div className="py-16 text-center" style={{ background: 'linear-gradient(135deg, #6B2D4F 0%, #C4748A 100%)' }}>
-        <h1 className="font-display text-4xl font-bold text-white mb-2">Shipping Policy</h1>
-        <p className="text-white/70 font-medium">Nationwide Express Delivery</p>
+      <div className="py-16 text-center relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #12100E 0%, #1A1713 50%, #2A241C 100%)' }}>
+        <span className="text-[10px] uppercase font-bold tracking-[0.3em] text-amber-400 block mb-1">AMAL PERFUME Logistics</span>
+        <h1 className="font-display text-4xl font-bold text-white mb-2">Shipping & Delivery Policy</h1>
+        <p className="text-stone-300 font-medium text-sm">Insured Nationwide Flacon Delivery</p>
       </div>
 
       <div className="container-plt py-12 max-w-3xl">

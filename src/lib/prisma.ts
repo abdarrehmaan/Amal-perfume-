@@ -10,22 +10,65 @@ import {
 // Helper to clone objects
 const clone = <T>(item: T): T => JSON.parse(JSON.stringify(item));
 
+function filterMockProducts(where?: any): any[] {
+  let list = clone(mockProducts);
+  if (!where) return list;
+
+  if (where.isActive !== undefined) list = list.filter((p) => p.isActive === where.isActive);
+  if (where.isDeleted !== undefined) list = list.filter((p) => p.isDeleted === where.isDeleted);
+  if (where.isNewArrival) list = list.filter((p) => p.isNewArrival);
+  if (where.isBestSeller) list = list.filter((p) => p.isBestSeller);
+  if (where.isTrending) list = list.filter((p) => p.isTrending);
+  if (where.isFeatured) list = list.filter((p) => p.isFeatured);
+  if (where.categoryId) list = list.filter((p) => p.categoryId === where.categoryId);
+  if (where.category?.slug) list = list.filter((p) => p.category?.slug === where.category.slug);
+  if (where.id?.not) list = list.filter((p) => p.id !== where.id.not);
+  if (where.id && typeof where.id === 'string') list = list.filter((p) => p.id === where.id);
+  if (where.slug && typeof where.slug === 'string') list = list.filter((p) => p.slug === where.slug);
+
+  if (where.OR && Array.isArray(where.OR)) {
+    list = list.filter((p) => {
+      return where.OR.some((condition: any) => {
+        if (condition.name?.contains) {
+          const needle = String(condition.name.contains).toLowerCase();
+          if (p.name.toLowerCase().includes(needle)) return true;
+        }
+        if (condition.description?.contains) {
+          const needle = String(condition.description.contains).toLowerCase();
+          if (p.description.toLowerCase().includes(needle)) return true;
+        }
+        if (condition.category?.name?.contains) {
+          const needle = String(condition.category.name.contains).toLowerCase();
+          if (p.category?.name?.toLowerCase().includes(needle)) return true;
+        }
+        if (condition.slug) {
+          const val = typeof condition.slug === 'object' && condition.slug.equals ? condition.slug.equals : condition.slug;
+          if (p.slug.toLowerCase() === String(val).toLowerCase()) return true;
+        }
+        if (condition.id) {
+          if (p.id === condition.id) return true;
+        }
+        return false;
+      });
+    });
+  }
+
+  return list;
+}
+
 function createMockPrismaClient(): any {
   const mockDb = {
     product: {
       findMany: async (args?: any) => {
-        let list = clone(mockProducts);
-        const where = args?.where;
-        if (where) {
-          if (where.isNewArrival) list = list.filter((p) => p.isNewArrival);
-          if (where.isBestSeller) list = list.filter((p) => p.isBestSeller);
-          if (where.isTrending) list = list.filter((p) => p.isTrending);
-          if (where.isFeatured) list = list.filter((p) => p.isFeatured);
-          if (where.categoryId) list = list.filter((p) => p.categoryId === where.categoryId);
-          if (where.category?.slug) list = list.filter((p) => p.category?.slug === where.category.slug);
-          if (where.id?.not) list = list.filter((p) => p.id !== where.id.not);
-          if (where.slug) list = list.filter((p) => p.slug === where.slug);
+        let list = filterMockProducts(args?.where);
+
+        if (args?.orderBy) {
+          if (args.orderBy.price === 'asc') list.sort((a, b) => a.price - b.price);
+          else if (args.orderBy.price === 'desc') list.sort((a, b) => b.price - a.price);
+          else if (args.orderBy.isBestSeller === 'desc') list.sort((a, b) => (b.isBestSeller ? 1 : 0) - (a.isBestSeller ? 1 : 0));
+          else if (args.orderBy.isFeatured === 'desc') list.sort((a, b) => (b.isFeatured ? 1 : 0) - (a.isFeatured ? 1 : 0));
         }
+
         if (args?.skip) list = list.slice(args.skip);
         if (args?.take) list = list.slice(0, args.take);
         return list;
@@ -68,20 +111,27 @@ function createMockPrismaClient(): any {
         return null;
       },
       count: async (args?: any) => {
-        return mockProducts.length;
+        return filterMockProducts(args?.where).length;
       },
     },
 
     category: {
       findMany: async (args?: any) => {
-        return clone(
-          mockCategories.map((c) => ({
-            ...c,
-            _count: {
-              products: mockProducts.filter((p) => p.categoryId === c.id).length || 2,
-            },
-          }))
-        );
+        let list = clone(mockCategories);
+        const where = args?.where;
+        if (where) {
+          if (where.isActive !== undefined) list = list.filter((c) => c.isActive === where.isActive);
+          if (where.name?.contains) {
+            const needle = String(where.name.contains).toLowerCase();
+            list = list.filter((c) => c.name.toLowerCase().includes(needle));
+          }
+        }
+        return list.map((c) => ({
+          ...c,
+          _count: {
+            products: mockProducts.filter((p) => p.categoryId === c.id).length || 2,
+          },
+        }));
       },
       findFirst: async (args?: any) => {
         const where = args?.where;

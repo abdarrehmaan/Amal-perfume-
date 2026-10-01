@@ -98,7 +98,7 @@ export default function CartDrawer() {
                     className="h-full rounded-full transition-all duration-500"
                     style={{
                       width: `${Math.min((subtotal / freeShippingThreshold) * 100, 100)}%`,
-                      background: 'linear-gradient(90deg, #C4748A, #6B2D4F)',
+                      background: 'linear-gradient(90deg, #D4AF37, #92400E)',
                     }}
                   />
                 </div>
@@ -118,7 +118,7 @@ export default function CartDrawer() {
               </div>
               <div>
                 <p className="font-semibold text-gray-900 mb-1">Your cart is empty</p>
-                <p className="text-sm text-gray-500">Discover our beautiful ethnic collection</p>
+                <p className="text-sm text-gray-500">Discover our artisanal extrait collection</p>
               </div>
               <button
                 onClick={closeCart}

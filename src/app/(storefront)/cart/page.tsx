@@ -66,10 +66,11 @@ export default function CartPage() {
   return (
     <div className="bg-ivory-100 min-h-screen">
       <div
-        className="py-10 text-center"
-        style={{ background: 'linear-gradient(135deg, #6B2D4F 0%, #C4748A 100%)' }}
+        className="py-12 text-center text-white relative overflow-hidden"
+        style={{ background: 'linear-gradient(135deg, #12100E 0%, #1A1713 50%, #2A241C 100%)' }}
       >
-        <h1 className="font-display text-3xl font-bold text-white">Shopping Cart</h1>
+        <span className="text-[10px] uppercase font-bold tracking-[0.3em] text-amber-400 block mb-1">AMAL PERFUME Concierge</span>
+        <h1 className="font-display text-3xl md:text-4xl font-bold text-white tracking-wide">Your Fragrance Flacon Cart</h1>
       </div>
 
       <div className="container-plt py-10">

@@ -47,14 +47,16 @@ export default function Footer() {
             </p>
             <div className="flex gap-3">
               {[
-                { Icon: Link2, href: '#', label: 'Instagram' },
-                { Icon: AtSign, href: '#', label: 'Facebook' },
-                { Icon: Play, href: '#', label: 'YouTube' },
-                { Icon: Rss, href: '#', label: 'Twitter' },
+                { Icon: Link2, href: 'https://instagram.com/amalperfume', label: 'Instagram' },
+                { Icon: AtSign, href: 'https://facebook.com/amalperfume', label: 'Facebook' },
+                { Icon: Play, href: 'https://youtube.com/@amalperfume', label: 'YouTube' },
+                { Icon: Rss, href: 'https://x.com/amalperfume', label: 'Twitter' },
               ].map(({ Icon, href, label }) => (
                 <a
                   key={label}
                   href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   aria-label={label}
                   className="w-9 h-9 flex items-center justify-center rounded-full bg-white border border-stone-300 text-stone-700 hover:bg-stone-900 hover:text-white hover:scale-105 transition-all duration-300 shadow-sm"
                 >

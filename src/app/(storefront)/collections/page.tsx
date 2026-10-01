@@ -40,9 +40,10 @@ export default async function CollectionsPage() {
 
   return (
     <div className="bg-white min-h-screen">
-      <div className="py-14 text-center" style={{ background: 'linear-gradient(135deg, #2d000b 0%, #590016 100%)' }}>
+      <div className="py-14 text-center relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #12100E 0%, #1A1713 50%, #2A241C 100%)' }}>
+        <p className="text-amber-400 text-xs font-bold uppercase tracking-widest mb-2">Exclusive Series</p>
         <h1 className="font-display text-4xl font-bold text-white mb-2">Private Collections</h1>
-        <p className="text-white/70">Artisanal fragrance series distilled for every moment and mood</p>
+        <p className="text-stone-300 text-sm max-w-lg mx-auto">Artisanal fragrance series distilled for every moment and mood</p>
       </div>
       <div className="py-12">
         <CollectionsBanner collections={collections} />

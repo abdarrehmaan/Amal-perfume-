@@ -55,6 +55,58 @@ export default function ProductDetailClient({
   const [selectedColor, setSelectedColor] = useState<string | null>(initialVariant?.color || null);
   const [quantity, setQuantity] = useState(1);
   const [activeTab, setActiveTab] = useState<'description' | 'fabric' | 'reviews'>('description');
+  const [reviewModalOpen, setReviewModalOpen] = useState(false);
+  const [reviewSubmitting, setReviewSubmitting] = useState(false);
+  const [reviewForm, setReviewForm] = useState({
+    rating: 5,
+    name: '',
+    title: '',
+    comment: '',
+  });
+
+  const handleShare = async () => {
+    const url = typeof window !== 'undefined' ? window.location.href : '';
+    if (typeof navigator !== 'undefined' && navigator.share) {
+      try {
+        await navigator.share({
+          title: product.name,
+          text: `Discover ${product.name} at AMAL PERFUME.`,
+          url,
+        });
+        return;
+      } catch (err) {
+        // Dismissed by user
+      }
+    }
+    if (typeof navigator !== 'undefined' && navigator.clipboard) {
+      await navigator.clipboard.writeText(url);
+      toast.success('Product link copied to clipboard!');
+    } else {
+      toast.success('Link ready to share!');
+    }
+  };
+
+  const handleOpenReview = () => {
+    setActiveTab('reviews');
+    const el = document.getElementById('product-tabs-section');
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
+    setReviewModalOpen(true);
+  };
+
+  const handleSubmitReview = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!reviewForm.name.trim() || !reviewForm.title.trim() || !reviewForm.comment.trim()) {
+      toast.error('Please fill in your name, review headline, and detailed feedback.');
+      return;
+    }
+    setReviewSubmitting(true);
+    setTimeout(() => {
+      setReviewSubmitting(false);
+      setReviewModalOpen(false);
+      toast.success('Thank you! Your connoisseur review has been submitted.');
+      setReviewForm({ rating: 5, name: '', title: '', comment: '' });
+    }, 500);
+  };
 
   const addItem = useCartStore((s) => s.addItem);
   const { toggleItem, isInWishlist } = useWishlistStore();
@@ -285,7 +337,13 @@ export default function ProductDetailClient({
                 </div>
                 <span className="text-sm font-bold text-gray-700">{product.avgRating.toFixed(1)}</span>
                 <span className="text-sm text-gray-400">({product._count.reviews} reviews)</span>
-                <button className="text-sm text-brand-600 hover:underline ml-1">Write a Review</button>
+                <button
+                  type="button"
+                  onClick={handleOpenReview}
+                  className="text-sm text-amber-800 hover:text-amber-950 font-medium underline underline-offset-4 ml-1 transition-colors cursor-pointer"
+                >
+                  Write a Review
+                </button>
               </div>
             ) : null}
 
@@ -296,7 +354,7 @@ export default function ProductDetailClient({
                 <span className="text-lg text-gray-400 line-through">{formatPrice(product.comparePrice)}</span>
               )}
               {discount > 0 && (
-                <span className="px-3 py-1 rounded-full text-sm font-bold text-white" style={{ background: 'linear-gradient(135deg, #6B2D4F, #C4748A)' }}>
+                <span className="px-3 py-1 rounded-full text-xs uppercase tracking-wider font-bold text-amber-300 border border-amber-600/40" style={{ background: 'linear-gradient(135deg, #1C1917, #451A03)' }}>
                   {discount}% OFF
                 </span>
               )}
@@ -457,8 +515,11 @@ export default function ProductDetailClient({
                 {wishlisted ? 'Wishlisted' : 'Add to Wishlist'}
               </button>
               <button
-                className="flex items-center justify-center gap-2 px-4 py-3 rounded-xl border-2 border-gray-200 text-sm font-semibold text-gray-600 hover:border-gray-300 transition-colors"
+                type="button"
+                onClick={handleShare}
+                className="flex items-center justify-center gap-2 px-4 py-3 rounded-xl border-2 border-gray-200 text-sm font-semibold text-gray-600 hover:border-gray-400 hover:text-gray-900 transition-colors cursor-pointer"
                 aria-label="Share product"
+                title="Share fragrance"
               >
                 <Share2 size={16} />
               </button>
@@ -493,7 +554,7 @@ export default function ProductDetailClient({
         </div>
 
         {/* Tabs */}
-        <div className="mt-16">
+        <div id="product-tabs-section" className="mt-16">
           <div className="flex gap-1 border-b border-gray-200 mb-8">
             {(['description', 'fabric', 'reviews'] as const).map((tab) => (
               <button
@@ -595,7 +656,12 @@ export default function ProductDetailClient({
 
               <p className="text-sm text-gray-500 text-center py-8">Be the first to review this product!</p>
 
-              <button id="write-review-btn" className="btn-primary mx-auto block">
+              <button
+                type="button"
+                onClick={handleOpenReview}
+                id="write-review-btn"
+                className="btn-primary mx-auto block cursor-pointer"
+              >
                 Write a Review
               </button>
             </div>
@@ -694,6 +760,116 @@ export default function ProductDetailClient({
             <p>
               Image {lightboxImageIdx + 1} of {images.length}
             </p>
+          </div>
+        </div>
+      )}
+
+      {/* Connoisseur Review Modal */}
+      {reviewModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs animate-fade-in">
+          <div className="bg-white rounded-3xl p-6 sm:p-8 max-w-lg w-full shadow-2xl relative border border-stone-200">
+            <button
+              onClick={() => setReviewModalOpen(false)}
+              className="absolute top-5 right-5 w-8 h-8 rounded-full bg-stone-100 flex items-center justify-center text-stone-500 hover:text-stone-900 transition-colors"
+            >
+              <X size={18} />
+            </button>
+
+            <span className="text-[10px] uppercase font-bold tracking-[0.25em] text-amber-700 block mb-1">
+              Connoisseur Evaluation
+            </span>
+            <h3 className="font-display text-2xl font-bold text-stone-900 mb-2">
+              Review {product.name}
+            </h3>
+            <p className="text-xs text-stone-500 mb-6">
+              Share your impressions on the sillage, projection, note evolution, and longevity of this creation.
+            </p>
+
+            <form onSubmit={handleSubmitReview} className="space-y-4">
+              <div>
+                <label className="block text-xs uppercase tracking-wider font-bold text-stone-700 mb-1.5">
+                  Your Rating
+                </label>
+                <div className="flex gap-2">
+                  {[1, 2, 3, 4, 5].map((star) => (
+                    <button
+                      type="button"
+                      key={star}
+                      onClick={() => setReviewForm((f) => ({ ...f, rating: star }))}
+                      className="p-1 hover:scale-110 transition-transform cursor-pointer"
+                    >
+                      <Star
+                        size={24}
+                        className={
+                          star <= reviewForm.rating
+                            ? 'fill-amber-400 stroke-amber-400'
+                            : 'fill-stone-200 stroke-stone-200'
+                        }
+                      />
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-xs uppercase tracking-wider font-bold text-stone-700 mb-1.5">
+                  Connoisseur Name
+                </label>
+                <input
+                  type="text"
+                  required
+                  value={reviewForm.name}
+                  onChange={(e) => setReviewForm((f) => ({ ...f, name: e.target.value }))}
+                  placeholder="e.g. Tariq Al-Hashimi"
+                  className="w-full px-4 py-2.5 rounded-xl border border-stone-200 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-700"
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs uppercase tracking-wider font-bold text-stone-700 mb-1.5">
+                  Review Headline
+                </label>
+                <input
+                  type="text"
+                  required
+                  value={reviewForm.title}
+                  onChange={(e) => setReviewForm((f) => ({ ...f, title: e.target.value }))}
+                  placeholder="e.g. Hypnotic drydown with unmatched 18-hour longevity"
+                  className="w-full px-4 py-2.5 rounded-xl border border-stone-200 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-700"
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs uppercase tracking-wider font-bold text-stone-700 mb-1.5">
+                  Detailed Critique
+                </label>
+                <textarea
+                  required
+                  rows={3}
+                  value={reviewForm.comment}
+                  onChange={(e) => setReviewForm((f) => ({ ...f, comment: e.target.value }))}
+                  placeholder="Describe the opening, heart, drydown, sillage, and how it performs on skin or fabric..."
+                  className="w-full px-4 py-2.5 rounded-xl border border-stone-200 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-700"
+                />
+              </div>
+
+              <div className="pt-2 flex gap-3">
+                <button
+                  type="button"
+                  onClick={() => setReviewModalOpen(false)}
+                  className="flex-1 py-3 rounded-xl border border-stone-200 text-sm font-semibold text-stone-700 hover:bg-stone-50 transition-colors"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  disabled={reviewSubmitting}
+                  className="flex-1 py-3 rounded-xl bg-stone-900 text-white text-sm font-semibold hover:bg-black transition-colors disabled:opacity-50"
+                >
+                  {reviewSubmitting ? 'Submitting...' : 'Submit Critique'}
+                </button>
+              </div>
+            </form>
           </div>
         </div>
       )}

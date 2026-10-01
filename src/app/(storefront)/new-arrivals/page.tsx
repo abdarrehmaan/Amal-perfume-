@@ -59,10 +59,10 @@ export default async function NewArrivalsPage() {
 
   return (
     <div className="bg-white min-h-screen">
-      <div className="py-14 text-center" style={{ background: 'linear-gradient(135deg, #2d000b 0%, #590016 60%, #c9a84c 100%)' }}>
-        <p className="text-gold-300 text-xs font-bold uppercase tracking-widest mb-2">✨ Fresh Distillations</p>
+      <div className="py-14 text-center relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #12100E 0%, #1A1713 50%, #2A241C 100%)' }}>
+        <p className="text-amber-400 text-xs font-bold uppercase tracking-widest mb-2">✨ Fresh Distillations</p>
         <h1 className="font-display text-4xl font-bold text-white mb-2">New Releases</h1>
-        <p className="text-white/70">The latest olfactory creations formulated by our master noses</p>
+        <p className="text-stone-300 text-sm max-w-lg mx-auto">The latest olfactory creations formulated by our master noses</p>
       </div>
       <div className="container-plt py-12">
         <div className="flex items-center justify-between mb-8">

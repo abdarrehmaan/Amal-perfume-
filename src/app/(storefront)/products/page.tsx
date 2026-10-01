@@ -1,14 +1,14 @@
 import type { Metadata } from 'next';
 import ProductGrid from '@/components/storefront/ProductGrid';
-import ProductSortSelect from '@/components/storefront/ProductSortSelect';
+import ProductFilterToolbar from '@/components/storefront/ProductFilterToolbar';
 import { prisma } from '@/lib/prisma';
-import { SlidersHorizontal, Search } from 'lucide-react';
+import { Search } from 'lucide-react';
 import Link from 'next/link';
 
 export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
-  title: 'All Fragrances — AMAL PERFUME',
+  title: 'Artisanal Fragrance Catalog — AMAL PERFUME',
   description: 'Browse our complete collection of artisanal extraits de parfum, royal Cambodian ouds, and signature fragrances.',
 };
 
@@ -23,24 +23,50 @@ const sortOptions = [
 export default async function ProductsPage({
   searchParams,
 }: {
-  searchParams: Promise<{ sort?: string; search?: string; page?: string }>;
+  searchParams: Promise<{
+    sort?: string;
+    search?: string;
+    page?: string;
+    category?: string;
+    minPrice?: string;
+    maxPrice?: string;
+  }>;
 }) {
   const resolvedSearchParams = await searchParams;
   const rawSearch = resolvedSearchParams.search || '';
   const search = rawSearch.trim();
   const sort = resolvedSearchParams.sort || 'newest';
+  const categorySlug = resolvedSearchParams.category || '';
+  const minPrice = resolvedSearchParams.minPrice ? Number(resolvedSearchParams.minPrice) : null;
+  const maxPrice = resolvedSearchParams.maxPrice ? Number(resolvedSearchParams.maxPrice) : null;
   const page = Math.max(1, Number(resolvedSearchParams.page) || 1);
   const pageSize = 8;
+
+  // Fetch categories for filter bar
+  let categories: any[] = [];
+  try {
+    categories = await prisma.category.findMany({
+      where: { isActive: true },
+      select: { id: true, name: true, slug: true },
+    });
+  } catch (err) {
+    console.error('Failed to fetch categories:', err);
+  }
 
   const where: any = {
     isDeleted: false,
     isActive: true,
   };
 
+  if (categorySlug) {
+    where.category = { slug: categorySlug };
+  }
+
   if (search) {
     where.OR = [
       { name: { contains: search, mode: 'insensitive' } },
       { description: { contains: search, mode: 'insensitive' } },
+      { category: { name: { contains: search, mode: 'insensitive' } } },
     ];
   }
 
@@ -61,8 +87,8 @@ export default async function ProductsPage({
   try {
     totalProducts = await prisma.product.count({ where });
 
-    // Fallback: If no products found with isActive: true, check if products exist without strict isActive
-    if (totalProducts === 0 && !search) {
+    // Fallback if no products with isActive
+    if (totalProducts === 0 && !search && !categorySlug) {
       const fallbackCount = await prisma.product.count({ where: { isDeleted: false } });
       if (fallbackCount > 0) {
         delete where.isActive;
@@ -80,7 +106,7 @@ export default async function ProductsPage({
       take: pageSize,
       skip,
       include: {
-        category: { select: { name: true } },
+        category: { select: { name: true, slug: true } },
         images: { orderBy: { sortOrder: 'asc' } },
         variants: true,
       },
@@ -96,7 +122,7 @@ export default async function ProductsPage({
       isNewArrival: p.isNewArrival,
       isBestSeller: p.isBestSeller,
       isTrending: p.isTrending,
-      category: { name: p.category?.name || 'Ethnic Wear' },
+      category: { name: p.category?.name || 'Haute Parfumerie' },
       images: p.images.map((img) => ({ url: img.url, alt: img.alt || '' })),
       variants: p.variants.map((v) => ({
         id: v.id,
@@ -105,13 +131,24 @@ export default async function ProductsPage({
         colorHex: v.colorHex || undefined,
         stock: v.stock,
       })),
-      avgRating: 4.8,
+      avgRating: 4.9,
     }));
+
+    // In-memory filter for price ranges if specified
+    if (minPrice !== null || maxPrice !== null) {
+      products = products.filter((p) => {
+        if (minPrice !== null && p.price < minPrice) return false;
+        if (maxPrice !== null && p.price > maxPrice) return false;
+        return true;
+      });
+      totalProducts = products.length;
+    }
   } catch (error) {
     console.error('ProductsPage DB query error:', error);
   }
 
-  if (products.length === 0) {
+  // Only fallback to mock if the database is genuinely unseeded AND no filter is applied
+  if (products.length === 0 && !search && !categorySlug && minPrice === null && maxPrice === null) {
     const { mockProducts } = await import('@/lib/mock-data');
     totalProducts = mockProducts.length;
     products = mockProducts.map((p) => ({
@@ -124,7 +161,7 @@ export default async function ProductsPage({
       isNewArrival: p.isNewArrival,
       isBestSeller: p.isBestSeller,
       isTrending: p.isTrending,
-      category: { name: p.category?.name || 'Luxury Fragrance' },
+      category: { name: p.category?.name || 'Haute Parfumerie' },
       images: p.images.map((img) => ({ url: img.url, alt: img.alt || '' })),
       variants: p.variants.map((v) => ({
         id: v.id,
@@ -139,73 +176,93 @@ export default async function ProductsPage({
 
   const totalPages = Math.ceil(totalProducts / pageSize) || 1;
 
+  // Helper to build pagination links
+  const buildPageUrl = (targetPage: number) => {
+    const params = new URLSearchParams();
+    if (targetPage > 1) params.set('page', String(targetPage));
+    if (categorySlug) params.set('category', categorySlug);
+    if (sort && sort !== 'newest') params.set('sort', sort);
+    if (search) params.set('search', search);
+    if (minPrice) params.set('minPrice', String(minPrice));
+    if (maxPrice) params.set('maxPrice', String(maxPrice));
+    const str = params.toString();
+    return `/products${str ? `?${str}` : ''}`;
+  };
+
   return (
-    <div className="bg-white min-h-screen">
-      {/* Page header */}
+    <div className="bg-[#FAF8F5] min-h-screen">
+      {/* Luxury Editorial Header */}
       <div
-        className="py-12 text-center"
+        className="py-14 md:py-18 text-center relative overflow-hidden"
         style={{
-          background: 'linear-gradient(135deg, #2d000b 0%, #590016 60%, #c9a84c 100%)',
+          background: 'linear-gradient(135deg, #12100E 0%, #1A1713 50%, #2A241C 100%)',
         }}
       >
-        <h1 className="font-display text-3xl md:text-4xl font-bold text-white mb-2">All Fragrances</h1>
-        <p className="text-white/80 text-sm">
-          {totalProducts} artisanal olfactory creations
-        </p>
+        <div className="absolute inset-0 opacity-15 bg-[radial-gradient(#C5A059_1px,transparent_1px)] [background-size:16px_16px]" />
+        <div className="relative z-10 max-w-3xl mx-auto px-4">
+          <span className="text-[10px] uppercase font-bold tracking-[0.35em] text-amber-400 block mb-2">
+            Haute Parfumerie Catalog
+          </span>
+          <h1 className="font-display text-3xl md:text-5xl font-bold text-white mb-3 tracking-wide">
+            Artisanal Fragrance Wardrobe
+          </h1>
+          <p className="text-stone-300 text-xs sm:text-sm max-w-xl mx-auto leading-relaxed">
+            Macerated extraits, aged Cambodian agarwoods, and rare botanical distillates formulated at 30%+ pure oil concentrations.
+          </p>
+        </div>
       </div>
 
-      <div className="container-plt py-8">
-        {/* Toolbar */}
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-8 pb-4 border-b border-gray-100">
-          <form method="GET" action="/products" className="relative flex-1 max-w-xs">
-            <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
-            <input
-              type="text"
-              name="search"
-              placeholder="Search fragrances, notes..."
-              defaultValue={search || ''}
-              className="input-base pl-9 py-2 text-sm"
-            />
-            {resolvedSearchParams.sort && (
-              <input type="hidden" name="sort" value={resolvedSearchParams.sort} />
-            )}
-          </form>
+      <div className="container-plt py-10">
+        {/* Interactive Filter & Search Toolbar */}
+        <ProductFilterToolbar
+          categories={categories}
+          sortOptions={sortOptions}
+          currentCategory={categorySlug}
+          currentSort={sort}
+          currentSearch={search}
+          currentMinPrice={minPrice ? String(minPrice) : ''}
+          currentMaxPrice={maxPrice ? String(maxPrice) : ''}
+          totalCount={totalProducts}
+        />
 
-          <div className="flex items-center gap-3">
-            <button className="flex items-center gap-2 px-4 py-2 rounded-xl border border-gray-200 text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors">
-              <SlidersHorizontal size={16} />
-              Filters
-            </button>
-            <ProductSortSelect sortOptions={sortOptions} defaultValue={sort} />
-          </div>
-        </div>
-
-        {/* Grid */}
+        {/* Product Grid or Polished Empty State */}
         {products.length > 0 ? (
           <ProductGrid products={products} columns={4} />
         ) : (
-          <div className="text-center py-20">
-            <p className="text-gray-500 mb-4">No products found in catalog.</p>
-            <Link href="/products" className="btn-primary inline-block">
-              Clear Filters
+          <div className="text-center py-20 bg-white rounded-3xl border border-stone-200 p-8 max-w-lg mx-auto shadow-sm">
+            <div className="w-16 h-16 rounded-full bg-amber-50 text-amber-800 flex items-center justify-center mx-auto mb-4 border border-amber-200">
+              <Search size={24} />
+            </div>
+            <h3 className="font-display text-xl font-bold text-stone-900 mb-2">
+              No Fragrances Found
+            </h3>
+            <p className="text-stone-600 text-sm mb-6 leading-relaxed">
+              {search
+                ? `We couldn't find any creations matching "${search}". Try searching for notes like "oud", "rose", "leather", or reset your search.`
+                : 'No creations found matching the selected filter criteria.'}
+            </p>
+            <Link
+              href="/products"
+              className="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-stone-900 text-white text-sm font-semibold hover:bg-black transition-colors"
+            >
+              Clear All Filters
             </Link>
           </div>
         )}
 
         {/* Pagination */}
         {totalPages > 1 && (
-          <div className="flex justify-center mt-12 gap-2">
+          <div className="flex justify-center mt-14 gap-2">
             {Array.from({ length: totalPages }).map((_, i) => {
               const pageNum = i + 1;
-              const url = `/products?page=${pageNum}${sort ? `&sort=${sort}` : ''}${search ? `&search=${encodeURIComponent(search)}` : ''}`;
               return (
                 <Link
                   key={pageNum}
-                  href={url}
-                  className={`w-9 h-9 rounded-lg text-sm font-semibold transition-colors flex items-center justify-center ${
+                  href={buildPageUrl(pageNum)}
+                  className={`w-10 h-10 rounded-xl text-sm font-semibold transition-all flex items-center justify-center ${
                     pageNum === page
-                      ? 'bg-brand-600 text-white'
-                      : 'border border-gray-200 text-gray-600 hover:bg-gray-50'
+                      ? 'bg-stone-900 text-white shadow-sm'
+                      : 'border border-stone-200 text-stone-700 bg-white hover:bg-stone-100'
                   }`}
                 >
                   {pageNum}

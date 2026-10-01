@@ -163,11 +163,6 @@ export default function CheckoutPage() {
 
   const handlePlaceOrder = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!user) {
-      toast.error('Please login to place an order.');
-      router.push('/login');
-      return;
-    }
 
     if (!form.fullName || !form.phone || !form.email || !form.line1 || !form.city || !form.state || !form.pincode) {
       toast.error('Please fill in all required address fields.');
@@ -187,7 +182,7 @@ export default function CheckoutPage() {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            userId: user.id,
+            userId: user?.id || 'guest',
             fullName: form.fullName,
             phone: form.phone,
             email: form.email,
@@ -271,7 +266,7 @@ export default function CheckoutPage() {
         key: razorpayKey,
         amount: orderData.amount,
         currency: orderData.currency || 'INR',
-        name: 'PLT Creation',
+        name: 'AMAL PERFUME',
         description: paymentDescription,
         order_id: orderData.order_id,
         prefill: {
@@ -280,7 +275,7 @@ export default function CheckoutPage() {
           contact: form.phone,
         },
         theme: {
-          color: '#6B2D4F',
+          color: '#C5A059',
         },
         handler: async function (response: {
           razorpay_payment_id: string;
@@ -307,7 +302,7 @@ export default function CheckoutPage() {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
-                  userId: user.id,
+                  userId: user?.id || 'guest',
                   fullName: form.fullName,
                   phone: form.phone,
                   email: form.email,
@@ -390,11 +385,12 @@ export default function CheckoutPage() {
 
   return (
     <div className="bg-ivory-100 min-h-screen">
-      <div className="py-10 text-center" style={{ background: 'linear-gradient(135deg, #6B2D4F 0%, #C4748A 100%)' }}>
-        <h1 className="font-display text-3xl font-bold text-white">Checkout</h1>
-        <nav className="flex items-center justify-center gap-2 text-white/70 text-sm mt-2">
-          <span>Cart</span><ChevronRight size={14} />
-          <span className="text-white font-semibold">Details</span><ChevronRight size={14} />
+      <div className="py-12 text-center text-white relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #12100E 0%, #1A1713 50%, #2A241C 100%)' }}>
+        <span className="text-[10px] uppercase font-bold tracking-[0.3em] text-amber-400 block mb-1">AMAL PERFUME Boutique</span>
+        <h1 className="font-display text-3xl md:text-4xl font-bold text-white tracking-wide">Secure Checkout</h1>
+        <nav className="flex items-center justify-center gap-2 text-stone-300 text-xs sm:text-sm mt-3">
+          <span>Bag</span><ChevronRight size={14} className="text-amber-500" />
+          <span className="text-amber-400 font-semibold">Shipping & Payment</span><ChevronRight size={14} className="text-amber-500" />
           <span>Confirmation</span>
         </nav>
       </div>

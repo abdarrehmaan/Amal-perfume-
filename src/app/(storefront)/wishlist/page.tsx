@@ -20,9 +20,10 @@ export default function WishlistPage() {
 
   return (
     <div className="bg-white min-h-screen">
-      <div className="py-12 text-center" style={{ background: 'linear-gradient(135deg, #6B2D4F 0%, #C4748A 100%)' }}>
-        <h1 className="font-display text-3xl font-bold text-white">My Wishlist</h1>
-        <p className="text-white/70 text-sm mt-1">{items.length} {items.length === 1 ? 'item' : 'items'} saved</p>
+      <div className="py-12 text-center relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #12100E 0%, #1A1713 50%, #2A241C 100%)' }}>
+        <span className="text-[10px] uppercase font-bold tracking-[0.3em] text-amber-400 block mb-1">AMAL PERFUME Vault</span>
+        <h1 className="font-display text-3xl md:text-4xl font-bold text-white tracking-wide">My Saved Fragrances</h1>
+        <p className="text-stone-300 text-sm mt-1">{items.length} {items.length === 1 ? 'flacon' : 'flacons'} saved</p>
       </div>
       <div className="container-plt py-12">
         {items.length === 0 ? (
