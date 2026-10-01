@@ -127,19 +127,19 @@ export default function ProductCard({ product, priority = false }: ProductCardPr
         </Link>
 
         {/* Badges */}
-        <div className="absolute top-2 left-2 sm:top-2.5 sm:left-2.5 flex flex-col gap-1.5 z-10">
+        <div className="absolute top-2.5 left-2.5 flex flex-wrap items-center gap-1.5 z-10 pointer-events-none">
           {discount > 0 && (
-            <span className="bg-red-600 text-white text-[9px] sm:text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded shadow-sm">
+            <span className="bg-stone-950/90 text-amber-300 text-[9px] sm:text-[10px] uppercase font-bold tracking-wider px-2.5 py-0.5 rounded-md shadow-sm backdrop-blur-xs border border-stone-800">
               {discount}% OFF
             </span>
           )}
           {product.isTrending && (
-             <span className="bg-amber-600 text-white text-[9px] sm:text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded shadow-sm flex items-center gap-1">
-               <Flame size={10} /> Trending
+             <span className="bg-amber-800/90 text-amber-100 text-[9px] sm:text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-md shadow-sm backdrop-blur-xs flex items-center gap-1 border border-amber-700/60">
+               <Flame size={10} className="text-amber-300 fill-amber-300" /> Trending
              </span>
           )}
-          {product.isNewArrival && !product.isTrending && (
-            <span className="bg-white/95 backdrop-blur-md text-stone-900 text-[9px] sm:text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded shadow-sm border border-stone-200">
+          {product.isNewArrival && !product.isTrending && discount === 0 && (
+            <span className="bg-white/95 backdrop-blur-md text-stone-900 text-[9px] sm:text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-md shadow-sm border border-stone-200">
               New
             </span>
           )}
