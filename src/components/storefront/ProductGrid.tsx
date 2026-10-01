@@ -33,7 +33,7 @@ const colClasses = {
 
 export default function ProductGrid({ products, columns = 4, className = '' }: ProductGridProps) {
   return (
-    <div className={`grid ${colClasses[columns]} gap-4 md:gap-6 ${className}`}>
+    <div className={`grid ${colClasses[columns]} gap-3 sm:gap-4 md:gap-6 ${className}`}>
       {products.map((product, index) => (
         <ProductCard
           key={product.id}

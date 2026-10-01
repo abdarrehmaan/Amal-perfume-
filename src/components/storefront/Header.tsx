@@ -155,10 +155,10 @@ export default function Header({ featuredProducts = [] }: { featuredProducts?: a
         )}
       >
         <div className="container-plt">
-          <div className="flex items-center justify-between h-20 md:h-24">
+          <div className="flex items-center justify-between h-16 sm:h-20 md:h-24">
 
             {/* Logo — LEFT side */}
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2 sm:gap-3">
               {/* Mobile menu button */}
               <button
                 id="mobile-menu-btn"
@@ -169,8 +169,8 @@ export default function Header({ featuredProducts = [] }: { featuredProducts?: a
                 {mobileOpen ? <X size={22} /> : <Menu size={22} />}
               </button>
 
-              <Link href="/" className="flex items-center gap-3 group">
-                <img src="/amal-logo.jpg" alt="AMAL PERFUME" className="h-16 sm:h-18 md:h-20 w-auto object-contain hover:scale-105 transition-all duration-300" style={{ maxHeight: '82px' }} />
+              <Link href="/" className="flex items-center gap-2.5 sm:gap-3 group">
+                <img src="/amal-logo.jpg" alt="AMAL PERFUME" className="h-12 sm:h-16 md:h-20 w-auto object-contain hover:scale-105 transition-all duration-300" style={{ maxHeight: '82px' }} />
                 <div className="hidden md:flex flex-col">
                   <span className="font-display text-2xl lg:text-3xl font-bold text-stone-900 tracking-widest leading-none">AMAL</span>
                   <span className="text-[10px] tracking-[0.45em] uppercase text-amber-700 font-bold mt-1">PERFUME</span>
@@ -352,7 +352,7 @@ export default function Header({ featuredProducts = [] }: { featuredProducts?: a
 
         {/* Smart Search Bar */}
         {searchOpen && (
-          <div className="absolute top-full left-0 w-full bg-white/98 backdrop-blur-2xl shadow-2xl border-t border-gray-200 py-8 animate-fade-down z-50 text-gray-900">
+          <div className="absolute top-full left-0 w-full bg-white/98 backdrop-blur-2xl shadow-2xl border-t border-gray-200 py-4 sm:py-8 animate-fade-down z-50 text-gray-900">
             <div className="container-plt">
               <div className="max-w-3xl mx-auto">
                 <div className="relative flex items-center">

@@ -19,7 +19,7 @@ export default function NewsletterSection() {
   };
 
   return (
-    <section className="relative py-24 overflow-hidden">
+    <section className="relative py-14 sm:py-24 overflow-hidden">
       {/* Background Image & Overlay */}
       <div 
         className="absolute inset-0 bg-[url('/products/amal-collection.jpg')] bg-cover bg-center bg-no-repeat bg-fixed -z-20"
@@ -28,24 +28,24 @@ export default function NewsletterSection() {
 
       <div className="container-plt">
         <div className="max-w-3xl mx-auto">
-          <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-[2.5rem] p-8 md:p-14 shadow-2xl relative overflow-hidden">
+          <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-xl p-6 sm:p-10 md:p-14 shadow-2xl relative overflow-hidden">
             
             {/* Decorative Gold Elements */}
             <div className="absolute -top-24 -right-24 w-64 h-64 bg-gold-500/20 rounded-full blur-[80px]" />
             <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-gold-500/20 rounded-full blur-[80px]" />
 
             <div className="relative z-10 text-center">
-              <div className="w-16 h-16 rounded-full bg-gradient-gold flex items-center justify-center mx-auto mb-6 shadow-gold-lg">
-                <Crown size={28} className="text-white" />
+              <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-gradient-gold flex items-center justify-center mx-auto mb-5 sm:mb-6 shadow-gold-lg">
+                <Crown size={24} className="text-white" />
               </div>
 
               <h4 className="text-gold-400 font-bold uppercase tracking-[0.3em] text-xs mb-3">
                 The Insider Club
               </h4>
-              <h2 className="font-display text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+              <h2 className="font-display text-2xl sm:text-3xl md:text-5xl font-bold text-white mb-4 sm:mb-6 leading-tight">
                 Unlock Exclusive <br className="hidden md:block"/> Access & Privileges.
               </h2>
-              <p className="text-base md:text-lg text-gray-300 mb-10 max-w-xl mx-auto font-light leading-relaxed">
+              <p className="text-sm sm:text-base md:text-lg text-gray-300 mb-8 sm:mb-10 max-w-xl mx-auto font-light leading-relaxed">
                 Join <span className="font-semibold text-gold-300">AMAL Circle Privé</span> to receive private reservations, olfactory previews, and exclusive member privileges.
               </p>
 

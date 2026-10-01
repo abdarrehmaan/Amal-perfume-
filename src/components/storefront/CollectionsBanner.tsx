@@ -25,25 +25,25 @@ export default function CollectionsBanner({ collections }: { collections: Collec
             <div className="inline-flex items-center gap-2 text-gold-600 text-xs font-bold uppercase tracking-[0.2em] mb-4">
               <Sparkles size={14} /> Lookbook
             </div>
-            <h2 className="font-display text-4xl md:text-5xl font-bold text-gray-900 leading-[1.1]">
+            <h2 className="font-display text-2xl sm:text-4xl md:text-5xl font-bold text-stone-900 leading-[1.15]">
               The Edit: <br />
-              <span className="text-gray-400 italic font-light">Curated Collections</span>
+              <span className="text-stone-500 italic font-light">Curated Collections</span>
             </h2>
           </div>
-          <Link href="/collections" className="group flex items-center gap-2 text-sm uppercase font-bold tracking-widest text-brand-700 hover:text-brand-900 transition-colors pb-2 border-b-2 border-brand-200 hover:border-brand-700">
-            View All Collections <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+          <Link href="/collections" className="group inline-flex items-center gap-2 text-xs sm:text-sm uppercase font-bold tracking-widest text-amber-800 hover:text-amber-950 transition-colors pb-1 border-b-2 border-amber-300 hover:border-amber-800 w-fit">
+            View All Collections <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>
 
         {/* Collections Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
           {displayCols.map((col, i) => {
             return (
               <Link
                 key={col.id}
                 href={`/collections/${col.slug}`}
                 id={`collection-${col.slug}`}
-                className="relative rounded-xl overflow-hidden group block h-[380px] md:h-[450px] shadow-md hover:shadow-2xl transition-all duration-500"
+                className="relative rounded-xl overflow-hidden group block h-[300px] sm:h-[380px] md:h-[450px] shadow-sm hover:shadow-lg transition-all duration-500"
               >
                 <Image
                   src={col.bannerImage || `https://picsum.photos/seed/${col.id}/800/800`}

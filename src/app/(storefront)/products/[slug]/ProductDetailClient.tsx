@@ -208,9 +208,9 @@ export default function ProductDetailClient({
       <div className="container-plt pb-16">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
           {/* Images */}
-          <div className="flex gap-4">
+          <div className="flex flex-col-reverse sm:flex-row gap-3 sm:gap-4">
             {/* Thumbnails */}
-            <div className="flex flex-col gap-2 w-16 flex-shrink-0">
+            <div className="flex sm:flex-col gap-2 overflow-x-auto sm:overflow-visible pb-1 sm:pb-0 scrollbar-hide">
               {images.map((img, i) => (
                 <button
                   key={i}
@@ -219,8 +219,8 @@ export default function ProductDetailClient({
                     setSelectedImage(i);
                   }}
                   className={cn(
-                    'relative w-16 h-20 rounded-xl overflow-hidden border-2 transition-all flex-shrink-0 bg-gray-100',
-                    i === selectedImage ? 'border-brand-600' : 'border-transparent hover:border-gray-300'
+                    'relative w-14 h-16 sm:w-16 sm:h-20 rounded-lg overflow-hidden border-2 transition-all flex-shrink-0 bg-stone-100 shadow-xs',
+                    i === selectedImage ? 'border-amber-600 ring-2 ring-amber-600/30' : 'border-transparent hover:border-stone-300'
                   )}
                   aria-label={`View image ${i + 1}`}
                 >
@@ -235,7 +235,7 @@ export default function ProductDetailClient({
                 setLightboxImageIdx(selectedImage);
                 setIsLightboxOpen(true);
               }}
-              className="relative flex-1 rounded-2xl overflow-hidden bg-gray-100 cursor-zoom-in group" 
+              className="relative flex-1 rounded-xl overflow-hidden bg-stone-100 cursor-zoom-in group w-full" 
               style={{ aspectRatio: '3/4' }}
             >
               <Image

@@ -83,6 +83,24 @@ export default function HeroBanner() {
     setCurrent((c) => (c - 1 + slides.length) % slides.length);
   }, []);
 
+  // Touch Swipe for mobile devices
+  const touchStartX = useRef<number | null>(null);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX.current === null) return;
+    const diff = touchStartX.current - e.changedTouches[0].clientX;
+    if (diff > 45) {
+      next();
+    } else if (diff < -45) {
+      prev();
+    }
+    touchStartX.current = null;
+  };
+
   useEffect(() => {
     const timer = setInterval(next, 6000);
     return () => clearInterval(timer);
@@ -94,10 +112,12 @@ export default function HeroBanner() {
     <section
       id="hero-banner"
       ref={containerRef}
-      className="relative w-full md:min-h-screen overflow-hidden bg-[#FAF8F5] flex flex-col md:flex-row md:items-center pt-16 md:pt-20"
+      className="relative w-full md:min-h-screen overflow-hidden bg-[#FAF8F5] flex flex-col md:flex-row md:items-center pt-14 md:pt-20"
       aria-label="Hero banner"
       onMouseMove={handleMouseMove}
       onMouseLeave={() => { mouseX.set(0); mouseY.set(0); }}
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
     >
       {/* Immersive Background Images with Parallax */}
       <div className="relative w-full aspect-[4/3] sm:aspect-[16/9] md:absolute md:inset-[-5%] md:w-auto md:h-auto z-0 shrink-0 overflow-hidden">
@@ -135,7 +155,7 @@ export default function HeroBanner() {
       </div>
 
       {/* Content */}
-      <div className={`relative z-20 container-plt w-full pt-6 pb-20 md:py-20 flex ${slide.align === 'left' ? 'justify-start' : 'justify-end'} bg-[#FAF8F5] md:bg-transparent`}>
+      <div className={`relative z-20 container-plt w-full pt-4 pb-24 md:py-20 flex ${slide.align === 'left' ? 'justify-start' : 'justify-end'} bg-[#FAF8F5] md:bg-transparent`}>
         <AnimatePresence mode="wait">
           <motion.div
             key={slide.id}
@@ -224,16 +244,16 @@ export default function HeroBanner() {
       </div>
 
       {/* Controls & Pagination Overlay */}
-      <div className="absolute w-full px-6 flex justify-between bottom-6 md:w-auto md:px-0 md:bottom-10 md:right-10 z-30 md:flex md:items-center gap-8">
+      <div className="absolute w-full px-4 sm:px-6 flex justify-between items-center bottom-5 sm:bottom-6 md:w-auto md:px-0 md:bottom-10 md:right-10 z-30 md:flex md:items-center gap-4 sm:gap-8">
         {/* Dots */}
-        <div className="flex gap-3">
+        <div className="flex gap-2 sm:gap-3">
           {slides.map((_, i) => (
             <button
               key={i}
               onClick={() => { setDirection(i > current ? 1 : -1); setCurrent(i); }}
               aria-label={`Go to slide ${i + 1}`}
               className={`transition-all duration-500 rounded-full ${
-                i === current ? 'w-10 h-1.5 bg-stone-900' : 'w-2 h-1.5 bg-stone-300 hover:bg-stone-500'
+                i === current ? 'w-7 sm:w-10 h-1.5 bg-stone-900' : 'w-2 h-1.5 bg-stone-300 hover:bg-stone-500'
               }`}
             />
           ))}
@@ -244,16 +264,16 @@ export default function HeroBanner() {
           <button
             onClick={prev}
             aria-label="Previous slide"
-            className="w-12 h-12 rounded-full bg-white/80 backdrop-blur-md text-stone-800 hover:bg-stone-900 hover:text-white transition-all flex items-center justify-center border border-stone-200 shadow-sm"
+            className="w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-white/85 backdrop-blur-md text-stone-800 hover:bg-stone-900 hover:text-white transition-all flex items-center justify-center border border-stone-200 shadow-sm"
           >
-            <ChevronLeft size={20} />
+            <ChevronLeft size={18} />
           </button>
           <button
             onClick={next}
             aria-label="Next slide"
-            className="w-12 h-12 rounded-full bg-white/80 backdrop-blur-md text-stone-800 hover:bg-stone-900 hover:text-white transition-all flex items-center justify-center border border-stone-200 shadow-sm"
+            className="w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-white/85 backdrop-blur-md text-stone-800 hover:bg-stone-900 hover:text-white transition-all flex items-center justify-center border border-stone-200 shadow-sm"
           >
-            <ChevronRight size={20} />
+            <ChevronRight size={18} />
           </button>
         </div>
       </div>

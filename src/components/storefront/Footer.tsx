@@ -9,24 +9,24 @@ export default function Footer() {
     <footer className="bg-[#F8F5EE] text-stone-600 font-sans mt-20 border-t border-stone-200">
       {/* Brand & Security Banner */}
       <div className="border-b border-stone-200 bg-[#EFECE3]">
-        <div className="container-plt py-6 flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="container-plt py-6 flex flex-col md:flex-row items-center justify-between gap-4 sm:gap-6">
           <div className="flex items-center gap-4">
             <Link href="/" className="group flex items-center gap-3">
-              <img src="/amal-logo.jpg" alt="AMAL PERFUME" className="h-14 w-auto object-contain rounded-lg border border-stone-200 shadow-sm" />
+              <img src="/amal-logo.jpg" alt="AMAL PERFUME" className="h-12 sm:h-14 w-auto object-contain rounded-lg border border-stone-200 shadow-sm" />
               <div className="flex flex-col">
-                <span className="font-display text-xl font-bold text-stone-900 tracking-widest leading-none">AMAL</span>
+                <span className="font-display text-lg sm:text-xl font-bold text-stone-900 tracking-widest leading-none">AMAL</span>
                 <span className="text-[9px] tracking-[0.35em] uppercase text-amber-800 font-bold mt-0.5">PERFUME</span>
                 <span className="text-[8px] tracking-[0.1em] text-stone-500 font-medium mt-0.5">More Than A Fragrance — It's An Emotion</span>
               </div>
             </Link>
           </div>
-          <div className="flex items-center gap-6 md:gap-12 text-sm font-medium">
+          <div className="flex flex-col sm:flex-row items-center gap-2.5 sm:gap-6 md:gap-12 text-xs sm:text-sm font-medium text-center sm:text-left">
             <div className="flex items-center gap-2 text-stone-700">
-              <ShieldCheck size={20} className="text-amber-700" />
+              <ShieldCheck size={18} className="text-amber-700 shrink-0" />
               <span>100% Authentic Extrait Guarantee</span>
             </div>
             <div className="flex items-center gap-2 text-stone-700">
-              <CreditCard size={20} className="text-amber-700" />
+              <CreditCard size={18} className="text-amber-700 shrink-0" />
               <span>Global Concierge & Insured Delivery</span>
             </div>
           </div>
@@ -34,8 +34,8 @@ export default function Footer() {
       </div>
 
       {/* Main footer */}
-      <div className="container-plt py-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
+      <div className="container-plt py-12 md:py-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 sm:gap-12">
           {/* Brand Story */}
           <div className="lg:col-span-2">
             <h3 className="text-stone-900 font-bold mb-6 text-sm uppercase tracking-[0.25em]">The Maison</h3>

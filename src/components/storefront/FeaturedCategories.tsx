@@ -56,7 +56,7 @@ export default function FeaturedCategories({ categories }: { categories: Feature
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-80px' }}
-          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4"
+          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4"
         >
           {categories.map((cat) => (
             <motion.div key={cat.slug} variants={itemVariants}>
@@ -81,7 +81,7 @@ export default function FeaturedCategories({ categories }: { categories: Feature
                 )}
 
                 <div className="category-card-content">
-                  <h3 className="font-display text-base font-bold text-white leading-tight mb-0.5">
+                  <h3 className="font-display text-sm sm:text-base font-bold text-white leading-tight mb-0.5">
                     {cat.name}
                   </h3>
                   <p className="text-xs text-white/75">{cat.count}</p>
@@ -92,7 +92,7 @@ export default function FeaturedCategories({ categories }: { categories: Feature
         </motion.div>
 
         {/* View all */}
-        <div className="text-center mt-14 md:mt-20 pt-6">
+        <div className="text-center mt-8 sm:mt-14 md:mt-20 pt-4 sm:pt-6">
           <Link href="/categories" className="btn-secondary">
             Browse All Categories <ArrowRight size={16} />
           </Link>

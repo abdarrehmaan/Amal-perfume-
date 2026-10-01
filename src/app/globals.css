@@ -120,19 +120,19 @@ h1, h2, h3, .heading-serif {
   width: 100%;
   max-width: 1400px;
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding: 0 1rem;
 }
 
 @media (min-width: 640px) {
-  .container-plt { padding: 0 2rem; }
+  .container-plt { padding: 0 1.75rem; }
 }
 
 @media (min-width: 1024px) {
-  .container-plt { padding: 0 3rem; }
+  .container-plt { padding: 0 2.5rem; }
 }
 
 @media (min-width: 1280px) {
-  .container-plt { padding: 0 4rem; }
+  .container-plt { padding: 0 3.5rem; }
 }
 
 .section-padding {
@@ -323,12 +323,12 @@ h1, h2, h3, .heading-serif {
 }
 
 .section-title {
-  @apply text-3xl md:text-4xl lg:text-5xl font-display font-semibold mb-4 text-stone-900;
+  @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-display font-bold mb-3 text-stone-900;
   line-height: 1.15;
 }
 
 .section-subtitle {
-  @apply text-base md:text-lg text-stone-600 max-w-2xl mx-auto;
+  @apply text-sm sm:text-base md:text-lg text-stone-600 max-w-2xl mx-auto;
 }
 
 /* Input styles */
@@ -391,7 +391,7 @@ h1, h2, h3, .heading-serif {
 }
 
 .category-card-content {
-  @apply absolute bottom-0 left-0 right-0 p-5 z-10;
+  @apply absolute bottom-0 left-0 right-0 p-3.5 sm:p-5 z-10;
 }
 
 /* Hero styles */

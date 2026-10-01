@@ -9,7 +9,7 @@ export default function OfferBanner() {
   return (
     <section className="py-8 md:py-16 bg-transparent relative z-10">
       <div className="container-plt">
-        <div className="relative rounded-2xl md:rounded-3xl overflow-hidden border border-gold-500/30 shadow-2xl bg-gray-950 group">
+        <div className="relative rounded-xl overflow-hidden border border-gold-500/30 shadow-2xl bg-gray-950 group">
           {/* 16:9 Aspect Ratio Image Container — Fits 100% on Mobile & Laptop without cropping */}
           <div className="relative w-full aspect-[16/9] md:aspect-[21/9] overflow-hidden bg-black flex items-center justify-center">
             <Image
