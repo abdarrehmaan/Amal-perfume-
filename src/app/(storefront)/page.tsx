@@ -233,21 +233,21 @@ export default async function HomePage() {
       </section>
 
       {/* Reviews Gallery */}
-      <section id="reviews" className="py-10 md:py-24 bg-transparent">
+      <section id="reviews" className="py-12 md:py-24 bg-transparent relative">
         <div className="container-plt">
           <SectionHeader
             tag="Connoisseur Impressions"
             title="AMAL PERFUME Connoisseurs"
             subtitle="Real experiences from our fragrance collectors worldwide."
           />
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 items-stretch">
             {mockReviews.map((review) => (
               <ReviewCard key={review.id} review={review} />
             ))}
           </div>
 
-          {/* Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-8 mt-10 sm:mt-16 pt-8 sm:pt-12 border-t border-stone-200">
+          {/* Stats with 25-35px vertical separation before next section */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 mt-12 sm:mt-16 pt-8 sm:pt-12 pb-6 sm:pb-10 border-t border-stone-200">
             {[
               { value: '2,500+', label: 'Connoisseurs Worldwide' },
               { value: '4.9/5', label: 'Average Review Score' },

@@ -21,7 +21,7 @@ export function ReviewCard({ review }: { review: Review }) {
   const isVerified = review.verified !== false; 
 
   return (
-    <div className="bg-white rounded-2xl md:rounded-[2rem] p-6 sm:p-7 md:p-8 shadow-sm hover:shadow-md transition-all duration-500 ease-apple border border-stone-200/80 flex flex-col h-full group">
+    <div className="bg-white rounded-xl p-6 sm:p-7 md:p-8 shadow-sm hover:shadow-md transition-all duration-500 ease-apple border border-stone-200/80 flex flex-col justify-between h-full group">
       
       {/* Header */}
       <div className="flex items-start justify-between mb-4">

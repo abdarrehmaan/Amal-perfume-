@@ -31,12 +31,12 @@ export default async function StorefrontLayout({
   }
 
   return (
-    <>
+    <div className="min-h-screen flex flex-col justify-between relative bg-[#FAF8F5]">
       <LuxuryEffects />
       <Header featuredProducts={featuredProducts} />
-      <main className="min-h-screen relative z-0 storefront-main">{children}</main>
+      <main className="flex-1 w-full relative z-0 storefront-main">{children}</main>
       <Footer />
       <CartDrawer />
-    </>
+    </div>
   );
 }
