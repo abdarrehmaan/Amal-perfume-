@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import HeroBanner from '@/components/storefront/HeroBanner';
-import PerfumeScrollExperience from '@/components/storefront/PerfumeScrollExperience';
 import FeaturedCategories from '@/components/storefront/FeaturedCategories';
 import ProductGrid from '@/components/storefront/ProductGrid';
 
@@ -163,9 +162,6 @@ export default async function HomePage() {
     <>
       {/* Hero */}
       <HeroBanner />
-
-      {/* 360 Interactive Scroll Scrubbing Experience */}
-      <PerfumeScrollExperience />
 
       {/* All Products Section (Featured Preview) */}
       <section id="all-products" className="py-12 md:py-20 bg-transparent relative border-b border-white/10">

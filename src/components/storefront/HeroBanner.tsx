@@ -262,12 +262,12 @@ export default function HeroBanner() {
         </div>
       </div>
 
-      {/* 360 Experience Link Anchor */}
+      {/* Explore Collection Link Anchor */}
       <a
-        href="#scroll-experience"
+        href="#all-products"
         className="hidden md:flex absolute bottom-7 left-1/2 -translate-x-1/2 z-30 items-center gap-2 text-[11px] uppercase tracking-[0.25em] text-white/70 hover:text-amber-300 transition-colors bg-black/40 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/10"
       >
-        <span>Experience 360° Studio</span>
+        <span>Explore Collection</span>
         <ChevronDown size={14} className="animate-bounce text-amber-400" />
       </a>
     </section>
