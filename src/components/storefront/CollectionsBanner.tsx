@@ -43,7 +43,7 @@ export default function CollectionsBanner({ collections }: { collections: Collec
                 key={col.id}
                 href={`/collections/${col.slug}`}
                 id={`collection-${col.slug}`}
-                className="relative rounded-2xl md:rounded-[2rem] overflow-hidden group block h-[380px] md:h-[450px] shadow-md hover:shadow-2xl transition-all duration-500"
+                className="relative rounded-xl overflow-hidden group block h-[380px] md:h-[450px] shadow-md hover:shadow-2xl transition-all duration-500"
               >
                 <Image
                   src={col.bannerImage || `https://picsum.photos/seed/${col.id}/800/800`}

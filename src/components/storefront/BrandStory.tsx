@@ -11,7 +11,7 @@ export default function BrandStory() {
           {/* Images Composition Container */}
           <div className="relative pb-10 pr-6 md:pr-10">
             {/* Main Image */}
-            <div className="relative aspect-[4/5] w-[80%] rounded-[2rem] overflow-hidden shadow-2xl border border-stone-300/80">
+            <div className="relative aspect-[4/5] w-[80%] rounded-xl overflow-hidden shadow-2xl border border-stone-300/80">
               <Image 
                 src="/products/saddle-leather.jpg" 
                 alt="AMAL Saddle Leather Extrait Flacon"
@@ -22,7 +22,7 @@ export default function BrandStory() {
             </div>
             
             {/* Overlapping Secondary Image */}
-            <div className="absolute bottom-0 right-0 w-[52%] aspect-[4/5] rounded-[2rem] overflow-hidden shadow-2xl border-4 md:border-8 border-[#F5F2EB] z-10">
+            <div className="absolute bottom-0 right-0 w-[52%] aspect-[4/5] rounded-xl overflow-hidden shadow-2xl border-4 md:border-8 border-[#F5F2EB] z-10">
               <Image 
                 src="/products/enigma.jpg" 
                 alt="AMAL Enigma Extrait Flacon"

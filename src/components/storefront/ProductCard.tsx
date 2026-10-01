@@ -110,7 +110,7 @@ export default function ProductCard({ product, priority = false }: ProductCardPr
       }}
     >
       {/* Image Container */}
-      <div className="relative w-full aspect-[3/4] bg-gray-100 rounded-2xl overflow-hidden mb-4 shadow-sm group-hover:shadow-brand transition-all duration-500 ease-apple">
+      <div className="relative w-full aspect-[3/4] bg-stone-100 rounded-lg overflow-hidden mb-3 shadow-sm group-hover:shadow-md transition-all duration-500 ease-apple">
         <Link href={`/products/${product.slug}`} aria-label={product.name} className="absolute inset-0 block">
           <Image
             src={mainImage}
@@ -127,19 +127,19 @@ export default function ProductCard({ product, priority = false }: ProductCardPr
         </Link>
 
         {/* Badges */}
-        <div className="absolute top-3 left-3 flex flex-col gap-2 z-10">
+        <div className="absolute top-2 left-2 sm:top-2.5 sm:left-2.5 flex flex-col gap-1.5 z-10">
           {discount > 0 && (
-            <span className="bg-red-600 text-white text-[10px] uppercase font-bold tracking-widest px-2.5 py-1 rounded-full shadow-md">
+            <span className="bg-red-600 text-white text-[9px] sm:text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded shadow-sm">
               {discount}% OFF
             </span>
           )}
           {product.isTrending && (
-             <span className="bg-gradient-gold text-white text-[10px] uppercase font-bold tracking-widest px-2.5 py-1 rounded-full shadow-md flex items-center gap-1">
+             <span className="bg-amber-600 text-white text-[9px] sm:text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded shadow-sm flex items-center gap-1">
                <Flame size={10} /> Trending
              </span>
           )}
           {product.isNewArrival && !product.isTrending && (
-            <span className="bg-white/90 backdrop-blur-md text-gray-900 text-[10px] uppercase font-bold tracking-widest px-2.5 py-1 rounded-full shadow-sm border border-gray-100">
+            <span className="bg-white/95 backdrop-blur-md text-stone-900 text-[9px] sm:text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded shadow-sm border border-stone-200">
               New
             </span>
           )}
@@ -148,37 +148,37 @@ export default function ProductCard({ product, priority = false }: ProductCardPr
         {/* Wishlist Button */}
         <button
           className={cn(
-            'absolute top-3 right-3 w-8 h-8 rounded-full flex items-center justify-center bg-white/80 backdrop-blur-md shadow-sm border border-white/50 transition-all duration-300 z-10 hover:scale-110 hover:bg-white',
+            'absolute top-2 right-2 sm:top-2.5 sm:right-2.5 w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center bg-white/90 backdrop-blur-md shadow-sm border border-stone-200 transition-all duration-300 z-10 hover:scale-110 hover:bg-white',
             wishlisted && 'bg-white'
           )}
           onClick={handleWishlist}
           aria-label="Wishlist"
         >
           <Heart
-            size={16}
+            size={14}
             className={cn(
               'transition-colors',
-              wishlisted ? 'fill-brand-600 stroke-brand-600' : 'stroke-gray-600'
+              wishlisted ? 'fill-amber-600 stroke-amber-600' : 'stroke-stone-700'
             )}
           />
         </button>
 
         {/* Quick Actions Hover Overlay */}
         <div className={cn(
-          "absolute inset-x-3 bottom-3 flex gap-2 transition-all duration-400 ease-apple z-10",
+          "absolute inset-x-2 bottom-2 sm:inset-x-2.5 sm:bottom-2.5 flex gap-1.5 sm:gap-2 transition-all duration-400 ease-apple z-10",
           isHovered ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
         )}>
            <button
-            className="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl text-xs uppercase font-bold tracking-widest text-white bg-gray-900/90 hover:bg-black backdrop-blur-md shadow-lg transition-colors"
+            className="flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded-lg text-xs uppercase font-bold tracking-widest text-white bg-stone-900/95 hover:bg-black backdrop-blur-md shadow-md transition-colors"
             onClick={handleAddToCart}
           >
-            <ShoppingBag size={14} /> Add
+            <ShoppingBag size={13} /> Add
           </button>
           <Link
             href={`/products/${product.slug}`}
-            className="w-11 flex items-center justify-center py-3 rounded-xl text-gray-900 bg-white/90 hover:bg-white backdrop-blur-md shadow-lg transition-colors"
+            className="w-10 flex items-center justify-center py-2.5 rounded-lg text-stone-900 bg-white/95 hover:bg-white backdrop-blur-md shadow-md border border-stone-200 transition-colors"
           >
-            <Eye size={16} />
+            <Eye size={15} />
           </Link>
         </div>
       </div>
@@ -203,28 +203,21 @@ export default function ProductCard({ product, priority = false }: ProductCardPr
 
         {/* Title */}
         <Link href={`/products/${product.slug}`}>
-          <h3 className="font-display text-lg font-semibold text-gray-900 hover:text-brand-700 transition-colors line-clamp-1 mb-1">
+          <h3 className="font-display text-sm sm:text-base font-bold text-stone-900 hover:text-amber-800 transition-colors line-clamp-1 mb-0.5">
             {product.name}
           </h3>
         </Link>
         
         {/* Category */}
-        <p className="text-xs text-gray-500 uppercase tracking-widest mb-1.5">
-          {product.category?.name || 'Couture'}
+        <p className="text-[10px] sm:text-xs text-stone-500 uppercase tracking-widest mb-2 font-medium">
+          {product.category?.name || 'Haute Parfumerie'}
         </p>
 
-        {/* Short Description (Optional) */}
-        {product.description && (
-          <p className="text-xs text-gray-500 line-clamp-2 mb-2 font-normal leading-relaxed">
-            {product.description}
-          </p>
-        )}
-
         {/* Price */}
-        <div className="flex items-center gap-2.5">
-          <span className="font-semibold text-gray-900 text-base">{formatPrice(product.price)}</span>
+        <div className="flex items-center gap-2 mt-auto">
+          <span className="font-bold text-stone-900 text-sm sm:text-base">{formatPrice(product.price)}</span>
           {product.comparePrice && product.comparePrice > product.price && (
-            <span className="text-sm text-gray-400 line-through decoration-gray-300">
+            <span className="text-xs sm:text-sm text-stone-400 line-through decoration-stone-300">
               {formatPrice(product.comparePrice)}
             </span>
           )}

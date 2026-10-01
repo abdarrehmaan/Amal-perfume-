@@ -239,13 +239,13 @@ h1, h2, h3, .heading-serif {
 
 /* Cards */
 .card-product {
-  @apply relative bg-white rounded-3xl overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.25,0.1,0.25,1)] border border-stone-200/80 p-3;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  @apply relative bg-white rounded-xl overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.25,0.1,0.25,1)] border border-stone-200/80 p-2.5 sm:p-3;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
 }
 
 .card-product:hover {
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.08);
-  @apply transform -translate-y-1.5 border-amber-400/50;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+  @apply transform -translate-y-1 border-amber-400/50;
 }
 
 /* Product image hover overlay */
@@ -367,7 +367,7 @@ h1, h2, h3, .heading-serif {
 
 /* Category card */
 .category-card {
-  @apply relative overflow-hidden rounded-2xl cursor-pointer transition-all duration-400;
+  @apply relative overflow-hidden rounded-xl cursor-pointer transition-all duration-400;
   box-shadow: var(--shadow-card);
 }
 
