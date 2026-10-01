@@ -23,7 +23,6 @@ const defaultCategories = [
 
 const navLinks = [
   { label: 'Home', href: '/' },
-  { label: '360° Studio', href: '/scroll' },
   { label: 'Fragrances', href: '/categories', hasDropdown: true },
   { label: 'Collections', href: '/collections' },
   { label: 'New Releases', href: '/new-arrivals' },
@@ -131,17 +130,17 @@ export default function Header({ featuredProducts = [] }: { featuredProducts?: a
 
   return (
     <>
-      <div className="bg-black text-white/95 py-2.5 px-4 border-b border-gold-500/20 text-center text-[10px] md:text-xs font-semibold tracking-widest uppercase shadow-sm">
+      <div className="bg-[#F6F3EC] text-[#2C2416] py-2.5 px-4 border-b border-[#E7E0D2] text-center text-[10px] md:text-xs font-semibold tracking-widest uppercase shadow-xs">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-6">
           <span className="flex items-center gap-2">
-            <Sparkles className="w-3.5 h-3.5 text-gold-400 animate-pulse-slow" />
-            <span className="text-gold-300 font-bold tracking-wider">AMAL PERFUME</span>
-            <span className="hidden md:inline text-white/60">— MORE THAN A FRAGRANCE, IT'S AN EMOTION</span>
+            <Sparkles className="w-3.5 h-3.5 text-amber-600 animate-pulse-slow" />
+            <span className="text-amber-800 font-bold tracking-wider">AMAL PERFUME</span>
+            <span className="hidden md:inline text-stone-600">— MORE THAN A FRAGRANCE, IT'S AN EMOTION</span>
           </span>
-          <span className="hidden sm:inline text-gold-500/30">|</span>
+          <span className="hidden sm:inline text-amber-700/30">|</span>
           <span className="flex items-center gap-2">
-            <Package className="w-3.5 h-3.5 text-gold-400" />
-            <span>Complimentary Delivery On Orders Above <span className="text-gold-300 font-bold">₹1,499</span></span>
+            <Package className="w-3.5 h-3.5 text-amber-600" />
+            <span>Complimentary Delivery On Orders Above <span className="text-amber-800 font-bold">₹1,499</span></span>
           </span>
         </div>
       </div>
@@ -151,8 +150,8 @@ export default function Header({ featuredProducts = [] }: { featuredProducts?: a
         className={cn(
           'sticky top-0 z-50 w-full transition-all duration-500 ease-[cubic-bezier(0.25,0.1,0.25,1)]',
           isScrolled
-            ? 'bg-black/90 backdrop-blur-xl shadow-glass border-b border-gold-500/20 py-1'
-            : 'bg-gradient-to-b from-black/90 via-black/40 to-transparent py-3 border-b border-transparent'
+            ? 'bg-white/95 backdrop-blur-xl shadow-sm border-b border-stone-200 py-1'
+            : 'bg-white/85 backdrop-blur-md py-3 border-b border-stone-200/60'
         )}
       >
         <div className="container-plt">
@@ -163,19 +162,19 @@ export default function Header({ featuredProducts = [] }: { featuredProducts?: a
               {/* Mobile menu button */}
               <button
                 id="mobile-menu-btn"
-                className="btn-icon md:hidden hover:bg-gray-100/50"
+                className="btn-icon md:hidden text-stone-800 hover:bg-stone-100"
                 onClick={() => setMobileOpen(!mobileOpen)}
                 aria-label="Toggle menu"
               >
                 {mobileOpen ? <X size={22} /> : <Menu size={22} />}
               </button>
 
-              <Link href="/" className="flex items-center gap-3.5 group">
-                <img src="/amal-logo.jpg" alt="AMAL PERFUME" className="h-14 sm:h-16 md:h-20 w-auto object-contain rounded-xl drop-shadow-2xl border border-gold-500/40 brightness-110 hover:scale-105 transition-all duration-300" style={{ maxHeight: '82px' }} />
+              <Link href="/" className="flex items-center gap-3 group">
+                <img src="/amal-logo.jpg" alt="AMAL PERFUME" className="h-16 sm:h-18 md:h-20 w-auto object-contain hover:scale-105 transition-all duration-300" style={{ maxHeight: '82px' }} />
                 <div className="hidden md:flex flex-col">
-                  <span className="font-display text-2xl lg:text-3xl font-bold text-gradient-gold tracking-widest leading-none">AMAL</span>
-                  <span className="text-[10px] tracking-[0.45em] uppercase text-gold-300 font-bold mt-1">PERFUME</span>
-                  <span className="text-[9px] tracking-[0.15em] uppercase text-white/50 font-medium mt-0.5">More Than A Fragrance · It's An Emotion</span>
+                  <span className="font-display text-2xl lg:text-3xl font-bold text-stone-900 tracking-widest leading-none">AMAL</span>
+                  <span className="text-[10px] tracking-[0.45em] uppercase text-amber-700 font-bold mt-1">PERFUME</span>
+                  <span className="text-[9px] tracking-[0.15em] uppercase text-stone-500 font-medium mt-0.5">Luxury In Every Spray</span>
                 </div>
               </Link>
             </div>
@@ -188,8 +187,8 @@ export default function Header({ featuredProducts = [] }: { featuredProducts?: a
                     <button
                       id="categories-nav-btn"
                       className={cn(
-                        'flex items-center gap-1.5 py-2 text-sm uppercase tracking-widest font-semibold transition-all duration-300 relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2px] after:bg-brand-600 after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 after:origin-left',
-                        isActive(link.href) ? 'text-brand-300 after:scale-x-100' : 'text-white/90 hover:text-white'
+                        'flex items-center gap-1.5 py-2 text-sm uppercase tracking-widest font-semibold transition-all duration-300 relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2px] after:bg-amber-600 after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 after:origin-left',
+                        isActive(link.href) ? 'text-amber-800 after:scale-x-100 font-bold' : 'text-stone-700 hover:text-stone-950'
                       )}
                       onMouseEnter={() => setCatOpen(true)}
                     >
@@ -238,8 +237,8 @@ export default function Header({ featuredProducts = [] }: { featuredProducts?: a
                     key={link.label}
                     href={link.href}
                     className={cn(
-                      'py-2 text-sm uppercase tracking-widest font-semibold transition-all duration-300 relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2px] after:bg-brand-600 after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 after:origin-left',
-                      isActive(link.href) ? 'text-brand-300 after:scale-x-100' : 'text-white/90 hover:text-white'
+                      'py-2 text-sm uppercase tracking-widest font-semibold transition-all duration-300 relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2px] after:bg-amber-600 after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 after:origin-left',
+                      isActive(link.href) ? 'text-amber-800 after:scale-x-100 font-bold' : 'text-stone-700 hover:text-stone-950'
                     )}
                   >
                     {link.label}
@@ -253,7 +252,7 @@ export default function Header({ featuredProducts = [] }: { featuredProducts?: a
               {/* Search */}
               <button
                 id="search-btn"
-                className="w-10 h-10 rounded-full flex items-center justify-center text-white/90 hover:bg-white/10 hover:text-white transition-colors"
+                className="w-10 h-10 rounded-full flex items-center justify-center text-stone-700 hover:bg-stone-100 hover:text-stone-950 transition-colors"
                 onClick={() => setSearchOpen(!searchOpen)}
                 aria-label="Search"
               >
@@ -264,12 +263,12 @@ export default function Header({ featuredProducts = [] }: { featuredProducts?: a
               <Link
                 href="/wishlist"
                 id="wishlist-btn"
-                className="w-10 h-10 rounded-full flex items-center justify-center text-white/90 hover:bg-white/10 hover:text-white transition-colors relative"
+                className="w-10 h-10 rounded-full flex items-center justify-center text-stone-700 hover:bg-stone-100 hover:text-stone-950 transition-colors relative"
                 aria-label="Wishlist"
               >
                 <Heart size={20} strokeWidth={2.5} />
                 {mounted && wishlistCount > 0 && (
-                  <span className="absolute top-0 right-0 w-4 h-4 bg-gradient-brand text-white text-[10px] font-bold rounded-full flex items-center justify-center shadow-sm">
+                  <span className="absolute top-0 right-0 w-4 h-4 bg-amber-600 text-white text-[10px] font-bold rounded-full flex items-center justify-center shadow-sm">
                     {wishlistCount > 9 ? '9+' : wishlistCount}
                   </span>
                 )}
@@ -283,13 +282,13 @@ export default function Header({ featuredProducts = [] }: { featuredProducts?: a
               >
                 <button
                   id="cart-btn"
-                  className="w-10 h-10 rounded-full flex items-center justify-center text-white/90 hover:bg-white/10 hover:text-white transition-colors relative"
+                  className="w-10 h-10 rounded-full flex items-center justify-center text-stone-700 hover:bg-stone-100 hover:text-stone-950 transition-colors relative"
                   onClick={openCart}
                   aria-label="Cart"
                 >
                   <ShoppingBag size={20} strokeWidth={2.5} />
                   {mounted && cartCount > 0 && (
-                    <span className="absolute top-0 right-0 w-4 h-4 bg-gradient-brand text-white text-[10px] font-bold rounded-full flex items-center justify-center shadow-sm">
+                    <span className="absolute top-0 right-0 w-4 h-4 bg-amber-600 text-white text-[10px] font-bold rounded-full flex items-center justify-center shadow-sm">
                       {cartCount > 9 ? '9+' : cartCount}
                     </span>
                   )}
@@ -297,7 +296,7 @@ export default function Header({ featuredProducts = [] }: { featuredProducts?: a
 
                 {/* Cart Preview Hover */}
                 {cartPreviewOpen && (
-                  <div className="absolute top-full right-0 mt-4 w-80 bg-white/95 backdrop-blur-2xl rounded-2xl shadow-card-hover border border-white/60 p-5 z-50 animate-fade-up">
+                  <div className="absolute top-full right-0 mt-4 w-80 bg-white/95 backdrop-blur-2xl rounded-2xl shadow-card-hover border border-stone-200 p-5 z-50 animate-fade-up">
                     <h4 className="text-sm uppercase tracking-widest font-bold text-gray-900 border-b border-gray-100 pb-3 mb-3">Your Bag</h4>
                     {cartItems.length === 0 ? (
                       <p className="text-sm text-gray-500 py-4 text-center">Your shopping bag is empty.</p>
@@ -320,7 +319,7 @@ export default function Header({ featuredProducts = [] }: { featuredProducts?: a
                         )}
                       </div>
                     )}
-                    <button onClick={openCart} className="w-full py-3 text-xs uppercase tracking-widest font-bold text-white bg-gray-900 hover:bg-black rounded-xl transition-colors">
+                    <button onClick={openCart} className="w-full py-3 text-xs uppercase tracking-widest font-bold text-white bg-stone-900 hover:bg-black rounded-xl transition-colors">
                       View Shopping Bag
                     </button>
                   </div>
@@ -332,7 +331,7 @@ export default function Header({ featuredProducts = [] }: { featuredProducts?: a
                 <Link
                   href="/account"
                   id="account-btn"
-                  className="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-sm bg-brand-600 hover:bg-brand-700 transition-colors border border-white/20"
+                  className="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-sm bg-stone-900 hover:bg-amber-600 transition-colors border border-stone-200"
                   aria-label="Account"
                 >
                   {user.name ? user.name.split(' ').map((n: string) => n[0]).join('').toUpperCase().substring(0, 2) : 'U'}
@@ -341,7 +340,7 @@ export default function Header({ featuredProducts = [] }: { featuredProducts?: a
                 <Link
                   href="/account"
                   id="account-btn"
-                  className="w-10 h-10 rounded-full flex items-center justify-center text-white/90 hover:bg-white/10 hover:text-white transition-colors hidden sm:flex"
+                  className="w-10 h-10 rounded-full flex items-center justify-center text-stone-700 hover:bg-stone-100 hover:text-stone-950 transition-colors hidden sm:flex"
                   aria-label="Account"
                 >
                   <User size={20} strokeWidth={2.5} />
@@ -512,17 +511,17 @@ export default function Header({ featuredProducts = [] }: { featuredProducts?: a
             className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 md:hidden"
             onClick={() => setMobileOpen(false)}
           />
-          <div className="fixed top-0 left-0 h-full w-[85vw] max-w-[320px] bg-[#0d0d11] text-stone-200 border-r border-gold-500/20 z-50 md:hidden flex flex-col shadow-2xl animate-slide-in-left">
-            <div className="flex items-center justify-between p-5 border-b border-gold-500/20 bg-black/40">
+          <div className="fixed top-0 left-0 h-full w-[85vw] max-w-[320px] bg-[#FAF8F5] text-stone-800 border-r border-stone-200 z-50 md:hidden flex flex-col shadow-2xl animate-slide-in-left">
+            <div className="flex items-center justify-between p-5 border-b border-stone-200 bg-white">
               <Link href="/" onClick={() => setMobileOpen(false)} className="flex items-center gap-3">
-                <img src="/amal-logo.jpg" alt="AMAL PERFUME" className="h-12 w-auto object-contain rounded-lg border border-gold-500/30" />
+                <img src="/amal-logo.jpg" alt="AMAL PERFUME" className="h-12 w-auto object-contain rounded-lg border border-stone-200" />
                 <div className="flex flex-col">
-                  <span className="font-display text-lg font-bold text-gradient-gold tracking-widest leading-none">AMAL</span>
-                  <span className="text-[8px] tracking-[0.3em] uppercase text-gold-300 font-semibold mt-0.5">PERFUME</span>
+                  <span className="font-display text-lg font-bold text-stone-900 tracking-widest leading-none">AMAL</span>
+                  <span className="text-[8px] tracking-[0.3em] uppercase text-amber-700 font-bold mt-0.5">PERFUME</span>
                 </div>
               </Link>
               <button
-                className="w-8 h-8 flex items-center justify-center rounded-full bg-white/5 text-stone-300 hover:text-white hover:bg-white/10"
+                className="w-8 h-8 flex items-center justify-center rounded-full bg-stone-100 text-stone-700 hover:text-stone-950 hover:bg-stone-200 transition-colors"
                 onClick={() => setMobileOpen(false)}
               >
                 <X size={18} />
@@ -535,7 +534,7 @@ export default function Header({ featuredProducts = [] }: { featuredProducts?: a
                   link.hasDropdown ? (
                     <div key={link.label}>
                       <button
-                        className="w-full flex items-center justify-between px-4 py-3.5 rounded-xl text-sm font-bold uppercase tracking-wider text-stone-200 hover:bg-gold-500/10 hover:text-gold-300 transition-colors"
+                        className="w-full flex items-center justify-between px-4 py-3.5 rounded-xl text-sm font-bold uppercase tracking-wider text-stone-800 hover:bg-amber-50 hover:text-amber-800 transition-colors"
                         onClick={() => setCatOpen(!catOpen)}
                       >
                         {link.label}
@@ -545,13 +544,13 @@ export default function Header({ featuredProducts = [] }: { featuredProducts?: a
                         />
                       </button>
                       {catOpen && (
-                        <div className="mt-1 ml-4 space-y-1 border-l-2 border-gold-500/30 pl-3 py-2">
+                        <div className="mt-1 ml-4 space-y-1 border-l-2 border-amber-500/40 pl-3 py-2">
                           {categories.map((cat) => (
                             <Link
                               key={cat.slug}
                               href={`/categories/${cat.slug}`}
                               onClick={() => setMobileOpen(false)}
-                              className="block px-3 py-2.5 text-sm font-medium text-stone-400 hover:text-gold-300 rounded-lg hover:bg-gold-500/5 transition-colors"
+                              className="block px-3 py-2.5 text-sm font-medium text-stone-600 hover:text-amber-800 rounded-lg hover:bg-amber-50/50 transition-colors"
                             >
                               {cat.name}
                             </Link>
@@ -567,8 +566,8 @@ export default function Header({ featuredProducts = [] }: { featuredProducts?: a
                       className={cn(
                         'block px-4 py-3.5 rounded-xl text-sm font-bold uppercase tracking-wider transition-colors',
                         isActive(link.href)
-                          ? 'bg-gold-500/15 text-gold-300 border border-gold-500/20'
-                          : 'text-stone-300 hover:bg-white/5 hover:text-white'
+                          ? 'bg-amber-100 text-amber-900 border border-amber-300/80 font-bold'
+                          : 'text-stone-700 hover:bg-stone-100 hover:text-stone-900'
                       )}
                     >
                       {link.label}
@@ -578,22 +577,22 @@ export default function Header({ featuredProducts = [] }: { featuredProducts?: a
               </div>
             </nav>
 
-            <div className="p-6 bg-black/50 border-t border-gold-500/20 space-y-4">
+            <div className="p-6 bg-white border-t border-stone-200 space-y-4">
               {mounted && user ? (
                 <div className="flex flex-col gap-3">
                   <div className="flex items-center gap-3 px-4 py-2">
-                    <div className="w-10 h-10 rounded-full bg-gold-500/20 border border-gold-500/40 flex items-center justify-center text-gold-300 font-bold text-sm shrink-0">
+                    <div className="w-10 h-10 rounded-full bg-amber-100 border border-amber-300 flex items-center justify-center text-amber-900 font-bold text-sm shrink-0">
                       {user.name ? user.name.split(' ').map((n: string) => n[0]).join('').toUpperCase().substring(0, 2) : 'U'}
                     </div>
                     <div className="min-w-0">
-                      <p className="text-sm font-bold text-white truncate">{user.name}</p>
-                      <p className="text-xs text-stone-400 truncate">{user.email}</p>
+                      <p className="text-sm font-bold text-stone-900 truncate">{user.name}</p>
+                      <p className="text-xs text-stone-500 truncate">{user.email}</p>
                     </div>
                   </div>
                   <Link
                     href="/account"
                     onClick={() => setMobileOpen(false)}
-                    className="flex items-center justify-center gap-2 px-4 py-3.5 rounded-xl text-sm font-bold bg-gold-500 text-stone-950 hover:bg-gold-400 transition-colors shadow-lg"
+                    className="flex items-center justify-center gap-2 px-4 py-3.5 rounded-xl text-sm font-bold bg-stone-900 text-white hover:bg-black transition-colors shadow-md"
                   >
                     Go to Concierge
                   </Link>
@@ -602,15 +601,15 @@ export default function Header({ featuredProducts = [] }: { featuredProducts?: a
                 <Link
                   href="/account"
                   onClick={() => setMobileOpen(false)}
-                  className="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-bold bg-gold-500/10 border border-gold-500/30 text-gold-300 hover:bg-gold-500/20 transition-all"
+                  className="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-bold bg-amber-50 border border-amber-200 text-amber-900 hover:bg-amber-100 transition-all"
                 >
-                  <User size={18} className="text-gold-400" />
+                  <User size={18} className="text-amber-700" />
                   Sign In / Register
                 </Link>
               )}
-              <div className="text-xs text-stone-400 font-medium pt-2">
-                <p className="flex items-center gap-2 mb-2"><Phone size={14} className="text-gold-400" /> +91 98765 43210</p>
-                <p className="flex items-center gap-2"><Mail size={14} className="text-gold-400" /> concierge@amalperfume.com</p>
+              <div className="text-xs text-stone-500 font-medium pt-2">
+                <p className="flex items-center gap-2 mb-2"><Phone size={14} className="text-amber-700" /> +91 98765 43210</p>
+                <p className="flex items-center gap-2"><Mail size={14} className="text-amber-700" /> concierge@amalperfume.com</p>
               </div>
             </div>
           </div>

@@ -164,7 +164,7 @@ export default async function HomePage() {
       <HeroBanner />
 
       {/* All Products Section (Featured Preview) */}
-      <section id="all-products" className="py-12 md:py-20 bg-transparent relative border-b border-white/10">
+      <section id="all-products" className="py-12 md:py-20 bg-transparent relative border-b border-stone-200">
         <div className="container-plt">
           <SectionHeader
             tag="Featured Showcase"
@@ -178,7 +178,7 @@ export default async function HomePage() {
           <div className="mt-10 text-center">
             <a
               href="/all-products"
-              className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-white text-gray-900 font-semibold text-sm shadow-md hover:bg-gray-100 hover:scale-105 transition-all duration-300"
+              className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-stone-900 text-white font-semibold text-sm shadow-md hover:bg-black hover:scale-105 transition-all duration-300"
             >
               Explore All Fragrances ({formattedProducts.length}) →
             </a>
@@ -210,7 +210,7 @@ export default async function HomePage() {
       <FeaturedCategories categories={categories} />
 
       {/* Trending & Best Sellers */}
-      <section id="trending" className="py-12 md:py-24 bg-transparent border-t border-white/10">
+      <section id="trending" className="py-12 md:py-24 bg-transparent border-t border-stone-200">
         <div className="container-plt">
           <SectionHeader
             tag="Curated For You"
@@ -247,7 +247,7 @@ export default async function HomePage() {
           </div>
 
           {/* Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16 pt-12 border-t border-gray-100">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16 pt-12 border-t border-stone-200">
             {[
               { value: '2,500+', label: 'Connoisseurs Worldwide' },
               { value: '4.9/5', label: 'Average Review Score' },
@@ -255,8 +255,8 @@ export default async function HomePage() {
               { value: '100%', label: 'Cruelty-Free & IFRA Safe' },
             ].map(({ value, label }) => (
               <div key={label} className="text-center group">
-                <p className="font-display text-4xl md:text-5xl font-bold text-white mb-2 group-hover:scale-110 transition-transform duration-500 ease-apple">{value}</p>
-                <p className="text-xs uppercase tracking-widest text-white/60 font-bold">{label}</p>
+                <p className="font-display text-4xl md:text-5xl font-bold text-stone-900 mb-2 group-hover:scale-110 transition-transform duration-500 ease-apple">{value}</p>
+                <p className="text-xs uppercase tracking-widest text-stone-600 font-bold">{label}</p>
               </div>
             ))}
           </div>

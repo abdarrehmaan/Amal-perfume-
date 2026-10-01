@@ -20,17 +20,6 @@ interface Slide {
 
 const slides: Slide[] = [
   {
-    id: 1,
-    image: '/amal-logo.jpg',
-    tag: 'Haute Parfumerie Reserve',
-    title: 'An Olfactory Emotion',
-    subtitle: "More than a fragrance — it's an emotion. Hand-compounded with rare aged agarwoods and French floral extraits.",
-    cta: 'Discover Fragrances',
-    ctaHref: '/all-products',
-    align: 'right',
-    isGraphic: true,
-  },
-  {
     id: 2,
     image: '/products/saddle-leather.jpg',
     tag: 'Extrait de Parfum',
@@ -105,13 +94,13 @@ export default function HeroBanner() {
     <section
       id="hero-banner"
       ref={containerRef}
-      className="relative w-full md:min-h-screen overflow-hidden bg-gray-950 flex flex-col md:flex-row md:items-center pt-16 md:pt-20"
+      className="relative w-full md:min-h-screen overflow-hidden bg-[#FAF8F5] flex flex-col md:flex-row md:items-center pt-16 md:pt-20"
       aria-label="Hero banner"
       onMouseMove={handleMouseMove}
       onMouseLeave={() => { mouseX.set(0); mouseY.set(0); }}
     >
       {/* Immersive Background Images with Parallax */}
-      <div className={`relative w-full ${slide.isGraphic ? 'aspect-[16/9]' : 'aspect-[4/3] sm:aspect-[16/9]'} md:absolute md:inset-[-5%] md:w-auto md:h-auto z-0 shrink-0 overflow-hidden`}>
+      <div className="relative w-full aspect-[4/3] sm:aspect-[16/9] md:absolute md:inset-[-5%] md:w-auto md:h-auto z-0 shrink-0 overflow-hidden">
         <AnimatePresence custom={direction} initial={false}>
           <motion.div
             key={slide.id}
@@ -126,20 +115,27 @@ export default function HeroBanner() {
               src={slide.image}
               alt={slide.title}
               fill
-              className={slide.isGraphic ? 'object-contain object-center md:object-left p-4 md:p-10 md:pl-20' : 'object-cover object-center'}
+              className="object-cover object-center"
               priority
               sizes="100vw"
               unoptimized={slide.image.startsWith('/')}
             />
-            {/* Gradient Overlays for Readability */}
-            <div className={`absolute inset-0 bg-gradient-to-t from-gray-950 via-transparent to-transparent ${slide.isGraphic ? 'opacity-60 md:opacity-40' : ''} md:bg-gradient-to-${slide.align === 'left' ? 'r' : 'l'} md:from-gray-900/90 md:via-gray-900/50 md:to-transparent z-10`} />
-            <div className="absolute inset-0 bg-gradient-to-t from-gray-950/80 via-transparent to-gray-900/40 z-10 hidden md:block" />
+            {/* Soft Ambient Light Gradient Overlays for Readability */}
+            <div className="absolute inset-0 bg-gradient-to-t from-[#FAF8F5] via-[#FAF8F5]/30 to-transparent z-10 md:hidden" />
+            <div
+              className={`hidden md:block absolute inset-0 z-10 ${
+                slide.align === 'left'
+                  ? 'bg-gradient-to-r from-[#FAF8F5] via-[#FAF8F5]/90 to-transparent'
+                  : 'bg-gradient-to-l from-[#FAF8F5] via-[#FAF8F5]/90 to-transparent'
+              }`}
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#FAF8F5]/80 via-transparent to-[#FAF8F5]/30 z-10 hidden md:block" />
           </motion.div>
         </AnimatePresence>
       </div>
 
       {/* Content */}
-      <div className={`relative z-20 container-plt w-full pt-6 pb-20 md:py-20 flex ${slide.align === 'left' ? 'justify-start' : 'justify-end'} bg-gray-950 md:bg-transparent`}>
+      <div className={`relative z-20 container-plt w-full pt-6 pb-20 md:py-20 flex ${slide.align === 'left' ? 'justify-start' : 'justify-end'} bg-[#FAF8F5] md:bg-transparent`}>
         <AnimatePresence mode="wait">
           <motion.div
             key={slide.id}
@@ -154,9 +150,9 @@ export default function HeroBanner() {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="inline-flex items-center gap-2 px-4 py-1.5 mb-4 sm:mb-6 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-xs font-bold uppercase tracking-[0.2em]"
+              className="inline-flex items-center gap-2 px-4 py-1.5 mb-4 sm:mb-6 rounded-full bg-amber-500/10 backdrop-blur-md border border-amber-500/25 text-amber-900 text-xs font-bold uppercase tracking-[0.2em]"
             >
-              <Sparkles size={12} className="text-brand-400" />
+              <Sparkles size={12} className="text-amber-600" />
               {slide.tag}
             </motion.div>
 
@@ -165,7 +161,7 @@ export default function HeroBanner() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="font-display text-2xl sm:text-5xl md:text-7xl lg:text-8xl font-bold text-white leading-[1.2] sm:leading-[1.05] mb-3 sm:mb-6 tracking-tight drop-shadow-2xl"
+              className="font-display text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-bold text-stone-900 leading-[1.15] sm:leading-[1.05] mb-3 sm:mb-6 tracking-tight"
             >
               {slide.title}
             </motion.h1>
@@ -175,7 +171,7 @@ export default function HeroBanner() {
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
-              className={`text-gray-300 text-xs sm:text-lg md:text-xl leading-relaxed mb-6 sm:mb-10 max-w-lg ${slide.align === 'left' ? 'mr-auto' : 'md:ml-auto'} font-light drop-shadow-md`}
+              className={`text-stone-600 text-sm sm:text-lg md:text-xl leading-relaxed mb-6 sm:mb-10 max-w-lg ${slide.align === 'left' ? 'mr-auto' : 'md:ml-auto'} font-normal`}
             >
               {slide.subtitle}
             </motion.p>
@@ -190,13 +186,13 @@ export default function HeroBanner() {
               <Link
                 href={slide.ctaHref}
                 id={`hero-cta-${slide.id}`}
-                className="w-full sm:w-auto text-center btn-gold text-xs sm:text-sm md:text-base px-6 py-3 sm:px-10 sm:py-4 uppercase tracking-widest font-bold"
+                className="w-full sm:w-auto text-center btn-gold text-xs sm:text-sm md:text-base px-6 py-3.5 sm:px-10 sm:py-4 uppercase tracking-widest font-bold shadow-md hover:shadow-lg transition-all"
               >
                 {slide.cta}
               </Link>
               <Link
                 href="/collections"
-                className="w-full sm:w-auto text-center btn-ghost text-white border border-white/30 hover:bg-white hover:text-gray-900 text-xs sm:text-sm md:text-base px-6 py-3 sm:px-10 sm:py-4 uppercase tracking-widest font-bold backdrop-blur-sm"
+                className="w-full sm:w-auto text-center border-2 border-stone-800 text-stone-900 hover:bg-stone-900 hover:text-white text-xs sm:text-sm md:text-base px-6 py-3.5 sm:px-10 sm:py-4 uppercase tracking-widest font-bold backdrop-blur-sm transition-all rounded-lg"
               >
                 Explore Collections
               </Link>
@@ -207,20 +203,20 @@ export default function HeroBanner() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.8 }}
-              className={`mt-8 sm:mt-12 flex items-center gap-4 border-t border-white/20 pt-6 max-w-md ${slide.align === 'left' ? 'mr-auto' : 'md:ml-auto'}`}
+              className={`mt-8 sm:mt-12 flex items-center gap-4 border-t border-stone-200/80 pt-6 max-w-md ${slide.align === 'left' ? 'mr-auto' : 'md:ml-auto'}`}
             >
                <div className="flex -space-x-2">
                  {[1, 2, 3, 4].map((i) => (
-                   <div key={i} className="w-8 h-8 rounded-full border border-gray-900 bg-gray-200 overflow-hidden shrink-0">
+                   <div key={i} className="w-8 h-8 rounded-full border border-white bg-stone-200 overflow-hidden shrink-0 shadow-sm">
                      <img src={`https://i.pravatar.cc/100?img=${i + 10}`} alt="Customer" className="w-full h-full object-cover" />
                    </div>
                  ))}
                </div>
                <div className="flex flex-col text-left">
-                 <div className="flex items-center gap-1 text-gold-400">
+                 <div className="flex items-center gap-1 text-amber-500">
                    {[...Array(5)].map((_, i) => <Star key={i} size={12} fill="currentColor" />)}
                  </div>
-                 <span className="text-white text-xs font-semibold mt-0.5">Trusted by 10,000+ women</span>
+                 <span className="text-stone-800 text-xs font-semibold mt-0.5">Trusted by 10,000+ connoisseurs</span>
                </div>
             </motion.div>
           </motion.div>
@@ -237,7 +233,7 @@ export default function HeroBanner() {
               onClick={() => { setDirection(i > current ? 1 : -1); setCurrent(i); }}
               aria-label={`Go to slide ${i + 1}`}
               className={`transition-all duration-500 rounded-full ${
-                i === current ? 'w-10 h-1.5 bg-white' : 'w-2 h-1.5 bg-white/40 hover:bg-white/70'
+                i === current ? 'w-10 h-1.5 bg-stone-900' : 'w-2 h-1.5 bg-stone-300 hover:bg-stone-500'
               }`}
             />
           ))}
@@ -248,14 +244,14 @@ export default function HeroBanner() {
           <button
             onClick={prev}
             aria-label="Previous slide"
-            className="w-12 h-12 rounded-full bg-white/5 backdrop-blur-md text-white hover:bg-white/20 transition-all flex items-center justify-center border border-white/20"
+            className="w-12 h-12 rounded-full bg-white/80 backdrop-blur-md text-stone-800 hover:bg-stone-900 hover:text-white transition-all flex items-center justify-center border border-stone-200 shadow-sm"
           >
             <ChevronLeft size={20} />
           </button>
           <button
             onClick={next}
             aria-label="Next slide"
-            className="w-12 h-12 rounded-full bg-white/5 backdrop-blur-md text-white hover:bg-white/20 transition-all flex items-center justify-center border border-white/20"
+            className="w-12 h-12 rounded-full bg-white/80 backdrop-blur-md text-stone-800 hover:bg-stone-900 hover:text-white transition-all flex items-center justify-center border border-stone-200 shadow-sm"
           >
             <ChevronRight size={20} />
           </button>
@@ -265,10 +261,10 @@ export default function HeroBanner() {
       {/* Explore Collection Link Anchor */}
       <a
         href="#all-products"
-        className="hidden md:flex absolute bottom-7 left-1/2 -translate-x-1/2 z-30 items-center gap-2 text-[11px] uppercase tracking-[0.25em] text-white/70 hover:text-amber-300 transition-colors bg-black/40 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/10"
+        className="hidden md:flex absolute bottom-7 left-1/2 -translate-x-1/2 z-30 items-center gap-2 text-[11px] uppercase tracking-[0.25em] text-stone-700 hover:text-stone-900 transition-colors bg-white/85 backdrop-blur-md px-4 py-1.5 rounded-full border border-stone-200 shadow-sm"
       >
         <span>Explore Collection</span>
-        <ChevronDown size={14} className="animate-bounce text-amber-400" />
+        <ChevronDown size={14} className="animate-bounce text-amber-600" />
       </a>
     </section>
   );

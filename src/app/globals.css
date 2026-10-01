@@ -59,15 +59,15 @@ html {
 
 body {
   font-family: var(--font-sans);
-  background-color: #080808; /* Obsidian Black */
+  background-color: #FAF8F5; /* Royal Ivory / Luxury Alabaster */
   background-image: 
-    radial-gradient(circle at 50% 0%, rgba(212, 175, 55, 0.15) 0%, transparent 60%),
-    radial-gradient(circle at 100% 100%, rgba(212, 175, 55, 0.05) 0%, transparent 40%),
-    linear-gradient(rgba(212, 175, 55, 0.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(212, 175, 55, 0.035) 1px, transparent 1px);
+    radial-gradient(circle at 50% 0%, rgba(212, 175, 55, 0.08) 0%, transparent 60%),
+    radial-gradient(circle at 100% 100%, rgba(212, 175, 55, 0.04) 0%, transparent 40%),
+    linear-gradient(rgba(0, 0, 0, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.02) 1px, transparent 1px);
   background-size: 100% 100%, 100% 100%, 48px 48px, 48px 48px;
   background-attachment: fixed;
-  color: var(--ivory);
+  color: #1C1917;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -239,13 +239,13 @@ h1, h2, h3, .heading-serif {
 
 /* Cards */
 .card-product {
-  @apply relative bg-white/60 backdrop-blur-xl rounded-3xl overflow-hidden transition-all duration-600 ease-[cubic-bezier(0.25,0.1,0.25,1)];
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04), inset 0 0 0 1px rgba(255, 255, 255, 0.6);
+  @apply relative bg-white rounded-3xl overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.25,0.1,0.25,1)] border border-stone-200/80 p-3;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
 }
 
 .card-product:hover {
-  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.1), inset 0 0 0 1px rgba(255, 255, 255, 0.9);
-  @apply transform -translate-y-2 scale-[1.01];
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.08);
+  @apply transform -translate-y-1.5 border-amber-400/50;
 }
 
 /* Product image hover overlay */
@@ -323,13 +323,12 @@ h1, h2, h3, .heading-serif {
 }
 
 .section-title {
-  @apply text-3xl md:text-4xl lg:text-5xl font-display font-semibold mb-4;
-  color: var(--ivory);
+  @apply text-3xl md:text-4xl lg:text-5xl font-display font-semibold mb-4 text-stone-900;
   line-height: 1.15;
 }
 
 .section-subtitle {
-  @apply text-base md:text-lg text-white/70 max-w-2xl mx-auto;
+  @apply text-base md:text-lg text-stone-600 max-w-2xl mx-auto;
 }
 
 /* Input styles */
@@ -594,48 +593,10 @@ h1, h2, h3, .heading-serif {
 }
 
 /* ============================================================
-   STOREFRONT GLOBAL DARK CRIMSON THEME OVERRIDES
+   STOREFRONT LIGHT LUXURY THEME
    ============================================================ */
-.storefront-main > .bg-white,
-.storefront-main > .bg-ivory-100,
-.storefront-main > .bg-ivory-50,
-.storefront-main > .bg-gray-50 {
-  background-color: transparent !important;
-}
-
-.storefront-main .bg-white:not(.card-product):not(.bg-white\/95):not(.bg-white\/20):not(.bg-white\/60):not(.storefront-main > *) {
-  background-color: rgba(255, 255, 255, 0.03) !important;
-  backdrop-filter: blur(16px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.08) !important;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25) !important;
-}
-
-.storefront-main .bg-ivory-100:not(.storefront-main > *),
-.storefront-main .bg-ivory-50:not(.storefront-main > *),
-.storefront-main .bg-gray-50:not(.storefront-main > *) {
-  background-color: rgba(89, 0, 22, 0.2) !important;
-  backdrop-filter: blur(16px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.05) !important;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15) !important;
-}
-
-.storefront-main .text-gray-900:not(.card-product *):not(.bg-white\/95 *):not(.btn-primary *):not(.btn-gold *):not(button *):not(input *):not(select *):not(textarea *):not(.price-current) {
-  color: var(--ivory) !important;
-}
-.storefront-main .text-gray-800:not(.card-product *):not(.bg-white\/95 *):not(.btn-primary *):not(.btn-gold *):not(button *):not(input *):not(select *):not(textarea *):not(.price-current) {
-  color: var(--ivory) !important;
-}
-.storefront-main .text-gray-700:not(.card-product *):not(.bg-white\/95 *):not(.btn-primary *):not(.btn-gold *):not(button *):not(input *):not(select *):not(textarea *):not(.price-current) {
-  color: rgba(245, 240, 232, 0.85) !important;
-}
-.storefront-main .text-gray-600:not(.card-product *):not(.bg-white\/95 *):not(.btn-primary *):not(.btn-gold *):not(button *):not(input *):not(select *):not(textarea *):not(.price-current) {
-  color: rgba(245, 240, 232, 0.75) !important;
-}
-.storefront-main .text-gray-500:not(.card-product *):not(.bg-white\/95 *):not(.btn-primary *):not(.btn-gold *):not(button *):not(input *):not(select *):not(textarea *):not(.price-current) {
-  color: rgba(245, 240, 232, 0.6) !important;
-}
-.storefront-main .text-gray-400:not(.card-product *):not(.bg-white\/95 *):not(.btn-primary *):not(.btn-gold *):not(button *):not(input *):not(select *):not(textarea *):not(.price-current) {
-  color: rgba(245, 240, 232, 0.45) !important;
+.storefront-main {
+  color: #1C1917;
 }
 
 .storefront-main h1, 
@@ -644,89 +605,58 @@ h1, h2, h3, .heading-serif {
 .storefront-main h4, 
 .storefront-main h5, 
 .storefront-main h6 {
-  color: var(--ivory) !important;
+  color: #1C1917 !important;
+}
+
+.storefront-main .text-gray-900 {
+  color: #1C1917 !important;
+}
+.storefront-main .text-gray-800 {
+  color: #292524 !important;
+}
+.storefront-main .text-gray-700 {
+  color: #44403C !important;
+}
+.storefront-main .text-gray-600 {
+  color: #57534E !important;
+}
+.storefront-main .text-gray-500 {
+  color: #78716C !important;
+}
+.storefront-main .text-gray-400 {
+  color: #A8A29E !important;
 }
 
 .storefront-main .input-base {
-  background-color: rgba(255, 255, 255, 0.05) !important;
-  border-color: rgba(255, 255, 255, 0.1) !important;
-  color: var(--ivory) !important;
+  background-color: #FFFFFF !important;
+  border-color: #E7E5E4 !important;
+  color: #1C1917 !important;
 }
 .storefront-main .input-base::placeholder {
-  color: rgba(245, 240, 232, 0.45) !important;
+  color: #A8A29E !important;
 }
 .storefront-main .input-base:focus {
-  border-color: var(--brand-light) !important;
-  box-shadow: 0 0 0 2px rgba(255, 122, 138, 0.2) !important;
-}
-.storefront-main select.input-base option {
-  background-color: #3a000e !important;
-  color: var(--ivory) !important;
-}
-
-.storefront-main .bg-brand-50 {
-  background-color: rgba(89, 0, 22, 0.3) !important;
-}
-.storefront-main .text-brand-600 {
-  color: var(--brand-light) !important;
+  border-color: var(--brand-primary) !important;
+  box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.2) !important;
 }
 
 .storefront-main .border-gray-200,
 .storefront-main .border-gray-100 {
-  border-color: rgba(255, 255, 255, 0.08) !important;
-}
-.storefront-main .divide-gray-100 > * + * {
-  border-color: rgba(255, 255, 255, 0.08) !important;
+  border-color: #E7E5E4 !important;
 }
 
-/* Contrast Enhancement overrides for text-brand classes */
-.storefront-main .text-brand-700:not(.card-product *):not(.bg-white\/95 *):not(.btn-primary *):not(.btn-gold *):not(button *) {
-  color: var(--gold) !important;
-}
-.storefront-main .text-brand-800:not(.card-product *):not(.bg-white\/95 *):not(.btn-primary *):not(.btn-gold *):not(button *) {
-  color: var(--gold) !important;
-}
-.storefront-main .text-brand-900:not(.card-product *):not(.bg-white\/95 *):not(.btn-primary *):not(.btn-gold *):not(button *) {
-  color: var(--gold) !important;
+.storefront-main .text-brand-700,
+.storefront-main .text-brand-800,
+.storefront-main .text-brand-900 {
+  color: #8C6D23 !important;
 }
 
-/* Hover contrast fixes */
-.storefront-main .hover\:text-brand-700:hover:not(.card-product *):not(.bg-white\/95 *) {
-  color: var(--brand-light) !important;
-}
-.storefront-main .hover\:text-brand-800:hover:not(.card-product *):not(.bg-white\/95 *) {
-  color: var(--brand-light) !important;
-}
-.storefront-main .hover\:text-brand-900:hover:not(.card-product *):not(.bg-white\/95 *) {
-  color: var(--brand-light) !important;
-}
-.storefront-main .hover\:text-brand-600:hover:not(.card-product *):not(.bg-white\/95 *) {
-  color: var(--brand-light) !important;
+.storefront-main .hover\:text-brand-700:hover,
+.storefront-main .hover\:text-brand-800:hover,
+.storefront-main .hover\:text-brand-900:hover {
+  color: #B8892A !important;
 }
 
-/* Premium alert/status boxes style overrides */
-.storefront-main .bg-emerald-50 {
-  background-color: rgba(16, 185, 129, 0.1) !important;
-  border-color: rgba(16, 185, 129, 0.2) !important;
-}
-.storefront-main .text-emerald-700,
-.storefront-main .text-emerald-600 {
-  color: #34d399 !important;
-}
-
-.storefront-main .bg-blue-50 {
-  background-color: rgba(59, 130, 246, 0.1) !important;
-  border-color: rgba(59, 130, 246, 0.2) !important;
-}
-.storefront-main .text-blue-700,
-.storefront-main .text-blue-600 {
-  color: #60a5fa !important;
-}
-
-.storefront-main .bg-amber-50 {
-  background-color: rgba(245, 158, 11, 0.1) !important;
-  border-color: rgba(245, 158, 11, 0.2) !important;
-}
 /* ============================================================
    TAX INVOICE PAPER BILL STRICT WHITE OVERRIDES
    ============================================================ */

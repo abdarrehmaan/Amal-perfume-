@@ -26,9 +26,9 @@ export default function LuxuryEffects() {
   return (
     <div className="fixed inset-0 z-[-1] overflow-hidden pointer-events-none bg-transparent">
       {/* Aurora Gradients - AMAL Gold & Amber Ambience */}
-      <div className="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] rounded-full filter blur-[120px] opacity-25 animate-aurora" style={{ background: 'radial-gradient(circle, rgba(212,175,55,0.3) 0%, transparent 70%)' }}></div>
-      <div className="absolute top-[25%] right-[-10%] w-[45vw] h-[45vw] rounded-full filter blur-[140px] opacity-20 animate-aurora" style={{ background: 'radial-gradient(circle, rgba(184,137,42,0.25) 0%, transparent 70%)', animationDelay: '-6s' }}></div>
-      <div className="absolute bottom-[-15%] left-[20%] w-[55vw] h-[55vw] rounded-full filter blur-[150px] opacity-20 animate-aurora" style={{ background: 'radial-gradient(circle, rgba(244,208,111,0.2) 0%, transparent 70%)', animationDelay: '-12s' }}></div>
+      <div className="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] rounded-full filter blur-[120px] opacity-15 animate-aurora" style={{ background: 'radial-gradient(circle, rgba(212,175,55,0.2) 0%, transparent 70%)' }}></div>
+      <div className="absolute top-[25%] right-[-10%] w-[45vw] h-[45vw] rounded-full filter blur-[140px] opacity-15 animate-aurora" style={{ background: 'radial-gradient(circle, rgba(212,175,55,0.15) 0%, transparent 70%)', animationDelay: '-6s' }}></div>
+      <div className="absolute bottom-[-15%] left-[20%] w-[55vw] h-[55vw] rounded-full filter blur-[150px] opacity-15 animate-aurora" style={{ background: 'radial-gradient(circle, rgba(244,208,111,0.15) 0%, transparent 70%)', animationDelay: '-12s' }}></div>
 
       {/* Floating Particles */}
       <div className="absolute inset-0">
@@ -41,13 +41,13 @@ export default function LuxuryEffects() {
               top: `${p.y}%`,
               width: p.size,
               height: p.size,
-              background: 'radial-gradient(circle, rgba(201,168,76,0.8) 0%, rgba(201,168,76,0) 100%)',
-              boxShadow: '0 0 10px rgba(201,168,76,0.5)',
+              background: 'radial-gradient(circle, rgba(201,168,76,0.6) 0%, rgba(201,168,76,0) 100%)',
+              boxShadow: '0 0 6px rgba(201,168,76,0.3)',
             }}
             animate={{
               y: [0, -100, -200],
               x: [0, Math.random() * 50 - 25, Math.random() * 50 - 25],
-              opacity: [0, 0.8, 0],
+              opacity: [0, 0.6, 0],
               scale: [0, 1, 0.5],
             }}
             transition={{
@@ -59,9 +59,6 @@ export default function LuxuryEffects() {
           />
         ))}
       </div>
-      
-      {/* Glass Overlay for texture */}
-      <div className="absolute inset-0 bg-black/10 backdrop-blur-[2px]"></div>
     </div>
   );
 }
