@@ -570,32 +570,7 @@ export default function Header({ featuredProducts = [] }: { featuredProducts?: a
                 <div className="w-6 h-1 bg-stone-300/80 rounded-full mx-auto mt-3" />
               </div>
 
-              {/* 3. Promotional Mini Banner (Build Your Own Box) */}
-              <div className="p-4 px-5">
-                <Link
-                  href="/products/master-perfumers-discovery-coffret"
-                  onClick={() => setMobileOpen(false)}
-                  className="relative block rounded-2xl overflow-hidden shadow-xs border border-amber-200/70 p-3.5 group"
-                  style={{
-                    background: 'linear-gradient(135deg, #1C1917 0%, #2A241C 50%, #453725 100%)',
-                  }}
-                >
-                  <div className="flex items-center justify-between">
-                    <div className="z-10 pr-2">
-                      <span className="text-[9px] uppercase tracking-[0.25em] text-amber-400 font-bold block mb-0.5">Coffret Set</span>
-                      <h4 className="font-display text-sm font-bold text-white leading-tight">
-                        Build Your Own Box
-                      </h4>
-                      <p className="text-[10px] text-amber-200/80 mt-0.5 font-light">
-                        Curate Any 3 Discovery Flacons
-                      </p>
-                    </div>
-                    <div className="w-16 h-12 relative shrink-0">
-                      <img src="/products/amal-collection.jpg" alt="Build Box" className="w-full h-full object-cover rounded-lg border border-amber-400/30" />
-                    </div>
-                  </div>
-                </Link>
-              </div>
+
 
               {/* 4. Streamlined Navigation Links */}
               <div className="py-2 divide-y divide-stone-100 text-stone-800 font-medium text-sm">
