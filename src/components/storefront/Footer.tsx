@@ -40,11 +40,11 @@ export default function Footer() {
                     AMAL
                   </span>
                   <div className="flex items-center gap-1.5 mt-1">
-                    <span className="h-[1px] w-3 bg-[#B88E3E]"></span>
+                    <span className="h-[1px] w-6 bg-[#B88E3E]"></span>
                     <span className="text-[9px] uppercase tracking-[0.25em] text-[#B88E3E] font-bold">
                       PERFUME
                     </span>
-                    <span className="h-[1px] w-3 bg-[#B88E3E]"></span>
+                    <span className="h-[1px] w-6 bg-[#B88E3E]"></span>
                   </div>
                 </div>
               </div>
