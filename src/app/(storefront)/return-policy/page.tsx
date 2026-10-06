@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { ShieldCheck, Video, MessageSquare, CheckCircle2, Sparkles, RefreshCw, PackageCheck, AlertCircle } from 'lucide-react';
+import { ShieldCheck, Video, MessageSquare, CheckCircle2, RefreshCw } from 'lucide-react';
 import BackButton from '@/components/storefront/BackButton';
 
 export const metadata: Metadata = {
@@ -32,49 +32,6 @@ export default function ReturnPolicyPage() {
       </div>
 
       <div className="container-plt py-10 md:py-14 px-4 max-w-4xl mx-auto space-y-8">
-        {/* 4 Key Points Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
-          <div className="bg-white p-5 rounded-2xl border border-stone-200/80 shadow-xs flex flex-col items-center text-center">
-            <div className="w-11 h-11 rounded-xl bg-amber-50 text-amber-800 flex items-center justify-center mb-3">
-              <Sparkles size={20} />
-            </div>
-            <h3 className="font-bold text-stone-900 text-sm mb-1">1. Sample First</h3>
-            <p className="text-xs text-stone-600 leading-relaxed">
-              Test the free 2ml sample vial included before opening the main flacon.
-            </p>
-          </div>
-
-          <div className="bg-white p-5 rounded-2xl border border-stone-200/80 shadow-xs flex flex-col items-center text-center">
-            <div className="w-11 h-11 rounded-xl bg-emerald-50 text-emerald-800 flex items-center justify-center mb-3">
-              <PackageCheck size={20} />
-            </div>
-            <h3 className="font-bold text-stone-900 text-sm mb-1">2. Intact Seal</h3>
-            <p className="text-xs text-stone-600 leading-relaxed">
-              Main bottle box and cellophane wrap must remain unopened & sealed.
-            </p>
-          </div>
-
-          <div className="bg-white p-5 rounded-2xl border border-stone-200/80 shadow-xs flex flex-col items-center text-center">
-            <div className="w-11 h-11 rounded-xl bg-rose-50 text-rose-800 flex items-center justify-center mb-3">
-              <AlertCircle size={20} />
-            </div>
-            <h3 className="font-bold text-stone-900 text-sm mb-1">3. Hygiene Standard</h3>
-            <p className="text-xs text-stone-600 leading-relaxed">
-              Opened or unsealed perfume bottles cannot be returned or refunded.
-            </p>
-          </div>
-
-          <div className="bg-white p-5 rounded-2xl border border-stone-200/80 shadow-xs flex flex-col items-center text-center">
-            <div className="w-11 h-11 rounded-xl bg-sky-50 text-sky-800 flex items-center justify-center mb-3">
-              <Video size={20} />
-            </div>
-            <h3 className="font-bold text-stone-900 text-sm mb-1">4. Unboxing Video</h3>
-            <p className="text-xs text-stone-600 leading-relaxed">
-              Continuous 360° unboxing video is required for transit damage claims.
-            </p>
-          </div>
-        </div>
-
         {/* Detailed Points in Structured Sections */}
         <div className="bg-white rounded-2xl border border-stone-200/90 p-6 sm:p-10 shadow-xs space-y-8 text-stone-700">
           {/* Section 1: Return Rules */}
@@ -94,6 +51,12 @@ export default function ReturnPolicyPage() {
                 <span className="w-2 h-2 rounded-full bg-amber-600 shrink-0 mt-2" />
                 <div>
                   <strong className="text-stone-900">Original Packaging Required:</strong> The item must be in its original outer box with tamper-evident cellophane wrapping intact.
+                </div>
+              </li>
+              <li className="flex items-start gap-2.5">
+                <span className="w-2 h-2 rounded-full bg-amber-600 shrink-0 mt-2" />
+                <div>
+                  <strong className="text-stone-900">Hygiene & Safety Standards:</strong> Opened, sprayed, or unsealed perfume bottles cannot be returned or refunded.
                 </div>
               </li>
               <li className="flex items-start gap-2.5">
