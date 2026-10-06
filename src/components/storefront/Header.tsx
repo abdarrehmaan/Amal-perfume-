@@ -161,11 +161,7 @@ export default function Header({ featuredProducts = [] }: { featuredProducts?: a
                 <img src="/amal-logo.jpg" alt="AMAL PERFUME" className="h-12 sm:h-16 md:h-20 w-auto object-contain hover:scale-105 transition-all duration-300" style={{ maxHeight: '82px' }} />
                 <div className="hidden md:flex flex-col">
                   <span className="font-display text-2xl lg:text-3xl font-bold text-stone-900 tracking-widest leading-none">AMAL</span>
-                  <div className="flex items-center gap-1.5 mt-1">
-                    <span className="h-[1px] w-6 bg-[#B88E3E]"></span>
-                    <span className="text-[10px] tracking-[0.25em] uppercase text-[#B88E3E] font-bold">PERFUME</span>
-                    <span className="h-[1px] w-6 bg-[#B88E3E]"></span>
-                  </div>
+                  <span className="text-[10px] tracking-[0.45em] uppercase text-amber-700 font-bold mt-1">PERFUME</span>
                   <span className="text-[9px] tracking-[0.15em] uppercase text-stone-500 font-medium mt-0.5">Luxury In Every Spray</span>
                 </div>
               </Link>

@@ -19,6 +19,13 @@ export default function Footer() {
 
   return (
     <footer className="relative w-full bg-[#FAF9F5] text-stone-600 font-sans border-t border-stone-200/80 clear-both block">
+      {/* Gold Separator Bar before Logo (separating Connoisseurs & Footer) */}
+      <div className="w-full py-5 border-b border-stone-200/70 bg-[#F4F0E6]/50 flex items-center justify-center">
+        <div className="section-tag justify-center mb-0 text-xs sm:text-sm font-bold tracking-[0.25em] text-[#B88E3E]">
+          THE MASTERPIECES
+        </div>
+      </div>
+
       {/* Main Footer Container */}
       <div className="container-plt py-12 md:py-16">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
@@ -40,11 +47,11 @@ export default function Footer() {
                     AMAL
                   </span>
                   <div className="flex items-center gap-1.5 mt-1">
-                    <span className="h-[1px] w-6 bg-[#B88E3E]"></span>
+                    <span className="h-[1px] w-3 bg-[#B88E3E]"></span>
                     <span className="text-[9px] uppercase tracking-[0.25em] text-[#B88E3E] font-bold">
                       PERFUME
                     </span>
-                    <span className="h-[1px] w-6 bg-[#B88E3E]"></span>
+                    <span className="h-[1px] w-3 bg-[#B88E3E]"></span>
                   </div>
                 </div>
               </div>
