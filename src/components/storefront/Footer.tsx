@@ -129,11 +129,6 @@ export default function Footer() {
                   Returns &amp; Refund Policy
                 </Link>
               </li>
-              <li>
-                <Link href="/all-products" className="hover:text-[#B88E3E] transition-colors inline-block">
-                  Long Lasting Perfumes for Men
-                </Link>
-              </li>
             </ul>
           </div>
 
