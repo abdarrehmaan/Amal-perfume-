@@ -54,15 +54,6 @@ export default function ProductDetailClient({
   const [selectedSize, setSelectedSize] = useState<string | null>(initialVariant?.size || null);
   const [selectedColor, setSelectedColor] = useState<string | null>(initialVariant?.color || null);
   const [quantity, setQuantity] = useState(1);
-  const [activeTab, setActiveTab] = useState<'description' | 'fabric' | 'reviews'>('description');
-  const [reviewModalOpen, setReviewModalOpen] = useState(false);
-  const [reviewSubmitting, setReviewSubmitting] = useState(false);
-  const [reviewForm, setReviewForm] = useState({
-    rating: 5,
-    name: '',
-    title: '',
-    comment: '',
-  });
 
   const handleShare = async () => {
     const url = typeof window !== 'undefined' ? window.location.href : '';
@@ -84,28 +75,6 @@ export default function ProductDetailClient({
     } else {
       toast.success('Link ready to share!');
     }
-  };
-
-  const handleOpenReview = () => {
-    setActiveTab('reviews');
-    const el = document.getElementById('product-tabs-section');
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
-    setReviewModalOpen(true);
-  };
-
-  const handleSubmitReview = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!reviewForm.name.trim() || !reviewForm.title.trim() || !reviewForm.comment.trim()) {
-      toast.error('Please fill in your name, review headline, and detailed feedback.');
-      return;
-    }
-    setReviewSubmitting(true);
-    setTimeout(() => {
-      setReviewSubmitting(false);
-      setReviewModalOpen(false);
-      toast.success('Thank you! Your connoisseur review has been submitted.');
-      setReviewForm({ rating: 5, name: '', title: '', comment: '' });
-    }, 500);
   };
 
   const addItem = useCartStore((s) => s.addItem);
@@ -337,13 +306,6 @@ export default function ProductDetailClient({
                 </div>
                 <span className="text-sm font-bold text-gray-700">{product.avgRating.toFixed(1)}</span>
                 <span className="text-sm text-gray-400">({product._count.reviews} reviews)</span>
-                <button
-                  type="button"
-                  onClick={handleOpenReview}
-                  className="text-sm text-amber-800 hover:text-amber-950 font-medium underline underline-offset-4 ml-1 transition-colors cursor-pointer"
-                >
-                  Write a Review
-                </button>
               </div>
             ) : null}
 
@@ -359,15 +321,7 @@ export default function ProductDetailClient({
                 </span>
               )}
             </div>
-            <p className="text-xs text-gray-400 mb-2">SKU: {product.sku}</p>
-
-            {/* Prepaid offer */}
-            <div className="flex items-center gap-2 mb-5 p-3 rounded-xl bg-emerald-50 border border-emerald-100">
-              <Shield size={14} className="text-emerald-600 flex-shrink-0" />
-              <p className="text-xs text-emerald-700 font-medium">
-                Get extra 5% OFF on prepaid orders · 100% Secure Payment Protection
-              </p>
-            </div>
+            <p className="text-xs text-gray-400 mb-5">SKU: {product.sku}</p>
 
             {/* Colors */}
             {colors.length > 0 && (
@@ -535,119 +489,25 @@ export default function ProductDetailClient({
           </div>
         </div>
 
-        {/* Tabs */}
-        <div id="product-tabs-section" className="mt-16">
-          <div className="flex gap-1 border-b border-gray-200 mb-8">
-            {(['description', 'fabric', 'reviews'] as const).map((tab) => (
-              <button
-                key={tab}
-                onClick={() => setActiveTab(tab)}
-                className={cn(
-                  'px-6 py-3 text-sm font-semibold capitalize border-b-2 -mb-px transition-all',
-                  activeTab === tab
-                    ? 'border-brand-600 text-brand-700'
-                    : 'border-transparent text-gray-500 hover:text-gray-700'
-                )}
-              >
-                {tab === 'description' ? 'Fragrance Story' : tab === 'fabric' ? 'Olfactory Pyramid & Sillage' : 'Connoisseur Reviews'}
-              </button>
-            ))}
-          </div>
-
-          {activeTab === 'description' && (
-            <div className="prose max-w-none text-gray-600 text-sm leading-relaxed whitespace-pre-line">
-              {product.description ? (
-                <p>{product.description}</p>
-              ) : (
-                <>
-                  <p>An exquisite creation from AMAL PERFUME's Private Reserve collection. Compounded with rare botanical extraits, aged resins, and precious floral distillates, this fragrance is designed to unveil an unforgettable signature sillage.</p>
-                  <ul className="mt-4 space-y-2">
-                    <li>✓ Formulated with high-concentration pure perfume oils</li>
-                    <li>✓ Handcrafted in small macerated batches</li>
-                    <li>✓ Exceptional 18+ hours longevity on skin and fabric</li>
-                    <li>✓ Delivered with a complimentary 2ml matching sample vial to test before opening</li>
-                    <li>✓ Heat-sealed in a velvet-lined gold embossed presentation flacon</li>
-                  </ul>
-                </>
-              )}
-            </div>
-          )}
-
-          {activeTab === 'fabric' && (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
-              <div>
-                <h3 className="font-semibold text-gray-900 mb-3">Olfactory Architecture</h3>
-                <div className="space-y-2 text-gray-600">
-                  <div className="flex justify-between py-2 border-b border-gray-100">
-                    <span>Concentration</span>
-                    <span className="font-medium text-gray-900">Extrait de Parfum / EDP (25%–35% Oil)</span>
-                  </div>
-                  <div className="flex justify-between py-2 border-b border-gray-100">
-                    <span>Sillage</span>
-                    <span className="font-medium text-gray-900">Regal & Enveloping</span>
-                  </div>
-                  <div className="flex justify-between py-2 border-b border-gray-100">
-                    <span>Longevity</span>
-                    <span className="font-medium text-gray-900">18–24 Hours</span>
-                  </div>
-                  <div className="flex justify-between py-2">
-                    <span>Maceration</span>
-                    <span className="font-medium text-gray-900">6 Months Minimum Aged</span>
-                  </div>
-                </div>
-              </div>
-              <div>
-                <h3 className="font-semibold text-gray-900 mb-3">Application & Care Guidelines</h3>
-                <ul className="space-y-2 text-gray-600">
-                  <li className="flex items-start gap-2"><span>✨</span> Mist onto pulse points: wrists, sides of the neck, and collarbones</li>
-                  <li className="flex items-start gap-2"><span>🚫</span> Do not rub wrists together — allow natural drydown for pure note evolution</li>
-                  <li className="flex items-start gap-2"><span>🌡️</span> Store flacon in a cool, dry sanctuary away from direct heat and sunlight</li>
-                  <li className="flex items-start gap-2"><span>📦</span> Test the included 2ml tester vial first before breaking the flacon's cellophane seal</li>
+        {/* Fragrance Story */}
+        <div id="product-description-section" className="mt-16 pt-8 border-t border-gray-200">
+          <h2 className="font-display text-xl sm:text-2xl font-bold text-gray-900 mb-6">Fragrance Story</h2>
+          <div className="prose max-w-none text-gray-600 text-sm leading-relaxed whitespace-pre-line">
+            {product.description ? (
+              <p>{product.description}</p>
+            ) : (
+              <>
+                <p>An exquisite creation from AMAL PERFUME's Private Reserve collection. Compounded with rare botanical extraits, aged resins, and precious floral distillates, this fragrance is designed to unveil an unforgettable signature sillage.</p>
+                <ul className="mt-4 space-y-2">
+                  <li>✓ Formulated with high-concentration pure perfume oils</li>
+                  <li>✓ Handcrafted in small macerated batches</li>
+                  <li>✓ Exceptional 18+ hours longevity on skin and fabric</li>
+                  <li>✓ Delivered with a complimentary 2ml matching sample vial to test before opening</li>
+                  <li>✓ Heat-sealed in a velvet-lined gold embossed presentation flacon</li>
                 </ul>
-              </div>
-            </div>
-          )}
-
-          {activeTab === 'reviews' && (
-            <div>
-              <div className="flex items-center gap-6 mb-8 p-6 bg-ivory-100 rounded-2xl">
-                <div className="text-center">
-                  <p className="font-display text-5xl font-bold text-brand-700">{product.avgRating?.toFixed(1) || '—'}</p>
-                  <div className="flex gap-0.5 justify-center mt-1">
-                    {[1,2,3,4,5].map(s => (
-                      <Star key={s} size={16} className={s <= Math.round(product.avgRating || 0) ? 'fill-amber-400 stroke-amber-400' : 'fill-gray-200 stroke-gray-200'} />
-                    ))}
-                  </div>
-                  <p className="text-xs text-gray-500 mt-1">{product._count?.reviews || 0} reviews</p>
-                </div>
-                <div className="flex-1 space-y-1.5">
-                  {[5,4,3,2,1].map(star => (
-                    <div key={star} className="flex items-center gap-2">
-                      <span className="text-xs w-4 text-gray-600">{star}</span>
-                      <Star size={10} className="fill-amber-400 stroke-amber-400" />
-                      <div className="flex-1 h-2 rounded-full bg-gray-200 overflow-hidden">
-                        <div
-                          className="h-full rounded-full bg-amber-400"
-                          style={{ width: star === 5 ? '70%' : star === 4 ? '20%' : star === 3 ? '7%' : '2%' }}
-                        />
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <p className="text-sm text-gray-500 text-center py-8">Be the first to review this product!</p>
-
-              <button
-                type="button"
-                onClick={handleOpenReview}
-                id="write-review-btn"
-                className="btn-primary mx-auto block cursor-pointer"
-              >
-                Write a Review
-              </button>
-            </div>
-          )}
+              </>
+            )}
+          </div>
         </div>
 
         {/* Related products */}
@@ -742,116 +602,6 @@ export default function ProductDetailClient({
             <p>
               Image {lightboxImageIdx + 1} of {images.length}
             </p>
-          </div>
-        </div>
-      )}
-
-      {/* Connoisseur Review Modal */}
-      {reviewModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs animate-fade-in">
-          <div className="bg-white rounded-3xl p-6 sm:p-8 max-w-lg w-full shadow-2xl relative border border-stone-200">
-            <button
-              onClick={() => setReviewModalOpen(false)}
-              className="absolute top-5 right-5 w-8 h-8 rounded-full bg-stone-100 flex items-center justify-center text-stone-500 hover:text-stone-900 transition-colors"
-            >
-              <X size={18} />
-            </button>
-
-            <span className="text-[10px] uppercase font-bold tracking-[0.25em] text-amber-700 block mb-1">
-              Connoisseur Evaluation
-            </span>
-            <h3 className="font-display text-2xl font-bold text-stone-900 mb-2">
-              Review {product.name}
-            </h3>
-            <p className="text-xs text-stone-500 mb-6">
-              Share your impressions on the sillage, projection, note evolution, and longevity of this creation.
-            </p>
-
-            <form onSubmit={handleSubmitReview} className="space-y-4">
-              <div>
-                <label className="block text-xs uppercase tracking-wider font-bold text-stone-700 mb-1.5">
-                  Your Rating
-                </label>
-                <div className="flex gap-2">
-                  {[1, 2, 3, 4, 5].map((star) => (
-                    <button
-                      type="button"
-                      key={star}
-                      onClick={() => setReviewForm((f) => ({ ...f, rating: star }))}
-                      className="p-1 hover:scale-110 transition-transform cursor-pointer"
-                    >
-                      <Star
-                        size={24}
-                        className={
-                          star <= reviewForm.rating
-                            ? 'fill-amber-400 stroke-amber-400'
-                            : 'fill-stone-200 stroke-stone-200'
-                        }
-                      />
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-xs uppercase tracking-wider font-bold text-stone-700 mb-1.5">
-                  Connoisseur Name
-                </label>
-                <input
-                  type="text"
-                  required
-                  value={reviewForm.name}
-                  onChange={(e) => setReviewForm((f) => ({ ...f, name: e.target.value }))}
-                  placeholder="e.g. Tariq Al-Hashimi"
-                  className="w-full px-4 py-2.5 rounded-xl border border-stone-200 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-700"
-                />
-              </div>
-
-              <div>
-                <label className="block text-xs uppercase tracking-wider font-bold text-stone-700 mb-1.5">
-                  Review Headline
-                </label>
-                <input
-                  type="text"
-                  required
-                  value={reviewForm.title}
-                  onChange={(e) => setReviewForm((f) => ({ ...f, title: e.target.value }))}
-                  placeholder="e.g. Hypnotic drydown with unmatched 18-hour longevity"
-                  className="w-full px-4 py-2.5 rounded-xl border border-stone-200 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-700"
-                />
-              </div>
-
-              <div>
-                <label className="block text-xs uppercase tracking-wider font-bold text-stone-700 mb-1.5">
-                  Detailed Critique
-                </label>
-                <textarea
-                  required
-                  rows={3}
-                  value={reviewForm.comment}
-                  onChange={(e) => setReviewForm((f) => ({ ...f, comment: e.target.value }))}
-                  placeholder="Describe the opening, heart, drydown, sillage, and how it performs on skin or fabric..."
-                  className="w-full px-4 py-2.5 rounded-xl border border-stone-200 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-700"
-                />
-              </div>
-
-              <div className="pt-2 flex gap-3">
-                <button
-                  type="button"
-                  onClick={() => setReviewModalOpen(false)}
-                  className="flex-1 py-3 rounded-xl border border-stone-200 text-sm font-semibold text-stone-700 hover:bg-stone-50 transition-colors"
-                >
-                  Cancel
-                </button>
-                <button
-                  type="submit"
-                  disabled={reviewSubmitting}
-                  className="flex-1 py-3 rounded-xl bg-stone-900 text-white text-sm font-semibold hover:bg-black transition-colors disabled:opacity-50"
-                >
-                  {reviewSubmitting ? 'Submitting...' : 'Submit Critique'}
-                </button>
-              </div>
-            </form>
           </div>
         </div>
       )}

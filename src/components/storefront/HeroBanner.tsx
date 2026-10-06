@@ -112,7 +112,7 @@ export default function HeroBanner() {
     <section
       id="hero-banner"
       ref={containerRef}
-      className="relative w-full md:min-h-screen overflow-hidden bg-[#FAF8F5] flex flex-col md:flex-row md:items-center pt-14 md:pt-20"
+      className="relative w-full md:min-h-screen overflow-hidden bg-[#FAF8F5] flex flex-col md:flex-row md:items-center md:pt-20"
       aria-label="Hero banner"
       onMouseMove={handleMouseMove}
       onMouseLeave={() => { mouseX.set(0); mouseY.set(0); }}
@@ -120,7 +120,10 @@ export default function HeroBanner() {
       onTouchEnd={handleTouchEnd}
     >
       {/* Immersive Background Images with Parallax */}
-      <div className="relative w-full aspect-[4/3] sm:aspect-[16/9] md:absolute md:inset-[-5%] md:w-auto md:h-auto z-0 shrink-0 overflow-hidden">
+      <Link
+        href={slide.ctaHref}
+        className="relative w-full aspect-[4/5] sm:aspect-[16/9] md:absolute md:inset-[-5%] md:w-auto md:h-auto z-0 shrink-0 overflow-hidden block"
+      >
         <AnimatePresence custom={direction} initial={false}>
           <motion.div
             key={slide.id}
@@ -140,8 +143,7 @@ export default function HeroBanner() {
               sizes="100vw"
               unoptimized={slide.image.startsWith('/')}
             />
-            {/* Soft Ambient Light Gradient Overlays for Readability */}
-            <div className="absolute inset-0 bg-gradient-to-t from-[#FAF8F5] via-[#FAF8F5]/30 to-transparent z-10 md:hidden" />
+            {/* Desktop Gradient Overlays for Readability */}
             <div
               className={`hidden md:block absolute inset-0 z-10 ${
                 slide.align === 'left'
@@ -152,10 +154,10 @@ export default function HeroBanner() {
             <div className="absolute inset-0 bg-gradient-to-t from-[#FAF8F5]/80 via-transparent to-[#FAF8F5]/30 z-10 hidden md:block" />
           </motion.div>
         </AnimatePresence>
-      </div>
+      </Link>
 
-      {/* Content */}
-      <div className={`relative z-20 container-plt w-full pt-4 pb-24 md:py-20 flex ${slide.align === 'left' ? 'justify-start' : 'justify-end'} bg-[#FAF8F5] md:bg-transparent`}>
+      {/* Content — Desktop Only */}
+      <div className={`hidden md:flex relative z-20 container-plt w-full py-20 ${slide.align === 'left' ? 'justify-start' : 'justify-end'} bg-transparent`}>
         <AnimatePresence mode="wait">
           <motion.div
             key={slide.id}
@@ -163,14 +165,14 @@ export default function HeroBanner() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -30 }}
             transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
-            className={`max-w-2xl ${slide.align === 'left' ? 'text-left md:text-left' : 'text-left md:text-right'} w-full`}
+            className={`max-w-2xl ${slide.align === 'left' ? 'text-left' : 'text-right'} w-full`}
           >
             {/* Tag */}
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="inline-flex items-center gap-2 px-4 py-1.5 mb-4 sm:mb-6 rounded-full bg-amber-500/10 backdrop-blur-md border border-amber-500/25 text-amber-900 text-xs font-bold uppercase tracking-[0.2em]"
+              className="inline-flex items-center gap-2 px-4 py-1.5 mb-6 rounded-full bg-amber-500/10 backdrop-blur-md border border-amber-500/25 text-amber-900 text-xs font-bold uppercase tracking-[0.2em]"
             >
               <Sparkles size={12} className="text-amber-600" />
               {slide.tag}
@@ -181,7 +183,7 @@ export default function HeroBanner() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="font-display text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-bold text-stone-900 leading-[1.15] sm:leading-[1.05] mb-3 sm:mb-6 tracking-tight"
+              className="font-display text-5xl md:text-7xl lg:text-8xl font-bold text-stone-900 leading-[1.05] mb-6 tracking-tight"
             >
               {slide.title}
             </motion.h1>
@@ -191,7 +193,7 @@ export default function HeroBanner() {
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
-              className={`text-stone-600 text-sm sm:text-lg md:text-xl leading-relaxed mb-6 sm:mb-10 max-w-lg ${slide.align === 'left' ? 'mr-auto' : 'md:ml-auto'} font-normal`}
+              className={`text-stone-600 text-lg md:text-xl leading-relaxed mb-10 max-w-lg ${slide.align === 'left' ? 'mr-auto' : 'ml-auto'} font-normal`}
             >
               {slide.subtitle}
             </motion.p>
@@ -201,18 +203,18 @@ export default function HeroBanner() {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 }}
-              className={`flex flex-col sm:flex-row gap-3 sm:gap-5 items-center ${slide.align === 'left' ? 'justify-start' : 'md:justify-end'}`}
+              className={`flex flex-row gap-5 items-center ${slide.align === 'left' ? 'justify-start' : 'justify-end'}`}
             >
               <Link
                 href={slide.ctaHref}
                 id={`hero-cta-${slide.id}`}
-                className="w-full sm:w-auto text-center btn-gold text-xs sm:text-sm md:text-base px-6 py-3.5 sm:px-10 sm:py-4 uppercase tracking-widest font-bold shadow-md hover:shadow-lg transition-all"
+                className="btn-gold text-sm md:text-base px-10 py-4 uppercase tracking-widest font-bold shadow-md hover:shadow-lg transition-all"
               >
                 {slide.cta}
               </Link>
               <Link
                 href="/collections"
-                className="w-full sm:w-auto text-center border-2 border-stone-800 text-stone-900 hover:bg-stone-900 hover:text-white text-xs sm:text-sm md:text-base px-6 py-3.5 sm:px-10 sm:py-4 uppercase tracking-widest font-bold backdrop-blur-sm transition-all rounded-lg"
+                className="border-2 border-stone-800 text-stone-900 hover:bg-stone-900 hover:text-white text-sm md:text-base px-10 py-4 uppercase tracking-widest font-bold backdrop-blur-sm transition-all rounded-lg"
               >
                 Explore Collections
               </Link>
@@ -223,7 +225,7 @@ export default function HeroBanner() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.8 }}
-              className={`mt-8 sm:mt-12 flex items-center gap-4 border-t border-stone-200/80 pt-6 max-w-md ${slide.align === 'left' ? 'mr-auto' : 'md:ml-auto'}`}
+              className={`mt-12 flex items-center gap-4 border-t border-stone-200/80 pt-6 max-w-md ${slide.align === 'left' ? 'mr-auto' : 'ml-auto'}`}
             >
                <div className="flex -space-x-2">
                  {[1, 2, 3, 4].map((i) => (
@@ -244,7 +246,7 @@ export default function HeroBanner() {
       </div>
 
       {/* Controls & Pagination Overlay */}
-      <div className="absolute w-full px-4 sm:px-6 flex justify-between items-center bottom-5 sm:bottom-6 md:w-auto md:px-0 md:bottom-10 md:right-10 z-30 md:flex md:items-center gap-4 sm:gap-8">
+      <div className="absolute bottom-4 left-0 right-0 px-4 sm:px-6 flex justify-between items-center z-30 md:bottom-10 md:right-10 md:left-auto md:w-auto md:px-0 gap-4 sm:gap-8 bg-transparent">
         {/* Dots */}
         <div className="flex gap-2 sm:gap-3">
           {slides.map((_, i) => (

@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 export default function BrandStory() {
   return (
-    <section className="bg-[#F5F2EB] py-12 md:py-28 overflow-hidden relative border-t border-stone-200">
+    <section className="bg-[#F5F2EB] py-16 md:py-28 overflow-hidden relative border-t border-b border-stone-200">
       <div className="container-plt">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20 items-center">
           
@@ -65,7 +65,7 @@ export default function BrandStory() {
               </div>
             </div>
 
-            <div className="mt-8 sm:mt-10">
+            <div className="mt-8 sm:mt-10 pb-4">
               <Link href="/about" className="group inline-flex items-center gap-4 text-xs sm:text-sm font-bold uppercase tracking-widest text-stone-900 border-b-2 border-amber-600 pb-2 hover:text-amber-800 hover:border-amber-800 transition-colors">
                 Explore The Maison 
                 <span className="w-8 h-[1px] bg-current group-hover:translate-x-2 transition-transform" />

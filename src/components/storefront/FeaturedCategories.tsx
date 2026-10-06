@@ -33,7 +33,7 @@ const itemVariants = {
 
 export default function FeaturedCategories({ categories }: { categories: FeaturedCategory[] }) {
   return (
-    <section id="featured-categories" className="section-padding bg-transparent">
+    <section id="featured-categories" className="py-14 sm:py-18 md:py-24 bg-transparent relative">
       <div className="container-plt">
         {/* Header */}
         <motion.div
@@ -90,13 +90,6 @@ export default function FeaturedCategories({ categories }: { categories: Feature
             </motion.div>
           ))}
         </motion.div>
-
-        {/* View all */}
-        <div className="text-center mt-8 sm:mt-14 md:mt-20 pt-4 sm:pt-6">
-          <Link href="/categories" className="btn-secondary">
-            Browse All Categories <ArrowRight size={16} />
-          </Link>
-        </div>
       </div>
     </section>
   );

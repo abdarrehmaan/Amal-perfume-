@@ -1,60 +1,93 @@
 import type { Metadata } from 'next';
-import { MessageSquare, Video } from 'lucide-react';
+import { Truck, Clock, ShieldCheck, MessageSquare, Video, ArrowRight } from 'lucide-react';
 
-export const metadata: Metadata = { title: 'Shipping Policy — PLT Creation', description: 'PLT Creation shipping policy — free shipping above ₹1499, 3-5 business days delivery.' };
+export const metadata: Metadata = {
+  title: 'Shipping & Delivery Policy — AMAL PERFUME',
+  description: 'Complimentary shipping across India on orders above ₹1499. Insured 3-5 business days delivery.',
+};
 
 export default function ShippingPolicyPage() {
-  const policies = [
-    { title: 'Free Shipping', content: 'We offer free standard shipping on all orders above ₹1499 across India. For orders below ₹1499, a flat shipping charge of ₹99 is applicable.' },
-    { title: 'Delivery Timeline', content: 'Orders are typically delivered within 3-5 business days for metro cities and 5-7 business days for other locations. You will receive a tracking link via SMS and email once your order is shipped.' },
-    { title: 'Shipping Partners', content: 'We ship via reputed logistics partners including Blue Dart, Delhivery, and Ecom Express to ensure timely and safe delivery of your orders.' },
-    { title: 'Order Processing', content: 'Orders are processed within 24-48 hours of placement. Orders placed on weekends or public holidays will be processed the next working day.' },
-    { title: 'Tracking Your Order', content: 'Once your order is shipped, you will receive a tracking ID via SMS and email. You can also track your order from the My Orders section in your account.' },
-    { title: 'Delivery Issues & Customer Support', content: 'For any kind of issue, please call us or send a message on WhatsApp at +91 63920 06081. Our team will contact you within 24 hours.' },
+  const highlights = [
+    {
+      icon: Truck,
+      title: 'Free Shipping',
+      desc: 'Complimentary on orders above ₹1499 (Flat ₹99 below ₹1499)',
+    },
+    {
+      icon: Clock,
+      title: '3–5 Day Delivery',
+      desc: 'Express dispatch for metro cities; 5–7 days across India',
+    },
+    {
+      icon: ShieldCheck,
+      title: '100% Insured Delivery',
+      desc: 'Secure flacon packaging via Blue Dart, Delhivery & Ecom Express',
+    },
   ];
 
   return (
-    <div className="bg-white min-h-screen">
-      <div className="py-16 text-center relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #12100E 0%, #1A1713 50%, #2A241C 100%)' }}>
-        <span className="text-[10px] uppercase font-bold tracking-[0.3em] text-amber-400 block mb-1">AMAL PERFUME Logistics</span>
-        <h1 className="font-display text-4xl font-bold text-white mb-2">Shipping & Delivery Policy</h1>
-        <p className="text-stone-300 font-medium text-sm">Insured Nationwide Flacon Delivery</p>
+    <div className="bg-[#FAF8F5] min-h-screen text-stone-800">
+      {/* Header Banner */}
+      <div className="py-12 md:py-16 text-center border-b border-stone-200 bg-[#F4F0E6]">
+        <div className="container-plt px-4 max-w-3xl mx-auto">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-amber-500/10 border border-amber-600/20 text-amber-900 text-xs font-semibold uppercase tracking-wider mb-3">
+            <Truck size={14} className="text-amber-700" />
+            <span>Maison Logistics</span>
+          </div>
+          <h1 className="font-display text-2xl md:text-4xl font-bold text-stone-900 mb-2">
+            Shipping & Delivery Policy
+          </h1>
+          <p className="text-stone-600 text-sm md:text-base">
+            Carefully compounded, sealed, and delivered across India.
+          </p>
+        </div>
       </div>
 
-      <div className="container-plt py-12 max-w-3xl">
-        <div className="bg-blue-50 border border-blue-200 rounded-2xl p-5 mb-10 flex gap-3">
-          <span className="text-2xl">🚚</span>
-          <div>
-            <p className="font-semibold text-blue-800 mb-1">Free Shipping Available!</p>
-            <p className="text-sm text-blue-700">Get free shipping on all orders above ₹1499. Standard shipping: ₹99 flat fee for orders below ₹1499.</p>
-          </div>
+      <div className="container-plt py-10 px-4 max-w-3xl mx-auto space-y-6">
+        {/* Quick Summary Highlights */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+          {highlights.map((item, idx) => {
+            const Icon = item.icon;
+            return (
+              <div
+                key={idx}
+                className="bg-white border border-stone-200/80 rounded-xl p-5 text-center shadow-xs flex flex-col items-center justify-center"
+              >
+                <div className="w-10 h-10 rounded-full bg-amber-50 text-amber-700 flex items-center justify-center mb-3">
+                  <Icon size={18} />
+                </div>
+                <h3 className="font-semibold text-stone-900 text-sm mb-1">{item.title}</h3>
+                <p className="text-xs text-stone-500 leading-relaxed">{item.desc}</p>
+              </div>
+            );
+          })}
         </div>
 
-        {/* Mandatory Support & Verification Notice */}
-        <div className="bg-amber-50/70 border border-amber-200 rounded-3xl p-6 mb-10 space-y-4">
+        {/* Support & Notice Footer Card */}
+        <div className="bg-amber-50/60 border border-amber-200/70 rounded-2xl p-5 md:p-6 space-y-3.5">
           <div className="flex items-start gap-3">
-            <MessageSquare size={20} className="text-amber-700 mt-0.5 flex-shrink-0" />
-            <p className="text-xs md:text-sm text-gray-800 font-medium">
-              For any kind of issue, please call us or send a message on WhatsApp at <strong className="text-brand-700">+91 63920 06081</strong>. Our team will contact you within 24 hours.
-            </p>
-          </div>
-          <div className="flex items-start gap-3 pt-3 border-t border-amber-200/60">
-            <Video size={20} className="text-red-600 mt-0.5 flex-shrink-0" />
-            <p className="text-xs md:text-sm text-gray-800 font-semibold">
-              Mandatory Notice: For any product-related issue, a 360-degree unboxing video is mandatory for verification.
-            </p>
-          </div>
-        </div>
-
-        <div className="space-y-6">
-          {policies.map((p, i) => (
-            <div key={i} className="border border-gray-100 rounded-2xl p-6">
-              <h2 className="font-semibold text-gray-900 mb-2 flex items-start gap-2">
-                <span className="text-brand-600 font-bold text-lg">{i + 1}.</span> {p.title}
-              </h2>
-              <p className="text-gray-600 text-sm leading-relaxed">{p.content}</p>
+            <MessageSquare size={18} className="text-amber-800 mt-0.5 shrink-0" />
+            <div className="text-xs md:text-sm text-stone-800">
+              <span className="font-semibold text-stone-900">Need delivery assistance? </span>
+              Contact our concierge on WhatsApp at{' '}
+              <a
+                href="https://wa.me/916392006081"
+                target="_blank"
+                rel="noreferrer"
+                className="font-bold text-amber-900 hover:underline inline-flex items-center gap-1"
+              >
+                +91 63920 06081
+                <ArrowRight size={12} />
+              </a>
+              . We reply within 24 hours.
             </div>
-          ))}
+          </div>
+          <div className="flex items-start gap-3 pt-3 border-t border-amber-200/50">
+            <Video size={18} className="text-stone-700 mt-0.5 shrink-0" />
+            <p className="text-xs text-stone-600 leading-relaxed">
+              <strong className="text-stone-900">Unboxing Notice:</strong> For transit claim verification, please record an unbroken 360° video while opening your parcel.
+            </p>
+          </div>
         </div>
       </div>
     </div>

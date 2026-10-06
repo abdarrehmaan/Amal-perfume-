@@ -5,7 +5,6 @@ import ProductGrid from '@/components/storefront/ProductGrid';
 
 export const dynamic = 'force-dynamic';
 import SectionHeader from '@/components/storefront/SectionHeader';
-import PremiumTrust from '@/components/storefront/PremiumTrust';
 import BrandStory from '@/components/storefront/BrandStory';
 import { ReviewCard } from '@/components/storefront/ReviewCard';
 import { mockReviews } from '@/lib/mock-data';
@@ -164,7 +163,7 @@ export default async function HomePage() {
       <HeroBanner />
 
       {/* All Products Section (Featured Preview) */}
-      <section id="all-products" className="py-12 md:py-20 bg-transparent relative border-b border-stone-200">
+      <section id="all-products" className="pt-12 pb-16 md:py-24 bg-transparent relative border-b border-stone-200">
         <div className="container-plt">
           <SectionHeader
             tag="Featured Showcase"
@@ -175,7 +174,7 @@ export default async function HomePage() {
           />
           <ProductGrid products={featuredAllProducts} columns={4} />
           
-          <div className="mt-10 text-center">
+          <div className="mt-12 md:mt-16 text-center">
             <a
               href="/all-products"
               className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-stone-900 text-white font-semibold text-sm shadow-md hover:bg-black hover:scale-105 transition-all duration-300"
@@ -190,7 +189,7 @@ export default async function HomePage() {
       <BrandStory />
 
       {/* New Arrivals (Editorial Layout) */}
-      <section id="new-arrivals" className="py-12 md:py-24 bg-transparent relative">
+      <section id="new-arrivals" className="py-16 md:py-24 bg-transparent relative">
         <div className="container-plt">
           <SectionHeader
             tag="Latest Releases"
@@ -210,7 +209,7 @@ export default async function HomePage() {
       <FeaturedCategories categories={categories} />
 
       {/* Trending & Best Sellers */}
-      <section id="trending" className="py-12 md:py-24 bg-transparent border-t border-stone-200">
+      <section id="trending" className="py-16 md:py-24 bg-transparent border-t border-stone-200">
         <div className="container-plt">
           <SectionHeader
             tag="Curated For You"
@@ -245,26 +244,8 @@ export default async function HomePage() {
               <ReviewCard key={review.id} review={review} />
             ))}
           </div>
-
-          {/* Stats with 25-35px vertical separation before next section */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 mt-12 sm:mt-16 pt-8 sm:pt-12 pb-6 sm:pb-10 border-t border-stone-200">
-            {[
-              { value: '2,500+', label: 'Connoisseurs Worldwide' },
-              { value: '4.9/5', label: 'Average Review Score' },
-              { value: '30%+', label: 'Pure Oil Concentration' },
-              { value: '100%', label: 'Cruelty-Free & IFRA Safe' },
-            ].map(({ value, label }) => (
-              <div key={label} className="text-center group">
-                <p className="font-display text-2xl sm:text-4xl md:text-5xl font-bold text-stone-900 mb-1 sm:mb-2 group-hover:scale-110 transition-transform duration-500 ease-apple">{value}</p>
-                <p className="text-[10px] sm:text-xs uppercase tracking-wider sm:tracking-widest text-stone-600 font-bold">{label}</p>
-              </div>
-            ))}
-          </div>
         </div>
       </section>
-
-      {/* Trust Section */}
-      <PremiumTrust />
     </>
   );
 }

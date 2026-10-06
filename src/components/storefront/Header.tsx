@@ -4,8 +4,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import {
-  ShoppingBag, Heart, Search, Menu, X, User, ChevronDown,
-  Phone, Mail, Sparkles, TrendingUp
+  ShoppingBag, Heart, Search, Menu, X, User, ChevronDown, ChevronRight,
+  Phone, Mail, Sparkles, TrendingUp, UserCheck
 } from 'lucide-react';
 import { useCartStore } from '@/features/cart/store';
 import { useWishlistStore } from '@/features/wishlist/store';
@@ -108,10 +108,13 @@ export default function Header({ featuredProducts = [] }: { featuredProducts?: a
     if (searchOpen) searchRef.current?.focus();
   }, [searchOpen]);
 
+  const [openMobileSection, setOpenMobileSection] = useState<string | null>(null);
+
   useEffect(() => {
     setMobileOpen(false);
     setCatOpen(false);
     setSearchOpen(false);
+    setOpenMobileSection(null);
   }, [pathname]);
 
   const isActive = (href: string) =>
@@ -337,18 +340,18 @@ export default function Header({ featuredProducts = [] }: { featuredProducts?: a
 
         {/* Smart Search Bar */}
         {searchOpen && (
-          <div className="absolute top-full left-0 w-full bg-white/98 backdrop-blur-2xl shadow-2xl border-t border-gray-200 py-4 sm:py-8 animate-fade-down z-50 text-gray-900">
-            <div className="container-plt">
+          <div className="absolute top-full left-0 w-full bg-white/98 backdrop-blur-2xl shadow-2xl border-t border-stone-200 py-6 sm:py-8 animate-fade-down z-50 text-stone-900">
+            <div className="container-plt px-4">
               <div className="max-w-3xl mx-auto">
                 <div className="relative flex items-center">
-                  <Search size={22} className="absolute left-4 text-brand-600 pointer-events-none z-10" />
+                  <Search size={20} className="absolute left-4 text-amber-700 pointer-events-none z-10" />
                   <input
                     ref={searchRef}
                     id="search-input"
                     type="text"
-                    placeholder="Search for designer suits, chikankari..."
-                    style={{ paddingLeft: '52px', paddingRight: '48px' }}
-                    className="w-full py-4 bg-gray-50 border border-gray-300 rounded-2xl text-base md:text-lg font-medium text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-600 focus:bg-white focus:border-brand-500 transition-all shadow-sm"
+                    placeholder="Search fragrances, royal ouds, discovery sets..."
+                    style={{ paddingLeft: '48px', paddingRight: '48px' }}
+                    className="w-full py-3.5 sm:py-4 bg-stone-50 border border-stone-300 rounded-2xl text-sm sm:text-base md:text-lg font-medium text-stone-900 placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-amber-600/30 focus:bg-white focus:border-amber-600 transition-all shadow-xs"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     onKeyDown={(e) => {
@@ -360,7 +363,7 @@ export default function Header({ featuredProducts = [] }: { featuredProducts?: a
                   />
                   {searchQuery ? (
                     <button
-                      className="absolute right-4 w-8 h-8 flex items-center justify-center rounded-full bg-gray-200 text-gray-600 hover:bg-gray-300 transition-colors z-10"
+                      className="absolute right-3.5 w-8 h-8 flex items-center justify-center rounded-full bg-stone-200 text-stone-600 hover:bg-stone-300 transition-colors z-10"
                       onClick={() => setSearchQuery('')}
                       aria-label="Clear search query"
                     >
@@ -368,7 +371,7 @@ export default function Header({ featuredProducts = [] }: { featuredProducts?: a
                     </button>
                   ) : (
                     <button
-                      className="absolute right-4 w-8 h-8 flex items-center justify-center rounded-full bg-gray-200 text-gray-600 hover:bg-gray-300 transition-colors z-10"
+                      className="absolute right-3.5 w-8 h-8 flex items-center justify-center rounded-full bg-stone-200 text-stone-600 hover:bg-stone-300 transition-colors z-10"
                       onClick={() => setSearchOpen(false)}
                       aria-label="Close search"
                     >
@@ -381,21 +384,21 @@ export default function Header({ featuredProducts = [] }: { featuredProducts?: a
                 {searchQuery.trim() ? (
                   <div className="mt-6 space-y-6">
                     {isSearching && (
-                      <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest animate-pulse">
-                        Searching products...
+                      <p className="text-xs font-semibold text-stone-400 uppercase tracking-widest animate-pulse">
+                        Searching fragrances...
                       </p>
                     )}
 
                     {!isSearching && liveSearchCategories.length > 0 && (
                       <div>
-                        <h4 className="text-xs uppercase tracking-widest font-bold text-gray-400 mb-3">Matching Categories</h4>
+                        <h4 className="text-xs uppercase tracking-widest font-bold text-stone-400 mb-3">Matching Olfactory Families</h4>
                         <div className="flex flex-wrap gap-2">
                           {liveSearchCategories.map((cat) => (
                             <Link
                               key={cat.id}
                               href={`/categories/${cat.slug}`}
                               onClick={() => setSearchOpen(false)}
-                              className="px-3.5 py-1.5 rounded-full bg-brand-50 text-brand-700 hover:bg-brand-100 text-xs font-semibold transition-colors border border-brand-100"
+                              className="px-3.5 py-1.5 rounded-full bg-amber-50 text-amber-800 hover:bg-amber-100 text-xs font-semibold transition-colors border border-amber-200/60"
                             >
                               {cat.name}
                             </Link>
@@ -407,12 +410,12 @@ export default function Header({ featuredProducts = [] }: { featuredProducts?: a
                     {!isSearching && (
                       <div>
                         <div className="flex items-center justify-between mb-3">
-                          <h4 className="text-xs uppercase tracking-widest font-bold text-gray-400">Matching Products</h4>
+                          <h4 className="text-xs uppercase tracking-widest font-bold text-stone-400">Matching Fragrances</h4>
                           {liveSearchResults.length > 0 && (
                             <Link
                               href={`/products?search=${encodeURIComponent(searchQuery.trim())}`}
                               onClick={() => setSearchOpen(false)}
-                              className="text-xs font-semibold text-brand-600 hover:underline"
+                              className="text-xs font-semibold text-amber-800 hover:underline"
                             >
                               View all results ({liveSearchResults.length}) &rarr;
                             </Link>
@@ -426,59 +429,43 @@ export default function Header({ featuredProducts = [] }: { featuredProducts?: a
                                 key={p.id}
                                 href={`/products/${p.slug}`}
                                 onClick={() => setSearchOpen(false)}
-                                className="flex items-center gap-3 p-3 rounded-2xl border border-gray-100 bg-white hover:border-brand-200 hover:shadow-md transition-all group"
+                                className="flex items-center gap-3 p-3 rounded-2xl border border-stone-200 bg-white hover:border-amber-400 hover:shadow-md transition-all group"
                               >
                                 <img src={p.image} alt={p.name} className="w-14 h-14 rounded-xl object-cover shrink-0" />
                                 <div className="min-w-0 flex-1">
-                                  <p className="text-xs font-semibold text-gray-900 group-hover:text-brand-600 transition-colors line-clamp-1">
+                                  <p className="text-xs font-semibold text-stone-900 group-hover:text-amber-800 transition-colors line-clamp-1">
                                     {p.name}
                                   </p>
-                                  <p className="text-[11px] text-gray-400">{p.categoryName}</p>
-                                  <p className="text-xs font-bold text-brand-700 mt-0.5">{formatPrice(p.price)}</p>
+                                  <p className="text-[11px] text-stone-400">{p.categoryName}</p>
+                                  <p className="text-xs font-bold text-amber-800 mt-0.5">{formatPrice(p.price)}</p>
                                 </div>
                               </Link>
                             ))}
                           </div>
                         ) : (
-                          <div className="py-6 text-center text-sm text-gray-500 bg-gray-50 rounded-2xl border border-dashed border-gray-200">
-                            No products found matching &ldquo;<span className="font-semibold text-gray-800">{searchQuery}</span>&rdquo;.
+                          <div className="py-6 text-center text-sm text-stone-500 bg-stone-50 rounded-2xl border border-dashed border-stone-200">
+                            No fragrances found matching &ldquo;<span className="font-semibold text-stone-800">{searchQuery}</span>&rdquo;.
                           </div>
                         )}
                       </div>
                     )}
                   </div>
                 ) : (
-                  /* Default Trending & Featured Suggestions */
-                  <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div>
-                      <h3 className="flex items-center gap-2 text-xs uppercase tracking-widest font-bold text-gray-400 mb-4">
-                        <TrendingUp size={14} className="text-brand-600" /> Trending Searches
-                      </h3>
-                      <div className="flex flex-wrap gap-2">
-                        {['Oud Impérial', 'Baccarat Noir', 'Extrait de Parfum', 'Bourbon Vanilla', 'Discovery Coffret', 'Neroli'].map(term => (
-                          <button
-                            key={term}
-                            onClick={() => setSearchQuery(term)}
-                            className="px-4 py-2 rounded-full bg-gray-100 hover:bg-brand-50 hover:text-brand-700 text-sm font-medium text-gray-700 transition-colors border border-gray-200/60"
-                          >
-                            {term}
-                          </button>
-                        ))}
-                      </div>
-                    </div>
-                    <div>
-                      <h3 className="text-xs uppercase tracking-widest font-bold text-gray-400 mb-4">Featured Products</h3>
-                      <div className="space-y-3">
-                        {featuredProducts.slice(0, 3).map(p => (
-                          <Link key={p.id} href={`/products/${p.slug}`} onClick={() => setSearchOpen(false)} className="flex items-center gap-3 p-2 rounded-xl hover:bg-gray-50 transition-colors group">
-                            <img src={p.images[0]?.url} alt={p.name} className="w-12 h-12 rounded object-cover" />
-                            <div>
-                              <p className="text-sm font-semibold text-gray-900 group-hover:text-brand-600 transition-colors line-clamp-1">{p.name}</p>
-                              <p className="text-xs text-gray-500">{formatPrice(p.price)}</p>
-                            </div>
-                          </Link>
-                        ))}
-                      </div>
+                  /* Default Trending Suggestions */
+                  <div className="mt-6 sm:mt-8 pt-2">
+                    <h3 className="flex items-center gap-2 text-xs uppercase tracking-widest font-bold text-stone-500 mb-3.5">
+                      <TrendingUp size={14} className="text-amber-700" /> Trending Searches
+                    </h3>
+                    <div className="flex flex-wrap gap-2">
+                      {['Oud Impérial', 'Baccarat Noir', 'Extrait de Parfum', 'Bourbon Vanilla', 'Discovery Coffret', 'Neroli'].map(term => (
+                        <button
+                          key={term}
+                          onClick={() => setSearchQuery(term)}
+                          className="px-4 py-2 rounded-full bg-stone-100 hover:bg-amber-50 hover:text-amber-900 text-xs sm:text-sm font-medium text-stone-700 transition-colors border border-stone-200/70"
+                        >
+                          {term}
+                        </button>
+                      ))}
                     </div>
                   </div>
                 )}
@@ -489,113 +476,235 @@ export default function Header({ featuredProducts = [] }: { featuredProducts?: a
         )}
       </header>
 
-      {/* Mobile menu overlay */}
+      {/* Mobile Menu Drawer (Ajmal Luxury Style) */}
       {mobileOpen && (
         <>
           <div
-            className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 md:hidden"
+            className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 md:hidden transition-opacity duration-300"
             onClick={() => setMobileOpen(false)}
+            aria-hidden="true"
           />
-          <div className="fixed top-0 left-0 h-full w-[85vw] max-w-[320px] bg-[#FAF8F5] text-stone-800 border-r border-stone-200 z-50 md:hidden flex flex-col shadow-2xl animate-slide-in-left">
-            <div className="flex items-center justify-between p-5 border-b border-stone-200 bg-white">
-              <Link href="/" onClick={() => setMobileOpen(false)} className="flex items-center gap-3">
-                <img src="/amal-logo.jpg" alt="AMAL PERFUME" className="h-12 w-auto object-contain rounded-lg border border-stone-200" />
-                <div className="flex flex-col">
-                  <span className="font-display text-lg font-bold text-stone-900 tracking-widest leading-none">AMAL</span>
-                  <span className="text-[8px] tracking-[0.3em] uppercase text-amber-700 font-bold mt-0.5">PERFUME</span>
+          <div className="fixed top-0 left-0 h-[100dvh] max-h-[100dvh] w-[88vw] max-w-[360px] bg-white text-stone-900 border-r border-stone-200 z-50 md:hidden flex flex-col shadow-2xl animate-slide-in-left overflow-hidden">
+            
+            {/* 1. Header: Avatar + "Login or Sign Up" + Close X */}
+            <div className="flex items-center justify-between p-4 px-5 border-b border-stone-200/80 bg-white shrink-0">
+              <Link
+                href="/account"
+                onClick={() => setMobileOpen(false)}
+                className="flex items-center gap-3.5 group flex-1 min-w-0"
+              >
+                <div className="w-11 h-11 rounded-full border-2 border-amber-700/50 bg-amber-50/70 flex items-center justify-center text-amber-800 shrink-0 shadow-xs group-hover:bg-amber-100 transition-colors">
+                  {mounted && user ? (
+                    <span className="font-bold text-sm">
+                      {user.name ? user.name.split(' ').map((n: string) => n[0]).join('').toUpperCase().substring(0, 2) : 'U'}
+                    </span>
+                  ) : (
+                    <User size={22} className="stroke-[1.75]" />
+                  )}
+                </div>
+                <div className="flex flex-col min-w-0">
+                  <span className="font-display text-base font-bold text-stone-900 group-hover:text-amber-800 transition-colors truncate">
+                    {mounted && user ? (user.name || 'My Account') : 'Login or Sign Up'}
+                  </span>
+                  {mounted && user && (
+                    <span className="text-[10px] text-amber-700 font-semibold truncate">AMAL Connoisseur Club</span>
+                  )}
                 </div>
               </Link>
               <button
-                className="w-8 h-8 flex items-center justify-center rounded-full bg-stone-100 text-stone-700 hover:text-stone-950 hover:bg-stone-200 transition-colors"
+                className="w-9 h-9 flex items-center justify-center rounded-full text-stone-500 hover:text-stone-950 hover:bg-stone-100 transition-colors shrink-0 ml-2"
                 onClick={() => setMobileOpen(false)}
+                aria-label="Close menu"
               >
-                <X size={18} />
+                <X size={22} />
               </button>
             </div>
 
-            <nav className="flex-1 overflow-y-auto p-4">
-              <div className="space-y-1">
-                {navLinks.map((link) =>
-                  link.hasDropdown ? (
-                    <div key={link.label}>
-                      <button
-                        className="w-full flex items-center justify-between px-4 py-3.5 rounded-xl text-sm font-bold uppercase tracking-wider text-stone-800 hover:bg-amber-50 hover:text-amber-800 transition-colors"
-                        onClick={() => setCatOpen(!catOpen)}
-                      >
-                        {link.label}
-                        <ChevronDown
-                          size={16}
-                          className={cn('transition-transform duration-300', catOpen && 'rotate-180')}
-                        />
-                      </button>
-                      {catOpen && (
-                        <div className="mt-1 ml-4 space-y-1 border-l-2 border-amber-500/40 pl-3 py-2">
-                          {categories.map((cat) => (
-                            <Link
-                              key={cat.slug}
-                              href={`/categories/${cat.slug}`}
-                              onClick={() => setMobileOpen(false)}
-                              className="block px-3 py-2.5 text-sm font-medium text-stone-600 hover:text-amber-800 rounded-lg hover:bg-amber-50/50 transition-colors"
-                            >
-                              {cat.name}
-                            </Link>
-                          ))}
-                        </div>
-                      )}
-                    </div>
-                  ) : (
-                    <Link
-                      key={link.label}
-                      href={link.href}
-                      onClick={() => setMobileOpen(false)}
-                      className={cn(
-                        'block px-4 py-3.5 rounded-xl text-sm font-bold uppercase tracking-wider transition-colors',
-                        isActive(link.href)
-                          ? 'bg-amber-100 text-amber-900 border border-amber-300/80 font-bold'
-                          : 'text-stone-700 hover:bg-stone-100 hover:text-stone-900'
-                      )}
-                    >
-                      {link.label}
-                    </Link>
-                  )
-                )}
-              </div>
-            </nav>
-
-            <div className="p-6 bg-white border-t border-stone-200 space-y-4">
-              {mounted && user ? (
-                <div className="flex flex-col gap-3">
-                  <div className="flex items-center gap-3 px-4 py-2">
-                    <div className="w-10 h-10 rounded-full bg-amber-100 border border-amber-300 flex items-center justify-center text-amber-900 font-bold text-sm shrink-0">
-                      {user.name ? user.name.split(' ').map((n: string) => n[0]).join('').toUpperCase().substring(0, 2) : 'U'}
-                    </div>
-                    <div className="min-w-0">
-                      <p className="text-sm font-bold text-stone-900 truncate">{user.name}</p>
-                      <p className="text-xs text-stone-500 truncate">{user.email}</p>
-                    </div>
-                  </div>
+            {/* Scrollable Body */}
+            <div className="flex-1 overflow-y-auto pb-6 divide-y divide-stone-100">
+              
+              {/* 2. Horizontal Feature Category Cards */}
+              <div className="p-4 px-5 bg-white">
+                <div className="grid grid-cols-3 gap-2.5">
                   <Link
-                    href="/account"
+                    href="/categories/extrait-de-parfum"
                     onClick={() => setMobileOpen(false)}
-                    className="flex items-center justify-center gap-2 px-4 py-3.5 rounded-xl text-sm font-bold bg-stone-900 text-white hover:bg-black transition-colors shadow-md"
+                    className="flex flex-col items-center p-2.5 rounded-2xl bg-gradient-to-b from-[#F9F6F0] to-[#FAF8F5] border border-amber-200/60 shadow-2xs hover:border-amber-400/80 transition-all text-center group"
                   >
-                    Go to Concierge
+                    <div className="relative w-12 h-14 mb-1.5 shrink-0">
+                      <img src="/products/saddle-leather.jpg" alt="Perfumes" className="w-full h-full object-contain rounded-md" />
+                    </div>
+                    <span className="text-[10px] font-bold text-stone-800 tracking-wider uppercase group-hover:text-amber-800">
+                      Perfumes
+                    </span>
+                  </Link>
+
+                  <Link
+                    href="/categories/discovery-coffrets"
+                    onClick={() => setMobileOpen(false)}
+                    className="flex flex-col items-center p-2.5 rounded-2xl bg-gradient-to-b from-[#F9F6F0] to-[#FAF8F5] border border-amber-200/60 shadow-2xs hover:border-amber-400/80 transition-all text-center group"
+                  >
+                    <div className="relative w-12 h-14 mb-1.5 shrink-0">
+                      <img src="/products/amal-collection.jpg" alt="Gift Sets" className="w-full h-full object-contain rounded-md" />
+                    </div>
+                    <span className="text-[10px] font-bold text-stone-800 tracking-wider uppercase group-hover:text-amber-800">
+                      Gift Sets
+                    </span>
+                  </Link>
+
+                  <Link
+                    href="/categories/oud-oriental"
+                    onClick={() => setMobileOpen(false)}
+                    className="flex flex-col items-center p-2.5 rounded-2xl bg-gradient-to-b from-[#F9F6F0] to-[#FAF8F5] border border-amber-200/60 shadow-2xs hover:border-amber-400/80 transition-all text-center group"
+                  >
+                    <div className="relative w-12 h-14 mb-1.5 shrink-0">
+                      <img src="/products/enigma.jpg" alt="Oud Series" className="w-full h-full object-contain rounded-md" />
+                    </div>
+                    <span className="text-[10px] font-bold text-stone-800 tracking-wider uppercase group-hover:text-amber-800">
+                      Oud Series
+                    </span>
                   </Link>
                 </div>
-              ) : (
+                
+                {/* Dash Indicator */}
+                <div className="w-6 h-1 bg-stone-300/80 rounded-full mx-auto mt-3" />
+              </div>
+
+              {/* 3. Promotional Mini Banner (Build Your Own Box) */}
+              <div className="p-4 px-5">
                 <Link
-                  href="/account"
+                  href="/products/master-perfumers-discovery-coffret"
                   onClick={() => setMobileOpen(false)}
-                  className="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-bold bg-amber-50 border border-amber-200 text-amber-900 hover:bg-amber-100 transition-all"
+                  className="relative block rounded-2xl overflow-hidden shadow-xs border border-amber-200/70 p-3.5 group"
+                  style={{
+                    background: 'linear-gradient(135deg, #1C1917 0%, #2A241C 50%, #453725 100%)',
+                  }}
                 >
-                  <User size={18} className="text-amber-700" />
-                  Sign In / Register
+                  <div className="flex items-center justify-between">
+                    <div className="z-10 pr-2">
+                      <span className="text-[9px] uppercase tracking-[0.25em] text-amber-400 font-bold block mb-0.5">Coffret Set</span>
+                      <h4 className="font-display text-sm font-bold text-white leading-tight">
+                        Build Your Own Box
+                      </h4>
+                      <p className="text-[10px] text-amber-200/80 mt-0.5 font-light">
+                        Curate Any 3 Discovery Flacons
+                      </p>
+                    </div>
+                    <div className="w-16 h-12 relative shrink-0">
+                      <img src="/products/amal-collection.jpg" alt="Build Box" className="w-full h-full object-cover rounded-lg border border-amber-400/30" />
+                    </div>
+                  </div>
                 </Link>
-              )}
-              <div className="text-xs text-stone-500 font-medium pt-2">
-                <p className="flex items-center gap-2 mb-2"><Phone size={14} className="text-amber-700" /> +91 98765 43210</p>
+              </div>
+
+              {/* 4. Streamlined Navigation Links */}
+              <div className="py-2 divide-y divide-stone-100 text-stone-800 font-medium text-sm">
+                
+                {/* All Fragrances */}
+                <Link
+                  href="/all-products"
+                  onClick={() => setMobileOpen(false)}
+                  className="flex items-center justify-between px-5 py-3.5 hover:bg-stone-50 transition-colors"
+                >
+                  <span className="font-semibold text-stone-900">All Fragrances</span>
+                  <ChevronRight size={16} className="text-stone-400" />
+                </Link>
+
+                {/* Fragrance Families Accordion */}
+                <div>
+                  <button
+                    onClick={() => setOpenMobileSection(openMobileSection === 'families' ? null : 'families')}
+                    className="w-full flex items-center justify-between px-5 py-3.5 hover:bg-stone-50 transition-colors text-left"
+                  >
+                    <span>Fragrance Families</span>
+                    <ChevronRight size={16} className={cn('text-stone-400 transition-transform duration-200', openMobileSection === 'families' && 'rotate-90')} />
+                  </button>
+                  {openMobileSection === 'families' && (
+                    <div className="bg-[#FAF8F5] px-6 py-2.5 space-y-2 border-y border-stone-100 text-xs text-stone-600">
+                      {categories.map((cat) => (
+                        <Link
+                          key={cat.slug}
+                          href={`/categories/${cat.slug}`}
+                          onClick={() => setMobileOpen(false)}
+                          className="block py-1.5 hover:text-amber-800 font-medium"
+                        >
+                          {cat.name}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
+
+                {/* Collections Accordion */}
+                <div>
+                  <button
+                    onClick={() => setOpenMobileSection(openMobileSection === 'collections' ? null : 'collections')}
+                    className="w-full flex items-center justify-between px-5 py-3.5 hover:bg-stone-50 transition-colors text-left"
+                  >
+                    <span>Collections</span>
+                    <ChevronRight size={16} className={cn('text-stone-400 transition-transform duration-200', openMobileSection === 'collections' && 'rotate-90')} />
+                  </button>
+                  {openMobileSection === 'collections' && (
+                    <div className="bg-[#FAF8F5] px-6 py-2.5 space-y-2 border-y border-stone-100 text-xs text-stone-600">
+                      <Link href="/collections/royal-oud-collection" onClick={() => setMobileOpen(false)} className="block py-1.5 hover:text-amber-800">Royal Oud Series</Link>
+                      <Link href="/collections/private-reserve" onClick={() => setMobileOpen(false)} className="block py-1.5 hover:text-amber-800">Private Reserve</Link>
+                      <Link href="/collections/midnight-noir" onClick={() => setMobileOpen(false)} className="block py-1.5 hover:text-amber-800">Midnight Noir</Link>
+                      <Link href="/collections" onClick={() => setMobileOpen(false)} className="block py-1.5 font-bold text-amber-900">Explore All Collections →</Link>
+                    </div>
+                  )}
+                </div>
+
+                {/* Best Sellers */}
+                <Link
+                  href="/best-sellers"
+                  onClick={() => setMobileOpen(false)}
+                  className="flex items-center justify-between px-5 py-3.5 hover:bg-stone-50 transition-colors"
+                >
+                  <span>Best Sellers</span>
+                  <ChevronRight size={16} className="text-stone-400" />
+                </Link>
+
+                {/* New Releases */}
+                <Link
+                  href="/new-arrivals"
+                  onClick={() => setMobileOpen(false)}
+                  className="flex items-center justify-between px-5 py-3.5 hover:bg-stone-50 transition-colors"
+                >
+                  <span>New Releases</span>
+                  <ChevronRight size={16} className="text-stone-400" />
+                </Link>
+
+                {/* Discovery Coffrets */}
+                <Link
+                  href="/categories/discovery-coffrets"
+                  onClick={() => setMobileOpen(false)}
+                  className="flex items-center justify-between px-5 py-3.5 hover:bg-stone-50 transition-colors"
+                >
+                  <span>Discovery Sets</span>
+                  <ChevronRight size={16} className="text-stone-400" />
+                </Link>
+
+                {/* The Maison Heritage */}
+                <Link
+                  href="/about"
+                  onClick={() => setMobileOpen(false)}
+                  className="flex items-center justify-between px-5 py-3.5 hover:bg-stone-50 transition-colors"
+                >
+                  <span>The Maison Heritage</span>
+                  <ChevronRight size={16} className="text-stone-400" />
+                </Link>
+
+              </div>
+
+              {/* 5. Concierge & Contact */}
+              <div className="p-5 bg-[#FAF8F5] text-xs text-stone-600 space-y-2">
+                <p className="font-bold text-stone-900 uppercase tracking-widest text-[10px] text-amber-800 mb-2">
+                  Fragrance Concierge
+                </p>
+                <p className="flex items-center gap-2"><Phone size={14} className="text-amber-700" /> +91 63920 06081 (Mon–Sat)</p>
                 <p className="flex items-center gap-2"><Mail size={14} className="text-amber-700" /> concierge@amalperfume.com</p>
               </div>
+
             </div>
           </div>
         </>
