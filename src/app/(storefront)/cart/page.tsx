@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Minus, Plus, Trash2, Tag, ArrowRight, ShoppingBag, Truck } from 'lucide-react';
+import { Minus, Plus, Trash2, Tag, ArrowRight, ArrowLeft, ShoppingBag, Truck } from 'lucide-react';
 import { useCartStore } from '@/features/cart/store';
 import { formatPrice, calculateShipping } from '@/lib/utils';
 import toast from 'react-hot-toast';
@@ -64,16 +64,26 @@ export default function CartPage() {
   }
 
   return (
-    <div className="bg-ivory-100 min-h-screen">
+    <div className="bg-ivory-100 min-h-screen pb-16">
       <div
-        className="py-12 text-center text-white relative overflow-hidden"
+        className="py-10 text-center text-white relative overflow-hidden"
         style={{ background: 'linear-gradient(135deg, #12100E 0%, #1A1713 50%, #2A241C 100%)' }}
       >
         <span className="text-[10px] uppercase font-bold tracking-[0.3em] text-amber-400 block mb-1">AMAL PERFUME Concierge</span>
         <h1 className="font-display text-3xl md:text-4xl font-bold text-white tracking-wide">Your Fragrance Flacon Cart</h1>
       </div>
 
-      <div className="container-plt py-10">
+      <div className="container-plt py-8">
+        <div className="mb-6 flex items-center justify-between">
+          <Link
+            href="/products"
+            className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-stone-700 hover:text-stone-900 bg-white border border-stone-200/80 px-4 py-2 rounded-xl shadow-xs transition-colors"
+          >
+            <ArrowLeft size={16} />
+            <span>Continue Shopping</span>
+          </Link>
+        </div>
+
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
           {/* Cart items */}
           <div className="lg:col-span-2 space-y-4">

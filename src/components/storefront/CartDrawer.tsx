@@ -3,7 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { X, Minus, Plus, ShoppingBag, ArrowRight, Trash2, ShieldCheck, Sparkles, Truck } from 'lucide-react';
+import { X, Minus, Plus, ShoppingBag, ArrowRight, ArrowLeft, Trash2, ShieldCheck, Sparkles, Truck } from 'lucide-react';
 import { useCartStore } from '@/features/cart/store';
 import { formatPrice, calculateDiscount } from '@/lib/utils';
 
@@ -66,21 +66,24 @@ export default function CartDrawer() {
         aria-modal="true"
         aria-label="Shopping Bag"
       >
-        {/* Top Header */}
-        <div className="flex items-center justify-between px-4 sm:px-6 py-3.5 bg-white border-b border-stone-200/80 shrink-0">
-          <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-full bg-amber-50 border border-amber-200/60 flex items-center justify-center text-amber-700">
-              <ShoppingBag size={17} strokeWidth={2.2} />
-            </div>
-            <div>
-              <div className="flex items-center gap-2">
-                <h2 className="font-display font-bold text-stone-900 text-base sm:text-lg tracking-tight">Shopping Bag</h2>
-                {totalItemCount > 0 && (
-                  <span className="text-[11px] font-bold px-2 py-0.5 rounded-full bg-stone-900 text-amber-300">
-                    {totalItemCount} {totalItemCount === 1 ? 'item' : 'items'}
-                  </span>
-                )}
-              </div>
+        {/* Top Header with Back Button */}
+        <div className="flex items-center justify-between px-3.5 sm:px-6 py-3.5 bg-white border-b border-stone-200/80 shrink-0">
+          <div className="flex items-center gap-2 sm:gap-2.5">
+            <button
+              onClick={closeCart}
+              className="w-9 h-9 rounded-full flex items-center justify-center text-stone-700 hover:text-stone-900 hover:bg-stone-100 active:bg-stone-200 transition-colors border border-stone-200/70"
+              aria-label="Go back and continue shopping"
+              title="Back"
+            >
+              <ArrowLeft size={18} strokeWidth={2.2} />
+            </button>
+            <div className="flex items-center gap-2">
+              <h2 className="font-display font-bold text-stone-900 text-base sm:text-lg tracking-tight">Shopping Bag</h2>
+              {totalItemCount > 0 && (
+                <span className="text-[11px] font-bold px-2 py-0.5 rounded-full bg-stone-900 text-amber-300">
+                  {totalItemCount} {totalItemCount === 1 ? 'item' : 'items'}
+                </span>
+              )}
             </div>
           </div>
           
@@ -98,6 +101,7 @@ export default function CartDrawer() {
               className="w-8 h-8 rounded-full flex items-center justify-center text-stone-500 hover:text-stone-900 hover:bg-stone-100 transition-colors"
               onClick={closeCart}
               aria-label="Close cart"
+              title="Close"
             >
               <X size={19} />
             </button>
