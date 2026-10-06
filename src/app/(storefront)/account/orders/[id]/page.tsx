@@ -88,13 +88,13 @@ export default function OrderDetailsInvoicePage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 dark:bg-neutral-900 py-8 px-4 sm:px-6 lg:px-8 print:p-0 print:bg-white">
+    <div className="min-h-screen bg-[#FAF8F5] py-8 px-4 sm:px-6 lg:px-8 print:p-0 print:bg-white text-stone-800">
       {/* HEADER CONTROLS (HIDDEN WHEN PRINTING) */}
       <div className="max-w-4xl mx-auto mb-6 print:hidden">
-        <div className="flex items-center justify-between bg-white dark:bg-neutral-800 p-4 rounded-2xl border border-gray-200 dark:border-neutral-700 shadow-sm">
+        <div className="flex items-center justify-between bg-white p-4 rounded-2xl border border-stone-200/90 shadow-xs">
           <Link
             href="/account/orders"
-            className="flex items-center gap-2 text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-brand-600 transition-colors"
+            className="flex items-center gap-2 text-sm font-semibold text-stone-700 hover:text-stone-950 transition-colors"
           >
             <ArrowLeft size={18} />
             <span>Back to Orders</span>

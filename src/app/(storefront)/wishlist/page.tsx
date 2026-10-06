@@ -20,16 +20,16 @@ export default function WishlistPage() {
   };
 
   return (
-    <div className="bg-ivory-100 min-h-screen pb-16">
-      <div className="py-10 relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #12100E 0%, #1A1713 50%, #2A241C 100%)' }}>
+    <div className="bg-[#FAF8F5] min-h-screen pb-16">
+      <div className="py-10 md:py-12 border-b border-stone-200 bg-[#F4F0E6]">
         <div className="container-plt flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="w-full sm:w-auto flex justify-start">
-            <BackButton variant="glass" label="Back to Shopping" />
+            <BackButton label="Back to Shopping" />
           </div>
           <div className="text-center sm:text-right">
-            <span className="text-[10px] uppercase font-bold tracking-[0.3em] text-amber-400 block mb-0.5">AMAL PERFUME Vault</span>
-            <h1 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-white tracking-wide">My Saved Fragrances</h1>
-            <p className="text-stone-300 text-xs sm:text-sm mt-0.5">{items.length} {items.length === 1 ? 'flacon' : 'flacons'} saved</p>
+            <span className="text-[10px] uppercase font-bold tracking-[0.3em] text-amber-800 block mb-0.5">AMAL PERFUME Vault</span>
+            <h1 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-stone-900 tracking-wide">My Saved Fragrances</h1>
+            <p className="text-stone-600 text-xs sm:text-sm mt-0.5">{items.length} {items.length === 1 ? 'flacon' : 'flacons'} saved</p>
           </div>
         </div>
       </div>

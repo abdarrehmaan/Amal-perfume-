@@ -64,25 +64,20 @@ export default function CartPage() {
   }
 
   return (
-    <div className="bg-ivory-100 min-h-screen pb-16">
-      <div
-        className="py-10 text-center text-white relative overflow-hidden"
-        style={{ background: 'linear-gradient(135deg, #12100E 0%, #1A1713 50%, #2A241C 100%)' }}
-      >
-        <span className="text-[10px] uppercase font-bold tracking-[0.3em] text-amber-400 block mb-1">AMAL PERFUME Concierge</span>
-        <h1 className="font-display text-3xl md:text-4xl font-bold text-white tracking-wide">Your Fragrance Flacon Cart</h1>
+    <div className="bg-[#FAF8F5] min-h-screen pb-16 text-stone-800">
+      <div className="py-10 md:py-12 border-b border-stone-200 bg-[#F4F0E6]">
+        <div className="container-plt px-4 max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="w-full sm:w-auto flex justify-start">
+            <BackButton fallbackHref="/products" label="Continue Shopping" />
+          </div>
+          <div className="text-center sm:text-right">
+            <span className="text-[10px] uppercase font-bold tracking-[0.3em] text-amber-800 block mb-0.5">AMAL PERFUME Concierge</span>
+            <h1 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-stone-900 tracking-wide">Your Shopping Bag</h1>
+          </div>
+        </div>
       </div>
 
       <div className="container-plt py-8">
-        <div className="mb-6 flex items-center justify-between">
-          <Link
-            href="/products"
-            className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-stone-700 hover:text-stone-900 bg-white border border-stone-200/80 px-4 py-2 rounded-xl shadow-xs transition-colors"
-          >
-            <ArrowLeft size={16} />
-            <span>Continue Shopping</span>
-          </Link>
-        </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
           {/* Cart items */}

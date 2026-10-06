@@ -52,17 +52,19 @@ export default function AccountPage() {
   }
 
   return (
-    <div className="bg-ivory-100 min-h-screen pb-16">
-      <div className="py-12 text-center relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #12100E 0%, #1A1713 50%, #2A241C 100%)' }}>
-        <div className="absolute top-4 left-4 sm:top-6 sm:left-6">
-          <BackButton variant="glass" fallbackHref="/" label="Back to Store" />
+    <div className="bg-[#FAF8F5] min-h-screen pb-16 text-stone-800">
+      <div className="py-10 md:py-12 border-b border-stone-200 bg-[#F4F0E6]">
+        <div className="container-plt max-w-2xl mx-auto flex flex-col items-center relative text-center">
+          <div className="self-start mb-4">
+            <BackButton fallbackHref="/" label="Back to Store" />
+          </div>
+          <div className="w-20 h-20 rounded-full bg-amber-100 text-amber-900 border border-amber-300/80 flex items-center justify-center mb-3 font-bold text-2xl shadow-xs">
+            {user.name ? user.name.split(' ').map((n) => n[0]).join('').toUpperCase().substring(0, 2) : 'U'}
+          </div>
+          <h1 className="font-display text-2xl font-bold text-stone-900">{user.name}</h1>
+          <p className="text-amber-800 font-semibold text-xs mb-1 uppercase tracking-wider">{user.role}</p>
+          <p className="text-stone-600 text-sm">{user.email}</p>
         </div>
-        <div className="w-20 h-20 rounded-full bg-white/20 flex items-center justify-center mx-auto mb-3 border border-white/10 font-bold text-2xl text-white">
-          {user.name ? user.name.split(' ').map((n) => n[0]).join('').toUpperCase().substring(0, 2) : 'U'}
-        </div>
-        <h1 className="font-display text-2xl font-bold text-white">{user.name}</h1>
-        <p className="text-white/85 text-xs mb-1 uppercase tracking-wide">{user.role}</p>
-        <p className="text-white/70 text-sm">{user.email}</p>
       </div>
       <div className="container-plt py-10 max-w-2xl">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">

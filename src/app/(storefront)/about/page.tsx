@@ -11,25 +11,25 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <div className="bg-white min-h-screen">
+    <div className="bg-[#FAF8F5] min-h-screen text-stone-800">
       {/* Hero */}
-      <div className="relative h-64 md:h-80 overflow-hidden">
-        <Image
-          src="/amal-banner.jpg"
-          alt="About AMAL PERFUME"
-          fill
-          className="object-cover"
-        />
-        <div className="absolute inset-0 bg-black/75" />
-        
-        <div className="absolute top-4 left-4 sm:top-6 sm:left-6 z-10">
-          <BackButton variant="glass" label="Back to Store" />
-        </div>
-
-        <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 pt-4">
-          <span className="text-[10px] uppercase font-bold tracking-[0.3em] text-amber-400 block mb-1">Haute Parfumerie</span>
-          <h1 className="font-display text-4xl md:text-5xl font-bold text-white mb-2">The Maison</h1>
-          <p className="text-gold-300 text-sm md:text-base max-w-2xl font-serif italic">"More Than A Fragrance — It's An Emotion"</p>
+      <div className="py-10 md:py-14 border-b border-stone-200 bg-[#F4F0E6]">
+        <div className="container-plt px-4 max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="w-full sm:w-auto flex justify-start">
+            <BackButton label="Back to Store" />
+          </div>
+          <div className="text-center sm:text-right">
+            <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-amber-500/10 border border-amber-600/20 text-amber-900 text-[11px] font-semibold uppercase tracking-wider mb-1.5">
+              <Sparkles size={13} className="text-amber-700" />
+              <span>Haute Parfumerie</span>
+            </div>
+            <h1 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-stone-900 mb-1">
+              The Maison
+            </h1>
+            <p className="text-stone-600 font-serif italic text-xs md:text-sm">
+              &ldquo;More Than A Fragrance — It&apos;s An Emotion&rdquo;
+            </p>
+          </div>
         </div>
       </div>
 

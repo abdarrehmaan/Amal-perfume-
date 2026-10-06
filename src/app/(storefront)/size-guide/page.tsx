@@ -48,22 +48,22 @@ const applicationTips = [
 
 export default function SizeGuidePage() {
   return (
-    <div className="bg-ivory-100 min-h-screen pb-16">
+    <div className="bg-[#FAF8F5] min-h-screen pb-16 text-stone-800">
       {/* Header Banner */}
-      <div
-        className="py-12 md:py-16 text-center relative overflow-hidden"
-        style={{ background: 'linear-gradient(135deg, #12100E 0%, #1A1713 50%, #2A241C 100%)' }}
-      >
-        <div className="container-plt flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div className="py-10 md:py-14 border-b border-stone-200 bg-[#F4F0E6]">
+        <div className="container-plt px-4 max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="w-full sm:w-auto flex justify-start">
-            <BackButton variant="glass" label="Back to Store" />
+            <BackButton label="Back to Store" />
           </div>
           <div className="text-center sm:text-right">
-            <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-white/10 backdrop-blur-md text-amber-300 text-[11px] font-semibold uppercase tracking-widest mb-1.5">
-              <Droplets size={13} /> Haute Parfumerie Guide
+            <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-amber-500/10 border border-amber-600/20 text-amber-900 text-[11px] font-semibold uppercase tracking-wider mb-1.5">
+              <Droplets size={13} className="text-amber-700" />
+              <span>Haute Parfumerie Guide</span>
             </div>
-            <h1 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-1">Flacon & Sillage Guide</h1>
-            <p className="text-stone-300 max-w-md text-xs sm:text-sm">
+            <h1 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-stone-900 mb-1">
+              Flacon & Sillage Guide
+            </h1>
+            <p className="text-stone-600 max-w-md text-xs sm:text-sm">
               Select your ideal bottle volume and master the art of long-lasting fragrance application.
             </p>
           </div>

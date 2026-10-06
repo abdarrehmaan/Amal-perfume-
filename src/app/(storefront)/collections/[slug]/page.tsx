@@ -114,27 +114,22 @@ export default async function CollectionPage({ params }: { params: Promise<{ slu
   const description = collection.description || 'Artisanal collection of luxury fragrances.';
 
   return (
-    <div className="bg-white min-h-screen">
+    <div className="bg-[#FAF8F5] min-h-screen text-stone-800">
       {/* Banner */}
-      <div className="relative h-56 md:h-72 overflow-hidden">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={bannerImage}
-          alt={collection.name}
-          className="w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-black/65 backdrop-blur-[1px]" />
-
-        <div className="absolute top-4 left-4 sm:top-6 sm:left-8 z-10">
-          <BackButton variant="glass" fallbackHref="/collections" label="All Collections" />
-        </div>
-
-        <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 pt-6">
-          <span className="text-[10px] uppercase font-bold tracking-[0.3em] text-amber-400 block mb-1">AMAL PERFUME Series</span>
-          <h1 className="font-display text-3xl md:text-5xl font-bold text-white mb-2">
-            {collection.name}
-          </h1>
-          <p className="text-stone-200 text-xs md:text-sm max-w-lg leading-relaxed">{description}</p>
+      <div className="py-10 md:py-14 border-b border-stone-200 bg-[#F4F0E6]">
+        <div className="container-plt px-4 max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="w-full sm:w-auto flex justify-start">
+            <BackButton fallbackHref="/collections" label="All Collections" />
+          </div>
+          <div className="text-center sm:text-right">
+            <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-amber-500/10 border border-amber-600/20 text-amber-900 text-[11px] font-semibold uppercase tracking-wider mb-1.5">
+              <span>AMAL PERFUME Series</span>
+            </div>
+            <h1 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-stone-900 mb-1">
+              {collection.name}
+            </h1>
+            <p className="text-stone-600 text-xs md:text-sm max-w-lg leading-relaxed">{description}</p>
+          </div>
         </div>
       </div>
 

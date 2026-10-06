@@ -59,16 +59,22 @@ export default async function NewArrivalsPage() {
   }));
 
   return (
-    <div className="bg-ivory-100 min-h-screen pb-16">
-      <div className="py-12 relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #12100E 0%, #1A1713 50%, #2A241C 100%)' }}>
-        <div className="container-plt flex flex-col sm:flex-row items-center justify-between gap-4">
+    <div className="bg-[#FAF8F5] min-h-screen pb-16 text-stone-800">
+      <div className="py-10 md:py-14 border-b border-stone-200 bg-[#F4F0E6]">
+        <div className="container-plt px-4 max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="w-full sm:w-auto flex justify-start">
-            <BackButton variant="glass" label="Back to Shop" />
+            <BackButton label="Back to Shop" />
           </div>
           <div className="text-center sm:text-right">
-            <p className="text-amber-400 text-[10px] font-bold uppercase tracking-[0.3em] mb-1">✨ Fresh Distillations</p>
-            <h1 className="font-display text-3xl sm:text-4xl font-bold text-white mb-1">New Releases</h1>
-            <p className="text-stone-300 text-xs sm:text-sm max-w-md">The latest olfactory creations formulated by our master noses</p>
+            <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-amber-500/10 border border-amber-600/20 text-amber-900 text-[11px] font-semibold uppercase tracking-wider mb-1.5">
+              <span>✨ Fresh Distillations</span>
+            </div>
+            <h1 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-stone-900 mb-1">
+              New Releases
+            </h1>
+            <p className="text-stone-600 text-xs sm:text-sm max-w-md">
+              The latest olfactory creations formulated by our master noses
+            </p>
           </div>
         </div>
       </div>

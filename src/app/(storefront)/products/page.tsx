@@ -191,28 +191,21 @@ export default async function ProductsPage({
   };
 
   return (
-    <div className="bg-[#FAF8F5] min-h-screen">
+    <div className="bg-[#FAF8F5] min-h-screen text-stone-800">
       {/* Luxury Editorial Header */}
-      <div
-        className="py-12 md:py-16 text-center relative overflow-hidden"
-        style={{
-          background: 'linear-gradient(135deg, #12100E 0%, #1A1713 50%, #2A241C 100%)',
-        }}
-      >
-        <div className="absolute inset-0 opacity-15 bg-[radial-gradient(#C5A059_1px,transparent_1px)] [background-size:16px_16px]" />
-        
-        <div className="container-plt relative z-10 flex flex-col sm:flex-row items-center justify-between gap-4 mb-3">
+      <div className="py-10 md:py-14 border-b border-stone-200 bg-[#F4F0E6]">
+        <div className="container-plt px-4 max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="w-full sm:w-auto flex justify-start">
-            <BackButton variant="glass" label="Back to Home" />
+            <BackButton label="Back to Home" />
           </div>
           <div className="text-center sm:text-right">
-            <span className="text-[10px] uppercase font-bold tracking-[0.35em] text-amber-400 block mb-1">
-              Haute Parfumerie Catalog
-            </span>
-            <h1 className="font-display text-2xl sm:text-4xl md:text-5xl font-bold text-white mb-1 tracking-wide">
+            <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-amber-500/10 border border-amber-600/20 text-amber-900 text-[11px] font-semibold uppercase tracking-wider mb-1.5">
+              <span>Haute Parfumerie Catalog</span>
+            </div>
+            <h1 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-stone-900 mb-1">
               Artisanal Fragrance Wardrobe
             </h1>
-            <p className="text-stone-300 text-xs sm:text-sm max-w-xl leading-relaxed">
+            <p className="text-stone-600 text-xs sm:text-sm max-w-xl leading-relaxed">
               Macerated extraits, aged Cambodian agarwoods, and rare botanical distillates formulated at 30%+ pure oil concentrations.
             </p>
           </div>

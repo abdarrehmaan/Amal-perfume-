@@ -65,19 +65,16 @@ export default function MyWalletPage() {
         </div>
 
         {/* Wallet Balance Header Card */}
-        <div
-          className="rounded-3xl p-8 text-white mb-8 shadow-xl relative overflow-hidden"
-          style={{ background: 'linear-gradient(135deg, #12100E 0%, #1A1713 50%, #2A241C 100%)' }}
-        >
+        <div className="rounded-3xl p-8 bg-[#F4F0E6] border border-stone-200/90 text-stone-900 mb-8 shadow-xs relative overflow-hidden">
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 relative z-10">
             <div>
-              <div className="flex items-center gap-2 text-amber-400 text-xs uppercase tracking-widest font-semibold mb-1">
+              <div className="flex items-center gap-2 text-amber-800 text-xs uppercase tracking-widest font-semibold mb-1">
                 <Wallet size={16} /> Store Credit Wallet
               </div>
-              <h1 className="font-display text-4xl font-bold">{formatPrice(balance)}</h1>
-              <p className="text-stone-300 text-xs mt-1">Available balance for instant checkout</p>
+              <h1 className="font-display text-4xl font-bold text-stone-900">{formatPrice(balance)}</h1>
+              <p className="text-stone-600 text-xs mt-1">Available balance for instant checkout</p>
             </div>
-            <div className="bg-white/10 backdrop-blur-md px-4 py-2 rounded-2xl border border-white/20 text-xs font-semibold text-white">
+            <div className="bg-amber-500/10 px-4 py-2 rounded-2xl border border-amber-600/20 text-xs font-semibold text-amber-900">
               100% Safe & Instant Refunds
             </div>
           </div>
