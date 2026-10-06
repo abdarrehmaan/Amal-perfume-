@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import ProductGrid from '@/components/storefront/ProductGrid';
 import { prisma } from '@/lib/prisma';
 import { notFound } from 'next/navigation';
+import BackButton from '@/components/storefront/BackButton';
 
 const defaultMeta: Record<string, { name: string; description: string; image: string }> = {
   'extrait-de-parfum': {
@@ -145,19 +146,25 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
   return (
     <div className="bg-white min-h-screen">
       {/* Banner */}
-      <div className="relative h-48 md:h-64 overflow-hidden">
+      <div className="relative h-56 md:h-72 overflow-hidden">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={bannerImage}
           alt={category.name}
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-brand-900/60" />
-        <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
-          <h1 className="font-display text-3xl md:text-4xl font-bold text-white mb-2">
+        <div className="absolute inset-0 bg-black/65 backdrop-blur-[1px]" />
+        
+        <div className="absolute top-4 left-4 sm:top-6 sm:left-8 z-10">
+          <BackButton variant="glass" fallbackHref="/categories" label="All Families" />
+        </div>
+
+        <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 pt-6">
+          <span className="text-[10px] uppercase font-bold tracking-[0.3em] text-amber-400 block mb-1">AMAL PERFUME Collection</span>
+          <h1 className="font-display text-3xl md:text-5xl font-bold text-white mb-2">
             {category.name}
           </h1>
-          <p className="text-white/80 text-sm md:text-base max-w-lg">{description}</p>
+          <p className="text-stone-200 text-xs md:text-sm max-w-lg leading-relaxed">{description}</p>
         </div>
       </div>
 

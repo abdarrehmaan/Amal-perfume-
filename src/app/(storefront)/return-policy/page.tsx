@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Ban, ShieldAlert, Phone, Video, CheckCircle2, MessageSquare } from 'lucide-react';
+import BackButton from '@/components/storefront/BackButton';
 
 export const metadata: Metadata = {
   title: 'Sealed Flacon & Return Policy — AMAL PERFUME',
@@ -10,12 +11,19 @@ export default function ReturnPolicyPage() {
   return (
     <div className="bg-white min-h-screen">
       {/* Page Header */}
-      <div className="py-16 text-center" style={{ background: 'linear-gradient(135deg, #09090b 0%, #171510 50%, #282010 100%)' }}>
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md text-gold-300 border border-gold-500/30 text-xs font-semibold uppercase tracking-widest mb-4">
-          <ShieldAlert size={14} /> Official Maison Policy
+      <div className="py-12 md:py-16 text-center" style={{ background: 'linear-gradient(135deg, #09090b 0%, #171510 50%, #282010 100%)' }}>
+        <div className="container-plt max-w-4xl flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="w-full sm:w-auto flex justify-start">
+            <BackButton variant="glass" label="Back to Store" />
+          </div>
+          <div className="text-center sm:text-right">
+            <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-white/10 backdrop-blur-md text-amber-300 border border-amber-500/30 text-[11px] font-semibold uppercase tracking-widest mb-1.5">
+              <ShieldAlert size={13} /> Official Maison Policy
+            </div>
+            <h1 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-1">Sealed Flacon & Return Policy</h1>
+            <p className="text-stone-300 text-xs sm:text-sm">Hygiene, authenticity, and our Sample-First guarantee.</p>
+          </div>
         </div>
-        <h1 className="font-display text-3xl md:text-5xl font-bold text-white mb-3">Sealed Flacon & Return Policy</h1>
-        <p className="text-stone-300">Hygiene, authenticity, and our Sample-First guarantee.</p>
       </div>
 
       <div className="container-plt py-12 max-w-4xl">

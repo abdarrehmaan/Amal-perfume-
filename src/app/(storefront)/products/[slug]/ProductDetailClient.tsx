@@ -11,6 +11,7 @@ import ProductGrid from '@/components/storefront/ProductGrid';
 import SectionHeader from '@/components/storefront/SectionHeader';
 import toast from 'react-hot-toast';
 import { cn } from '@/lib/utils';
+import BackButton from '@/components/storefront/BackButton';
 
 interface Variant {
   id: string;
@@ -208,21 +209,24 @@ export default function ProductDetailClient({
 
   return (
     <div className="bg-white min-h-screen">
-      {/* Breadcrumb */}
-      <div className="container-plt py-4">
-        <nav className="breadcrumb">
-          <Link href="/">Home</Link>
-          <ChevronRight size={14} className="text-gray-300" />
-          {product.category && (
-            <>
-              <Link href={`/categories/${product.category.slug || product.category.name.toLowerCase()}`}>
-                {product.category.name}
-              </Link>
-              <ChevronRight size={14} className="text-gray-300" />
-            </>
-          )}
-          <span className="text-gray-900 font-medium truncate max-w-xs">{product.name}</span>
-        </nav>
+      {/* Breadcrumb & Mobile Back */}
+      <div className="container-plt py-3.5 flex items-center justify-between gap-3 border-b border-stone-100">
+        <div className="flex items-center gap-2 sm:gap-3 overflow-hidden">
+          <BackButton label="Back" className="py-1.5 px-2.5 text-xs" />
+          <nav className="breadcrumb text-xs hidden sm:flex truncate">
+            <Link href="/">Home</Link>
+            <ChevronRight size={13} className="text-gray-300 shrink-0" />
+            {product.category && (
+              <>
+                <Link href={`/categories/${product.category.slug || product.category.name.toLowerCase()}`}>
+                  {product.category.name}
+                </Link>
+                <ChevronRight size={13} className="text-gray-300 shrink-0" />
+              </>
+            )}
+            <span className="text-gray-900 font-medium truncate max-w-xs">{product.name}</span>
+          </nav>
+        </div>
       </div>
 
       {/* Product section */}

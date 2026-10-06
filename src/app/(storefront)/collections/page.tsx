@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import CollectionsBanner from '@/components/storefront/CollectionsBanner';
 import { prisma } from '@/lib/prisma';
+import BackButton from '@/components/storefront/BackButton';
 
 export const dynamic = 'force-dynamic';
 
@@ -39,13 +40,20 @@ export default async function CollectionsPage() {
   }));
 
   return (
-    <div className="bg-white min-h-screen">
-      <div className="py-14 text-center relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #12100E 0%, #1A1713 50%, #2A241C 100%)' }}>
-        <p className="text-amber-400 text-xs font-bold uppercase tracking-widest mb-2">Exclusive Series</p>
-        <h1 className="font-display text-4xl font-bold text-white mb-2">Private Collections</h1>
-        <p className="text-stone-300 text-sm max-w-lg mx-auto">Artisanal fragrance series distilled for every moment and mood</p>
+    <div className="bg-ivory-100 min-h-screen pb-16">
+      <div className="py-12 relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #12100E 0%, #1A1713 50%, #2A241C 100%)' }}>
+        <div className="container-plt flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="w-full sm:w-auto flex justify-start">
+            <BackButton variant="glass" label="Back to Shop" />
+          </div>
+          <div className="text-center sm:text-right">
+            <p className="text-amber-400 text-[10px] font-bold uppercase tracking-[0.3em] mb-1">Exclusive Series</p>
+            <h1 className="font-display text-3xl sm:text-4xl font-bold text-white mb-1">Private Collections</h1>
+            <p className="text-stone-300 text-xs sm:text-sm max-w-md">Artisanal fragrance series distilled for every moment and mood</p>
+          </div>
+        </div>
       </div>
-      <div className="py-12">
+      <div className="py-8">
         <CollectionsBanner collections={collections} />
       </div>
     </div>

@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 import { Phone, Mail, MapPin, Clock, MessageSquare, Video, AlertCircle } from 'lucide-react';
 import ContactForm from '@/components/storefront/ContactForm';
 
+import BackButton from '@/components/storefront/BackButton';
+
 export const metadata: Metadata = {
   title: 'Client Concierge — AMAL PERFUME',
   description: 'Connect with AMAL PERFUME Haute Parfumerie Maison — bespoke scent consultations, private orders, and client concierge.',
@@ -10,10 +12,13 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <div className="bg-[#08080a] min-h-screen text-stone-200">
-      <div className="py-20 text-center relative border-b border-gold-500/20" style={{ background: 'radial-gradient(ellipse at center, #1b160c 0%, #0c0b08 60%, #050505 100%)' }}>
-        <p className="text-xs uppercase tracking-[0.4em] text-gold-400 font-bold mb-3">AMAL PERFUME</p>
-        <h1 className="font-display text-4xl md:text-5xl font-bold text-gradient-gold mb-3">Client Concierge</h1>
-        <p className="text-stone-300 font-serif italic text-sm tracking-wide">"More Than A Fragrance — It's An Emotion"</p>
+      <div className="py-16 text-center relative border-b border-gold-500/20" style={{ background: 'radial-gradient(ellipse at center, #1b160c 0%, #0c0b08 60%, #050505 100%)' }}>
+        <div className="absolute top-4 left-4 sm:top-6 sm:left-6">
+          <BackButton variant="dark" label="Back to Store" />
+        </div>
+        <p className="text-xs uppercase tracking-[0.4em] text-gold-400 font-bold mb-2">AMAL PERFUME</p>
+        <h1 className="font-display text-3xl md:text-5xl font-bold text-gradient-gold mb-2">Client Concierge</h1>
+        <p className="text-stone-300 font-serif italic text-xs sm:text-sm tracking-wide">"More Than A Fragrance — It's An Emotion"</p>
       </div>
 
       <div className="container-plt py-12 md:py-20">

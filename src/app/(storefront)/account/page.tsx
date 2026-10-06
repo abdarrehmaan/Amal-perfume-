@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation';
 import { Package, Heart, MapPin, Wallet, RotateCcw, User, ChevronRight, LogOut } from 'lucide-react';
 import { useAuthStore } from '@/features/auth/store';
 import toast from 'react-hot-toast';
+import BackButton from '@/components/storefront/BackButton';
 
 const accountLinks = [
   { label: 'My Orders', desc: 'View & track order status', icon: Package, href: '/account/orders' },
@@ -51,11 +52,11 @@ export default function AccountPage() {
   }
 
   return (
-    <div className="bg-ivory-100 min-h-screen">
+    <div className="bg-ivory-100 min-h-screen pb-16">
       <div className="py-12 text-center relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #12100E 0%, #1A1713 50%, #2A241C 100%)' }}>
-        <Link href="/" className="absolute top-4 left-6 text-stone-300 hover:text-white text-xs font-semibold uppercase tracking-wider transition-colors">
-          ← Back to Store
-        </Link>
+        <div className="absolute top-4 left-4 sm:top-6 sm:left-6">
+          <BackButton variant="glass" fallbackHref="/" label="Back to Store" />
+        </div>
         <div className="w-20 h-20 rounded-full bg-white/20 flex items-center justify-center mx-auto mb-3 border border-white/10 font-bold text-2xl text-white">
           {user.name ? user.name.split(' ').map((n) => n[0]).join('').toUpperCase().substring(0, 2) : 'U'}
         </div>

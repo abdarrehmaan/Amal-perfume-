@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowLeft, Ban, MessageSquare, Video, ShieldCheck } from 'lucide-react';
+import BackButton from '@/components/storefront/BackButton';
 
 export const metadata: Metadata = {
   title: 'Refund & Sealed Flacon Policy — AMAL PERFUME',
@@ -9,20 +10,27 @@ export const metadata: Metadata = {
 
 export default function RefundPolicyPage() {
   return (
-    <div className="bg-[#FAF8F5] min-h-screen">
+    <div className="bg-[#FAF8F5] min-h-screen pb-16">
       <div
-        className="py-16 text-center text-white relative overflow-hidden"
+        className="py-12 md:py-16 text-white relative overflow-hidden"
         style={{ background: 'linear-gradient(135deg, #12100E 0%, #1A1713 50%, #2A241C 100%)' }}
       >
-        <span className="text-[10px] uppercase font-bold tracking-[0.3em] text-amber-400 block mb-1">
-          Haute Parfumerie Standards
-        </span>
-        <h1 className="font-display text-3xl md:text-5xl font-bold text-white mb-2 tracking-wide">
-          Refund & Flacon Policy
-        </h1>
-        <p className="text-stone-300 text-sm max-w-md mx-auto">
-          Cosmetic hygiene, unboxing verification, and sealed presentation flacons
-        </p>
+        <div className="container-plt max-w-4xl flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="w-full sm:w-auto flex justify-start">
+            <BackButton variant="glass" label="Back to Store" />
+          </div>
+          <div className="text-center sm:text-right">
+            <span className="text-[10px] uppercase font-bold tracking-[0.3em] text-amber-400 block mb-1">
+              Haute Parfumerie Standards
+            </span>
+            <h1 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-1 tracking-wide">
+              Refund & Flacon Policy
+            </h1>
+            <p className="text-stone-300 text-xs sm:text-sm max-w-md">
+              Cosmetic hygiene, unboxing verification, and sealed presentation flacons
+            </p>
+          </div>
+        </div>
       </div>
 
       <div className="container-plt py-12 max-w-3xl">

@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Package, Download, Loader2, Search, FileText, CheckCircle2, ArrowRight } from 'lucide-react';
 import { useAuthStore } from '@/features/auth/store';
+import BackButton from '@/components/storefront/BackButton';
 
 export default function OrdersPage() {
   const user = useAuthStore((s) => s.user);
@@ -57,12 +58,7 @@ export default function OrdersPage() {
             View, track, and download official GST Tax Invoice PDFs for your orders.
           </p>
         </div>
-        <Link
-          href="/account"
-          className="text-xs font-bold text-brand-600 dark:text-amber-400 hover:underline uppercase tracking-wider"
-        >
-          Back to Account
-        </Link>
+        <BackButton fallbackHref="/account" label="Back to Account" />
       </div>
 
       {/* QUICK INVOICE SEARCH BAR */}

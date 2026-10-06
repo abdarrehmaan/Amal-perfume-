@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Award, Heart, Leaf, Sparkles } from 'lucide-react';
+import BackButton from '@/components/storefront/BackButton';
 
 export const metadata: Metadata = {
   title: "The Maison — AMAL PERFUME",
@@ -20,9 +21,15 @@ export default function AboutPage() {
           className="object-cover"
         />
         <div className="absolute inset-0 bg-black/75" />
-        <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
-          <h1 className="font-display text-4xl md:text-5xl font-bold text-white mb-3">The Maison</h1>
-          <p className="text-gold-300 text-lg max-w-2xl font-serif italic">"More Than A Fragrance — It's An Emotion"</p>
+        
+        <div className="absolute top-4 left-4 sm:top-6 sm:left-6 z-10">
+          <BackButton variant="glass" label="Back to Store" />
+        </div>
+
+        <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 pt-4">
+          <span className="text-[10px] uppercase font-bold tracking-[0.3em] text-amber-400 block mb-1">Haute Parfumerie</span>
+          <h1 className="font-display text-4xl md:text-5xl font-bold text-white mb-2">The Maison</h1>
+          <p className="text-gold-300 text-sm md:text-base max-w-2xl font-serif italic">"More Than A Fragrance — It's An Emotion"</p>
         </div>
       </div>
 

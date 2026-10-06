@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Truck, Clock, ShieldCheck, MessageSquare, Video, ArrowRight } from 'lucide-react';
+import BackButton from '@/components/storefront/BackButton';
 
 export const metadata: Metadata = {
   title: 'Shipping & Delivery Policy — AMAL PERFUME',
@@ -28,18 +29,23 @@ export default function ShippingPolicyPage() {
   return (
     <div className="bg-[#FAF8F5] min-h-screen text-stone-800">
       {/* Header Banner */}
-      <div className="py-12 md:py-16 text-center border-b border-stone-200 bg-[#F4F0E6]">
-        <div className="container-plt px-4 max-w-3xl mx-auto">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-amber-500/10 border border-amber-600/20 text-amber-900 text-xs font-semibold uppercase tracking-wider mb-3">
-            <Truck size={14} className="text-amber-700" />
-            <span>Maison Logistics</span>
+      <div className="py-10 md:py-14 border-b border-stone-200 bg-[#F4F0E6]">
+        <div className="container-plt px-4 max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="w-full sm:w-auto flex justify-start">
+            <BackButton label="Back to Store" />
           </div>
-          <h1 className="font-display text-2xl md:text-4xl font-bold text-stone-900 mb-2">
-            Shipping & Delivery Policy
-          </h1>
-          <p className="text-stone-600 text-sm md:text-base">
-            Carefully compounded, sealed, and delivered across India.
-          </p>
+          <div className="text-center sm:text-right">
+            <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-amber-500/10 border border-amber-600/20 text-amber-900 text-[11px] font-semibold uppercase tracking-wider mb-1.5">
+              <Truck size={13} className="text-amber-700" />
+              <span>Maison Logistics</span>
+            </div>
+            <h1 className="font-display text-2xl md:text-3xl font-bold text-stone-900 mb-1">
+              Shipping & Delivery Policy
+            </h1>
+            <p className="text-stone-600 text-xs md:text-sm">
+              Carefully compounded, sealed, and delivered across India.
+            </p>
+          </div>
         </div>
       </div>
 

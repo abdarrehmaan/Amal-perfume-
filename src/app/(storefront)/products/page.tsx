@@ -4,6 +4,7 @@ import ProductFilterToolbar from '@/components/storefront/ProductFilterToolbar';
 import { prisma } from '@/lib/prisma';
 import { Search } from 'lucide-react';
 import Link from 'next/link';
+import BackButton from '@/components/storefront/BackButton';
 
 export const dynamic = 'force-dynamic';
 
@@ -193,22 +194,28 @@ export default async function ProductsPage({
     <div className="bg-[#FAF8F5] min-h-screen">
       {/* Luxury Editorial Header */}
       <div
-        className="py-14 md:py-18 text-center relative overflow-hidden"
+        className="py-12 md:py-16 text-center relative overflow-hidden"
         style={{
           background: 'linear-gradient(135deg, #12100E 0%, #1A1713 50%, #2A241C 100%)',
         }}
       >
         <div className="absolute inset-0 opacity-15 bg-[radial-gradient(#C5A059_1px,transparent_1px)] [background-size:16px_16px]" />
-        <div className="relative z-10 max-w-3xl mx-auto px-4">
-          <span className="text-[10px] uppercase font-bold tracking-[0.35em] text-amber-400 block mb-2">
-            Haute Parfumerie Catalog
-          </span>
-          <h1 className="font-display text-3xl md:text-5xl font-bold text-white mb-3 tracking-wide">
-            Artisanal Fragrance Wardrobe
-          </h1>
-          <p className="text-stone-300 text-xs sm:text-sm max-w-xl mx-auto leading-relaxed">
-            Macerated extraits, aged Cambodian agarwoods, and rare botanical distillates formulated at 30%+ pure oil concentrations.
-          </p>
+        
+        <div className="container-plt relative z-10 flex flex-col sm:flex-row items-center justify-between gap-4 mb-3">
+          <div className="w-full sm:w-auto flex justify-start">
+            <BackButton variant="glass" label="Back to Home" />
+          </div>
+          <div className="text-center sm:text-right">
+            <span className="text-[10px] uppercase font-bold tracking-[0.35em] text-amber-400 block mb-1">
+              Haute Parfumerie Catalog
+            </span>
+            <h1 className="font-display text-2xl sm:text-4xl md:text-5xl font-bold text-white mb-1 tracking-wide">
+              Artisanal Fragrance Wardrobe
+            </h1>
+            <p className="text-stone-300 text-xs sm:text-sm max-w-xl leading-relaxed">
+              Macerated extraits, aged Cambodian agarwoods, and rare botanical distillates formulated at 30%+ pure oil concentrations.
+            </p>
+          </div>
         </div>
       </div>
 

@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import BackButton from '@/components/storefront/BackButton';
 
 export const metadata: Metadata = {
   title: 'Terms and Conditions — AMAL PERFUME',
@@ -9,14 +10,19 @@ export default function TermsPage() {
   return (
     <div className="bg-[#FAF8F5] min-h-screen text-stone-800">
       {/* Header Banner */}
-      <div className="py-12 md:py-16 text-center border-b border-stone-200 bg-[#F4F0E6]">
-        <div className="container-plt px-4 max-w-4xl mx-auto">
-          <h1 className="font-display text-2xl md:text-4xl font-bold text-stone-900 mb-2">
-            Terms and Conditions
-          </h1>
-          <p className="text-stone-600 text-xs md:text-sm">
-            Last Updated: October 2026
-          </p>
+      <div className="py-10 md:py-14 border-b border-stone-200 bg-[#F4F0E6]">
+        <div className="container-plt px-4 max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="w-full sm:w-auto flex justify-start">
+            <BackButton label="Back to Store" />
+          </div>
+          <div className="text-center sm:text-right">
+            <h1 className="font-display text-2xl md:text-3xl font-bold text-stone-900 mb-1">
+              Terms and Conditions
+            </h1>
+            <p className="text-stone-600 text-xs md:text-sm">
+              Last Updated: October 2026
+            </p>
+          </div>
         </div>
       </div>
 

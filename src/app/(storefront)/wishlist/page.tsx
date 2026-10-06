@@ -7,6 +7,7 @@ import { useWishlistStore } from '@/features/wishlist/store';
 import { useCartStore } from '@/features/cart/store';
 import { formatPrice } from '@/lib/utils';
 import toast from 'react-hot-toast';
+import BackButton from '@/components/storefront/BackButton';
 
 export default function WishlistPage() {
   const { items, removeItem } = useWishlistStore();
@@ -19,13 +20,20 @@ export default function WishlistPage() {
   };
 
   return (
-    <div className="bg-white min-h-screen">
-      <div className="py-12 text-center relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #12100E 0%, #1A1713 50%, #2A241C 100%)' }}>
-        <span className="text-[10px] uppercase font-bold tracking-[0.3em] text-amber-400 block mb-1">AMAL PERFUME Vault</span>
-        <h1 className="font-display text-3xl md:text-4xl font-bold text-white tracking-wide">My Saved Fragrances</h1>
-        <p className="text-stone-300 text-sm mt-1">{items.length} {items.length === 1 ? 'flacon' : 'flacons'} saved</p>
+    <div className="bg-ivory-100 min-h-screen pb-16">
+      <div className="py-10 relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #12100E 0%, #1A1713 50%, #2A241C 100%)' }}>
+        <div className="container-plt flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="w-full sm:w-auto flex justify-start">
+            <BackButton variant="glass" label="Back to Shopping" />
+          </div>
+          <div className="text-center sm:text-right">
+            <span className="text-[10px] uppercase font-bold tracking-[0.3em] text-amber-400 block mb-0.5">AMAL PERFUME Vault</span>
+            <h1 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-white tracking-wide">My Saved Fragrances</h1>
+            <p className="text-stone-300 text-xs sm:text-sm mt-0.5">{items.length} {items.length === 1 ? 'flacon' : 'flacons'} saved</p>
+          </div>
+        </div>
       </div>
-      <div className="container-plt py-12">
+      <div className="container-plt py-8">
         {items.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-24 gap-4">
             <div className="w-24 h-24 rounded-full bg-brand-50 flex items-center justify-center">

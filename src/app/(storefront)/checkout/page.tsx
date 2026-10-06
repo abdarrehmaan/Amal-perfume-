@@ -8,6 +8,7 @@ import { useAuthStore } from '@/features/auth/store';
 import { formatPrice } from '@/lib/utils';
 import toast from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
+import BackButton from '@/components/storefront/BackButton';
 
 const indianStates = [
   'Andhra Pradesh', 'Arunachal Pradesh', 'Assam', 'Bihar', 'Chhattisgarh',
@@ -384,15 +385,22 @@ export default function CheckoutPage() {
   }
 
   return (
-    <div className="bg-ivory-100 min-h-screen">
-      <div className="py-12 text-center text-white relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #12100E 0%, #1A1713 50%, #2A241C 100%)' }}>
-        <span className="text-[10px] uppercase font-bold tracking-[0.3em] text-amber-400 block mb-1">AMAL PERFUME Boutique</span>
-        <h1 className="font-display text-3xl md:text-4xl font-bold text-white tracking-wide">Secure Checkout</h1>
-        <nav className="flex items-center justify-center gap-2 text-stone-300 text-xs sm:text-sm mt-3">
-          <span>Bag</span><ChevronRight size={14} className="text-amber-500" />
-          <span className="text-amber-400 font-semibold">Shipping & Payment</span><ChevronRight size={14} className="text-amber-500" />
-          <span>Confirmation</span>
-        </nav>
+    <div className="bg-ivory-100 min-h-screen pb-16">
+      <div className="py-10 text-white relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #12100E 0%, #1A1713 50%, #2A241C 100%)' }}>
+        <div className="container-plt flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="w-full sm:w-auto flex justify-start">
+            <BackButton variant="glass" fallbackHref="/cart" label="Back to Bag" />
+          </div>
+          <div className="text-center sm:text-right">
+            <span className="text-[10px] uppercase font-bold tracking-[0.3em] text-amber-400 block mb-0.5">AMAL PERFUME Boutique</span>
+            <h1 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-white tracking-wide">Secure Checkout</h1>
+            <nav className="flex items-center justify-center sm:justify-end gap-2 text-stone-300 text-xs mt-1.5">
+              <span>Bag</span><ChevronRight size={12} className="text-amber-500" />
+              <span className="text-amber-400 font-semibold">Shipping & Payment</span><ChevronRight size={12} className="text-amber-500" />
+              <span>Confirmation</span>
+            </nav>
+          </div>
+        </div>
       </div>
 
       <div className="container-plt py-10">
