@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { ShieldCheck, Video, MessageSquare, CheckCircle2, RefreshCw } from 'lucide-react';
+import { ShieldCheck, Video, CheckCircle2, RefreshCw } from 'lucide-react';
 import BackButton from '@/components/storefront/BackButton';
 
 export const metadata: Metadata = {
@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function ReturnPolicyPage() {
   return (
-    <div className="bg-[#FAF8F5] min-h-screen text-stone-800">
+    <div className="bg-[#FAF8F5] min-h-screen text-stone-800 pb-16">
       {/* Consistent Warm Header Banner */}
       <div className="py-10 md:py-14 border-b border-stone-200 bg-[#F4F0E6]">
         <div className="container-plt px-4 max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
@@ -31,7 +31,7 @@ export default function ReturnPolicyPage() {
         </div>
       </div>
 
-      <div className="container-plt py-10 md:py-14 px-4 max-w-4xl mx-auto space-y-8">
+      <div className="container-plt py-10 md:py-14 px-4 max-w-4xl mx-auto">
         {/* Detailed Points in Structured Sections */}
         <div className="bg-white rounded-2xl border border-stone-200/90 p-6 sm:p-10 shadow-xs space-y-8 text-stone-700">
           {/* Section 1: Return Rules */}
@@ -127,29 +127,6 @@ export default function ReturnPolicyPage() {
               </li>
             </ul>
           </div>
-        </div>
-
-        {/* Customer Support Card */}
-        <div className="bg-[#1C1917] text-white rounded-2xl p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-sm">
-          <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-xl bg-amber-500/20 border border-amber-400/30 text-amber-400 flex items-center justify-center shrink-0">
-              <MessageSquare size={24} />
-            </div>
-            <div>
-              <h3 className="font-bold text-base sm:text-lg text-white mb-0.5">Need help with an order or return?</h3>
-              <p className="text-xs sm:text-sm text-stone-300">
-                Reach out to our customer care team via Call or WhatsApp. We respond within 24 hours.
-              </p>
-            </div>
-          </div>
-          <a
-            href="https://wa.me/916392006081"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-full sm:w-auto px-6 py-3 rounded-xl bg-amber-500 hover:bg-amber-400 text-stone-950 font-bold text-sm transition-all text-center shadow-xs whitespace-nowrap"
-          >
-            WhatsApp: +91 63920 06081
-          </a>
         </div>
       </div>
     </div>
