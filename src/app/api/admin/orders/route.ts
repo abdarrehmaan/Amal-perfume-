@@ -190,9 +190,9 @@ export async function POST(request: Request) {
         shippingName: customerName,
         shippingPhone: customerPhone,
         shippingLine1: shippingLine1 || 'Main Street',
-        shippingCity: shippingCity || 'Prayagraj',
-        shippingState: shippingState || 'Uttar Pradesh',
-        shippingPincode: shippingPincode || '211001',
+        shippingCity: shippingCity || 'Mumbai',
+        shippingState: shippingState || 'Maharashtra',
+        shippingPincode: shippingPincode || '400001',
         items: {
           create: [
             {

@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { Eye, EyeOff } from 'lucide-react';
+import { Eye, EyeOff, Sparkles, ShieldCheck } from 'lucide-react';
 import { useAuthStore } from '@/features/auth/store';
 import toast from 'react-hot-toast';
 
@@ -55,31 +55,59 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex">
-      {/* Left: Form */}
-      <div className="flex-1 flex flex-col justify-center px-8 py-12 bg-[#0d0d11] text-stone-200">
+    <div className="min-h-screen flex bg-[#FAF8F5]">
+      {/* Left Column: Form */}
+      <div className="flex-1 flex flex-col justify-center px-6 sm:px-12 py-12 bg-[#FAF8F5] text-stone-800">
         <div className="max-w-md w-full mx-auto">
-          <Link href="/" className="flex items-center gap-3.5 mb-6 group">
-            <img src="/amal-logo.jpg" alt="AMAL PERFUME" className="h-14 w-auto object-contain rounded-xl border border-gold-500/40" />
+          {/* Brand Header */}
+          <Link href="/" className="inline-flex items-center gap-3.5 mb-6 group">
+            <div className="p-1 bg-stone-900 rounded-xl border border-amber-600/40 shadow-sm">
+              <img
+                src="/amal-logo.jpg"
+                alt="AMAL PERFUME"
+                className="h-12 w-auto object-contain rounded-lg"
+              />
+            </div>
             <div className="flex flex-col">
-              <span className="font-display text-2xl font-bold text-gradient-gold tracking-widest leading-none">AMAL</span>
-              <span className="text-[9px] tracking-[0.4em] uppercase text-gold-300 font-bold mt-1">PERFUME</span>
+              <span className="font-display text-2xl font-bold tracking-[0.18em] text-stone-900 uppercase leading-none">
+                AMAL
+              </span>
+              <div className="flex items-center gap-1.5 mt-1">
+                <span className="h-[1px] w-3 bg-[#B88E3E]"></span>
+                <span className="text-[9px] uppercase tracking-[0.25em] text-[#B88E3E] font-bold">
+                  PERFUME
+                </span>
+                <span className="h-[1px] w-3 bg-[#B88E3E]"></span>
+              </div>
             </div>
           </Link>
-          <p className="text-[10px] tracking-[0.25em] uppercase text-gold-400 font-medium mb-8">More Than A Fragrance — It's An Emotion</p>
 
-          <h1 className="font-display text-2xl font-bold text-white mb-1">Maison Concierge Sign-In</h1>
-          <p className="text-stone-400 text-sm mb-8">Access your private reserve and orders</p>
+          <p className="text-[10px] tracking-[0.22em] uppercase text-amber-800 font-bold mb-8 flex items-center gap-1.5">
+            <Sparkles size={12} className="text-[#B88E3E]" />
+            <span>More Than A Fragrance — It&apos;s An Emotion</span>
+          </p>
+
+          <h1 className="font-display text-2xl sm:text-3xl font-bold text-stone-900 mb-1">
+            Maison Concierge Sign-In
+          </h1>
+          <p className="text-stone-500 text-xs sm:text-sm mb-8">
+            Access your private reserve coffret, orders &amp; bespoke consultations.
+          </p>
 
           {unconfirmedEmail && (
-            <div className="mb-6 p-4 bg-amber-50 border border-amber-200 rounded-2xl text-amber-800 text-xs leading-relaxed space-y-2">
-              <p className="font-bold">⚠️ Email Confirmation Required</p>
-              <p>Your email <strong>{unconfirmedEmail}</strong> has not been confirmed yet. Please check your email inbox and click the confirmation link.</p>
+            <div className="mb-6 p-4 bg-amber-50 border border-amber-300/80 rounded-2xl text-amber-900 text-xs leading-relaxed space-y-2 shadow-xs">
+              <p className="font-bold flex items-center gap-1.5">
+                <ShieldCheck size={16} className="text-amber-700" />
+                <span>Email Confirmation Required</span>
+              </p>
+              <p>
+                Your email <strong>{unconfirmedEmail}</strong> has not been confirmed yet. Please check your inbox for the confirmation link.
+              </p>
               <button
                 type="button"
                 onClick={handleResend}
                 disabled={resending}
-                className="font-bold text-amber-900 underline hover:text-amber-700 focus:outline-none"
+                className="font-bold text-amber-950 underline hover:text-[#B88E3E] focus:outline-none"
               >
                 {resending ? 'Sending link...' : 'Resend confirmation email'}
               </button>
@@ -88,7 +116,9 @@ export default function LoginPage() {
 
           <form onSubmit={handleSubmit} className="space-y-5">
             <div>
-              <label className="text-xs font-semibold text-gray-500 uppercase tracking-wide block mb-1.5">Mobile Number or Email</label>
+              <label className="text-xs font-semibold text-stone-600 uppercase tracking-wide block mb-1.5">
+                Mobile Number or Email
+              </label>
               <input
                 id="login-email"
                 type="text"
@@ -96,13 +126,17 @@ export default function LoginPage() {
                 value={form.email}
                 onChange={(e) => setForm((p) => ({ ...p, email: e.target.value }))}
                 placeholder="priya@example.com or 6392006081"
-                className="input-base bg-blue-50/20 focus:bg-white"
+                className="w-full px-4 py-3 text-sm bg-white border border-stone-300 rounded-xl text-stone-900 placeholder:text-stone-400 focus:outline-none focus:border-[#B88E3E] focus:ring-1 focus:ring-[#B88E3E] transition-all"
               />
             </div>
             <div>
               <div className="flex items-center justify-between mb-1.5">
-                <label className="text-xs font-semibold text-gray-500 uppercase tracking-wide">Password</label>
-                <Link href="/forgot-password" className="text-xs text-brand-600 hover:underline">Forgot password?</Link>
+                <label className="text-xs font-semibold text-stone-600 uppercase tracking-wide">
+                  Password
+                </label>
+                <Link href="/forgot-password" className="text-xs text-[#B88E3E] font-medium hover:underline">
+                  Forgot password?
+                </Link>
               </div>
               <div className="relative">
                 <input
@@ -112,11 +146,11 @@ export default function LoginPage() {
                   value={form.password}
                   onChange={(e) => setForm((p) => ({ ...p, password: e.target.value }))}
                   placeholder="••••••••"
-                  className="input-base pr-12 bg-blue-50/20 focus:bg-white"
+                  className="w-full px-4 py-3 text-sm bg-white border border-stone-300 rounded-xl text-stone-900 placeholder:text-stone-400 focus:outline-none focus:border-[#B88E3E] focus:ring-1 focus:ring-[#B88E3E] transition-all pr-12"
                 />
                 <button
                   type="button"
-                  className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 focus:outline-none"
+                  className="absolute right-4 top-1/2 -translate-y-1/2 text-stone-400 hover:text-stone-600 focus:outline-none"
                   onClick={() => setShowPw(!showPw)}
                 >
                   {showPw ? <EyeOff size={18} /> : <Eye size={18} />}
@@ -130,31 +164,40 @@ export default function LoginPage() {
               disabled={isButtonDisabled}
               className={`w-full py-3.5 flex items-center justify-center font-bold uppercase tracking-widest text-xs rounded-full transition-all duration-300 focus:outline-none ${
                 isButtonDisabled
-                  ? 'bg-stone-800 text-stone-500 cursor-not-allowed border border-white/5'
-                  : 'bg-gradient-to-r from-gold-400 via-gold-300 to-gold-500 text-stone-950 hover:brightness-110 shadow-gold cursor-pointer'
+                  ? 'bg-stone-200 text-stone-400 cursor-not-allowed border border-stone-300'
+                  : 'bg-[#B88E3E] hover:bg-[#9E782E] text-white shadow-md hover:shadow-lg cursor-pointer'
               }`}
             >
               {loading ? 'Entering Maison...' : 'Sign In'}
             </button>
           </form>
 
-          <p className="text-sm text-center text-stone-400 mt-6">
+          <p className="text-xs sm:text-sm text-center text-stone-500 mt-6">
             New to the Maison?{' '}
-            <Link href="/register" className="text-gold-400 font-semibold hover:underline">Create an Account</Link>
+            <Link href="/register" className="text-[#B88E3E] font-bold hover:underline">
+              Create an Account
+            </Link>
           </p>
         </div>
       </div>
 
+      {/* Right Column: Light Theme Brand Showcase */}
+      <div className="hidden lg:flex flex-1 items-center justify-center p-12 bg-[#F4F0E6] border-l border-stone-200/80 relative">
+        <div className="text-center text-stone-800 max-w-md">
+          <div className="inline-block bg-stone-900 p-4 rounded-2xl border border-amber-600/30 shadow-xl mb-6">
+            <img
+              src="/amal-logo.jpg"
+              alt="AMAL PERFUME"
+              className="h-24 w-auto object-contain rounded-xl"
+            />
+          </div>
+          <h2 className="font-display text-3xl font-bold text-stone-900 mb-2 tracking-widest uppercase">
+            AMAL PERFUME
+          </h2>
+          <p className="text-sm font-serif italic text-amber-900/90 tracking-wider mb-8">
+            &ldquo;More Than A Fragrance — It&apos;s An Emotion&rdquo;
+          </p>
 
-      {/* Right: Brand visual */}
-      <div
-        className="hidden lg:flex flex-1 items-center justify-center p-12 relative border-l border-gold-500/20"
-        style={{ background: 'radial-gradient(ellipse at center, #1b160c 0%, #0c0b08 60%, #050505 100%)' }}
-      >
-        <div className="text-center text-white max-w-md">
-          <img src="/amal-logo.jpg" alt="AMAL PERFUME" className="h-28 w-auto mx-auto mb-6 rounded-2xl border border-gold-500/30 shadow-gold-lg" />
-          <div className="font-display text-4xl font-bold text-gradient-gold mb-2 tracking-widest">AMAL PERFUME</div>
-          <p className="text-sm font-serif italic text-gold-300/90 tracking-wider mb-8">"More Than A Fragrance — It's An Emotion"</p>
           <div className="grid grid-cols-2 gap-4 text-sm">
             {[
               ['35% Extrait', 'Pure Oil Concentration'],
@@ -162,9 +205,12 @@ export default function LoginPage() {
               ['20+ Hours', 'Eternal Sillage'],
               ['100% Rare', 'Artisanal Botanicals'],
             ].map(([v, l]) => (
-              <div key={l} className="bg-white/[0.03] border border-gold-500/20 rounded-2xl p-4 backdrop-blur-sm">
-                <p className="font-bold text-lg text-gold-300">{v}</p>
-                <p className="text-stone-400 text-xs mt-1">{l}</p>
+              <div
+                key={l}
+                className="bg-white border border-stone-200/90 rounded-2xl p-4 shadow-xs text-center"
+              >
+                <p className="font-bold text-base sm:text-lg text-[#B88E3E]">{v}</p>
+                <p className="text-stone-500 text-xs mt-0.5">{l}</p>
               </div>
             ))}
           </div>

@@ -51,8 +51,8 @@ export default function Footer() {
             </Link>
 
             <div className="text-xs text-stone-600 leading-relaxed space-y-0.5 mb-3">
-              <p>Civil Lines, Prayagraj, 211001,</p>
-              <p>Uttar Pradesh, India</p>
+              <p>Mumbai, Maharashtra,</p>
+              <p>India</p>
             </div>
 
             <div className="text-xs text-stone-600 space-y-0.5">

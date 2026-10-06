@@ -12,28 +12,37 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <div className="bg-[#FAF8F5] min-h-screen text-stone-800">
-      {/* Hero */}
+      {/* Hero Header */}
       <div className="py-10 md:py-14 border-b border-stone-200 bg-[#F4F0E6]">
-        <div className="container-plt px-4 max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="container-plt px-4 max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
           <div className="w-full sm:w-auto flex justify-start">
             <BackButton label="Back to Store" />
           </div>
-          <div className="text-center sm:text-right">
-            <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-amber-500/10 border border-amber-600/20 text-amber-900 text-[11px] font-semibold uppercase tracking-wider mb-1.5">
-              <Sparkles size={13} className="text-amber-700" />
-              <span>Haute Parfumerie</span>
+          <div className="flex flex-col sm:flex-row items-center gap-4 text-center sm:text-right">
+            <div className="p-1 bg-stone-900 rounded-xl border border-amber-600/30 shadow-md shrink-0">
+              <img
+                src="/amal-logo.jpg"
+                alt="AMAL PERFUME Official Logo"
+                className="h-14 w-auto object-contain rounded-lg"
+              />
             </div>
-            <h1 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-stone-900 mb-1">
-              The Maison
-            </h1>
-            <p className="text-stone-600 font-serif italic text-xs md:text-sm">
-              &ldquo;More Than A Fragrance — It&apos;s An Emotion&rdquo;
-            </p>
+            <div>
+              <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-amber-500/10 border border-amber-600/20 text-amber-900 text-[11px] font-semibold uppercase tracking-wider mb-1.5">
+                <Sparkles size={13} className="text-amber-700" />
+                <span>Haute Parfumerie</span>
+              </div>
+              <h1 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-stone-900 mb-1">
+                The Maison
+              </h1>
+              <p className="text-stone-600 font-serif italic text-xs md:text-sm">
+                &ldquo;More Than A Fragrance — It&apos;s An Emotion&rdquo;
+              </p>
+            </div>
           </div>
         </div>
       </div>
 
-      {/* Story */}
+      {/* Story Section */}
       <section className="section-padding">
         <div className="container-plt max-w-4xl">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
@@ -50,24 +59,41 @@ export default function AboutPage() {
                 Every blend is macerated in dark cellars for over six months, allowing pure botanical oils to harmonize before being individually hand-filled and sealed into crystal flacons.
               </p>
             </div>
-            <div className="relative h-80 rounded-3xl overflow-hidden shadow-2xl border border-gold-500/20">
+            <div className="relative h-80 rounded-3xl overflow-hidden shadow-2xl border border-amber-500/20 group">
               <Image
                 src="/amal-banner.jpg"
                 alt="AMAL PERFUME artisanal flacon"
                 fill
                 className="object-cover"
               />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-black/20 p-6 flex flex-col justify-between">
+                <div className="self-end bg-stone-900/90 backdrop-blur-md p-2 rounded-xl border border-amber-500/40 shadow-lg">
+                  <img
+                    src="/amal-logo.jpg"
+                    alt="AMAL PERFUME Logo"
+                    className="h-10 w-auto object-contain rounded-lg"
+                  />
+                </div>
+                <div>
+                  <span className="text-[10px] tracking-[0.25em] uppercase text-amber-300 font-bold block mb-1">
+                    Authentic Maison Seal
+                  </span>
+                  <p className="text-white text-xs font-serif italic">
+                    Crafted with 35% Pure Perfume Oil Concentration
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Values */}
-      <section className="section-padding bg-ivory-100">
+      <section className="section-padding bg-[#F4F0E6]">
         <div className="container-plt">
           <div className="section-header">
             <div className="section-tag">Guiding Principles</div>
-            <h2 className="section-title">The Maison's Standards</h2>
+            <h2 className="section-title">The Maison&apos;s Standards</h2>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
@@ -76,12 +102,12 @@ export default function AboutPage() {
               { icon: Leaf, title: 'Ethical Sourcing', desc: 'We only partner with certified, sustainable harvesters of rare agarwood and botanicals.' },
               { icon: Heart, title: 'Sample-First Guarantee', desc: 'Every full-size flacon comes with a matching 2ml tester vial to sample before unsealing.' },
             ].map(({ icon: Icon, title, desc }) => (
-              <div key={title} className="bg-white p-6 rounded-2xl shadow-card text-center">
-                <div className="w-14 h-14 rounded-full bg-brand-50 flex items-center justify-center mx-auto mb-4">
-                  <Icon size={24} className="text-brand-600" />
+              <div key={title} className="bg-white p-6 rounded-2xl shadow-card text-center border border-stone-200/80">
+                <div className="w-14 h-14 rounded-full bg-amber-50 flex items-center justify-center mx-auto mb-4 border border-amber-200/60">
+                  <Icon size={24} className="text-[#B88E3E]" />
                 </div>
-                <h3 className="font-semibold text-gray-900 mb-2">{title}</h3>
-                <p className="text-sm text-gray-500 leading-relaxed">{desc}</p>
+                <h3 className="font-semibold text-stone-900 mb-2">{title}</h3>
+                <p className="text-sm text-stone-500 leading-relaxed">{desc}</p>
               </div>
             ))}
           </div>
@@ -91,8 +117,8 @@ export default function AboutPage() {
       {/* CTA */}
       <section className="section-padding text-center">
         <div className="container-plt">
-          <h2 className="font-display text-3xl font-bold text-gray-900 mb-4">Discover Your Signature Aura</h2>
-          <p className="text-gray-500 mb-8">Explore our private reserve extraits and discovery coffrets.</p>
+          <h2 className="font-display text-3xl font-bold text-stone-900 mb-4">Discover Your Signature Aura</h2>
+          <p className="text-stone-500 mb-8">Explore our private reserve extraits and discovery coffrets.</p>
           <Link href="/all-products" className="btn-primary">Explore The Catalog</Link>
         </div>
       </section>

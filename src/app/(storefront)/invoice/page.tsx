@@ -53,7 +53,7 @@ function InvoiceContent() {
         invoiceNo: ord.orderNumber || `PLT-${(ord.id || '2026-0042').substring(0, 8).toUpperCase()}`,
         date: createdDate.toISOString().split('T')[0],
         time: createdDate.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true }),
-        placeOfSupply: ord.shippingState || ord.address?.state || '09-Uttar Pradesh',
+        placeOfSupply: ord.shippingState || ord.address?.state || '27-Maharashtra',
         customerName: ord.shippingName || ord.user?.name || ord.customerName || 'Valued Customer',
         customerAddress: [
           ord.shippingLine1 || ord.address?.line1,
@@ -63,9 +63,9 @@ function InvoiceContent() {
           ord.shippingPincode || ord.address?.pincode,
         ]
           .filter(Boolean)
-          .join(', ') || 'Prayagraj, Uttar Pradesh',
+          .join(', ') || 'Mumbai, Maharashtra',
         customerPhone: ord.shippingPhone || ord.user?.phone || queryToFetch,
-        customerState: ord.shippingState || ord.address?.state || '09-Uttar Pradesh',
+        customerState: ord.shippingState || ord.address?.state || '27-Maharashtra',
         customerGstin: ord.customerGstin || '',
         items: formattedItems.length > 0 ? formattedItems : [],
         discount: Number(ord.discount || 0) + Number(ord.couponDiscount || 0) + Number(ord.prepaidDiscount || 0),

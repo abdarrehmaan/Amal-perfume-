@@ -46,11 +46,11 @@ export const defaultInvoiceData: InvoiceData = {
   invoiceNo: 'PLT-2026-0042',
   date: '2026-07-31',
   time: '10:30 AM',
-  placeOfSupply: '09-Uttar Pradesh',
+  placeOfSupply: '27-Maharashtra',
   customerName: 'Ayesha Khan',
-  customerAddress: 'House 42, Civil Lines, Allahabad, Uttar Pradesh - 211001',
+  customerAddress: 'Mumbai, Maharashtra, India',
   customerPhone: '+91 98765 43210',
-  customerState: '09-Uttar Pradesh',
+  customerState: '27-Maharashtra',
   customerGstin: '09ABCDE1234F1Z5',
   items: [
     { itemName: 'Designer Embroidered Suit Set', hsnSac: '', quantity: 2, rate: 2450 },
@@ -165,16 +165,16 @@ export default function TaxInvoice({
                 <div>
                   <span className="font-bold">Address</span>
                   <span> : </span>
-                  <span className="font-medium">E 98/1 GTB Nagar,</span>
+                  <span className="font-medium">Mumbai, Maharashtra,</span>
                   <br />
-                  <span className="pl-0.5 font-medium">Kareli, Prayagraj - 211016</span>
+                  <span className="pl-0.5 font-medium">India - 400001</span>
                 </div>
               </div>
 
               <div className="flex items-center gap-2 pl-5">
                 <span className="font-bold">State</span>
                 <span>:</span>
-                <span className="font-medium">09-Uttar Pradesh</span>
+                <span className="font-medium">27-Maharashtra</span>
               </div>
 
               <div className="flex items-center gap-2 pt-0.5">
@@ -607,7 +607,7 @@ export default function TaxInvoice({
           <ol className="list-decimal list-inside text-[10.5px] space-y-1 text-gray-900 leading-snug font-medium pl-1">
             <li>No exchange and no return.</li>
             <li>For any kind of Product issue an unboxing 360 degree video is mandatory.</li>
-            <li>All Subject to Allahabad Jurisdiction only.</li>
+            <li>All Subject to Mumbai Jurisdiction only.</li>
           </ol>
         </div>
 

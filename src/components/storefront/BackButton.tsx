@@ -10,26 +10,25 @@ interface BackButtonProps {
   fallbackHref?: string;
   className?: string;
   variant?: 'light' | 'dark' | 'glass';
+  useHistory?: boolean;
 }
 
 export default function BackButton({
-  label = 'Back',
-  fallbackHref,
+  label = 'Back to Store',
+  fallbackHref = '/',
   className = '',
   variant = 'light',
+  useHistory = false,
 }: BackButtonProps) {
   const router = useRouter();
 
   const handleBack = (e: React.MouseEvent) => {
-    if (fallbackHref) {
-      // If specific fallback link provided, allow normal link navigation
-      return;
-    }
+    if (!useHistory) return;
     e.preventDefault();
-    if (typeof window !== 'undefined' && window.history.length > 1) {
+    if (typeof window !== 'undefined' && window.history.length > 1 && window.history.state?.idx > 0) {
       router.back();
     } else {
-      router.push('/');
+      router.push(fallbackHref || '/');
     }
   };
 
@@ -46,22 +45,22 @@ export default function BackButton({
     </span>
   );
 
-  if (fallbackHref) {
+  if (useHistory) {
     return (
-      <Link href={fallbackHref} className="inline-block focus:outline-hidden">
+      <button
+        type="button"
+        onClick={handleBack}
+        className="inline-block focus:outline-hidden cursor-pointer"
+        aria-label={label || 'Go back to previous page'}
+      >
         {content}
-      </Link>
+      </button>
     );
   }
 
   return (
-    <button
-      type="button"
-      onClick={handleBack}
-      className="inline-block focus:outline-hidden cursor-pointer"
-      aria-label={label || 'Go back to previous page'}
-    >
+    <Link href={fallbackHref || '/'} className="inline-block focus:outline-hidden">
       {content}
-    </button>
+    </Link>
   );
 }

@@ -212,7 +212,7 @@ export default function ProductDetailClient({
       {/* Breadcrumb & Mobile Back */}
       <div className="container-plt py-3.5 flex items-center justify-between gap-3 border-b border-stone-100">
         <div className="flex items-center gap-2 sm:gap-3 overflow-hidden">
-          <BackButton label="Back" className="py-1.5 px-2.5 text-xs" />
+          <BackButton label="Back to Products" fallbackHref="/products" className="py-1.5 px-2.5 text-xs" />
           <nav className="breadcrumb text-xs hidden sm:flex truncate">
             <Link href="/">Home</Link>
             <ChevronRight size={13} className="text-gray-300 shrink-0" />

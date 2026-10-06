@@ -73,7 +73,7 @@ export default function TermsPage() {
               Notwithstanding anything contained in these Terms, the parties shall not be liable for any failure to perform an obligation under these Terms if performance is prevented or delayed by a force majeure event.
             </li>
             <li>
-              These Terms and any dispute or claim relating to it, its subject matter or formation shall be governed by and construed in accordance with the laws of India. All disputes arising under or relating to these Terms shall be subject to the exclusive jurisdiction of the courts in Prayagraj, Uttar Pradesh.
+              These Terms and any dispute or claim relating to it, its subject matter or formation shall be governed by and construed in accordance with the laws of India. All disputes arising under or relating to these Terms shall be subject to the exclusive jurisdiction of the courts in Mumbai, Maharashtra.
             </li>
             <li>
               All concerns or communications relating to these Terms must be directed to us using the contact information provided on this website.

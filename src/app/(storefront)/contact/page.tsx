@@ -30,7 +30,7 @@ export default function ContactPage() {
       Icon: MapPin,
       label: 'Flagship Maison',
       value: 'AMAL PERFUME Flagship Store',
-      sub: 'Civil Lines, Prayagraj, Uttar Pradesh 211001, India',
+      sub: 'Mumbai, Maharashtra, India',
     },
     {
       Icon: Clock,
