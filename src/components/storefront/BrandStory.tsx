@@ -39,7 +39,7 @@ export default function BrandStory() {
           {/* Text Content */}
           <div className="max-w-xl">
             <h4 className="text-amber-800 font-bold uppercase tracking-[0.25em] text-xs sm:text-sm mb-3 sm:mb-4">The Maison's Heritage</h4>
-            <h2 className="font-display text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-stone-900 leading-[1.15] sm:leading-[1.1] mb-6 sm:mb-8">
+            <h2 className="font-display text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-light text-stone-900 leading-[1.15] sm:leading-[1.1] mb-6 sm:mb-8">
               The Alchemy of <br />
               <span className="italic font-serif text-amber-700">Pure Emotion.</span>
             </h2>

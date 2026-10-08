@@ -57,9 +57,9 @@ const config: Config = {
         },
       },
       fontFamily: {
-        sans: ['var(--font-inter)', 'Inter', 'system-ui', 'sans-serif'],
-        serif: ['var(--font-playfair)', 'Playfair Display', 'Georgia', 'serif'],
-        display: ['var(--font-playfair)', 'Playfair Display', 'serif'],
+        sans: ['var(--font-poppins)', 'Poppins', 'system-ui', 'sans-serif'],
+        serif: ['var(--font-poppins)', 'Poppins', 'sans-serif'],
+        display: ['var(--font-poppins)', 'Poppins', 'sans-serif'],
       },
       backgroundImage: {
         'gradient-brand': 'linear-gradient(135deg, #141414 0%, #2a220a 50%, #d4af37 100%)',

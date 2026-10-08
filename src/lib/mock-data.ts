@@ -157,7 +157,7 @@ export const mockCollections: MockCollection[] = [
 export const mockProducts: MockProduct[] = [
   {
     id: 'prod-saddle-leather',
-    name: 'AMAL Saddle Leather Extrait de Parfum',
+    name: 'AMAL Sultan Leather Al Malaki (سلطان ليذر الملكي)',
     slug: 'saddle-leather-extrait-de-parfum',
     sku: 'AMAL-SDL-001',
     price: 3499,
@@ -166,7 +166,7 @@ export const mockProducts: MockProduct[] = [
     categoryId: 'cat-extrait',
     category: { id: 'cat-extrait', name: 'Extrait de Parfum', slug: 'extrait-de-parfum' },
     images: [
-      { id: 'img-sdl-1', url: '/products/saddle-leather.jpg', alt: 'AMAL Saddle Leather Extrait de Parfum Flacon', sortOrder: 1 },
+      { id: 'img-sdl-1', url: '/products/saddle-leather.jpg', alt: 'AMAL Sultan Leather Al Malaki Flacon', sortOrder: 1 },
       { id: 'img-sdl-2', url: '/products/amal-collection.jpg', alt: 'AMAL Flacon Collection', sortOrder: 2 },
       { id: 'img-sdl-3', url: '/products/enigma.jpg', alt: 'AMAL Enigma Extrait Perspective', sortOrder: 3 },
     ],
@@ -186,7 +186,7 @@ export const mockProducts: MockProduct[] = [
   },
   {
     id: 'prod-enigma',
-    name: 'AMAL Enigma Extrait de Parfum',
+    name: 'AMAL Layla Al Enigma (ليلة إنغما الملكية)',
     slug: 'enigma-extrait-de-parfum',
     sku: 'AMAL-ENM-002',
     price: 3299,
@@ -195,7 +195,7 @@ export const mockProducts: MockProduct[] = [
     categoryId: 'cat-extrait',
     category: { id: 'cat-extrait', name: 'Extrait de Parfum', slug: 'extrait-de-parfum' },
     images: [
-      { id: 'img-enm-1', url: '/products/enigma.jpg', alt: 'AMAL Enigma Extrait Flacon', sortOrder: 1 },
+      { id: 'img-enm-1', url: '/products/enigma.jpg', alt: 'AMAL Layla Al Enigma Flacon', sortOrder: 1 },
       { id: 'img-enm-2', url: '/products/amal-collection.jpg', alt: 'AMAL Flacon Collection', sortOrder: 2 },
       { id: 'img-enm-3', url: '/products/saddle-leather.jpg', alt: 'AMAL Saddle Leather Perspective', sortOrder: 3 },
     ],
@@ -215,7 +215,7 @@ export const mockProducts: MockProduct[] = [
   },
   {
     id: 'prod-vanero',
-    name: 'AMAL Vanero Extrait de Parfum',
+    name: 'AMAL Amber Vanero Royal (عنبر فانيرو الملكي)',
     slug: 'vanero-extrait-de-parfum',
     sku: 'AMAL-VAN-003',
     price: 3599,
@@ -224,7 +224,7 @@ export const mockProducts: MockProduct[] = [
     categoryId: 'cat-floral',
     category: { id: 'cat-floral', name: 'Floral & Gourmand', slug: 'floral-gourmand' },
     images: [
-      { id: 'img-van-1', url: '/products/saddle-leather.jpg', alt: 'AMAL Vanero Extrait de Parfum Flacon', sortOrder: 1 },
+      { id: 'img-van-1', url: '/products/saddle-leather.jpg', alt: 'AMAL Amber Vanero Royal Flacon', sortOrder: 1 },
       { id: 'img-van-2', url: '/products/amal-collection.jpg', alt: 'AMAL Flacon Collection', sortOrder: 2 },
     ],
     variants: [
@@ -242,7 +242,7 @@ export const mockProducts: MockProduct[] = [
   },
   {
     id: 'prod-the-hermes-shadow',
-    name: 'AMAL The Hermes Shadow Extrait',
+    name: 'AMAL Zill Al Sultan (ظل السلطان الملكي)',
     slug: 'the-hermes-shadow-extrait-de-parfum',
     sku: 'AMAL-THS-004',
     price: 3699,
@@ -251,7 +251,7 @@ export const mockProducts: MockProduct[] = [
     categoryId: 'cat-citrus',
     category: { id: 'cat-citrus', name: 'Fresh & Citrus', slug: 'fresh-citrus' },
     images: [
-      { id: 'img-ths-1', url: '/products/enigma.jpg', alt: 'AMAL The Hermes Shadow Extrait Flacon', sortOrder: 1 },
+      { id: 'img-ths-1', url: '/products/enigma.jpg', alt: 'AMAL Zill Al Sultan Flacon', sortOrder: 1 },
       { id: 'img-ths-2', url: '/products/amal-collection.jpg', alt: 'AMAL Flacon Collection', sortOrder: 2 },
     ],
     variants: [
@@ -269,18 +269,18 @@ export const mockProducts: MockProduct[] = [
   },
   {
     id: 'prod-amal-collection-set',
-    name: 'AMAL Haute Parfumerie Flacon Set (4 Flacons)',
+    name: 'AMAL Royal Majlis Coffret Set (مجموعة المجلس الملكي)',
     slug: 'master-perfumers-discovery-coffret',
     sku: 'AMAL-COL-005',
     price: 9999,
     comparePrice: 13999,
-    description: 'The complete AMAL Haute Parfumerie wardrobe in full architectural glass flacons: Saddle Leather, Enigma, Vanero, and The Hermes Shadow. Luxury is always in the way it is presented.',
+    description: 'The complete AMAL Haute Parfumerie wardrobe in full architectural glass flacons: Sultan Leather Al Malaki, Layla Al Enigma, Amber Vanero, and Zill Al Sultan. Luxury is always in the way it is presented.',
     categoryId: 'cat-discovery',
     category: { id: 'cat-discovery', name: 'Discovery Sets', slug: 'discovery-coffrets' },
     images: [
-      { id: 'img-col-1', url: '/products/amal-collection.jpg', alt: 'AMAL Haute Parfumerie 4-Flacon Set', sortOrder: 1 },
-      { id: 'img-col-2', url: '/products/saddle-leather.jpg', alt: 'AMAL Saddle Leather Flacon', sortOrder: 2 },
-      { id: 'img-col-3', url: '/products/enigma.jpg', alt: 'AMAL Enigma Flacon', sortOrder: 3 },
+      { id: 'img-col-1', url: '/products/amal-collection.jpg', alt: 'AMAL Royal Majlis 4-Flacon Set', sortOrder: 1 },
+      { id: 'img-col-2', url: '/products/saddle-leather.jpg', alt: 'AMAL Sultan Leather Flacon', sortOrder: 2 },
+      { id: 'img-col-3', url: '/products/enigma.jpg', alt: 'AMAL Layla Al Enigma Flacon', sortOrder: 3 },
     ],
     variants: [
       { id: 'var-col-4x50', size: '4 x 50ml Flacons', color: 'Full Flacon Set', colorHex: '#D4AF37', stock: 35, price: 9999 },
@@ -297,7 +297,7 @@ export const mockProducts: MockProduct[] = [
   },
   {
     id: 'prod-oud-imperial',
-    name: 'Oud Impérial Extrait de Parfum',
+    name: 'Oud Al Amira Impérial (عود الأميرة الإمبراطوري)',
     slug: 'oud-imperial-extrait-de-parfum',
     sku: 'AMAL-OUD-006',
     price: 3899,
@@ -306,7 +306,7 @@ export const mockProducts: MockProduct[] = [
     categoryId: 'cat-oud',
     category: { id: 'cat-oud', name: 'Oud & Oriental', slug: 'oud-oriental' },
     images: [
-      { id: 'img-oud-1', url: '/products/saddle-leather.jpg', alt: 'Oud Impérial Extrait Flacon', sortOrder: 1 },
+      { id: 'img-oud-1', url: '/products/saddle-leather.jpg', alt: 'Oud Al Amira Impérial Flacon', sortOrder: 1 },
       { id: 'img-oud-2', url: '/products/amal-collection.jpg', alt: 'AMAL Collection', sortOrder: 2 },
     ],
     variants: [
@@ -325,7 +325,7 @@ export const mockProducts: MockProduct[] = [
   },
   {
     id: 'prod-baccarat-noir',
-    name: 'Baccarat Noir Extrait de Parfum',
+    name: 'Baccarat Noir Al Royal (باكارات نوار الملكي)',
     slug: 'baccarat-noir-extrait-de-parfum',
     sku: 'AMAL-BAC-007',
     price: 3299,
@@ -334,7 +334,7 @@ export const mockProducts: MockProduct[] = [
     categoryId: 'cat-extrait',
     category: { id: 'cat-extrait', name: 'Extrait de Parfum', slug: 'extrait-de-parfum' },
     images: [
-      { id: 'img-bac-1', url: '/products/enigma.jpg', alt: 'Baccarat Noir Extrait Flacon', sortOrder: 1 },
+      { id: 'img-bac-1', url: '/products/enigma.jpg', alt: 'Baccarat Noir Al Royal Flacon', sortOrder: 1 },
       { id: 'img-bac-2', url: '/products/amal-collection.jpg', alt: 'AMAL Collection', sortOrder: 2 },
     ],
     variants: [
@@ -353,7 +353,7 @@ export const mockProducts: MockProduct[] = [
   },
   {
     id: 'prod-royal-ambergris',
-    name: 'Royal Ambergris Elixir',
+    name: 'Dehn Al Amber Royale (دهن العنبر الملكي)',
     slug: 'royal-ambergris-elixir',
     sku: 'AMAL-AMB-008',
     price: 3999,
@@ -362,7 +362,7 @@ export const mockProducts: MockProduct[] = [
     categoryId: 'cat-oud',
     category: { id: 'cat-oud', name: 'Oud & Oriental', slug: 'oud-oriental' },
     images: [
-      { id: 'img-amb-1', url: '/products/saddle-leather.jpg', alt: 'Royal Ambergris Elixir', sortOrder: 1 },
+      { id: 'img-amb-1', url: '/products/saddle-leather.jpg', alt: 'Dehn Al Amber Royale Flacon', sortOrder: 1 },
       { id: 'img-amb-2', url: '/products/enigma.jpg', alt: 'Enigma Flacon', sortOrder: 2 },
     ],
     variants: [

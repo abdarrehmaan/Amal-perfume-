@@ -6,7 +6,7 @@ export default function NewArrivalsLoading() {
       count={8}
       columns={4}
       title="New Arrivals"
-      subtitle="Loading latest ethnic couture additions..."
+      subtitle="Loading latest artisanal fragrance releases..."
     />
   );
 }

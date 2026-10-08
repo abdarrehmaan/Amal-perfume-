@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import {
   ShoppingBag, Heart, Search, Menu, X, User, ChevronDown, ChevronRight,
-  Phone, Mail, Sparkles, TrendingUp, UserCheck
+  Phone, Mail, Sparkles, UserCheck, Plus, Minus
 } from 'lucide-react';
 import { useCartStore } from '@/features/cart/store';
 import { useWishlistStore } from '@/features/wishlist/store';
@@ -27,7 +27,7 @@ const navLinks = [
   { label: 'Collections', href: '/collections' },
   { label: 'New Releases', href: '/new-arrivals' },
   { label: 'Best Sellers', href: '/best-sellers' },
-  { label: 'The Maison', href: '/about' },
+  { label: 'About us', href: '/about' },
 ];
 
 export default function Header({ featuredProducts = [] }: { featuredProducts?: any[] }) {
@@ -76,8 +76,24 @@ export default function Header({ featuredProducts = [] }: { featuredProducts?: a
       try {
         const res = await fetch('/api/admin/categories');
         const data = await res.json();
-        if (res.ok) {
-          setCategories(data.categories.filter((c: any) => c.isActive) || []);
+        if (res.ok && Array.isArray(data.categories) && data.categories.length > 0) {
+          const descMap: Record<string, string> = {
+            'extrait-de-parfum': '30%+ Pure oil concentration',
+            'eau-de-parfum': 'Signature daily luxury',
+            'oud-oriental': 'Rare agarwood & royal amber',
+            'floral-gourmand': 'Velvet rose & Bourbon vanilla',
+            'fresh-citrus': 'Calabrian bergamot & sea spray',
+            'discovery-coffrets': 'Curated miniature flacons',
+          };
+          const active = data.categories.filter((c: any) => c.isActive);
+          if (active.length > 0) {
+            setCategories(
+              active.map((c: any) => ({
+                ...c,
+                description: c.description || descMap[c.slug] || 'Haute Parfumerie Creation',
+              }))
+            );
+          }
         }
       } catch (err) {
         console.error('Failed to load categories in header:', err);
@@ -190,31 +206,42 @@ export default function Header({ featuredProducts = [] }: { featuredProducts?: a
                     {/* Mega dropdown */}
                     {catOpen && (
                       <div
-                        className="absolute top-full left-1/2 -translate-x-1/2 mt-4 w-[600px] bg-white/95 backdrop-blur-2xl rounded-2xl shadow-card-hover border border-white/60 p-8 grid grid-cols-2 gap-6 z-50 animate-fade-up"
+                        className="absolute top-full left-0 mt-3 w-[560px] bg-white rounded-2xl shadow-2xl border border-stone-200 p-6 grid grid-cols-2 gap-3.5 z-50 animate-fade-up"
                         onMouseEnter={() => setCatOpen(true)}
                       >
-                        <div className="col-span-2 pb-3 border-b border-gray-100 mb-2">
-                          <p className="text-xs text-gray-400 uppercase tracking-[0.2em] font-bold">Discover Olfactory Families</p>
+                        <div className="col-span-2 pb-3 border-b border-stone-100 flex items-center justify-between">
+                          <p className="text-[11px] text-amber-800 uppercase tracking-[0.2em] font-bold flex items-center gap-1.5">
+                            <Sparkles size={13} className="text-amber-700" />
+                            <span>Discover Olfactory Families</span>
+                          </p>
+                          <span className="text-[10px] text-stone-600 font-semibold">{categories.length} Families</span>
                         </div>
                         {categories.map((cat) => (
                           <Link
                             key={cat.slug}
                             href={`/categories/${cat.slug}`}
-                            className="flex flex-col gap-1 px-4 py-3 rounded-xl hover:bg-brand-50/50 transition-all duration-300 group"
+                            className="flex items-start gap-3 p-3 rounded-xl hover:bg-amber-50/50 transition-all duration-200 border border-transparent hover:border-amber-200/80 group"
                           >
-                            <span className="text-sm font-display font-semibold text-gray-900 group-hover:text-brand-700 text-lg">
-                              {cat.name}
-                            </span>
-                            <span className="text-xs text-gray-500">{cat.description}</span>
+                            <div className="w-8 h-8 rounded-lg bg-amber-50 border border-amber-200/60 text-amber-800 flex items-center justify-center shrink-0 mt-0.5 group-hover:bg-amber-100 transition-colors shadow-2xs">
+                              <Sparkles size={14} />
+                            </div>
+                            <div className="min-w-0 flex-1">
+                              <p className="text-sm font-semibold text-stone-900 group-hover:text-amber-800 transition-colors">
+                                {cat.name}
+                              </p>
+                              <p className="text-xs text-stone-600 mt-0.5 leading-snug">
+                                {cat.description || 'Haute Parfumerie Creation'}
+                              </p>
+                            </div>
                           </Link>
                         ))}
-                        <div className="col-span-2 mt-4">
+                        <div className="col-span-2 pt-2 border-t border-stone-100">
                           <Link
                             href="/categories"
-                            className="flex items-center justify-center gap-2 px-4 py-4 rounded-xl text-xs uppercase tracking-widest font-bold text-white bg-gradient-brand hover:shadow-brand-lg transition-all duration-300 hover:-translate-y-0.5"
+                            className="flex items-center justify-center gap-2 w-full py-3 rounded-xl text-xs uppercase tracking-widest font-bold text-white bg-stone-900 hover:bg-black transition-all shadow-sm"
                           >
-                            <Sparkles size={14} />
-                            Explore The Fragrance Lookbook
+                            <span>Explore All Fragrance Families</span>
+                            <ChevronRight size={15} />
                           </Link>
                         </div>
                       </div>
@@ -344,14 +371,14 @@ export default function Header({ featuredProducts = [] }: { featuredProducts?: a
             <div className="container-plt px-4">
               <div className="max-w-3xl mx-auto">
                 <div className="relative flex items-center">
-                  <Search size={20} className="absolute left-4 text-amber-700 pointer-events-none z-10" />
+                  <Search size={20} className="absolute left-4 top-1/2 -translate-y-1/2 text-amber-700 pointer-events-none z-10" />
                   <input
                     ref={searchRef}
                     id="search-input"
                     type="text"
                     placeholder="Search fragrances, royal ouds, discovery sets..."
-                    style={{ paddingLeft: '48px', paddingRight: '48px' }}
-                    className="w-full py-3.5 sm:py-4 bg-stone-50 border border-stone-300 rounded-2xl text-sm sm:text-base md:text-lg font-medium text-stone-900 placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-amber-600/30 focus:bg-white focus:border-amber-600 transition-all shadow-xs"
+                    style={{ paddingLeft: '48px', paddingRight: '56px' }}
+                    className="w-full py-3.5 sm:py-4 bg-stone-50 border border-stone-300 rounded-2xl text-sm sm:text-base font-medium text-stone-900 placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-amber-600/30 focus:bg-white focus:border-amber-600 transition-all shadow-xs"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     onKeyDown={(e) => {
@@ -361,21 +388,13 @@ export default function Header({ featuredProducts = [] }: { featuredProducts?: a
                       if (e.key === 'Escape') setSearchOpen(false);
                     }}
                   />
-                  {searchQuery ? (
+                  {Boolean(searchQuery) && (
                     <button
-                      className="absolute right-3.5 w-8 h-8 flex items-center justify-center rounded-full bg-stone-200 text-stone-600 hover:bg-stone-300 transition-colors z-10"
+                      className="absolute right-3.5 top-1/2 -translate-y-1/2 w-7 h-7 sm:w-8 sm:h-8 flex items-center justify-center rounded-full bg-stone-400/80 hover:bg-stone-600 text-white transition-colors z-20 shadow-xs"
                       onClick={() => setSearchQuery('')}
                       aria-label="Clear search query"
                     >
-                      <X size={16} />
-                    </button>
-                  ) : (
-                    <button
-                      className="absolute right-3.5 w-8 h-8 flex items-center justify-center rounded-full bg-stone-200 text-stone-600 hover:bg-stone-300 transition-colors z-10"
-                      onClick={() => setSearchOpen(false)}
-                      aria-label="Close search"
-                    >
-                      <X size={16} />
+                      <X size={14} className="stroke-[2.5]" />
                     </button>
                   )}
                 </div>
@@ -450,33 +469,14 @@ export default function Header({ featuredProducts = [] }: { featuredProducts?: a
                       </div>
                     )}
                   </div>
-                ) : (
-                  /* Default Trending Suggestions */
-                  <div className="mt-6 sm:mt-8 pt-2">
-                    <h3 className="flex items-center gap-2 text-xs uppercase tracking-widest font-bold text-stone-500 mb-3.5">
-                      <TrendingUp size={14} className="text-amber-700" /> Trending Searches
-                    </h3>
-                    <div className="flex flex-wrap gap-2">
-                      {['Oud Impérial', 'Baccarat Noir', 'Extrait de Parfum', 'Bourbon Vanilla', 'Discovery Coffret', 'Neroli'].map(term => (
-                        <button
-                          key={term}
-                          onClick={() => setSearchQuery(term)}
-                          className="px-4 py-2 rounded-full bg-stone-100 hover:bg-amber-50 hover:text-amber-900 text-xs sm:text-sm font-medium text-stone-700 transition-colors border border-stone-200/70"
-                        >
-                          {term}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-                )}
-
+                ) : null}
               </div>
             </div>
           </div>
         )}
       </header>
 
-      {/* Mobile Menu Drawer (Ajmal Luxury Style) */}
+      {/* Mobile Menu Drawer (Arbi Luxury Layout Style) */}
       {mobileOpen && (
         <>
           <div
@@ -486,201 +486,145 @@ export default function Header({ featuredProducts = [] }: { featuredProducts?: a
           />
           <div className="fixed top-0 left-0 h-[100dvh] max-h-[100dvh] w-[88vw] max-w-[360px] bg-white text-stone-900 border-r border-stone-200 z-50 md:hidden flex flex-col shadow-2xl animate-slide-in-left overflow-hidden">
             
-            {/* 1. Header: Avatar + "Login or Sign Up" + Close X */}
-            <div className="flex items-center justify-between p-4 px-5 border-b border-stone-200/80 bg-white shrink-0">
-              <Link
-                href="/account"
-                onClick={() => setMobileOpen(false)}
-                className="flex items-center gap-3.5 group flex-1 min-w-0"
-              >
-                <div className="w-11 h-11 rounded-full border-2 border-amber-700/50 bg-amber-50/70 flex items-center justify-center text-amber-800 shrink-0 shadow-xs group-hover:bg-amber-100 transition-colors">
-                  {mounted && user ? (
-                    <span className="font-bold text-sm">
-                      {user.name ? user.name.split(' ').map((n: string) => n[0]).join('').toUpperCase().substring(0, 2) : 'U'}
-                    </span>
-                  ) : (
-                    <User size={22} className="stroke-[1.75]" />
-                  )}
-                </div>
-                <div className="flex flex-col min-w-0">
-                  <span className="font-display text-base font-bold text-stone-900 group-hover:text-amber-800 transition-colors truncate">
-                    {mounted && user ? (user.name || 'My Account') : 'Login or Sign Up'}
-                  </span>
-                  {mounted && user && (
-                    <span className="text-[10px] text-amber-700 font-semibold truncate">AMAL Connoisseur Club</span>
-                  )}
-                </div>
-              </Link>
+            {/* 1. Header: Centered AMAL Luxury Logo + Close X */}
+            <div className="relative flex flex-col items-center justify-center pt-9 pb-7 px-6 border-b border-stone-200/80 bg-white shrink-0">
               <button
-                className="w-9 h-9 flex items-center justify-center rounded-full text-stone-500 hover:text-stone-950 hover:bg-stone-100 transition-colors shrink-0 ml-2"
+                className="absolute top-4 right-4 w-10 h-10 flex items-center justify-center text-stone-400 hover:text-stone-950 transition-colors rounded-full hover:bg-stone-100"
                 onClick={() => setMobileOpen(false)}
                 aria-label="Close menu"
               >
-                <X size={22} />
+                <X size={24} />
               </button>
-            </div>
-
-            {/* Scrollable Body */}
-            <div className="flex-1 overflow-y-auto pb-6 divide-y divide-stone-100">
               
-              {/* 2. Horizontal Feature Category Cards */}
-              <div className="p-4 px-5 bg-white">
-                <div className="grid grid-cols-3 gap-2.5">
-                  <Link
-                    href="/categories/extrait-de-parfum"
-                    onClick={() => setMobileOpen(false)}
-                    className="flex flex-col items-center p-2.5 rounded-2xl bg-gradient-to-b from-[#F9F6F0] to-[#FAF8F5] border border-amber-200/60 shadow-2xs hover:border-amber-400/80 transition-all text-center group"
-                  >
-                    <div className="relative w-12 h-14 mb-1.5 shrink-0">
-                      <img src="/products/saddle-leather.jpg" alt="Perfumes" className="w-full h-full object-contain rounded-md" />
-                    </div>
-                    <span className="text-[10px] font-bold text-stone-800 tracking-wider uppercase group-hover:text-amber-800">
-                      Perfumes
-                    </span>
-                  </Link>
+              <Link href="/" onClick={() => setMobileOpen(false)} className="flex flex-col items-center group">
+                <img src="/amal-logo.jpg" alt="AMAL PERFUME" className="h-20 w-auto object-contain mb-2.5 transition-transform duration-300 group-hover:scale-105" />
+                <span className="font-display text-3xl font-bold tracking-[0.25em] text-stone-950 leading-tight">ĀMAL</span>
+                <div className="flex items-center gap-2.5 mt-1.5">
+                  <span className="h-[1px] w-7 bg-amber-700/60"></span>
+                  <span className="text-xs tracking-[0.4em] uppercase text-amber-800 font-bold">PERFUME</span>
+                  <span className="h-[1px] w-7 bg-amber-700/60"></span>
+                </div>
+              </Link>
+            </div>
 
-                  <Link
-                    href="/categories/discovery-coffrets"
-                    onClick={() => setMobileOpen(false)}
-                    className="flex flex-col items-center p-2.5 rounded-2xl bg-gradient-to-b from-[#F9F6F0] to-[#FAF8F5] border border-amber-200/60 shadow-2xs hover:border-amber-400/80 transition-all text-center group"
-                  >
-                    <div className="relative w-12 h-14 mb-1.5 shrink-0">
-                      <img src="/products/amal-collection.jpg" alt="Gift Sets" className="w-full h-full object-contain rounded-md" />
-                    </div>
-                    <span className="text-[10px] font-bold text-stone-800 tracking-wider uppercase group-hover:text-amber-800">
-                      Gift Sets
-                    </span>
-                  </Link>
+            {/* 2. Scrollable Navigation Menu List */}
+            <div className="flex-1 overflow-y-auto divide-y divide-stone-100 font-sans">
+              
+              {/* HOME */}
+              <Link
+                href="/"
+                onClick={() => setMobileOpen(false)}
+                className="flex items-center justify-between px-7 py-5 text-[15px] font-bold tracking-wider text-stone-900 uppercase hover:bg-stone-50 hover:text-amber-900 transition-colors"
+              >
+                <span>HOME</span>
+              </Link>
 
-                  <Link
-                    href="/categories/oud-oriental"
-                    onClick={() => setMobileOpen(false)}
-                    className="flex flex-col items-center p-2.5 rounded-2xl bg-gradient-to-b from-[#F9F6F0] to-[#FAF8F5] border border-amber-200/60 shadow-2xs hover:border-amber-400/80 transition-all text-center group"
-                  >
-                    <div className="relative w-12 h-14 mb-1.5 shrink-0">
-                      <img src="/products/enigma.jpg" alt="Oud Series" className="w-full h-full object-contain rounded-md" />
-                    </div>
-                    <span className="text-[10px] font-bold text-stone-800 tracking-wider uppercase group-hover:text-amber-800">
+              {/* ABOUT US */}
+              <Link
+                href="/about"
+                onClick={() => setMobileOpen(false)}
+                className="flex items-center justify-between px-7 py-5 text-[15px] font-bold tracking-wider text-stone-900 uppercase hover:bg-stone-50 hover:text-amber-900 transition-colors"
+              >
+                <span>ABOUT US</span>
+              </Link>
+
+              {/* SHOP */}
+              <div>
+                <button
+                  onClick={() => setOpenMobileSection(openMobileSection === 'shop' ? null : 'shop')}
+                  className="w-full flex items-center justify-between px-7 py-5 text-[15px] font-bold tracking-wider text-stone-900 uppercase hover:bg-stone-50 hover:text-amber-900 transition-colors text-left"
+                >
+                  <span>SHOP</span>
+                  {openMobileSection === 'shop' ? (
+                    <Minus size={18} className="text-amber-800" />
+                  ) : (
+                    <Plus size={18} className="text-stone-400" />
+                  )}
+                </button>
+                {openMobileSection === 'shop' && (
+                  <div className="bg-[#FAF8F5] px-8 py-3.5 space-y-3.5 border-y border-stone-100 text-xs sm:text-sm text-stone-700 font-medium">
+                    <Link
+                      href="/all-products"
+                      onClick={() => setMobileOpen(false)}
+                      className="block hover:text-amber-800 transition-colors font-bold text-stone-900"
+                    >
+                      All Fragrances
+                    </Link>
+                    <Link
+                      href="/categories/extrait-de-parfum"
+                      onClick={() => setMobileOpen(false)}
+                      className="block hover:text-amber-800 transition-colors"
+                    >
+                      Perfumes (Extrait de Parfum)
+                    </Link>
+                    <Link
+                      href="/categories/oud-oriental"
+                      onClick={() => setMobileOpen(false)}
+                      className="block hover:text-amber-800 transition-colors"
+                    >
                       Oud Series
-                    </span>
-                  </Link>
-                </div>
-                
-                {/* Dash Indicator */}
-                <div className="w-6 h-1 bg-stone-300/80 rounded-full mx-auto mt-3" />
+                    </Link>
+                    <Link
+                      href="/categories/discovery-coffrets"
+                      onClick={() => setMobileOpen(false)}
+                      className="block hover:text-amber-800 transition-colors"
+                    >
+                      Discovery Sets
+                    </Link>
+                    <Link
+                      href="/collections"
+                      onClick={() => setMobileOpen(false)}
+                      className="block hover:text-amber-800 transition-colors"
+                    >
+                      Collections
+                    </Link>
+                  </div>
+                )}
               </div>
 
+              {/* BEST SELLERS */}
+              <Link
+                href="/best-sellers"
+                onClick={() => setMobileOpen(false)}
+                className="flex items-center justify-between px-7 py-5 text-[15px] font-bold tracking-wider text-stone-900 uppercase hover:bg-stone-50 hover:text-amber-900 transition-colors"
+              >
+                <span>BEST SELLERS</span>
+              </Link>
 
+              {/* NEW RELEASES */}
+              <Link
+                href="/new-arrivals"
+                onClick={() => setMobileOpen(false)}
+                className="flex items-center justify-between px-7 py-5 text-[15px] font-bold tracking-wider text-stone-900 uppercase hover:bg-stone-50 hover:text-amber-900 transition-colors"
+              >
+                <span>NEW RELEASES</span>
+              </Link>
 
-              {/* 4. Streamlined Navigation Links */}
-              <div className="py-2 divide-y divide-stone-100 text-stone-800 font-medium text-sm">
-                
-                {/* All Fragrances */}
-                <Link
-                  href="/all-products"
-                  onClick={() => setMobileOpen(false)}
-                  className="flex items-center justify-between px-5 py-3.5 hover:bg-stone-50 transition-colors"
-                >
-                  <span className="font-semibold text-stone-900">All Fragrances</span>
-                  <ChevronRight size={16} className="text-stone-400" />
-                </Link>
-
-                {/* Fragrance Families Accordion */}
-                <div>
-                  <button
-                    onClick={() => setOpenMobileSection(openMobileSection === 'families' ? null : 'families')}
-                    className="w-full flex items-center justify-between px-5 py-3.5 hover:bg-stone-50 transition-colors text-left"
-                  >
-                    <span>Fragrance Families</span>
-                    <ChevronRight size={16} className={cn('text-stone-400 transition-transform duration-200', openMobileSection === 'families' && 'rotate-90')} />
-                  </button>
-                  {openMobileSection === 'families' && (
-                    <div className="bg-[#FAF8F5] px-6 py-2.5 space-y-2 border-y border-stone-100 text-xs text-stone-600">
-                      {categories.map((cat) => (
-                        <Link
-                          key={cat.slug}
-                          href={`/categories/${cat.slug}`}
-                          onClick={() => setMobileOpen(false)}
-                          className="block py-1.5 hover:text-amber-800 font-medium"
-                        >
-                          {cat.name}
-                        </Link>
-                      ))}
-                    </div>
-                  )}
-                </div>
-
-                {/* Collections Accordion */}
-                <div>
-                  <button
-                    onClick={() => setOpenMobileSection(openMobileSection === 'collections' ? null : 'collections')}
-                    className="w-full flex items-center justify-between px-5 py-3.5 hover:bg-stone-50 transition-colors text-left"
-                  >
-                    <span>Collections</span>
-                    <ChevronRight size={16} className={cn('text-stone-400 transition-transform duration-200', openMobileSection === 'collections' && 'rotate-90')} />
-                  </button>
-                  {openMobileSection === 'collections' && (
-                    <div className="bg-[#FAF8F5] px-6 py-2.5 space-y-2 border-y border-stone-100 text-xs text-stone-600">
-                      <Link href="/collections/royal-oud-collection" onClick={() => setMobileOpen(false)} className="block py-1.5 hover:text-amber-800">Royal Oud Series</Link>
-                      <Link href="/collections/private-reserve" onClick={() => setMobileOpen(false)} className="block py-1.5 hover:text-amber-800">Private Reserve</Link>
-                      <Link href="/collections/midnight-noir" onClick={() => setMobileOpen(false)} className="block py-1.5 hover:text-amber-800">Midnight Noir</Link>
-                      <Link href="/collections" onClick={() => setMobileOpen(false)} className="block py-1.5 font-bold text-amber-900">Explore All Collections →</Link>
-                    </div>
-                  )}
-                </div>
-
-                {/* Best Sellers */}
-                <Link
-                  href="/best-sellers"
-                  onClick={() => setMobileOpen(false)}
-                  className="flex items-center justify-between px-5 py-3.5 hover:bg-stone-50 transition-colors"
-                >
-                  <span>Best Sellers</span>
-                  <ChevronRight size={16} className="text-stone-400" />
-                </Link>
-
-                {/* New Releases */}
-                <Link
-                  href="/new-arrivals"
-                  onClick={() => setMobileOpen(false)}
-                  className="flex items-center justify-between px-5 py-3.5 hover:bg-stone-50 transition-colors"
-                >
-                  <span>New Releases</span>
-                  <ChevronRight size={16} className="text-stone-400" />
-                </Link>
-
-                {/* Discovery Coffrets */}
-                <Link
-                  href="/categories/discovery-coffrets"
-                  onClick={() => setMobileOpen(false)}
-                  className="flex items-center justify-between px-5 py-3.5 hover:bg-stone-50 transition-colors"
-                >
-                  <span>Discovery Sets</span>
-                  <ChevronRight size={16} className="text-stone-400" />
-                </Link>
-
-                {/* The Maison Heritage */}
-                <Link
-                  href="/about"
-                  onClick={() => setMobileOpen(false)}
-                  className="flex items-center justify-between px-5 py-3.5 hover:bg-stone-50 transition-colors"
-                >
-                  <span>The Maison Heritage</span>
-                  <ChevronRight size={16} className="text-stone-400" />
-                </Link>
-
-              </div>
-
-              {/* 5. Concierge & Contact */}
-              <div className="p-5 bg-[#FAF8F5] text-xs text-stone-600 space-y-2">
-                <p className="font-bold text-stone-900 uppercase tracking-widest text-[10px] text-amber-800 mb-2">
-                  Fragrance Concierge
-                </p>
-                <p className="flex items-center gap-2"><Phone size={14} className="text-amber-700" /> +91 63920 06081 (Mon–Sat)</p>
-                <p className="flex items-center gap-2"><Mail size={14} className="text-amber-700" /> concierge@amalperfume.com</p>
-              </div>
+              {/* CONTACT US */}
+              <Link
+                href="/about#contact"
+                onClick={() => setMobileOpen(false)}
+                className="flex items-center justify-between px-7 py-5 text-[15px] font-bold tracking-wider text-stone-900 uppercase hover:bg-stone-50 hover:text-amber-900 transition-colors"
+              >
+                <span>CONTACT US</span>
+              </Link>
 
             </div>
+
+            {/* 3. Bottom Footer: Login / Register */}
+            <div className="p-5 px-7 border-t border-stone-200 bg-white shrink-0">
+              <Link
+                href="/account"
+                onClick={() => setMobileOpen(false)}
+                className="flex items-center gap-3.5 text-stone-800 hover:text-amber-800 transition-colors font-semibold text-sm tracking-wide"
+              >
+                <User size={20} className="text-stone-700 stroke-[1.75]" />
+                <span>
+                  {mounted && user ? (user.name || 'My Account') : 'Login / Register'}
+                </span>
+              </Link>
+            </div>
+
           </div>
         </>
       )}

@@ -48,7 +48,7 @@ export default async function CategoriesPage() {
               <Sparkles size={13} className="text-amber-700" />
               <span>Haute Parfumerie</span>
             </div>
-            <h1 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-stone-900 mb-1">
+            <h1 className="font-display text-2xl sm:text-3xl md:text-4xl font-light text-stone-900 mb-1">
               Olfactory Families
             </h1>
             <p className="text-stone-600 text-xs sm:text-sm max-w-md">

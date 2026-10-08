@@ -6,7 +6,7 @@ export default function ProductsLoading() {
       count={8}
       columns={4}
       title="All Products"
-      subtitle="Loading complete collection of ethnic couture..."
+      subtitle="Loading complete collection of artisanal fragrances..."
     />
   );
 }

@@ -183,7 +183,7 @@ export default function HeroBanner() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="font-display text-5xl md:text-7xl lg:text-8xl font-bold text-stone-900 leading-[1.05] mb-6 tracking-tight"
+              className="font-display text-5xl md:text-7xl lg:text-8xl font-light text-stone-900 leading-[1.05] mb-6 tracking-tight"
             >
               {slide.title}
             </motion.h1>
@@ -220,26 +220,17 @@ export default function HeroBanner() {
               </Link>
             </motion.div>
 
-            {/* Social Proof */}
+            {/* Artisanal Heritage Note */}
             <motion.div 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.8 }}
-              className={`mt-12 flex items-center gap-4 border-t border-stone-200/80 pt-6 max-w-md ${slide.align === 'left' ? 'mr-auto' : 'ml-auto'}`}
+              className={`mt-10 flex items-center gap-3 border-t border-stone-200/80 pt-5 max-w-md ${slide.align === 'left' ? 'mr-auto' : 'ml-auto'}`}
             >
-               <div className="flex -space-x-2">
-                 {[1, 2, 3, 4].map((i) => (
-                   <div key={i} className="w-8 h-8 rounded-full border border-white bg-stone-200 overflow-hidden shrink-0 shadow-sm">
-                     <img src={`https://i.pravatar.cc/100?img=${i + 10}`} alt="Customer" className="w-full h-full object-cover" />
-                   </div>
-                 ))}
-               </div>
-               <div className="flex flex-col text-left">
-                 <div className="flex items-center gap-1 text-amber-500">
-                   {[...Array(5)].map((_, i) => <Star key={i} size={12} fill="currentColor" />)}
-                 </div>
-                 <span className="text-stone-800 text-xs font-semibold mt-0.5">Trusted by 10,000+ connoisseurs</span>
-               </div>
+              <div className="flex items-center gap-1 text-amber-600">
+                {[...Array(5)].map((_, i) => <Star key={i} size={13} fill="currentColor" />)}
+              </div>
+              <span className="text-stone-700 text-xs font-semibold uppercase tracking-wider">High Extrait Concentration • Pure Perfume Oils</span>
             </motion.div>
           </motion.div>
         </AnimatePresence>

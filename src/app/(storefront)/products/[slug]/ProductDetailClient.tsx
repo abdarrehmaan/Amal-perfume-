@@ -292,7 +292,7 @@ export default function ProductDetailClient({
             )}
 
             {/* Name */}
-            <h1 className="font-display text-2xl md:text-3xl font-bold text-gray-900 mb-3 leading-tight">
+            <h1 className="font-display text-2xl md:text-3xl font-light text-gray-900 mb-3 leading-tight">
               {product.name}
             </h1>
 

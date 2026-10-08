@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Heart, ShoppingBag, Eye, Star, Flame } from 'lucide-react';
+import { Heart, ShoppingBag, Eye, Star } from 'lucide-react';
 import { useCartStore } from '@/features/cart/store';
 import { useWishlistStore } from '@/features/wishlist/store';
 import { formatPrice, calculateDiscount, sanitizeImageUrl } from '@/lib/utils';
@@ -133,12 +133,7 @@ export default function ProductCard({ product, priority = false }: ProductCardPr
               {discount}% OFF
             </span>
           )}
-          {product.isTrending && (
-             <span className="bg-amber-800/90 text-amber-100 text-[9px] sm:text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-md shadow-sm backdrop-blur-xs flex items-center gap-1 border border-amber-700/60">
-               <Flame size={10} className="text-amber-300 fill-amber-300" /> Trending
-             </span>
-          )}
-          {product.isNewArrival && !product.isTrending && discount === 0 && (
+          {product.isNewArrival && discount === 0 && (
             <span className="bg-white/95 backdrop-blur-md text-stone-900 text-[9px] sm:text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-md shadow-sm border border-stone-200">
               New
             </span>

@@ -23,25 +23,24 @@ export default function ProductGridSkeleton({
       : 'grid-cols-2';
 
   return (
-    <div className="bg-[#08080a] min-h-screen">
-      {/* AMAL PERFUME Animated Header */}
+    <div className="bg-[#FAF8F5] min-h-screen text-stone-900">
+      {/* AMAL PERFUME Animated Light Header */}
       <div
-        className="py-14 text-center relative overflow-hidden flex flex-col items-center justify-center bg-gradient-to-b from-black via-stone-950 to-[#08080a] border-b border-gold-500/20"
+        className="py-14 text-center relative overflow-hidden flex flex-col items-center justify-center bg-gradient-to-b from-amber-50/70 via-[#FAF8F5] to-[#FAF8F5] border-b border-stone-200/80"
       >
         {/* Glowing Logo Container with Spinning Ring */}
         <div className="relative mb-4 group">
-          {/* Spinning Gold Accent Ring */}
-          <div className="absolute -inset-2 rounded-full border-2 border-dashed border-gold-400/60 animate-spin" style={{ animationDuration: '8s' }} />
+          {/* Spinning Amber Accent Ring */}
+          <div className="absolute -inset-2 rounded-full border-2 border-dashed border-amber-600/50 animate-spin" style={{ animationDuration: '8s' }} />
           
           {/* Logo Circle */}
-          <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-black/80 backdrop-blur-md border-2 border-gold-500/40 p-2 flex items-center justify-center shadow-2xl animate-pulse">
+          <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-white backdrop-blur-md border-2 border-amber-600/40 p-2.5 flex items-center justify-center shadow-lg animate-pulse">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/amal-logo.jpg"
               alt="AMAL PERFUME Logo"
-              className="w-full h-full object-contain rounded-full drop-shadow-md"
+              className="w-full h-full object-contain rounded-full drop-shadow-xs"
               onError={(e) => {
-                // Fallback text logo if image fails
                 (e.target as HTMLElement).style.display = 'none';
               }}
             />
@@ -49,26 +48,28 @@ export default function ProductGridSkeleton({
         </div>
 
         {/* Brand Text Header */}
-        <h2 className="font-serif text-2xl sm:text-3xl font-black text-gradient-gold tracking-widest uppercase mb-1 drop-shadow-sm">
-          AMAL PERFUME
+        <h2 className="font-display text-2xl sm:text-3xl font-bold tracking-[0.2em] text-stone-950 uppercase mb-1 drop-shadow-2xs">
+          {title}
         </h2>
-        <p className="text-gold-300 text-xs uppercase tracking-[0.35em] font-semibold mb-2">
-          Haute Parfumerie Maison
-        </p>
+        <div className="flex items-center gap-2 mt-0.5 mb-3">
+          <span className="h-[1px] w-6 bg-amber-700/60"></span>
+          <span className="text-[10px] sm:text-xs tracking-[0.35em] uppercase text-amber-800 font-bold">PERFUME</span>
+          <span className="h-[1px] w-6 bg-amber-700/60"></span>
+        </div>
 
-        <div className="flex items-center gap-2 text-stone-300 text-xs font-medium bg-white/5 px-4 py-1.5 rounded-full border border-gold-500/20">
-          <span className="w-2 h-2 rounded-full bg-gold-400 animate-ping" />
+        <div className="flex items-center gap-2 text-stone-700 text-xs font-semibold bg-white px-4 py-1.5 rounded-full border border-stone-200/90 shadow-2xs">
+          <span className="w-2 h-2 rounded-full bg-amber-600 animate-ping" />
           <span>{subtitle}</span>
         </div>
       </div>
 
       <div className="container-plt py-8">
         {/* Toolbar Skeleton */}
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-8 pb-4 border-b border-gray-100 animate-pulse">
-          <div className="h-10 w-full max-w-xs bg-gray-100 rounded-xl" />
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-8 pb-4 border-b border-stone-200/60 animate-pulse">
+          <div className="h-10 w-full max-w-xs bg-stone-200/70 rounded-xl" />
           <div className="flex items-center gap-3 w-full sm:w-auto">
-            <div className="h-10 w-28 bg-gray-100 rounded-xl" />
-            <div className="h-10 w-36 bg-gray-100 rounded-xl" />
+            <div className="h-10 w-28 bg-stone-200/70 rounded-xl" />
+            <div className="h-10 w-36 bg-stone-200/70 rounded-xl" />
           </div>
         </div>
 
@@ -77,17 +78,17 @@ export default function ProductGridSkeleton({
           {Array.from({ length: count }).map((_, i) => (
             <div key={i} className="flex flex-col animate-pulse">
               {/* Image Aspect Box Skeleton */}
-              <div className="relative w-full aspect-[3/4] bg-gray-200/70 rounded-2xl mb-4 overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent animate-shimmer" />
+              <div className="relative w-full aspect-[3/4] bg-stone-200/70 rounded-2xl mb-4 overflow-hidden border border-stone-200/50">
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/60 to-transparent animate-shimmer" />
               </div>
               {/* Rating Skeleton */}
-              <div className="h-3 w-16 bg-gray-200 rounded mb-2" />
+              <div className="h-3 w-16 bg-stone-200/80 rounded mb-2" />
               {/* Title Skeleton */}
-              <div className="h-4 w-3/4 bg-gray-200 rounded mb-1.5" />
+              <div className="h-4 w-3/4 bg-stone-200/80 rounded mb-1.5" />
               {/* Category Skeleton */}
-              <div className="h-3 w-1/2 bg-gray-150 rounded mb-2" />
+              <div className="h-3 w-1/2 bg-stone-200/60 rounded mb-2" />
               {/* Price Skeleton */}
-              <div className="h-5 w-24 bg-gray-200 rounded" />
+              <div className="h-5 w-24 bg-stone-200/80 rounded" />
             </div>
           ))}
         </div>

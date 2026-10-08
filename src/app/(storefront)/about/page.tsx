@@ -5,39 +5,31 @@ import { Award, Heart, Leaf, Sparkles } from 'lucide-react';
 import BackButton from '@/components/storefront/BackButton';
 
 export const metadata: Metadata = {
-  title: "The Maison — AMAL PERFUME",
-  description: "Learn about AMAL PERFUME — our origins, master noses, and dedication to rare extraits de parfum and oriental ouds.",
+  title: 'About us — AMAL PERFUME',
+  description:
+    'Learn about AMAL PERFUME — our origins, master noses, and dedication to rare extraits de parfum and oriental ouds.',
 };
 
 export default function AboutPage() {
   return (
     <div className="bg-[#FAF8F5] min-h-screen text-stone-800">
       {/* Hero Header */}
-      <div className="py-10 md:py-14 border-b border-stone-200 bg-[#F4F0E6]">
-        <div className="container-plt px-4 max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
-          <div className="w-full sm:w-auto flex justify-start">
+      <div className="py-10 md:py-14 border-b border-stone-200 bg-[#F4F0E6] relative">
+        <div className="container-plt px-4 max-w-5xl mx-auto flex flex-col items-center justify-center text-center relative">
+          <div className="w-full flex justify-start mb-4 sm:mb-0 sm:absolute sm:left-4 sm:top-1/2 sm:-translate-y-1/2">
             <BackButton label="Back to Store" />
           </div>
-          <div className="flex flex-col sm:flex-row items-center gap-4 text-center sm:text-right">
-            <div className="p-1 bg-stone-900 rounded-xl border border-amber-600/30 shadow-md shrink-0">
-              <img
-                src="/amal-logo.jpg"
-                alt="AMAL PERFUME Official Logo"
-                className="h-14 w-auto object-contain rounded-lg"
-              />
-            </div>
-            <div>
-              <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-amber-500/10 border border-amber-600/20 text-amber-900 text-[11px] font-semibold uppercase tracking-wider mb-1.5">
-                <Sparkles size={13} className="text-amber-700" />
-                <span>Haute Parfumerie</span>
-              </div>
-              <h1 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-stone-900 mb-1">
-                The Maison
-              </h1>
-              <p className="text-stone-600 font-serif italic text-xs md:text-sm">
-                &ldquo;More Than A Fragrance — It&apos;s An Emotion&rdquo;
-              </p>
-            </div>
+          
+          <div className="flex flex-col items-center text-center max-w-md mx-auto">
+            <span className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.25em] text-amber-800 mb-2">
+              Haute Parfumerie
+            </span>
+            <h1 className="font-display text-3xl sm:text-4xl md:text-5xl font-light text-stone-900 tracking-tight mb-2">
+              About us
+            </h1>
+            <p className="text-stone-600 font-serif italic text-xs sm:text-sm md:text-base">
+              &ldquo;More Than A Fragrance — It&apos;s An Emotion&rdquo;
+            </p>
           </div>
         </div>
       </div>
@@ -59,29 +51,26 @@ export default function AboutPage() {
                 Every blend is macerated in dark cellars for over six months, allowing pure botanical oils to harmonize before being individually hand-filled and sealed into crystal flacons.
               </p>
             </div>
-            <div className="relative h-80 rounded-3xl overflow-hidden shadow-2xl border border-amber-500/20 group">
-              <Image
-                src="/amal-banner.jpg"
-                alt="AMAL PERFUME artisanal flacon"
-                fill
-                className="object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-black/20 p-6 flex flex-col justify-between">
-                <div className="self-end bg-stone-900/90 backdrop-blur-md p-2 rounded-xl border border-amber-500/40 shadow-lg">
-                  <img
-                    src="/amal-logo.jpg"
-                    alt="AMAL PERFUME Logo"
-                    className="h-10 w-auto object-contain rounded-lg"
-                  />
-                </div>
-                <div>
-                  <span className="text-[10px] tracking-[0.25em] uppercase text-amber-300 font-bold block mb-1">
-                    Authentic Maison Seal
-                  </span>
-                  <p className="text-white text-xs font-serif italic">
-                    Crafted with 35% Pure Perfume Oil Concentration
-                  </p>
-                </div>
+            
+            {/* Elegant Dual Overlapping Image Composition */}
+            <div className="relative pb-10 pr-6 md:pr-10">
+              <div className="relative aspect-[4/5] w-[80%] rounded-2xl overflow-hidden shadow-2xl border border-stone-300/80">
+                <Image
+                  src="/products/saddle-leather.jpg"
+                  alt="AMAL Saddle Leather Extrait Flacon"
+                  fill
+                  className="object-cover object-center"
+                  sizes="(max-width: 1024px) 80vw, 40vw"
+                />
+              </div>
+              <div className="absolute bottom-0 right-0 w-[52%] aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl border-4 border-[#FAF8F5] z-10">
+                <Image
+                  src="/products/enigma.jpg"
+                  alt="AMAL Enigma Extrait Flacon"
+                  fill
+                  className="object-cover object-center"
+                  sizes="(max-width: 1024px) 50vw, 25vw"
+                />
               </div>
             </div>
           </div>
@@ -93,7 +82,7 @@ export default function AboutPage() {
         <div className="container-plt">
           <div className="section-header">
             <div className="section-tag">Guiding Principles</div>
-            <h2 className="section-title">The Maison&apos;s Standards</h2>
+            <h2 className="section-title">Our Standards</h2>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[

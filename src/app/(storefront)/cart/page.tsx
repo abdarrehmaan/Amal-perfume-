@@ -7,6 +7,7 @@ import { Minus, Plus, Trash2, Tag, ArrowRight, ArrowLeft, ShoppingBag, Truck } f
 import { useCartStore } from '@/features/cart/store';
 import { formatPrice, calculateShipping } from '@/lib/utils';
 import toast from 'react-hot-toast';
+import BackButton from '@/components/storefront/BackButton';
 
 export default function CartPage() {
   const { items, removeItem, updateQuantity, getSubtotal } = useCartStore();

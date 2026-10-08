@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400&display=swap');
 
 @import "tailwindcss";
 @config "../../tailwind.config.ts";
@@ -17,8 +17,8 @@
   --ivory-dark: #ECE7DE;
 
   /* Typography */
-  --font-sans: 'Inter', system-ui, sans-serif;
-  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans: 'Poppins', var(--font-poppins), system-ui, sans-serif;
+  --font-serif: 'Poppins', var(--font-poppins), system-ui, sans-serif;
 
   /* Spacing */
   --section-padding: 5rem 0;
@@ -107,10 +107,13 @@ body {
    ============================================================ */
 .font-display {
   font-family: var(--font-serif);
+  font-weight: 300;
 }
 
-h1, h2, h3, .heading-serif {
+h1, h2, h3, h4, h5, h6, .heading-serif {
   font-family: var(--font-serif);
+  font-weight: 300;
+  letter-spacing: -0.015em;
 }
 
 /* ============================================================
@@ -323,7 +326,7 @@ h1, h2, h3, .heading-serif {
 }
 
 .section-title {
-  @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-display font-bold mb-3 text-stone-900;
+  @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-display font-light mb-3 text-stone-900;
   line-height: 1.15;
 }
 
@@ -599,13 +602,29 @@ h1, h2, h3, .heading-serif {
   color: #1C1917;
 }
 
-.storefront-main h1, 
-.storefront-main h2, 
-.storefront-main h3, 
-.storefront-main h4, 
-.storefront-main h5, 
-.storefront-main h6 {
+.storefront-main h1,
+.storefront-main h2,
+.storefront-main h3,
+.storefront-main h4,
+.storefront-main h5,
+.storefront-main h6,
+.storefront-main .section-title,
+.storefront-main .font-display {
+  font-weight: 300 !important;
+}
+
+.storefront-main h1:not(.text-white):not([class*="text-white"]), 
+.storefront-main h2:not(.text-white):not([class*="text-white"]), 
+.storefront-main h3:not(.text-white):not([class*="text-white"]), 
+.storefront-main h4:not(.text-white):not([class*="text-white"]), 
+.storefront-main h5:not(.text-white):not([class*="text-white"]), 
+.storefront-main h6:not(.text-white):not([class*="text-white"]) {
   color: #1C1917 !important;
+}
+
+.storefront-main .text-white,
+.storefront-main .text-white * {
+  color: #FFFFFF !important;
 }
 
 .storefront-main .text-gray-900 {

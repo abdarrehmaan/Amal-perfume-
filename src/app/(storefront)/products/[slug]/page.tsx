@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     if (!product || product.isDeleted) return {};
     return {
       title: product.name,
-      description: `Buy ${product.name} online at PLT Creation. Premium ethnic wear starting from ₹${Number(product.price).toLocaleString('en-IN')}.`,
+      description: `Buy ${product.name} online at AMAL PERFUME. Artisanal luxury extraits starting from ₹${Number(product.price).toLocaleString('en-IN')}.`,
     };
   } catch (error) {
     return {};
@@ -108,8 +108,8 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
     isNewArrival: dbProduct.isNewArrival,
     isBestSeller: dbProduct.isBestSeller,
     category: {
-      name: dbProduct.category?.name || 'Ethnic Wear',
-      slug: dbProduct.category?.slug || 'ethnic-wear',
+      name: dbProduct.category?.name || 'Haute Parfumerie',
+      slug: dbProduct.category?.slug || 'haute-parfumerie',
     },
     images: (dbProduct.images || []).map((img: any) => ({
       url: img.url,
@@ -137,7 +137,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
     totalStock: p.totalStock,
     isNewArrival: p.isNewArrival,
     isBestSeller: p.isBestSeller,
-    category: { name: p.category?.name || 'Ethnic Wear' },
+    category: { name: p.category?.name || 'Haute Parfumerie' },
     images: (p.images || []).map((img: any) => ({ url: img.url, alt: img.alt || '' })),
     variants: (p.variants || []).map((v: any) => ({
       id: v.id,

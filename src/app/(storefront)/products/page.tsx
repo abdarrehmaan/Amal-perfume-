@@ -202,7 +202,7 @@ export default async function ProductsPage({
             <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-amber-500/10 border border-amber-600/20 text-amber-900 text-[11px] font-semibold uppercase tracking-wider mb-1.5">
               <span>Haute Parfumerie Catalog</span>
             </div>
-            <h1 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-stone-900 mb-1">
+            <h1 className="font-display text-2xl sm:text-3xl md:text-4xl font-light text-stone-900 mb-1">
               Artisanal Fragrance Wardrobe
             </h1>
             <p className="text-stone-600 text-xs sm:text-sm max-w-xl leading-relaxed">

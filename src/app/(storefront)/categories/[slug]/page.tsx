@@ -61,7 +61,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     if (!category) return {};
     return {
       title: `${category.name} Collection`,
-      description: category.description || 'Premium ethnic fashion',
+      description: category.description || 'Haute Parfumerie & Artisanal Fragrances',
     };
   } catch (error) {
     return {};

@@ -15,7 +15,7 @@ const badges = [
   {
     Icon: ShieldCheck,
     title: '100% Authentic',
-    description: 'Genuine ethnic wear only',
+    description: '100% pure extraits & fine perfumes',
   },
   {
     Icon: Lock,

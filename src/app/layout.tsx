@@ -1,20 +1,13 @@
 import type { Metadata } from 'next';
-import { Inter, Playfair_Display } from 'next/font/google';
+import { Poppins } from 'next/font/google';
 import './globals.css';
 import { Toaster } from 'react-hot-toast';
 
-const inter = Inter({
+const poppins = Poppins({
   subsets: ['latin'],
-  variable: '--font-inter',
+  variable: '--font-poppins',
+  weight: ['200', '300', '400', '500', '600', '700'],
   display: 'swap',
-});
-
-const playfair = Playfair_Display({
-  subsets: ['latin'],
-  variable: '--font-playfair',
-  display: 'swap',
-  weight: ['400', '500', '600', '700'],
-  style: ['normal', 'italic'],
 });
 
 export const metadata: Metadata = {
@@ -62,7 +55,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${playfair.variable}`} suppressHydrationWarning>
+    <html lang="en" className={poppins.variable} suppressHydrationWarning>
       <body className="font-sans antialiased" suppressHydrationWarning>
         {children}
         <Toaster
@@ -70,7 +63,7 @@ export default function RootLayout({
           toastOptions={{
             duration: 3000,
             style: {
-              fontFamily: 'var(--font-inter)',
+              fontFamily: 'var(--font-poppins)',
               borderRadius: '12px',
               padding: '12px 16px',
               fontSize: '14px',
