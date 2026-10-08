@@ -157,7 +157,7 @@ export const mockCollections: MockCollection[] = [
 export const mockProducts: MockProduct[] = [
   {
     id: 'prod-saddle-leather',
-    name: 'AMAL Sultan Leather Al Malaki (سلطان ليذر الملكي)',
+    name: 'AMAL Sultan Leather Al Malaki',
     slug: 'saddle-leather-extrait-de-parfum',
     sku: 'AMAL-SDL-001',
     price: 3499,
@@ -186,7 +186,7 @@ export const mockProducts: MockProduct[] = [
   },
   {
     id: 'prod-enigma',
-    name: 'AMAL Layla Al Enigma (ليلة إنغما الملكية)',
+    name: 'AMAL Layla Al Enigma',
     slug: 'enigma-extrait-de-parfum',
     sku: 'AMAL-ENM-002',
     price: 3299,
@@ -215,7 +215,7 @@ export const mockProducts: MockProduct[] = [
   },
   {
     id: 'prod-vanero',
-    name: 'AMAL Amber Vanero Royal (عنبر فانيرو الملكي)',
+    name: 'AMAL Amber Vanero Royal',
     slug: 'vanero-extrait-de-parfum',
     sku: 'AMAL-VAN-003',
     price: 3599,
@@ -242,7 +242,7 @@ export const mockProducts: MockProduct[] = [
   },
   {
     id: 'prod-the-hermes-shadow',
-    name: 'AMAL Zill Al Sultan (ظل السلطان الملكي)',
+    name: 'AMAL Zill Al Sultan',
     slug: 'the-hermes-shadow-extrait-de-parfum',
     sku: 'AMAL-THS-004',
     price: 3699,
@@ -269,7 +269,7 @@ export const mockProducts: MockProduct[] = [
   },
   {
     id: 'prod-amal-collection-set',
-    name: 'AMAL Royal Majlis Coffret Set (مجموعة المجلس الملكي)',
+    name: 'AMAL Royal Majlis Coffret Set',
     slug: 'master-perfumers-discovery-coffret',
     sku: 'AMAL-COL-005',
     price: 9999,
@@ -297,7 +297,7 @@ export const mockProducts: MockProduct[] = [
   },
   {
     id: 'prod-oud-imperial',
-    name: 'Oud Al Amira Impérial (عود الأميرة الإمبراطوري)',
+    name: 'Oud Al Amira Impérial',
     slug: 'oud-imperial-extrait-de-parfum',
     sku: 'AMAL-OUD-006',
     price: 3899,
@@ -325,7 +325,7 @@ export const mockProducts: MockProduct[] = [
   },
   {
     id: 'prod-baccarat-noir',
-    name: 'Baccarat Noir Al Royal (باكارات نوار الملكي)',
+    name: 'Baccarat Noir Al Royal',
     slug: 'baccarat-noir-extrait-de-parfum',
     sku: 'AMAL-BAC-007',
     price: 3299,
@@ -353,7 +353,7 @@ export const mockProducts: MockProduct[] = [
   },
   {
     id: 'prod-royal-ambergris',
-    name: 'Dehn Al Amber Royale (دهن العنبر الملكي)',
+    name: 'Dehn Al Amber Royale',
     slug: 'royal-ambergris-elixir',
     sku: 'AMAL-AMB-008',
     price: 3999,

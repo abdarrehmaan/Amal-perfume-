@@ -58,7 +58,6 @@ export default function ProductGridSkeleton({
         </div>
 
         <div className="flex items-center gap-2 text-stone-700 text-xs font-semibold bg-white px-4 py-1.5 rounded-full border border-stone-200/90 shadow-2xs">
-          <span className="w-2 h-2 rounded-full bg-amber-600 animate-ping" />
           <span>{subtitle}</span>
         </div>
       </div>

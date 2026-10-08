@@ -184,9 +184,6 @@ export default function ProductFilterToolbar({
           >
             <SlidersHorizontal size={15} className="text-amber-700" />
             <span>Filters</span>
-            {hasActiveFilters && (
-              <span className="w-2 h-2 rounded-full bg-amber-600 animate-pulse" />
-            )}
           </button>
 
           <select

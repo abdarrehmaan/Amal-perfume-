@@ -332,25 +332,20 @@ export default function ProductDetailClient({
               <div className="mb-5">
                 <div className="flex items-center gap-2 mb-2">
                   <p className="text-sm font-semibold text-gray-900">Edition / Flacon Finish:</p>
-                  {selectedColor && <p className="text-sm text-gray-500">{selectedColor}</p>}
                 </div>
                 <div className="flex gap-2 flex-wrap">
-                  {colors.map((color) => {
-                    const variant = product.variants?.find((v) => v.color === color);
-                    return (
-                      <button
-                        key={color}
-                        onClick={() => handleColorSelect(color)}
-                        className={cn(
-                          'w-8 h-8 rounded-full border-2 transition-all flex-shrink-0 hover:scale-110',
-                          selectedColor === color ? 'border-brand-600 scale-110 shadow-brand' : 'border-transparent'
-                        )}
-                        style={{ backgroundColor: variant?.colorHex || '#ccc' }}
-                        title={color}
-                        aria-label={`Select edition ${color}`}
-                      />
-                    );
-                  })}
+                  {colors.map((color) => (
+                    <button
+                      key={color}
+                      onClick={() => handleColorSelect(color)}
+                      className={cn(
+                        'px-3.5 py-1.5 rounded-lg text-xs font-semibold border transition-all',
+                        selectedColor === color ? 'border-stone-900 bg-stone-900 text-white shadow-xs' : 'border-stone-200 bg-white text-stone-700 hover:border-stone-400'
+                      )}
+                    >
+                      {color}
+                    </button>
+                  ))}
                 </div>
               </div>
             )}
